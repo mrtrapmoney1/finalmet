@@ -1,6 +1,6 @@
 export const BUSINESS = {
   name: "Metro TV & Appliances",
-  shortName: "Metro Tech",
+  shortName: "Metro TV & Appliances",
   address: "1107 North Cotner Blvd, Lincoln, NE 68505",
   phone: "(402) 466-9090",
   fax: "(402) 466-2757",

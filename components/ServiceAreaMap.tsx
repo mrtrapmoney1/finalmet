@@ -3,16 +3,21 @@
 import { useEffect, useRef } from "react";
 import { COVERED_ZIPS, SERVICE_REGIONS } from "@/lib/zip-codes";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const google: any;
+
 declare global {
   interface Window {
-    google: typeof google;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    google: any;
     initServiceAreaMap: () => void;
   }
 }
 
 export function ServiceAreaMap() {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<google.maps.Map | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mapInstanceRef = useRef<any>(null);
 
   useEffect(() => {
     // Bounds covering Lincoln → Omaha → Council Bluffs → Grand Island
@@ -120,7 +125,8 @@ export function ServiceAreaMap() {
 
     return () => {
       // Clean up callback on unmount
-      delete window.initServiceAreaMap;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      delete (window as any).initServiceAreaMap;
     };
   }, []);
 
