@@ -28,7 +28,7 @@ export default function AudioPage() {
             Drop-Off · Lincoln Shop · Since 1947
           </p>
           <h1 className="text-4xl md:text-6xl font-bold font-headline text-white mb-4 leading-tight">
-            TV &amp; Audio Repair.
+            TV &amp; Audio Repair in Lincoln, NE
           </h1>
           <p className="text-white/70 max-w-xl leading-relaxed mb-8">
             {service.description}

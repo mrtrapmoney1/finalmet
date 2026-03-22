@@ -72,7 +72,7 @@ export default function PartnersPage() {
           Factory Authorization
         </p>
         <h1 className="text-4xl md:text-5xl font-bold font-headline text-on-surface mb-4">
-          Our Partners &amp; Authorizations.
+          Factory Authorizations &amp; Extended Warranty Partners
         </h1>
         <p className="text-on-surface-variant max-w-xl leading-relaxed">
           Metro TV &amp; Appliances has held factory authorization from leading

@@ -82,7 +82,7 @@ export default function ContactPage() {
             Get in Touch
           </p>
           <h1 className="text-4xl md:text-5xl font-bold font-headline text-on-surface mb-4">
-            Visit Us in Lincoln.
+            Contact Metro TV &amp; Appliances — Lincoln, NE
           </h1>
           <p className="text-on-surface-variant max-w-xl leading-relaxed">
             Walk-in shop — no appointment needed for drop-off. For in-home

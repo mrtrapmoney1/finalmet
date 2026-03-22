@@ -13,15 +13,18 @@ export function Hero() {
             Nebraska's Factory-Authorized Repair — Since {BUSINESS.founded}
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold font-headline text-white leading-[1.05] mb-6 text-balance">
-            When something breaks,<br />
-            <span className="text-primary-fixed">trust matters.</span>
+          <h1 className="text-5xl md:text-7xl font-bold font-headline text-white leading-[1.05] mb-4 text-balance">
+            Metro TV &amp; Appliances
           </h1>
 
+          <p className="text-2xl md:text-3xl font-semibold font-headline text-primary-fixed mb-6">
+            Factory-Authorized Repair in Lincoln, NE
+          </p>
+
           <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-xl">
-            We diagnose to the root cause — fault codes, ECM reads, voltage at motor
-            terminals — then fix it correctly with OEM parts. Eight decades of
-            precision, no shortcuts.
+            When something breaks, trust matters. We diagnose to the root cause —
+            fault codes, ECM reads, voltage at motor terminals — then fix it
+            correctly with OEM parts. Eight decades of precision, no shortcuts.
           </p>
 
           <div className="flex flex-wrap gap-4">

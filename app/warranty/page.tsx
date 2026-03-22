@@ -42,7 +42,7 @@ export default function WarrantyPage() {
           Our Guarantee
         </p>
         <h1 className="text-4xl md:text-5xl font-bold font-headline text-on-surface mb-4">
-          We Stand Behind Our Work.
+          Repair Warranty &amp; 90-Day Service Guarantee
         </h1>
         <p className="text-on-surface-variant max-w-xl leading-relaxed">
           Every repair performed by Metro TV &amp; Appliances is backed by a

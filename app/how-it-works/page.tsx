@@ -3,9 +3,9 @@ import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "What to Expect",
+  title: "How It Works",
   description:
-    "Learn what happens from your first call through completed repair at Metro TV & Appliances. Transparent pricing, OEM parts, and no surprises.",
+    "See exactly how our repair process works — from your first call to completed repair. Transparent pricing, OEM parts, and no surprises at Metro TV & Appliances.",
 };
 
 const STEPS = [
@@ -53,10 +53,10 @@ export default function WhatToExpectPage() {
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
         <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
-          The Process
+          Metro TV &amp; Appliances
         </p>
         <h1 className="text-4xl md:text-5xl font-bold font-headline text-on-surface mb-4">
-          What to Expect.
+          How Our Repair Process Works
         </h1>
         <p className="text-on-surface-variant max-w-xl leading-relaxed">
           No surprises, no pressure. Here&apos;s exactly how we work — from your first

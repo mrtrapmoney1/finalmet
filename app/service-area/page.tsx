@@ -47,7 +47,7 @@ export default function ServiceAreaPage() {
             Appliance Repair Coverage
           </p>
           <h1 className="text-4xl md:text-5xl font-bold font-headline text-on-surface mb-4">
-            We Come to You.
+            Appliance Repair Service Area — Lincoln, Omaha &amp; Surrounding Nebraska
           </h1>
           <p className="text-on-surface-variant max-w-2xl leading-relaxed mb-6">
             Factory-authorized in-home appliance repair across{" "}

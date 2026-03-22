@@ -105,7 +105,7 @@ export default function FAQPage() {
           Common Questions
         </p>
         <h1 className="text-4xl md:text-5xl font-bold font-headline text-on-surface mb-4">
-          Frequently Asked Questions
+          Frequently Asked Questions — Metro TV &amp; Appliances
         </h1>
         <p className="text-on-surface-variant max-w-xl leading-relaxed">
           Everything you need to know before bringing in or scheduling your repair.
