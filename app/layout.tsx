@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BUSINESS } from "@/lib/constants";
+import { JsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -83,6 +84,7 @@ export default function RootLayout({
         <meta name="ICBM" content="40.8241127, -96.6336259" />
       </head>
       <body>
+        <JsonLd />
         <Header />
         <main>{children}</main>
         <Footer />

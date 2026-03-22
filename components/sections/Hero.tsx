@@ -31,8 +31,8 @@ export function Hero() {
             <Button href="/contact" variant="primary">
               Schedule Service
             </Button>
-            <Button href="/what-to-expect" variant="ghost" className="border-white/30 text-white hover:bg-white/10">
-              What to Expect
+            <Button href="/how-it-works" variant="ghost" className="border-white/30 text-white hover:bg-white/10">
+              How It Works
             </Button>
           </div>
 
