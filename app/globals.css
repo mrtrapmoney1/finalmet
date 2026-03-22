@@ -46,4 +46,31 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-display-lg {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-md {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .text-display-sm {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    line-height: 1.2;
+  }
+
+  .text-body-lg {
+    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .text-body-md {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.6;
+  }
 }
