@@ -1930,3 +1930,35 @@ Expected: 25+ pages rendered.
 git add -A
 git commit -m "chore: Phase 4 complete — all pages, wizard, MCP, and SEO tests passing"
 ```
+
+---
+
+## Implementation Status (2026-03-22)
+
+**All 28 tasks complete.** Merged to `main` via fast-forward (26 commits).
+
+| Phase | Tasks | Status |
+|-------|-------|--------|
+| 1: Core Shell | 1–13 | Done |
+| 2: Diagnostic Wizard | 14–19 | Done |
+| 3: MCP Inventory | 20–22 | Done (mock data, eBay integration future) |
+| 4: SEO Hardening | 23–28 | Done |
+
+**Build:** Clean, all pages pre-rendered (33 static routes).
+**Tests:** 10/10 Playwright SEO tests pass (iPhone 16 Pro viewport).
+
+### Post-implementation audit findings
+
+**Critical (must fix before production):**
+1. `ScheduleForm` sends `"Appliance Repair (In-Home)"` but `/api/send` Zod expects `"appliance-inhome"` — every submission 400s
+2. Personal email hardcoded in `/api/contact/route.ts` — move to env var
+
+**Warnings:**
+- Phone/diagnostic fee hardcoded in several places instead of using `BUSINESS` constants
+- Inconsistent Facebook `sameAs` URL between `JsonLd.tsx` and `app/page.tsx`
+- Duplicate LocalBusiness JSON-LD on homepage (global + page-level)
+- `ScheduleForm` labels missing `htmlFor`/`id` (a11y)
+- `/api/contact` lacks input validation beyond presence checks
+- ~10MB video in git without LFS; duplicate logo files in `public/docs/`
+- Homepage and 404 missing explicit metadata exports
+- `ScrollReveal` and `RepairQuiz` components unused

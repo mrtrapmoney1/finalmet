@@ -15,7 +15,7 @@ npm run start      # Serve production build
 npm run lint       # ESLint via next lint
 ```
 
-No test framework is configured.
+npx playwright test  # Playwright E2E (iPhone 16 Pro viewport, requires dev server)
 
 ## Architecture
 
@@ -59,17 +59,26 @@ components/
   CityLandingPage.tsx  # Shared template for all city landing pages
   ScheduleForm.tsx     # Multi-step scheduling form → /api/send
   ZipChecker.tsx       # Zip code coverage checker (checks against COVERED_ZIPS)
-  RepairQuiz.tsx       # Repair-vs-replace quiz widget
-  ScrollReveal.tsx     # IntersectionObserver scroll animation wrapper
+  RepairQuiz.tsx       # Repair-vs-replace quiz widget (unused — future)
+  ScrollReveal.tsx     # IntersectionObserver scroll animation wrapper (unused — future)
   FaqAccordion.tsx     # Custom FAQ accordion
+  DiagnosticWizard.tsx # Error code lookup wizard (Samsung/LG) with professionalism pivot
+  RelevantParts.tsx    # Parts display for DiagnosticWizard (wired to /api/parts)
   JsonLd.tsx           # Structured data (LocalBusiness + WebSite schema)
   ServiceAreaMap.tsx   # Client: Google Maps with region markers + shop pin
 
 lib/
   constants.ts      # BUSINESS info, SERVICES array, NAV_LINKS — single source of truth
+  error-codes.ts    # Samsung/LG error code data (ErrorCode interface, SAMSUNG_CODES, LG_CODES)
   zip-codes.ts      # COVERED_ZIPS (221 codes), SERVICE_REGIONS (6 regions with lat/lng)
   metadata.ts       # buildMetadata() helper for consistent page metadata with OG/Twitter
   utils.ts          # cn() — clsx + tailwind-merge utility
+
+mcp/
+  ebay-inventory/   # MCP server skeleton for eBay parts integration (mock data, future)
+
+tests/
+  seo-audit.spec.ts # Playwright SEO audit suite (10 tests, iPhone 16 Pro viewport)
 ```
 
 ## Key Patterns
@@ -82,9 +91,9 @@ lib/
 
 **Metadata helper**: Use `buildMetadata()` from `lib/metadata.ts` for new pages — it generates title, description, canonical URL, OpenGraph, and Twitter metadata consistently.
 
-**Client components**: Only used where needed — Header (mobile menu toggle), ContactForm, ScheduleForm, ZipChecker, RepairQuiz, FaqAccordion, ScrollReveal, ServiceAreaMap. Marked with `"use client"`.
+**Client components**: Only used where needed — Header (mobile menu toggle), ContactForm, ScheduleForm, ZipChecker, DiagnosticWizard, FaqAccordion, ServiceAreaMap. Marked with `"use client"`.
 
-**Two form endpoints**: `/api/contact` is the simple contact form; `/api/send` is the scheduling form with Zod validation. Both send email via Resend.
+**Three API routes**: `/api/contact` is the simple contact form; `/api/send` is the scheduling form with Zod validation; `/api/parts` returns parts data for the DiagnosticWizard (mock data, future MCP integration). Contact and send both email via Resend.
 
 **Icons**: Google Material Symbols Outlined loaded via CDN in layout.tsx. Used inline: `<span className="material-symbols-outlined">icon_name</span>`. Lucide React is also available for shadcn/ui components.
 
@@ -135,3 +144,20 @@ Material Design 3-inspired color tokens defined in `tailwind.config.ts`:
 - `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — public, for Google Maps in browser
 - `RESEND_API_KEY` — server-only, for contact form and scheduling emails
 - `GOOGLE_PLACE_ID` — optional, for Google Business integration
+
+## Known Issues (from 2026-03-22 audit)
+
+**Critical:**
+- `ScheduleForm` sends human-readable service type strings (`"Appliance Repair (In-Home)"`) but `/api/send` Zod schema expects slug values (`"appliance-inhome"`). Every schedule submission will 400. Must align the enum values.
+- Personal email `aaronebrahim17@gmail.com` hardcoded in `/api/contact/route.ts` line 18 — move to env var.
+
+**Warnings:**
+- Phone number hardcoded in `ScheduleForm.tsx` instead of using `BUSINESS.phone`
+- Diagnostic fee `$42.90` hardcoded in ~7 places instead of `BUSINESS.diagnostic`
+- Inconsistent Facebook `sameAs` URL between `JsonLd.tsx` and `app/page.tsx`
+- Duplicate LocalBusiness JSON-LD on homepage (global `JsonLd` + page-level)
+- `ScheduleForm` labels missing `htmlFor`/`id` associations (a11y)
+- `/api/contact` has no input validation beyond field presence checks
+- ~10MB video files in `public/docs/` committed without Git LFS
+- Duplicate logo files in `public/docs/` (only `metro-logo.png` is referenced)
+- Homepage and 404 page missing explicit metadata exports
