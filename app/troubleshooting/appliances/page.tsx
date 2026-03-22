@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/metadata";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { DiagnosticWizard } from "@/components/DiagnosticWizard";
 import { Button } from "@/components/ui/Button";
 import { BUSINESS } from "@/lib/constants";
 
@@ -204,6 +205,17 @@ export default function ApplianceTroubleshooting() {
           Work through these expert checks from Metro TV &amp; Appliances in
           Lincoln, NE — many issues have simple fixes you can handle at home.
         </p>
+
+        {/* Diagnostic Wizard */}
+        <div className="mb-12">
+          <h2 className="text-display-sm font-headline font-bold mb-4 text-center">
+            What Error Code Are You Seeing?
+          </h2>
+          <p className="text-body-md text-on-surface-variant text-center mb-8">
+            Select your brand and error code for a diagnosis from our Virtual Tech.
+          </p>
+          <DiagnosticWizard />
+        </div>
 
         <h2 className="text-display-md font-headline font-bold text-on-surface mt-12 mb-6">
           Refrigerator Troubleshooting
