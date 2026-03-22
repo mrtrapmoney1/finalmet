@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { ContactForm } from "@/components/layout/ContactForm";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Contact",
   description: `Contact Metro TV & Appliances at ${BUSINESS.address}. Call ${BUSINESS.phone}. Hours: ${BUSINESS.hours}.`,
-};
+  path: "/contact",
+  keywords: ["contact", "Metro TV & Appliances", "Lincoln NE", "phone", "address", "hours", "schedule repair"],
+});
 
 const MAP_EMBED_URL = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=Metro+TV+%26+Appliances,Lincoln+NE&zoom=15`;
 

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "How It Works",
   description:
     "See exactly how our repair process works — from your first call to completed repair. Transparent pricing, OEM parts, and no surprises at Metro TV & Appliances.",
-};
+  path: "/how-it-works",
+  keywords: ["how it works", "repair process", "diagnostic", "OEM parts", "written estimate", "Lincoln NE"],
+});
 
 const STEPS = [
   {

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Warranty",
   description:
     "Metro TV & Appliances backs every repair with a parts and labor warranty. Learn what's covered and how to make a warranty claim.",
-};
+  path: "/warranty",
+  keywords: ["warranty", "repair warranty", "90-day guarantee", "parts and labor", "OEM parts", "Lincoln NE"],
+});
 
 const COVERAGE = [
   {

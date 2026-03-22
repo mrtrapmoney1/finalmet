@@ -1,13 +1,15 @@
-import { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { FaqAccordion } from "@/components/FaqAccordion";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Frequently Asked Questions — Metro TV & Appliances",
   description:
     "Common questions about appliance, TV, audio, and commercial microwave repair at Metro TV & Appliances in Lincoln, NE.",
-};
+  path: "/faq",
+  keywords: ["FAQ", "frequently asked questions", "appliance repair questions", "warranty", "diagnostic fee", "Lincoln NE"],
+});
 
 const FAQS = [
   {

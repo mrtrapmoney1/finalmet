@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Partners & Authorizations",
   description:
     "Metro TV & Appliances holds factory authorization from Samsung, LG, GE Appliances, Electrolux, and many other leading brands.",
-};
+  path: "/partners",
+  keywords: ["factory authorized", "brand partners", "Samsung", "LG", "GE Appliances", "Electrolux", "Lincoln NE"],
+});
 
 const PARTNER_CATEGORIES = [
   {

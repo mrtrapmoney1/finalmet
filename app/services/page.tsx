@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { SERVICES, BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Services",
   description:
     "Factory-authorized appliance, TV, audio, and commercial microwave repair in Lincoln, NE. Serving Nebraska since 1947.",
-};
+  path: "/services",
+  keywords: ["repair services", "appliance repair", "TV repair", "audio repair", "commercial microwave repair", "Lincoln NE"],
+});
 
 const icons: Record<string, string> = {
   appliance: "home_repair_service",

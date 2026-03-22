@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
 import { SERVICES, BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
 const service = SERVICES.find((s) => s.slug === "commercial")!;
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Commercial Microwave Repair",
   description: service.tagline,
-};
+  path: "/commercial",
+  keywords: ["commercial microwave repair", "Lincoln NE", "Menumaster", "Sharp commercial", "Amana commercial", "magnetron repair"],
+});
 
 const REPAIRS = [
   { icon: "bolt", name: "HV Circuit Repair" },
