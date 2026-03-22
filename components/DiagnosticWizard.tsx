@@ -8,6 +8,7 @@ import {
 } from "@/lib/error-codes";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { RelevantParts, PartsSkeleton } from "@/components/RelevantParts";
 import {
   Dialog,
   DialogContent,
@@ -69,6 +70,8 @@ export function DiagnosticWizard() {
   const [brand, setBrand] = useState<Brand | null>(null);
   const [selectedCode, setSelectedCode] = useState<ErrorCode | null>(null);
   const [showPivot, setShowPivot] = useState(false);
+  const [parts, setParts] = useState<{ name: string; price: string; condition: string; url: string; inStock: boolean }[]>([]);
+  const [partsLoading, setPartsLoading] = useState(false);
 
   const codes = brand === "samsung" ? SAMSUNG_CODES : brand === "lg" ? LG_CODES : [];
 
@@ -77,6 +80,18 @@ export function DiagnosticWizard() {
     const timer = setTimeout(() => setShowPivot(true), 2000);
     return () => clearTimeout(timer);
   }, [step, selectedCode]);
+
+  useEffect(() => {
+    if (!selectedCode) return;
+    setPartsLoading(true);
+    fetch(
+      `/api/parts?component=${encodeURIComponent(selectedCode.components[0])}&brand=${selectedCode.brand}`,
+    )
+      .then((res) => res.json())
+      .then((data) => setParts(data.parts ?? []))
+      .catch(() => setParts([]))
+      .finally(() => setPartsLoading(false));
+  }, [selectedCode]);
 
   function selectBrand(b: Brand) {
     setBrand(b);
@@ -216,8 +231,23 @@ export function DiagnosticWizard() {
             </div>
           )}
 
-          {/* Parts integration slot — populated by Task 22 */}
-          <div id="parts-slot" />
+          {/* Parts from MCP integration */}
+          {partsLoading ? (
+            <PartsSkeleton />
+          ) : parts.length > 0 ? (
+            <RelevantParts parts={parts} />
+          ) : (
+            <p className="mt-4 text-sm text-on-surface-variant">
+              Call{" "}
+              <a
+                href={`tel:${BUSINESS.phone}`}
+                className="text-primary hover:underline"
+              >
+                {BUSINESS.phone}
+              </a>{" "}
+              for parts availability.
+            </p>
+          )}
 
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button href="/schedule" variant="primary">
