@@ -8,7 +8,7 @@ const TRUST_ITEMS = [
     icon: "verified",
     label: "BBB Accredited",
     sub: "A+ Rating",
-    href: "https://www.bbb.org/us/ne/lincoln",
+    href: "https://www.bbb.org/us/ne/lincoln/profile/computer-repair/metro-tvaudio-tech-0714-207002332",
   },
   {
     icon: "star",

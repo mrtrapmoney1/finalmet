@@ -60,8 +60,8 @@ export default function ContactPage() {
             },
             geo: {
               "@type": "GeoCoordinates",
-              latitude: 40.8358,
-              longitude: -96.6467,
+              latitude: 40.8241127,
+              longitude: -96.6336259,
             },
             openingHoursSpecification: [
               {

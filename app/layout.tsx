@@ -18,13 +18,47 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BUSINESS.url),
   title: {
-    default: `${BUSINESS.name} | Factory-Authorized Repair`,
+    default: `${BUSINESS.name} | Factory-Authorized Repair — Lincoln, NE`,
     template: `%s | ${BUSINESS.name}`,
   },
   description:
-    "Factory-authorized appliance, TV, audio, and commercial microwave repair in Lincoln, NE. Serving Nebraska since 1947.",
-  metadataBase: new URL(BUSINESS.url),
+    "Factory-authorized appliance, TV, audio, and commercial microwave repair in Lincoln, NE. BBB A+ accredited. Serving Nebraska since 1947. Call (402) 466-9090.",
+  keywords: [
+    "appliance repair Lincoln NE",
+    "TV repair Lincoln Nebraska",
+    "factory authorized appliance repair",
+    "Samsung appliance repair Lincoln",
+    "LG appliance repair Lincoln",
+    "commercial microwave repair Nebraska",
+    "BBB accredited appliance repair",
+    "Metro TV Appliances Lincoln",
+  ],
+  authors: [{ name: BUSINESS.name }],
+  alternates: {
+    canonical: BUSINESS.url,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: BUSINESS.url,
+    siteName: BUSINESS.name,
+    title: `${BUSINESS.name} | Factory-Authorized Repair — Lincoln, NE`,
+    description:
+      "Factory-authorized appliance, TV, audio, and commercial microwave repair in Lincoln, NE. BBB A+ accredited. Serving Nebraska since 1947.",
+  },
+  twitter: {
+    card: "summary",
+    title: `${BUSINESS.name} | Factory-Authorized Repair`,
+    description:
+      "Factory-authorized appliance, TV, audio, and commercial microwave repair in Lincoln, NE. BBB A+ accredited since 1947.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
 export default function RootLayout({
@@ -39,6 +73,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
+        {/* Local SEO geo meta tags */}
+        <meta name="geo.region" content="US-NE" />
+        <meta name="geo.placename" content="Lincoln, Nebraska" />
+        <meta name="geo.position" content="40.8241127;-96.6336259" />
+        <meta name="ICBM" content="40.8241127, -96.6336259" />
       </head>
       <body>
         <Header />
