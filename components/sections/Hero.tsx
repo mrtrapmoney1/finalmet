@@ -56,14 +56,24 @@ export function Hero() {
         <div className="hidden lg:block w-80">
           <div className="glass-dark rounded-2xl p-8 border border-white/10">
             <p className="text-xs text-white/50 font-label uppercase tracking-widest mb-6">
-              Diagnostic Deductible
+              Diagnostic Fee — Applied to Repair
             </p>
-            <p className="text-5xl font-bold font-headline text-white mb-2">
-              {BUSINESS.diagnostic}
-            </p>
+            <div className="space-y-3 mb-4">
+              <div>
+                <p className="text-3xl font-bold font-headline text-white">{BUSINESS.diagnosticDropOff}</p>
+                <p className="text-xs text-white/50">Drop-off (TV, Audio, Commercial)</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold font-headline text-white">{BUSINESS.diagnosticLincolnOmaha}</p>
+                <p className="text-xs text-white/50">In-Home (Lincoln &amp; Omaha area)</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold font-headline text-white">{BUSINESS.diagnosticExtended}</p>
+                <p className="text-xs text-white/50">In-Home (Extended coverage)</p>
+              </div>
+            </div>
             <p className="text-sm text-white/60 leading-relaxed">
-              Applied toward your repair. Transparent pricing — you approve before
-              any work begins.
+              All fees deductible toward your repair. You approve before any work begins.
             </p>
             <div className="mt-8 space-y-3">
               {[

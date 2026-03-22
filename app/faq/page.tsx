@@ -37,7 +37,7 @@ const FAQS = [
     items: [
       {
         question: "What is the diagnostic fee?",
-        answer: `Our diagnostic deductible is ${BUSINESS.diagnostic}. This fee is applied toward the cost of your repair if you choose to proceed. You will always receive a written estimate before any repair work begins.`,
+        answer: `Our diagnostic deductible starts at ${BUSINESS.diagnosticDropOff} for drop-off services (TV, audio, commercial microwave). For in-home appliance repair, the diagnostic is ${BUSINESS.diagnosticLincolnOmaha} in the Lincoln and Omaha area, or ${BUSINESS.diagnosticExtended} for extended coverage areas. This fee is applied toward the cost of your repair if you choose to proceed. You will always receive a written estimate before any repair work begins.`,
       },
       {
         question: "Will I receive a quote before any work is done?",

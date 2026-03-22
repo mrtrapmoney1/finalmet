@@ -34,7 +34,7 @@ const CERTIFICATIONS = [
   "90-day parts & labor warranty",
   "In-home service (appliances)",
   "200+ zip code coverage",
-  `${BUSINESS.diagnostic} diagnostic (applied to repair)`,
+  `${BUSINESS.diagnosticDropOff} drop-off / ${BUSINESS.diagnosticLincolnOmaha}+ in-home (applied to repair)`,
   "BBB A+ accredited",
   "High-voltage safety certified",
   "Lockout/tagout protocol",

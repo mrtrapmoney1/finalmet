@@ -5,7 +5,7 @@ import { BUSINESS } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Appliance Repair in Omaha, NE — Factory-Authorized Service",
   description:
-    "Factory-authorized in-home appliance repair in Omaha, NE. Samsung, LG, GE, Electrolux & more. $42.90 diagnostic — applied toward your repair. Call (402) 466-9090.",
+    `Factory-authorized in-home appliance repair in Omaha, NE. Samsung, LG, GE, Electrolux & more. ${BUSINESS.diagnosticLincolnOmaha} in-home diagnostic — deductible toward your repair. Call ${BUSINESS.phone}.`,
   path: "/appliance-repair-omaha",
   keywords: [
     "appliance repair Omaha NE",
@@ -75,6 +75,9 @@ export default function ApplianceRepairOmahaPage() {
         region="Omaha Metro"
         nearbyAreas={["Papillion", "La Vista", "Ralston", "Elkhorn"]}
         localContext="We provide factory-authorized in-home appliance repair across Douglas County and the greater Omaha metro. Our Lincoln-based technicians serve Omaha with same-week scheduling for most repairs."
+        diagnosticFee={BUSINESS.diagnosticLincolnOmaha}
+        serviceFocus="Omaha metro customers benefit from dedicated route scheduling — our technicians group Omaha-area appointments for efficient same-week service across Douglas and Sarpy counties."
+        cityHighlight="From West Omaha to Benson, Dundee to South O — we cover every Omaha neighborhood. Samsung, LG, GE, and Electrolux owners across the metro trust our factory-authorized expertise."
         zips={[]}
       />
     </>

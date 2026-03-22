@@ -7,7 +7,10 @@ export const BUSINESS = {
   hours: "Monday–Friday 8:30 AM – 6:00 PM",
   founded: 1947,
   founder: "Mr. Fiedler",
-  diagnostic: "$42.90",
+  diagnosticDropOff: "$42.90",
+  diagnosticLincolnOmaha: "$149.08",
+  diagnosticExtended: "$175.08",
+  diagnostic: "$42.90", // drop-off legacy alias
   url: "https://metrotv-audiotech.com",
 } as const;
 

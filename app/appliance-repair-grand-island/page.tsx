@@ -5,7 +5,7 @@ import { BUSINESS } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Appliance Repair in Grand Island, NE — Factory-Authorized Service",
   description:
-    "Factory-authorized in-home appliance repair in Grand Island, NE. Samsung, LG, GE, Electrolux & more. $42.90 diagnostic — applied toward your repair. Call (402) 466-9090.",
+    `Factory-authorized in-home appliance repair in Grand Island, NE. Samsung, LG, GE, Electrolux & more. ${BUSINESS.diagnosticExtended} in-home diagnostic — deductible toward your repair. Call ${BUSINESS.phone}.`,
   path: "/appliance-repair-grand-island",
   keywords: [
     "appliance repair Grand Island NE",
@@ -75,6 +75,9 @@ export default function ApplianceRepairGrandIslandPage() {
         region="Hall County"
         nearbyAreas={["Hastings", "Kearney", "Aurora"]}
         localContext="Serving Grand Island and central Nebraska communities with factory-authorized in-home appliance repair. Extended coverage for Hall County and surrounding areas."
+        diagnosticFee={BUSINESS.diagnosticExtended}
+        serviceFocus="Grand Island is part of our extended coverage area. We schedule dedicated central Nebraska service days to keep travel efficient and bring factory-authorized expertise west of Lincoln."
+        cityHighlight="Central Nebraska's largest city has limited access to factory-authorized repair. We fill that gap — bringing Samsung ASC-level service to Grand Island, Hastings, Kearney, and surrounding communities."
         zips={[]}
       />
     </>

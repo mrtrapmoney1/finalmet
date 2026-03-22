@@ -1,8 +1,10 @@
+import { BUSINESS } from "@/lib/constants";
+
 const STATS = [
   { value: "1947", label: "Founded in Lincoln, NE" },
   { value: "200+", label: "Zip codes covered" },
   { value: "13+", label: "Authorized brands" },
-  { value: "$42.90", label: "Flat diagnostic fee" },
+  { value: `From ${BUSINESS.diagnosticDropOff}`, label: "Drop-off diagnostic" },
 ];
 
 export function TrustBar() {

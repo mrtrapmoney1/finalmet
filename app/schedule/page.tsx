@@ -4,7 +4,7 @@ import { BUSINESS } from "@/lib/constants";
 
 export const metadata = buildMetadata({
   title: "Schedule Service — Factory-Authorized Repair",
-  description: `Schedule factory-authorized appliance, TV, or commercial microwave repair. ${BUSINESS.diagnostic} diagnostic fee applied to repair. Call (402) 466-9090 or book online.`,
+  description: `Schedule factory-authorized appliance, TV, or commercial microwave repair. Diagnostic fee from ${BUSINESS.diagnosticDropOff} (drop-off) or ${BUSINESS.diagnosticLincolnOmaha} (in-home), deductible toward repair. Call ${BUSINESS.phone} or book online.`,
   path: "/schedule",
 });
 
@@ -21,8 +21,8 @@ export default function SchedulePage() {
         >
           Request factory-authorized repair service from Metro TV &amp;
           Appliances. We&apos;ll confirm your appointment within one business
-          day. {BUSINESS.diagnostic} diagnostic fee is applied to the total if
-          you proceed with repair.
+          day. Diagnostic starts at {BUSINESS.diagnosticDropOff} (drop-off) or{" "}
+          {BUSINESS.diagnosticLincolnOmaha} (in-home) — deductible toward your repair.
         </p>
         <ScheduleForm />
       </div>

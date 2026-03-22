@@ -44,6 +44,42 @@ export const COVERED_ZIPS = [
   "68865",
 ] as const;
 
+// Lincoln city + immediate Lincoln metro zips
+const LINCOLN_ZIPS = new Set<string>(
+  COVERED_ZIPS.filter((z) => z.startsWith("685") || z.startsWith("684"))
+);
+
+// Omaha city + immediate Omaha metro zips (includes Bellevue, Papillion, etc.)
+const OMAHA_ZIPS = new Set<string>(
+  COVERED_ZIPS.filter((z) => z.startsWith("681") || z.startsWith("680"))
+);
+
+// Council Bluffs (Omaha-adjacent, same tier)
+const COUNCIL_BLUFFS_ZIPS = new Set<string>(
+  COVERED_ZIPS.filter((z) => z.startsWith("515"))
+);
+
+/**
+ * Returns the diagnostic fee for a given zip code.
+ * - Drop-off services (TV, audio, commercial): always $42.90
+ * - In-home (Lincoln/Omaha/Council Bluffs area): $149.08
+ * - In-home (extended — Grand Island, SE NE, etc.): $175.08
+ * - Not covered: null
+ * All fees are deductible toward the final repair.
+ */
+export function getDiagnosticFee(zip: string): {
+  amount: string;
+  tier: "lincoln-omaha" | "extended";
+} | null {
+  if (LINCOLN_ZIPS.has(zip) || OMAHA_ZIPS.has(zip) || COUNCIL_BLUFFS_ZIPS.has(zip)) {
+    return { amount: "$149.08", tier: "lincoln-omaha" };
+  }
+  if ((COVERED_ZIPS as readonly string[]).includes(zip)) {
+    return { amount: "$175.08", tier: "extended" };
+  }
+  return null;
+}
+
 export const SERVICE_REGIONS = [
   {
     name: "Lincoln",

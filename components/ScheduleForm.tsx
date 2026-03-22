@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { BUSINESS } from "@/lib/constants";
+import { COVERED_ZIPS, getDiagnosticFee } from "@/lib/zip-codes";
 
 const SERVICE_TYPES = [
   { value: "appliance-inhome", label: "Appliance Repair (In-Home)" },
@@ -45,6 +47,9 @@ const empty: FormState = {
   issue: "",
 };
 
+const INPUT_CLASS =
+  "w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition";
+
 export function ScheduleForm() {
   const [form, setForm] = useState<FormState>(empty);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -53,6 +58,14 @@ export function ScheduleForm() {
   function update(field: keyof FormState, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
+
+  const isDropOff = form.serviceType.includes("dropoff");
+  const zipFee = useMemo(() => {
+    if (form.zip.length === 5) return getDiagnosticFee(form.zip);
+    return null;
+  }, [form.zip]);
+
+  const isCovered = form.zip.length === 5 && (COVERED_ZIPS as readonly string[]).includes(form.zip);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -90,9 +103,9 @@ export function ScheduleForm() {
           Request Received
         </h2>
         <p className="text-on-surface-variant leading-relaxed">
-          We'll review your request and call you back during business hours
+          We&apos;ll review your request and call you back during business hours
           (Monday–Friday, 8:30 AM – 6:00 PM). If you need to reach us sooner,
-          call <a href="tel:(402) 466-9090" className="text-primary font-medium hover:underline">(402) 466-9090</a>.
+          call <a href={`tel:${BUSINESS.phone}`} className="text-primary font-medium hover:underline">{BUSINESS.phone}</a>.
         </p>
         <button
           onClick={() => setStatus("idle")}
@@ -109,29 +122,31 @@ export function ScheduleForm() {
       {/* Name + Phone */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-on-surface mb-2">
+          <label htmlFor="sf-name" className="block text-sm font-semibold text-on-surface mb-2">
             Full Name <span className="text-secondary">*</span>
           </label>
           <input
+            id="sf-name"
             type="text"
             required
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
             placeholder="Jane Smith"
-            className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            className={INPUT_CLASS}
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-on-surface mb-2">
+          <label htmlFor="sf-phone" className="block text-sm font-semibold text-on-surface mb-2">
             Phone Number <span className="text-secondary">*</span>
           </label>
           <input
+            id="sf-phone"
             type="tel"
             required
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
             placeholder="(402) 555-0100"
-            className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            className={INPUT_CLASS}
           />
         </div>
       </div>
@@ -139,43 +154,72 @@ export function ScheduleForm() {
       {/* Email + ZIP */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-on-surface mb-2">
+          <label htmlFor="sf-email" className="block text-sm font-semibold text-on-surface mb-2">
             Email Address
           </label>
           <input
+            id="sf-email"
             type="email"
             value={form.email}
             onChange={(e) => update("email", e.target.value)}
             placeholder="jane@example.com"
-            className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            className={INPUT_CLASS}
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-on-surface mb-2">
+          <label htmlFor="sf-zip" className="block text-sm font-semibold text-on-surface mb-2">
             ZIP Code <span className="text-secondary">*</span>
           </label>
           <input
+            id="sf-zip"
             type="text"
             required
             value={form.zip}
             onChange={(e) => update("zip", e.target.value)}
             placeholder="68505"
-            maxLength={10}
-            className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            maxLength={5}
+            className={INPUT_CLASS}
           />
+          {/* Zip-based pricing feedback */}
+          {form.zip.length === 5 && (
+            <div className="mt-2" role="status" aria-live="polite">
+              {isCovered ? (
+                <div className="flex items-start gap-2 text-xs">
+                  <span className="material-symbols-outlined text-sm text-secondary mt-px">check_circle</span>
+                  <span className="text-on-surface-variant">
+                    {isDropOff ? (
+                      <>Drop-off diagnostic: <strong className="text-on-surface">{BUSINESS.diagnosticDropOff}</strong></>
+                    ) : zipFee ? (
+                      <>In-home diagnostic: <strong className="text-on-surface">{zipFee.amount}</strong> — deductible toward repair</>
+                    ) : (
+                      <>We cover your area!</>
+                    )}
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-start gap-2 text-xs">
+                  <span className="material-symbols-outlined text-sm text-error mt-px">info</span>
+                  <span className="text-on-surface-variant">
+                    Not in our standard coverage area. Call <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">{BUSINESS.phone}</a> to check availability.
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Service Type */}
       <div>
-        <label className="block text-sm font-semibold text-on-surface mb-2">
+        <label htmlFor="sf-service" className="block text-sm font-semibold text-on-surface mb-2">
           Type of Service <span className="text-secondary">*</span>
         </label>
         <select
+          id="sf-service"
           required
           value={form.serviceType}
           onChange={(e) => update("serviceType", e.target.value)}
-          className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+          className={INPUT_CLASS}
         >
           <option value="">Select a service type…</option>
           {SERVICE_TYPES.map((s) => (
@@ -187,14 +231,15 @@ export function ScheduleForm() {
       {/* Appliance Type + Brand */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-on-surface mb-2">
+          <label htmlFor="sf-appliance" className="block text-sm font-semibold text-on-surface mb-2">
             What needs repair? <span className="text-secondary">*</span>
           </label>
           <select
+            id="sf-appliance"
             required
             value={form.applianceType}
             onChange={(e) => update("applianceType", e.target.value)}
-            className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            className={INPUT_CLASS}
           >
             <option value="">Select appliance / device…</option>
             {APPLIANCE_TYPES.map((a) => (
@@ -203,31 +248,33 @@ export function ScheduleForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-semibold text-on-surface mb-2">
+          <label htmlFor="sf-brand" className="block text-sm font-semibold text-on-surface mb-2">
             Brand / Make
           </label>
           <input
+            id="sf-brand"
             type="text"
             value={form.brand}
             onChange={(e) => update("brand", e.target.value)}
             placeholder="e.g. Samsung, LG, Maytag"
-            className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+            className={INPUT_CLASS}
           />
         </div>
       </div>
 
       {/* Issue description */}
       <div>
-        <label className="block text-sm font-semibold text-on-surface mb-2">
+        <label htmlFor="sf-issue" className="block text-sm font-semibold text-on-surface mb-2">
           Describe the Issue <span className="text-secondary">*</span>
         </label>
         <textarea
+          id="sf-issue"
           required
           value={form.issue}
           onChange={(e) => update("issue", e.target.value)}
           placeholder="What's happening? When did it start? Any error codes or unusual sounds?"
           rows={4}
-          className="w-full bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/40 transition resize-none"
+          className={`${INPUT_CLASS} resize-none`}
         />
       </div>
 
@@ -256,8 +303,8 @@ export function ScheduleForm() {
       </button>
 
       <p className="text-xs text-outline text-center">
-        We'll follow up by phone during business hours. For urgent needs, call{" "}
-        <a href="tel:(402) 466-9090" className="text-primary hover:underline">(402) 466-9090</a>.
+        We&apos;ll follow up by phone during business hours. For urgent needs, call{" "}
+        <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">{BUSINESS.phone}</a>.
       </p>
     </form>
   );

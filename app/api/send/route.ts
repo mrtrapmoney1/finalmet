@@ -27,8 +27,9 @@ export async function POST(req: NextRequest) {
     const data = scheduleSchema.parse(body);
 
     await resend.emails.send({
-      from: "Metro TV Service Request <noreply@metrotv-audiotech.com>",
-      to: ["service@metrotv-audiotech.com"],
+      from: "Metro TV Service Request <onboarding@resend.dev>",
+      to: [process.env.CONTACT_EMAIL_TO || "service@metrotv-audiotech.com"],
+      replyTo: data.email,
       subject: `Service Request: ${data.serviceType} — ${data.name}`,
       html: `
         <h2>New Service Request</h2>
@@ -53,8 +54,9 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     }
+    console.error("Resend error:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to send request" },
+      { success: false, error: "Failed to send request. Please call us directly." },
       { status: 500 },
     );
   }

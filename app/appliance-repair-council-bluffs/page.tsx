@@ -5,7 +5,7 @@ import { BUSINESS } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Appliance Repair in Council Bluffs, IA — Factory-Authorized Service",
   description:
-    "Factory-authorized in-home appliance repair in Council Bluffs, IA. Samsung, LG, GE, Electrolux & more. $42.90 diagnostic — applied toward your repair. Call (402) 466-9090.",
+    `Factory-authorized in-home appliance repair in Council Bluffs, IA. Samsung, LG, GE, Electrolux & more. ${BUSINESS.diagnosticLincolnOmaha} in-home diagnostic — deductible toward your repair. Call ${BUSINESS.phone}.`,
   path: "/appliance-repair-council-bluffs",
   keywords: [
     "appliance repair Council Bluffs IA",
@@ -75,6 +75,9 @@ export default function ApplianceRepairCouncilBluffsPage() {
         region="Pottawattamie County"
         nearbyAreas={["Carter Lake", "Crescent", "Treynor"]}
         localContext="We cross the Missouri River to serve Council Bluffs and western Iowa with factory-authorized appliance repair from our Lincoln shop."
+        diagnosticFee={BUSINESS.diagnosticLincolnOmaha}
+        serviceFocus="Council Bluffs is grouped with our Omaha metro routes, so Iowa customers enjoy the same scheduling priority as Omaha. We serve all of Pottawattamie County for in-home appliance repair."
+        cityHighlight="Just across the river from Omaha, Council Bluffs residents often struggle to find factory-authorized appliance repair locally. We bridge that gap with scheduled in-home service to your door."
         zips={[]}
       />
     </>

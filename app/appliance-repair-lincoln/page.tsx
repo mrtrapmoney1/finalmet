@@ -5,7 +5,7 @@ import { BUSINESS } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Appliance Repair in Lincoln, NE — Factory-Authorized Service",
   description:
-    "Factory-authorized in-home appliance repair in Lincoln, NE. Samsung, LG, GE, Electrolux & more. $42.90 diagnostic — applied toward your repair. Call (402) 466-9090.",
+    `Factory-authorized in-home appliance repair in Lincoln, NE. Samsung, LG, GE, Electrolux & more. ${BUSINESS.diagnosticLincolnOmaha} in-home diagnostic — deductible toward your repair. Call ${BUSINESS.phone}.`,
   path: "/appliance-repair-lincoln",
   keywords: [
     "appliance repair Lincoln NE",
@@ -75,6 +75,9 @@ export default function ApplianceRepairLincolnPage() {
         region="Lincoln Metro"
         nearbyAreas={["Waverly", "Hickman", "Crete", "Seward", "Milford"]}
         localContext="Located at 1107 North Cotner Blvd, we're minutes from the University of Nebraska campus and serve all of Lancaster County. Same-day and next-day appointments available for most appliance repairs."
+        diagnosticFee={BUSINESS.diagnosticLincolnOmaha}
+        serviceFocus="As our home base, Lincoln customers get priority scheduling and the fastest response times. Most Lincoln repairs are completed within 24–48 hours of diagnosis."
+        cityHighlight="Our shop is centrally located near 11th & Cotner — easy access from anywhere in Lincoln. We've been a fixture of the neighborhood since 1947, three blocks from Cotner Center."
         zips={[]}
       />
     </>

@@ -27,7 +27,7 @@ const STEPS = [
     number: "03",
     icon: "search",
     title: "Diagnosis",
-    body: `Our technicians diagnose to the root cause — fault codes, ECM reads, voltage at motor terminals — not just surface symptoms. A ${BUSINESS.diagnostic} diagnostic deductible applies, credited toward your repair.`,
+    body: `Our technicians diagnose to the root cause — fault codes, ECM reads, voltage at motor terminals — not just surface symptoms. Diagnostic fees start at ${BUSINESS.diagnosticDropOff} for drop-off or ${BUSINESS.diagnosticLincolnOmaha} for in-home service — credited toward your repair.`,
   },
   {
     number: "04",

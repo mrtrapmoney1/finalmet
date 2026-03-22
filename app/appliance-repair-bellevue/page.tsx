@@ -5,7 +5,7 @@ import { BUSINESS } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Appliance Repair in Bellevue, NE — Factory-Authorized Service",
   description:
-    "Factory-authorized in-home appliance repair in Bellevue, NE. Samsung, LG, GE, Electrolux & more. $42.90 diagnostic — applied toward your repair. Call (402) 466-9090.",
+    `Factory-authorized in-home appliance repair in Bellevue, NE. Samsung, LG, GE, Electrolux & more. ${BUSINESS.diagnosticLincolnOmaha} in-home diagnostic — deductible toward your repair. Call ${BUSINESS.phone}.`,
   path: "/appliance-repair-bellevue",
   keywords: [
     "appliance repair Bellevue NE",
@@ -75,6 +75,9 @@ export default function ApplianceRepairBellevuePage() {
         region="Sarpy County"
         nearbyAreas={["Papillion", "La Vista", "Offutt AFB area"]}
         localContext="Serving Bellevue and all of Sarpy County with factory-authorized in-home appliance repair. We cover zip codes 68005, 68123, and 68147."
+        diagnosticFee={BUSINESS.diagnosticLincolnOmaha}
+        serviceFocus="Bellevue and Sarpy County are part of our Omaha metro routes. Military families near Offutt AFB and residents across Bellevue get the same responsive scheduling as our Omaha customers."
+        cityHighlight="Nebraska's third-largest city deserves factory-authorized service. From Fontenelle Forest to Twin Creek, we bring Samsung, LG, and GE expertise directly to your Bellevue home."
         zips={[]}
       />
     </>

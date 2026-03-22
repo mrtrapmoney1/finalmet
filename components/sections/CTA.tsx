@@ -13,9 +13,9 @@ export function CTA() {
             Don&apos;t Wait for a<br />Small Problem to Grow.
           </h2>
           <p className="text-white/70 leading-relaxed max-w-md">
-            A {BUSINESS.diagnostic} diagnostic tells you exactly what&apos;s wrong —
-            and that fee applies to your repair if you proceed. No guesswork, no
-            surprises.
+            A diagnostic tells you exactly what&apos;s wrong — starting at{" "}
+            {BUSINESS.diagnosticDropOff} for drop-off or {BUSINESS.diagnosticLincolnOmaha}{" "}
+            for in-home. The fee applies to your repair. No guesswork, no surprises.
           </p>
         </div>
 
