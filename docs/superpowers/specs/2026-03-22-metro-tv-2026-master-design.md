@@ -56,9 +56,10 @@ met/
 │   ├── squaretrade/page.tsx          # NEW — port from nmet HTML
 │   ├── sitemap.ts                    # NEW — dynamic sitemap
 │   ├── robots.ts                     # NEW — robots config
+│   ├── not-found.tsx                 # NEW — custom 404 page
 │   └── api/
-│       ├── contact/route.ts          # (exists)
-│       └── send/route.ts             # NEW — ScheduleForm endpoint
+│       ├── contact/route.ts          # (exists — simple contact form via Resend)
+│       └── send/route.ts             # NEW — ScheduleForm endpoint (see below)
 ├── components/
 │   ├── layout/
 │   │   ├── Header.tsx                # (exists)
@@ -82,15 +83,27 @@ met/
 │   ├── RepairQuiz.tsx                # NEW — port from nmet
 │   ├── JsonLd.tsx                    # NEW — port from nmet (global graph)
 │   ├── ServiceAreaMap.tsx            # (exists)
-│   └── DiagnosticWizard.tsx          # Sub-Project 2
+│   ├── DiagnosticWizard.tsx          # Sub-Project 2
+│   ├── RelevantParts.tsx             # Sub-Project 3 — client-side parts display
+│   └── CityLandingPage.tsx           # NEW — shared template for city pages
 ├── lib/
 │   ├── constants.ts                  # (exists)
 │   ├── zip-codes.ts                  # NEW — port from nmet (221 zips)
 │   ├── error-codes.ts               # Sub-Project 2
-│   └── metadata.ts                   # NEW — shared generateMetadata helpers
-└── public/
-    ├── docs/                         # Media assets (videos, logos)
-    ├── favicon.ico
+│   └── metadata.ts                   # NEW — shared buildMetadata helper
+├── mcp/
+│   └── ebay-inventory/               # Sub-Project 3 — MCP server package
+│       ├── package.json
+│       ├── tsconfig.json
+│       ├── src/
+│       │   └── index.ts              # stdio MCP server entry point
+│       └── .env.example
+└── public/                            # MUST BE CREATED — does not exist yet
+    ├── docs/                         # Media assets (copy from nmet/docs/)
+    ├── favicon.ico                   # Copy from nmet/
+    ├── favicon-16x16.png             # Copy from nmet/
+    ├── favicon-32x32.png             # Copy from nmet/
+    ├── apple-touch-icon.png          # Copy from nmet/
     └── robots.txt                    # Fallback static robots
 ```
 
@@ -111,6 +124,7 @@ met/
 | `/appliance-repair-grand-island` | nmet HTML | City-specific landing page |
 | `/appliance-repair-southeast-nebraska` | nmet HTML | City-specific landing page |
 | `/squaretrade` | nmet HTML | SquareTrade warranty info |
+| `/not-found` | New | Custom 404 page with search and popular links |
 | `/sitemap.ts` | nmet | Dynamic XML sitemap for all routes |
 | `/robots.ts` | nmet | Robots metadata |
 
@@ -118,9 +132,9 @@ met/
 
 | Component | Purpose | Changes |
 |-----------|---------|---------|
-| `FaqAccordion.tsx` | Collapsible FAQ sections | Port as-is, add Shadcn Accordion primitive |
+| `FaqAccordion.tsx` | Collapsible FAQ sections | Port from nmet. Used for troubleshooting pages and new FAQ sections. The existing `/faq/page.tsx` has its own inline `FAQItem` accordion — replace it with this shared component to eliminate duplication. |
 | `ZipChecker.tsx` | Zip code coverage lookup | Port as-is with zip-codes.ts data |
-| `ScheduleForm.tsx` | Service request form | Port with Zod validation (already a dep) |
+| `ScheduleForm.tsx` | Service request form | Port with Zod validation (install zod — exists in nmet but not met) |
 | `ScrollReveal.tsx` | Intersection Observer animations | Port as-is |
 | `RepairQuiz.tsx` | Repair-vs-replace calculator | Port as-is |
 | `JsonLd.tsx` | Global JSON-LD graph | Port and enhance with per-page schema |
@@ -151,6 +165,55 @@ The Tailwind config already implements DESIGN.MD tokens. Additional work:
 
 4. **Ambient shadows**: Already in tailwind.config.ts (`shadow-ambient`, `shadow-ambient-lg`)
 
+### API Endpoint: `/api/send/route.ts`
+
+The ScheduleForm submits to `/api/send`. This endpoint differs from `/api/contact`:
+
+- **`/api/contact`** (existing): Simple contact form — name, email, phone, service type, message. Sends via Resend to `service@metrotv-audiotech.com`.
+- **`/api/send`** (new): Full service request form — name, email, phone, **zip code**, service type, **appliance type**, **brand**, detailed issue description. Validates with Zod schema. Sends via Resend with a richer email template that includes all diagnostic context. Used by the `/schedule` page and the DiagnosticWizard's CTA.
+
+```typescript
+// Zod schema for /api/send
+const scheduleSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().min(10),
+  zip: z.string().length(5),
+  serviceType: z.enum(["appliance-inhome", "tv-dropoff", "audio-dropoff", "commercial-dropoff", "not-sure"]),
+  applianceType: z.string().optional(),
+  brand: z.string().optional(),
+  issue: z.string().min(10),
+});
+```
+
+### City Landing Page Template
+
+Six city pages share identical structure. Use a shared `CityLandingPage` component with city-specific props:
+
+```typescript
+// components/CityLandingPage.tsx
+interface CityPageProps {
+  city: string;
+  state: string;
+  region: string;         // Key into SERVICE_REGIONS
+  nearbyAreas: string[];  // "Also serving Bellevue, Papillion, La Vista..."
+  localContext: string;    // City-specific paragraph (e.g., "minutes from Gateway Mall")
+}
+```
+
+Each city's `page.tsx` is a thin wrapper: export `generateMetadata` with city-specific SEO, render `<CityLandingPage>` with props, and add city-scoped JSON-LD (`LocalBusiness` variant with `areaServed` filtered to that city's zips).
+
+**Note on Bellevue**: Bellevue zips fall under the "Omaha" region in `SERVICE_REGIONS`. The Bellevue city page should filter Omaha-region zips that are Bellevue-specific (68005, 68123, 68147) and list "Also serving Papillion, La Vista, and Offutt AFB area."
+
+### Existing Code Fixes (Sub-Project 1)
+
+- **Hero.tsx line 34**: Links to `/what-to-expect` which was renamed to `/how-it-works`. Fix the internal link to point to `/how-it-works` directly — don't rely on the redirect for internal navigation.
+- **FAQ page**: Replace the inline `FAQItem` accordion with the shared `FaqAccordion` component to eliminate duplicate accordion implementations.
+
+### Metadata Strategy
+
+Pages **without** dynamic parameters (most of them) use the static `export const metadata: Metadata` pattern with the `buildMetadata()` helper. This is more efficient than `generateMetadata` for static pages. Only pages with dynamic segments (none currently, but future-proofing) need `generateMetadata`. The `buildMetadata()` helper works with both patterns.
+
 ### Deployment Configuration
 
 Remove nmet's `vercel.json` approach. The met/ project deploys as a standard Next.js app:
@@ -180,25 +243,25 @@ User selects Samsung or LG. UI: two large cards with brand logos.
 
 #### Step 2: Error Code Input
 **Samsung codes** (primary focus):
-| Code | Display Name | Cause | Severity |
-|------|-------------|-------|----------|
-| 5E (SE) | Drain Error | Drain pump failure, clogged filter, kinked hose | Medium |
-| 8E | Motor Error | Motor winding fault, hall sensor failure | High |
-| 14E | Communication Error | Wire harness disconnect, control board fault | High |
-| 1E | Water Level Sensor | Pressure switch or air dome tube | Medium |
-| 4E | Water Supply Error | Inlet valve, low pressure, kinked hose | Medium |
-| dE | Door Lock Error | Door latch interlock, actuator failure | Medium |
-| HE | Heater Error | Heating element open circuit, thermistor | High |
-| OE | Overflow Error | Water level exceeded, pressure switch stuck | High |
+| Code | Display Name | Appliance | Cause | Severity |
+|------|-------------|-----------|-------|----------|
+| 5E (SE) | Drain Error | Washer | Drain pump failure, clogged filter, kinked hose | Medium |
+| 8E | Motor Error | Washer | Motor winding fault, hall sensor failure | High |
+| 14E | Communication Error | Washer | Wire harness disconnect, control board fault | High |
+| 1E | Water Level Sensor | Washer | Pressure switch or air dome tube | Medium |
+| 4E | Water Supply Error | Washer, Dishwasher | Inlet valve, low pressure, kinked hose | Medium |
+| dE | Door Lock Error | Washer | Door latch interlock, actuator failure | Medium |
+| HE | Heater Error | Washer, Dryer | Heating element open circuit, thermistor | High |
+| OE | Overflow Error | Washer | Water level exceeded, pressure switch stuck | High |
 
 **LG codes** (light coverage):
-| Code | Display Name | Cause | Severity |
-|------|-------------|-------|----------|
-| OE | Drain Error | Drain pump, filter, hose obstruction | Medium |
-| LE | Motor Error | Locked motor, hall sensor, wiring | High |
-| FE | Overflow Error | Water inlet valve stuck open | High |
-| dE | Door Error | Door switch, latch mechanism | Medium |
-| IE | Water Inlet Error | Water supply, inlet valve | Medium |
+| Code | Display Name | Appliance | Cause | Severity |
+|------|-------------|-----------|-------|----------|
+| OE | Drain Error | Washer, Dishwasher | Drain pump, filter, hose obstruction | Medium |
+| LE | Motor Error | Washer | Locked motor, hall sensor, wiring | High |
+| FE | Overflow Error | Washer | Water inlet valve stuck open | High |
+| dE | Door Error | Washer | Door switch, latch mechanism | Medium |
+| IE | Water Inlet Error | Washer, Dishwasher | Water supply, inlet valve | Medium |
 
 UI: Grid of error code buttons styled as diagnostic chips. User taps the code shown on their appliance display.
 
@@ -251,12 +314,14 @@ A compact visual showing Metro TV's qualifications:
 
 ```typescript
 // lib/error-codes.ts
+type ApplianceType = "washer" | "dryer" | "refrigerator" | "dishwasher" | "range";
+
 export interface ErrorCode {
   code: string;
   aliases?: string[];       // e.g., "5E" and "SE" are the same
   brand: "samsung" | "lg";
   displayName: string;
-  appliance: "washer" | "dryer" | "refrigerator" | "dishwasher" | "range";
+  appliances: ApplianceType[];  // Array — some codes apply to multiple appliance types
   severity: "low" | "medium" | "high";
   description: string;      // Plain-language explanation
   causes: string[];          // Common root causes
@@ -331,18 +396,41 @@ export async function GET(req: NextRequest) {
 - `EBAY_STORE_ID` — Metro TV's eBay store identifier
 - `EBAY_CERT_ID` — eBay developer cert ID
 
+### MCP Server Location
+
+The MCP server lives in `mcp/ebay-inventory/` within the met/ repo (monorepo-style). It is a standalone Node.js package with its own `package.json` and `tsconfig.json`. It communicates via stdio with the API route using `@modelcontextprotocol/sdk/client`.
+
 ### Integration with Diagnostic Wizard
 
-In the Diagnosis Result step (Step 3), a `<Suspense>` boundary wraps an async server component that fetches matching parts:
+Since `DiagnosticWizard.tsx` is a `"use client"` component, it **cannot** render Server Components as children. The parts integration uses a client-side fetch pattern:
 
 ```tsx
-// Inside DiagnosticWizard result view
-<Suspense fallback={<PartsSkeleton />}>
-  <RelevantParts errorCode={selectedCode} />
-</Suspense>
+// Inside DiagnosticWizard.tsx — client component
+// When diagnosis result is shown, fetch parts from API route
+const [parts, setParts] = useState<Part[]>([]);
+const [partsLoading, setPartsLoading] = useState(false);
+
+useEffect(() => {
+  if (!selectedCode) return;
+  setPartsLoading(true);
+  fetch(`/api/parts?component=${selectedCode.components[0]}&brand=${selectedCode.brand}`)
+    .then(res => res.json())
+    .then(data => setParts(data.parts ?? []))
+    .catch(() => setParts([]))  // Graceful degradation
+    .finally(() => setPartsLoading(false));
+}, [selectedCode]);
+
+// In JSX:
+{partsLoading ? <PartsSkeleton /> : parts.length > 0 ? (
+  <RelevantParts parts={parts} />
+) : (
+  <p>Call <a href="tel:(402) 466-9090">(402) 466-9090</a> for parts availability.</p>
+)}
 ```
 
-If no parts match or the MCP server is unavailable, the section gracefully degrades to a generic "Call for parts availability" CTA. No error shown to user.
+`RelevantParts` is a simple presentational client component that renders the parts list. No Server Component involvement.
+
+If no parts match or the MCP server / API route is unavailable, the section gracefully degrades to the phone CTA. No error shown to user.
 
 ### SEO Information Gain
 
@@ -433,7 +521,7 @@ Every service page and troubleshooting page must have:
    - "How Much Does Appliance Repair Cost in Lincoln, NE?"
    - "Is It Worth Repairing a 10-Year-Old Refrigerator?"
 
-4. **`speakable` Schema** — Add `speakable` property to LocalBusiness JSON-LD pointing to the 40-word summary CSS selector, enabling voice assistant extraction.
+4. **`speakable` Schema** — Add `speakable` property to LocalBusiness JSON-LD pointing to CSS selector `[data-speakable]`. Every 40-word summary paragraph must have `data-speakable` attribute. Example: `<p data-speakable>Metro TV & Appliances provides...</p>`. The JSON-LD speakable block: `"speakable": { "@type": "SpeakableSpecification", "cssSelector": "[data-speakable]" }`.
 
 ### 4D: Playwright E2E SEO Audit
 
@@ -448,11 +536,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("SEO Audit — iPhone 16 Pro", () => {
 
-  test.use({
-    viewport: { width: 393, height: 852 },
-    deviceScaleFactor: 3,
-    userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)...",
-  });
+  // Device config is set in playwright.config.ts project — no test.use() override needed
 
   // 1. JSON-LD Validity
   test("homepage has valid LocalBusiness JSON-LD", async ({ page }) => {
@@ -510,7 +594,7 @@ test.describe("SEO Audit — iPhone 16 Pro", () => {
     for (const btn of buttons.slice(0, 20)) { // Sample first 20
       const box = await btn.boundingBox();
       if (box) {
-        expect(Math.max(box.width, box.height)).toBeGreaterThanOrEqual(44); // Allow 44px with padding
+        expect(Math.max(box.width, box.height)).toBeGreaterThanOrEqual(48);
       }
     }
   });
@@ -523,8 +607,8 @@ test.describe("SEO Audit — iPhone 16 Pro", () => {
     expect(expanded).toBe("true");
   });
 
-  // 3. Performance (INP proxy)
-  test("hero section renders within 500ms", async ({ page }) => {
+  // 3. Performance (LCP proxy — measures time-to-visible for hero, not INP directly)
+  test("hero section renders within 3s on mobile", async ({ page }) => {
     const start = Date.now();
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.locator("section").first().waitFor({ state: "visible" });
@@ -652,9 +736,10 @@ Move static images from `nmet/docs/` to `met/public/docs/`. Use `next/image` wit
 
 ```
 RESEND_API_KEY=...           # Already in use for contact form
-EBAY_APP_ID=...              # Sub-Project 3
-EBAY_STORE_ID=...            # Sub-Project 3
-EBAY_CERT_ID=...             # Sub-Project 3
+EBAY_APP_ID=...              # Sub-Project 3 — eBay developer app ID
+EBAY_STORE_ID=...            # Sub-Project 3 — Metro TV eBay store ID
+EBAY_CERT_ID=...             # Sub-Project 3 — eBay developer cert ID (for OAuth)
+EBAY_SANDBOX=true            # Sub-Project 3 — use eBay Sandbox in dev, set false for prod
 NEXT_PUBLIC_GOOGLE_MAPS_KEY=...  # ServiceAreaMap
 ```
 
@@ -677,16 +762,20 @@ NEXT_PUBLIC_GOOGLE_MAPS_KEY=...  # ServiceAreaMap
 ## Implementation Order
 
 ### Sub-Project 1: Core Shell (estimated: largest chunk of work)
-1. Install Shadcn/UI into met/
-2. Port utility components (FaqAccordion, ZipChecker, ScheduleForm, ScrollReveal, RepairQuiz, JsonLd)
-3. Port zip-codes.ts data
-4. Create lib/metadata.ts helper
-5. Create missing pages (troubleshooting/*, city landing pages, squaretrade, schedule)
-6. Add sitemap.ts and robots.ts
-7. Add redirects in next.config.ts
-8. Add fluid typography to globals.css
-9. Copy media assets to public/docs/
-10. Verify all pages render and build succeeds
+1. Create `public/` directory, copy favicon + media assets from nmet/
+2. Install Shadcn/UI and Zod into met/ (`npm install zod && npx shadcn-ui@latest init`)
+3. Port utility components (FaqAccordion, ZipChecker, ScheduleForm, ScrollReveal, RepairQuiz, JsonLd)
+4. Port zip-codes.ts data
+5. Create lib/metadata.ts `buildMetadata()` helper
+6. Fix Hero.tsx `/what-to-expect` link → `/how-it-works`
+7. Replace inline FAQ accordion with shared FaqAccordion component
+8. Create CityLandingPage.tsx shared template
+9. Create missing pages (troubleshooting/*, city landing pages, squaretrade, schedule, not-found)
+10. Create `/api/send/route.ts` with Zod validation
+11. Add sitemap.ts and robots.ts
+12. Add redirects in next.config.ts
+13. Add fluid typography to globals.css
+14. Verify all pages render and `next build` succeeds
 
 ### Sub-Project 2: Diagnostic Wizard
 1. Create lib/error-codes.ts with Samsung and LG code data
@@ -696,14 +785,15 @@ NEXT_PUBLIC_GOOGLE_MAPS_KEY=...  # ServiceAreaMap
 5. Add aria-live regions and keyboard navigation
 
 ### Sub-Project 3: MCP Inventory Stitching
-1. Create /api/parts/route.ts API endpoint
-2. Design MCP server interface (TypeScript types)
-3. Build mcp-ebay-inventory server skeleton
-4. Create RelevantParts component with Suspense boundary
-5. Wire into DiagnosticWizard result step
+1. Create `mcp/ebay-inventory/` package with package.json, tsconfig, .env.example
+2. Build MCP server entry point (`src/index.ts`) with tool stubs
+3. Create `/api/parts/route.ts` API endpoint
+4. Create `RelevantParts.tsx` client component (presentational)
+5. Wire fetch + RelevantParts into DiagnosticWizard result step
+6. Add EBAY_SANDBOX env var handling for dev vs prod
 
 ### Sub-Project 4: SEO Hardening
-1. Add generateMetadata to every page
+1. Add `buildMetadata()` calls to every page (static export for non-dynamic pages)
 2. Add per-page JSON-LD components
 3. Write 40-word AEO summaries for all service pages
 4. Add speakable schema
