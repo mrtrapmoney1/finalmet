@@ -72,6 +72,10 @@ export function JsonLd() {
           "https://www.facebook.com/profile.php?id=61561967326627",
         ],
         accreditation: "BBB Accredited Business — A+ Rating",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: "[data-speakable]",
+        },
       },
       {
         "@type": "WebSite",
