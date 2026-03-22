@@ -91,6 +91,26 @@ const FAQS = [
 export default function FAQPage() {
   return (
     <div className="bg-surface">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQS.flatMap((section) =>
+              section.items.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.answer,
+                },
+              }))
+            ),
+          }),
+        }}
+      />
+
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
         <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">

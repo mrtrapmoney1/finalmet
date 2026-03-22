@@ -52,6 +52,25 @@ const STEPS = [
 export default function WhatToExpectPage() {
   return (
     <div className="bg-surface">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "How Our Repair Process Works",
+            description:
+              "No surprises, no pressure. Here's exactly how we work — from your first contact through a completed repair.",
+            step: STEPS.map((step, i) => ({
+              "@type": "HowToStep",
+              position: i + 1,
+              name: step.title,
+              text: step.body,
+            })),
+          }),
+        }}
+      />
+
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
         <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">

@@ -23,6 +23,32 @@ const REPAIRS = [
 export default function AudioPage() {
   return (
     <div className="bg-surface">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Service",
+                name: "Audio Equipment Repair",
+                provider: { "@id": `${BUSINESS.url}/#business` },
+                description: service.description,
+                areaServed: { "@type": "State", name: "Nebraska" },
+                serviceType: "Audio Equipment Repair",
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: BUSINESS.url },
+                  { "@type": "ListItem", position: 2, name: "Audio Equipment Repair", item: `${BUSINESS.url}/audio` },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Hero */}
       <div className="hero-gradient py-20">
         <div className="max-w-7xl mx-auto px-6">
@@ -32,7 +58,7 @@ export default function AudioPage() {
           <h1 className="text-4xl md:text-6xl font-bold font-headline text-white mb-4 leading-tight">
             TV &amp; Audio Repair in Lincoln, NE
           </h1>
-          <p className="text-white/70 max-w-xl leading-relaxed mb-8">
+          <p data-speakable className="text-white/70 max-w-xl leading-relaxed mb-8">
             {service.description}
           </p>
           <div className="flex flex-wrap gap-4">
