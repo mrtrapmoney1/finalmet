@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-
-Sitemap: https://metrotv-audiotech.com/sitemap.xml
-Host: metrotv-audiotech.com
