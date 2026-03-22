@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   try {
     await resend.emails.send({
       from: "Metro TV & Appliances Website <onboarding@resend.dev>",
-      to: ["service@metrotv-audiotech.com", "aaronebrahim17@gmail.com"],
+      to: [process.env.CONTACT_EMAIL_TO || "info@metrotv-audiotech.com"],
       replyTo: email,
       subject,
       text: `

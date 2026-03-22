@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 const SERVICE_TYPES = [
-  "Appliance Repair (In-Home)",
-  "TV Repair (Drop-Off)",
-  "Audio Equipment Repair (Drop-Off)",
-  "Commercial Microwave Repair (Drop-Off)",
-  "Not sure — need help deciding",
+  { value: "appliance-inhome", label: "Appliance Repair (In-Home)" },
+  { value: "tv-dropoff", label: "TV Repair (Drop-Off)" },
+  { value: "audio-dropoff", label: "Audio Equipment Repair (Drop-Off)" },
+  { value: "commercial-dropoff", label: "Commercial Microwave Repair (Drop-Off)" },
+  { value: "not-sure", label: "Not sure — need help deciding" },
 ];
 
 const APPLIANCE_TYPES = [
@@ -179,7 +179,7 @@ export function ScheduleForm() {
         >
           <option value="">Select a service type…</option>
           {SERVICE_TYPES.map((s) => (
-            <option key={s} value={s}>{s}</option>
+            <option key={s.value} value={s.value}>{s.label}</option>
           ))}
         </select>
       </div>
