@@ -6,6 +6,7 @@ type ButtonVariant = "primary" | "secondary" | "ghost";
 interface ButtonProps {
   variant?: ButtonVariant;
   href?: string;
+  external?: boolean;
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
@@ -28,6 +29,7 @@ const baseStyles =
 export function Button({
   variant = "primary",
   href,
+  external = false,
   children,
   className = "",
   ...props
@@ -35,6 +37,18 @@ export function Button({
   const classes = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   if (href) {
+    if (external) {
+      return (
+        <a
+          href={href}
+          className={classes}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={classes}>
         {children}
