@@ -258,20 +258,20 @@ export default function ApplianceTroubleshooting() {
         <FaqAccordion items={generalItems} />
 
         {/* CTA */}
-        <div className="mt-16 bg-secondary-container rounded-2xl p-8 md:p-10 text-center">
-          <h2 className="text-xl md:text-2xl font-bold font-headline text-on-surface mb-3">
+        <div className="mt-16 bg-primary rounded-2xl p-8 md:p-10 text-center">
+          <h2 className="text-xl md:text-2xl font-bold font-headline text-white mb-3">
             Need professional appliance repair?
           </h2>
-          <p className="text-on-surface-variant text-sm mb-6 max-w-lg mx-auto">
+          <p className="text-white/70 text-sm mb-6 max-w-lg mx-auto">
             Factory-authorized service for Samsung, LG, GE, Electrolux,
             Frigidaire, Maytag, KitchenAid, and more. Serving Lincoln, Omaha,
             and surrounding areas since 1947.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/schedule" variant="primary">
+            <Button href="/schedule" variant="ghost" className="border-white/30 text-white hover:bg-white/10">
               Schedule Service
             </Button>
-            <Button href={`tel:${BUSINESS.phone}`} variant="ghost">
+            <Button href={`tel:${BUSINESS.phone}`} variant="ghost" className="border-white/30 text-white hover:bg-white/10">
               <span className="material-symbols-outlined text-base">call</span>
               {BUSINESS.phone}
             </Button>

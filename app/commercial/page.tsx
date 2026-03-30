@@ -89,7 +89,7 @@ export default function CommercialPage() {
             >
               <span className="material-symbols-outlined text-3xl text-on-primary-container mb-3 block">microwave</span>
               <p className="text-lg font-bold font-headline text-on-primary-container">{brand}</p>
-              <p className="text-xs text-on-primary-container/60 mt-1">Factory Authorized</p>
+              <p className="text-xs text-on-primary-container/80 mt-1">Factory Authorized</p>
             </div>
           ))}
         </div>

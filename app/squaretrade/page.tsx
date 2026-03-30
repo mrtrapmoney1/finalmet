@@ -54,7 +54,7 @@ const faqItems = [
 
 export default function SquareTradePage() {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 bg-surface">
       <div className="max-w-3xl mx-auto">
         <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
           Warranty Service

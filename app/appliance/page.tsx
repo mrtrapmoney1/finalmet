@@ -115,17 +115,17 @@ export default function AppliancePage() {
         <div className="bg-primary-container rounded-2xl p-10 flex flex-col md:flex-row gap-8 items-start">
           <div className="shrink-0">
             <p className="text-3xl font-bold font-headline text-white mb-1">{BUSINESS.diagnosticLincolnOmaha}</p>
-            <p className="text-xs font-semibold tracking-widest text-on-primary-container/60 uppercase mb-3">
+            <p className="text-xs font-semibold tracking-widest text-on-primary-container/80 uppercase mb-3">
               Lincoln &amp; Omaha Area
             </p>
             <p className="text-3xl font-bold font-headline text-white mb-1">{BUSINESS.diagnosticExtended}</p>
-            <p className="text-xs font-semibold tracking-widest text-on-primary-container/60 uppercase">
+            <p className="text-xs font-semibold tracking-widest text-on-primary-container/80 uppercase">
               Extended Coverage
             </p>
           </div>
           <div>
             <p className="text-on-primary-container font-semibold mb-2">In-home diagnostic — deductible toward your repair.</p>
-            <p className="text-on-primary-container/70 text-sm leading-relaxed">
+            <p className="text-on-primary-container/80 text-sm leading-relaxed">
               We diagnose to root cause — fault codes, ECM reads, voltage at motor terminals.
               You receive a written estimate before any work begins. No surprises.
             </p>

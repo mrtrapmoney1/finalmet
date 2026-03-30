@@ -243,15 +243,15 @@ export function CityLandingPage({
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-primary-container rounded-2xl p-8">
               <p className="text-3xl font-bold font-headline text-white mb-2">{BUSINESS.diagnosticDropOff}</p>
-              <p className="text-xs font-semibold tracking-widest text-on-primary-container/60 uppercase mb-3">Drop-Off Diagnostic</p>
-              <p className="text-on-primary-container/70 text-sm leading-relaxed">
+              <p className="text-xs font-semibold tracking-widest text-on-primary-container/80 uppercase mb-3">Drop-Off Diagnostic</p>
+              <p className="text-on-primary-container/80 text-sm leading-relaxed">
                 TV, audio, and commercial microwave. Bring it to our Lincoln shop — no appointment needed.
               </p>
             </div>
             <div className="bg-secondary rounded-2xl p-8">
               <p className="text-3xl font-bold font-headline text-white mb-2">{BUSINESS.diagnosticLincolnOmaha}</p>
-              <p className="text-xs font-semibold tracking-widest text-white/60 uppercase mb-3">In-Home · Lincoln &amp; Omaha</p>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-xs font-semibold tracking-widest text-white/80 uppercase mb-3">In-Home · Lincoln &amp; Omaha</p>
+              <p className="text-white/80 text-sm leading-relaxed">
                 Appliance repair at your home. Covers Lincoln, Omaha, Council Bluffs, and surrounding metro areas.
               </p>
             </div>
