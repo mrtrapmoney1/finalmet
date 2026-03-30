@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { BUSINESS } from "@/lib/constants";
+import { HERO_COPY } from "@/lib/content";
 
 export function Hero() {
   return (
@@ -22,9 +23,7 @@ export function Hero() {
           </p>
 
           <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-xl">
-            When something breaks, trust matters. We diagnose to the root cause —
-            fault codes, ECM reads, voltage at motor terminals — then fix it
-            correctly with OEM parts. Eight decades of precision, no shortcuts.
+            {HERO_COPY.body}
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -38,12 +37,7 @@ export function Hero() {
 
           {/* Trust badges */}
           <div className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-white/10">
-            {[
-              "Samsung Authorized",
-              "BBB Accredited",
-              "200+ Zip Codes",
-              "OEM Parts Only",
-            ].map((badge) => (
+            {HERO_COPY.badges.map((badge) => (
               <div key={badge} className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
                 <span className="text-xs text-white/60 font-medium">{badge}</span>
