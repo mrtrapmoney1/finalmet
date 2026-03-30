@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { OEM_PARTS } from "@/lib/parts";
+import { STORE_COPY } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { PageCTA } from "@/components/ui/PageCTA";
 import Link from "next/link";
@@ -30,6 +31,9 @@ export default function ProductsPage() {
             brands. Whether you&apos;re doing a DIY repair or requesting our service, we have
             what you need right here in our local warehouse.
           </p>
+          <p className="text-sm text-white/60 mt-4">
+            {STORE_COPY.heroTagline}
+          </p>
           <div className="flex flex-wrap gap-4 mt-8">
             <Button href="/schedule" variant="primary">Schedule a Repair</Button>
             <Button href="/services" variant="ghost" className="border-white/30 text-white hover:bg-white/10">
@@ -41,6 +45,19 @@ export default function ProductsPage() {
 
       {/* Catalog Grid */}
       <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Filter toolbar — state management wired in future task */}
+        <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-outline-variant/20">
+          <p className="text-sm font-semibold text-on-surface-variant self-center mr-2">Filter by:</p>
+          {["All", "Samsung", "LG", "GE Appliances", "Whirlpool", "Electrolux"].map((brand) => (
+            <button
+              key={brand}
+              className="px-4 py-1.5 rounded-full text-xs font-semibold border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:border-primary/30 transition-all"
+              aria-label={`Filter by ${brand}`}
+            >
+              {brand}
+            </button>
+          ))}
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {OEM_PARTS.map((part, idx) => (
             <Link 
