@@ -63,13 +63,10 @@ export default function TVPage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Button href="/contact" variant="primary">Get Directions</Button>
-            <a
-              href={`tel:${BUSINESS.phone}`}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold border border-white/30 text-white hover:bg-white/10 transition"
-            >
+            <Button href={`tel:${BUSINESS.phone}`} variant="ghost" className="border-white/30 text-white hover:bg-white/10">
               <span className="material-symbols-outlined text-base">phone</span>
               {BUSINESS.phone}
-            </a>
+            </Button>
           </div>
         </div>
       </div>
@@ -129,15 +126,14 @@ export default function TVPage() {
             </div>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a
+            <Button
               href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold bg-secondary text-on-secondary hover:opacity-90 transition"
+              variant="primary"
+              external
             >
               <span className="material-symbols-outlined text-base">directions</span>
               Get Directions
-            </a>
+            </Button>
             <Button href="/contact" variant="ghost">Send a Message</Button>
           </div>
         </div>

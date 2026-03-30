@@ -104,13 +104,10 @@ export default function WarrantyPage() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" variant="primary">Contact Us</Button>
-            <a
-              href={`tel:${BUSINESS.phone}`}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold border border-outline-variant/40 text-on-surface hover:bg-surface-container-low transition"
-            >
+            <Button href={`tel:${BUSINESS.phone}`} variant="primary">
               <span className="material-symbols-outlined text-base">phone</span>
               {BUSINESS.phone}
-            </a>
+            </Button>
           </div>
         </div>
       </div>
