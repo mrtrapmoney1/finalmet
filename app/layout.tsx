@@ -73,10 +73,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(inter.variable, manrope.variable, "font-sans", geist.variable)}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Async Material Symbols load: media="print" defers rendering, onLoad switches to all */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          media="print"
+          // @ts-ignore — onLoad is valid on link elements but TS may flag it
+          onLoad="this.media='all'"
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          />
+        </noscript>
         {/* Local SEO geo meta tags */}
         <meta name="geo.region" content="US-NE" />
         <meta name="geo.placename" content="Lincoln, Nebraska" />
