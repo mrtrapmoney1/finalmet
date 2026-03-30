@@ -151,13 +151,10 @@ export default function PartnersPage() {
             <Button href="/contact" variant="ghost" className="border-white/30 text-white hover:bg-white/10">
               Contact Us
             </Button>
-            <a
-              href={`tel:${BUSINESS.phone}`}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold bg-secondary text-on-secondary hover:opacity-90 transition"
-            >
+            <Button href={`tel:${BUSINESS.phone}`} external variant="primary">
               <span className="material-symbols-outlined text-base">phone</span>
               {BUSINESS.phone}
-            </a>
+            </Button>
           </div>
         </div>
       </div>

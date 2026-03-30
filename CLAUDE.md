@@ -13,9 +13,10 @@ npm run dev        # Dev server with Turbopack
 npm run build      # Production build
 npm run start      # Serve production build
 npm run lint       # ESLint via next lint
-```
 
-npx playwright test  # Playwright E2E (iPhone 16 Pro viewport, requires dev server)
+npx playwright test                        # All E2E tests (iPhone 16 Pro viewport, requires dev server)
+npx playwright test --grep "test name"     # Single test by name
+```
 
 ## Architecture
 
@@ -45,8 +46,14 @@ app/
   appliance-repair-council-bluffs/
   appliance-repair-grand-island/
   appliance-repair-southeast-nebraska/
+  products/         # OEM parts catalog listing page
+    [slug]/         # Individual part detail page
+  schedule/         # Dedicated /schedule page (wraps ScheduleForm)
+  squaretrade/      # SquareTrade warranty service info page
   api/contact/      # POST — validates fields, sends email via Resend
   api/send/         # POST — Zod-validated scheduling form, sends email via Resend
+  api/parts/        # GET — returns OEM_PARTS data for DiagnosticWizard
+  api/merchant-feed/# GET — Google Shopping XML RSS feed of OEM_PARTS catalog
   layout.tsx        # Root layout: fonts (Inter + Manrope + Geist), Header/Footer, JsonLd, geo meta
   globals.css       # Tailwind directives + custom utilities
   sitemap.ts        # Dynamic sitemap generation
@@ -69,6 +76,7 @@ components/
 
 lib/
   constants.ts      # BUSINESS info, SERVICES array, NAV_LINKS — single source of truth
+  parts.ts          # Part interface + OEM_PARTS array (used by /products, /api/parts, /api/merchant-feed)
   error-codes.ts    # Samsung/LG error code data (ErrorCode interface, SAMSUNG_CODES, LG_CODES)
   zip-codes.ts      # COVERED_ZIPS (221 codes), SERVICE_REGIONS (6 regions with lat/lng)
   metadata.ts       # buildMetadata() helper for consistent page metadata with OG/Twitter
@@ -93,7 +101,7 @@ tests/
 
 **Client components**: Only used where needed — Header (mobile menu toggle), ContactForm, ScheduleForm, ZipChecker, DiagnosticWizard, FaqAccordion, ServiceAreaMap. Marked with `"use client"`.
 
-**Three API routes**: `/api/contact` is the simple contact form; `/api/send` is the scheduling form with Zod validation; `/api/parts` returns parts data for the DiagnosticWizard (mock data, future MCP integration). Contact and send both email via Resend.
+**API routes**: `/api/contact` — simple contact form (email via Resend); `/api/send` — scheduling form with Zod validation (email via Resend); `/api/parts` — returns `OEM_PARTS` for DiagnosticWizard; `/api/merchant-feed` — Google Shopping XML RSS feed of the parts catalog (cached 24h).
 
 **Icons**: Google Material Symbols Outlined loaded via CDN in layout.tsx. Used inline: `<span className="material-symbols-outlined">icon_name</span>`. Lucide React is also available for shadcn/ui components.
 
@@ -147,13 +155,8 @@ Material Design 3-inspired color tokens defined in `tailwind.config.ts`:
 
 ## Known Issues (from 2026-03-22 audit)
 
-**Critical:**
-- `ScheduleForm` sends human-readable service type strings (`"Appliance Repair (In-Home)"`) but `/api/send` Zod schema expects slug values (`"appliance-inhome"`). Every schedule submission will 400. Must align the enum values.
-- Personal email `aaronebrahim17@gmail.com` hardcoded in `/api/contact/route.ts` line 18 — move to env var.
-
 **Warnings:**
 - Phone number hardcoded in `ScheduleForm.tsx` instead of using `BUSINESS.phone`
-- Diagnostic fee `$42.90` hardcoded in ~7 places instead of `BUSINESS.diagnostic`
 - Inconsistent Facebook `sameAs` URL between `JsonLd.tsx` and `app/page.tsx`
 - Duplicate LocalBusiness JSON-LD on homepage (global `JsonLd` + page-level)
 - `ScheduleForm` labels missing `htmlFor`/`id` associations (a11y)
