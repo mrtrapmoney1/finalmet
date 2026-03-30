@@ -93,7 +93,7 @@ export default function PartnersPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {WHY.map((item) => (
               <div key={item.title} className="bg-surface rounded-2xl p-8 shadow-ambient">
-                <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">{item.icon}</span>
+                <span className="material-symbols-outlined text-3xl text-secondary mb-4 block" aria-hidden="true">{item.icon}</span>
                 <h3 className="text-lg font-bold font-headline text-on-surface mb-2">{item.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{item.body}</p>
               </div>
@@ -107,7 +107,7 @@ export default function PartnersPage() {
         {PARTNER_CATEGORIES.map((cat) => (
           <div key={cat.title}>
             <div className="flex items-center gap-3 mb-6">
-              <span className="material-symbols-outlined text-2xl text-secondary">{cat.icon}</span>
+              <span className="material-symbols-outlined text-2xl text-secondary" aria-hidden="true">{cat.icon}</span>
               <h2 className="text-2xl font-bold font-headline text-on-surface">{cat.title}</h2>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -152,7 +152,7 @@ export default function PartnersPage() {
               Contact Us
             </Button>
             <Button href={`tel:${BUSINESS.phone}`} external variant="primary">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>

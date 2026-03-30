@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/metadata";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { DiagnosticWizard } from "@/components/DiagnosticWizard";
+import dynamic from "next/dynamic";
+const DiagnosticWizard = dynamic(() => import("@/components/DiagnosticWizard").then(mod => mod.DiagnosticWizard));
 import { Button } from "@/components/ui/Button";
 import { BUSINESS } from "@/lib/constants";
 
@@ -272,7 +273,7 @@ export default function ApplianceTroubleshooting() {
               Schedule Service
             </Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="ghost" className="border-white/30 text-white hover:bg-white/10">
-              <span className="material-symbols-outlined text-base">call</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">call</span>
               {BUSINESS.phone}
             </Button>
           </div>

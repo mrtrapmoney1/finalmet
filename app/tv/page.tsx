@@ -64,7 +64,7 @@ export default function TVPage() {
           <div className="flex flex-wrap gap-4">
             <Button href="/contact" variant="primary">Get Directions</Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="ghost" className="border-white/30 text-white hover:bg-white/10">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>
@@ -81,7 +81,7 @@ export default function TVPage() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {REPAIRS.map((r) => (
             <div key={r.name} className="flex items-center gap-4 bg-surface-container-low rounded-xl p-5 shadow-ambient">
-              <span className="material-symbols-outlined text-2xl text-secondary">{r.icon}</span>
+              <span className="material-symbols-outlined text-2xl text-secondary" aria-hidden="true">{r.icon}</span>
               <span className="text-sm font-semibold text-on-surface">{r.name}</span>
             </div>
           ))}
@@ -109,7 +109,7 @@ export default function TVPage() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="bg-surface-container-low rounded-2xl p-8 shadow-ambient">
           <div className="flex items-start gap-4 mb-6">
-            <span className="material-symbols-outlined text-3xl text-secondary">store</span>
+            <span className="material-symbols-outlined text-3xl text-secondary" aria-hidden="true">store</span>
             <div>
               <h3 className="text-xl font-bold font-headline text-on-surface mb-1">Drop-Off Service</h3>
               <p className="text-sm text-on-surface-variant">No appointment needed.</p>
@@ -131,7 +131,7 @@ export default function TVPage() {
               variant="primary"
               external
             >
-              <span className="material-symbols-outlined text-base">directions</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">directions</span>
               Get Directions
             </Button>
             <Button href="/contact" variant="ghost">Send a Message</Button>

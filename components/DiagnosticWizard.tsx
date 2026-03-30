@@ -213,7 +213,7 @@ export function DiagnosticWizard() {
                   key={i}
                   className="flex items-start gap-2 text-sm text-on-surface-variant"
                 >
-                  <span className="material-symbols-outlined text-base text-secondary mt-0.5">
+                  <span className="material-symbols-outlined text-base text-secondary mt-0.5" aria-hidden="true">
                     arrow_right
                   </span>
                   {cause}
@@ -307,7 +307,7 @@ export function DiagnosticWizard() {
                   key={i}
                   className="flex items-start gap-2 text-[11px] text-on-surface-variant"
                 >
-                  <span className="material-symbols-outlined text-sm text-primary mt-px">
+                  <span className="material-symbols-outlined text-sm text-primary mt-px" aria-hidden="true">
                     verified
                   </span>
                   {cert}

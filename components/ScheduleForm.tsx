@@ -96,7 +96,7 @@ export function ScheduleForm() {
   if (status === "success") {
     return (
       <div className="bg-surface-container-low rounded-2xl p-10 text-center shadow-ambient">
-        <span className="material-symbols-outlined text-5xl text-secondary mb-4 block">
+        <span className="material-symbols-outlined text-5xl text-secondary mb-4 block" aria-hidden="true">
           check_circle
         </span>
         <h2 className="text-2xl font-bold font-headline text-on-surface mb-3">
@@ -185,7 +185,7 @@ export function ScheduleForm() {
             <div className="mt-2" role="status" aria-live="polite">
               {isCovered ? (
                 <div className="flex items-start gap-2 text-xs">
-                  <span className="material-symbols-outlined text-sm text-secondary mt-px">check_circle</span>
+                  <span className="material-symbols-outlined text-sm text-secondary mt-px" aria-hidden="true">check_circle</span>
                   <span className="text-on-surface-variant">
                     {isDropOff ? (
                       <>Drop-off diagnostic: <strong className="text-on-surface">{BUSINESS.diagnosticDropOff}</strong></>
@@ -198,7 +198,7 @@ export function ScheduleForm() {
                 </div>
               ) : (
                 <div className="flex items-start gap-2 text-xs">
-                  <span className="material-symbols-outlined text-sm text-error mt-px">info</span>
+                  <span className="material-symbols-outlined text-sm text-error mt-px" aria-hidden="true">info</span>
                   <span className="text-on-surface-variant">
                     Not in our standard coverage area. Call <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">{BUSINESS.phone}</a> to check availability.
                   </span>
@@ -291,12 +291,12 @@ export function ScheduleForm() {
       >
         {status === "sending" ? (
           <>
-            <span className="material-symbols-outlined text-base animate-spin">autorenew</span>
+            <span className="material-symbols-outlined text-base animate-spin" aria-hidden="true">autorenew</span>
             Sending…
           </>
         ) : (
           <>
-            <span className="material-symbols-outlined text-base">send</span>
+            <span className="material-symbols-outlined text-base" aria-hidden="true">send</span>
             Submit Service Request
           </>
         )}

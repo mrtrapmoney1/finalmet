@@ -46,7 +46,7 @@ export default function ServicesPage() {
               className="group bg-surface-container-low hover:bg-surface-container rounded-2xl p-8 transition-all duration-200 shadow-ambient hover:shadow-ambient-lg"
             >
               <div className="flex items-start justify-between mb-6">
-                <span className="material-symbols-outlined text-3xl text-primary-container">
+                <span className="material-symbols-outlined text-3xl text-primary-container" aria-hidden="true">
                   {icons[service.slug]}
                 </span>
                 <span className="text-xs font-medium font-label text-on-surface-variant bg-surface-variant px-3 py-1 rounded-full capitalize">
@@ -80,7 +80,7 @@ export default function ServicesPage() {
 
               <div className="flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
                 Learn more
-                <span className="material-symbols-outlined text-base">arrow_forward</span>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
               </div>
             </Link>
           ))}
@@ -101,7 +101,7 @@ export default function ServicesPage() {
               Send a Message
             </Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="primary">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>

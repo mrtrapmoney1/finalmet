@@ -56,7 +56,7 @@ export function ContactForm() {
 
       {status === "success" ? (
         <div className="flex flex-col items-center text-center py-8 gap-4">
-          <span className="material-symbols-outlined text-5xl text-secondary">check_circle</span>
+          <span className="material-symbols-outlined text-5xl text-secondary" aria-hidden="true">check_circle</span>
           <p className="text-lg font-bold font-headline text-on-surface">Message Sent!</p>
           <p className="text-sm text-on-surface-variant">
             Thanks for reaching out. We&apos;ll be in touch shortly.
@@ -143,12 +143,12 @@ export function ContactForm() {
           >
             {status === "loading" ? (
               <>
-                <span className="material-symbols-outlined text-base animate-spin">progress_activity</span>
+                <span className="material-symbols-outlined text-base animate-spin" aria-hidden="true">progress_activity</span>
                 Sending…
               </>
             ) : (
               <>
-                <span className="material-symbols-outlined text-base">send</span>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">send</span>
                 Send Message
               </>
             )}

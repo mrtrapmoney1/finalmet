@@ -62,7 +62,7 @@ export function CityLandingPage({
                 variant="ghost"
                 className="border-white/30 text-white hover:bg-white/10"
               >
-                <span className="material-symbols-outlined text-base">phone</span>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
                 Call {BUSINESS.phone}
               </Button>
             </div>
@@ -151,7 +151,7 @@ export function CityLandingPage({
             <div>
               {cityHighlight && (
                 <div className="bg-surface-container-low rounded-2xl p-8 shadow-ambient mb-6">
-                  <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">
+                  <span className="material-symbols-outlined text-3xl text-secondary mb-4 block" aria-hidden="true">
                     location_on
                   </span>
                   <p className="text-sm text-on-surface-variant leading-relaxed">
@@ -229,7 +229,7 @@ export function CityLandingPage({
                 </div>
                 <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
                   Learn more
-                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                  <span className="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
                 </div>
               </Link>
             ))}
@@ -299,6 +299,7 @@ export function CityLandingPage({
                 >
                   <span
                     className="material-symbols-outlined text-3xl text-secondary"
+                    aria-hidden="true"
                     style={{ fontVariationSettings: "'FILL' 1" }}
                   >
                     {badge.icon}

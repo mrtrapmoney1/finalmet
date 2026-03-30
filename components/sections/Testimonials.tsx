@@ -20,13 +20,13 @@ const TRUST_ITEMS = [
     icon: "workspace_premium",
     label: "Factory Authorized",
     sub: "13+ Brands",
-    href: null,
+    href: "/partners",
   },
   {
     icon: "history",
     label: "Serving Nebraska",
     sub: "Since 1947",
-    href: null,
+    href: "/service-area",
   },
 ];
 
@@ -53,7 +53,7 @@ export function Testimonials() {
                 href={GOOGLE_REVIEWS_URL}
                 variant="primary"
               >
-                <span className="material-symbols-outlined text-base">reviews</span>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">reviews</span>
                 Read Our Reviews
               </Button>
               <Button
@@ -72,6 +72,7 @@ export function Testimonials() {
                 <div className="bg-surface rounded-2xl p-6 shadow-ambient flex flex-col gap-3 h-full">
                   <span
                     className="material-symbols-outlined text-3xl text-secondary"
+                    aria-hidden="true"
                     style={{ fontVariationSettings: "'FILL' 1" }}
                   >
                     {item.icon}

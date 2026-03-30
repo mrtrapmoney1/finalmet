@@ -28,6 +28,7 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
           >
             <span className="font-semibold text-on-surface">{item.question}</span>
             <span className="material-symbols-outlined text-on-surface-variant shrink-0 transition-transform duration-200"
+              aria-hidden="true"
               style={{ transform: openIndex === i ? "rotate(180deg)" : "rotate(0deg)" }}
             >
               expand_more

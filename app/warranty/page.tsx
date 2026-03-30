@@ -59,7 +59,7 @@ export default function WarrantyPage() {
         <div className="grid md:grid-cols-3 gap-6">
           {COVERAGE.map((item) => (
             <div key={item.title} className="bg-surface-container-low rounded-2xl p-8 shadow-ambient">
-              <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">{item.icon}</span>
+              <span className="material-symbols-outlined text-3xl text-secondary mb-4 block" aria-hidden="true">{item.icon}</span>
               <h2 className="text-lg font-bold font-headline text-on-surface mb-3">{item.title}</h2>
               <p className="text-sm text-on-surface-variant leading-relaxed">{item.body}</p>
             </div>
@@ -74,7 +74,7 @@ export default function WarrantyPage() {
           <ul className="space-y-4">
             {EXCLUSIONS.map((item) => (
               <li key={item} className="flex items-start gap-3 text-sm text-on-surface-variant">
-                <span className="material-symbols-outlined text-base text-outline mt-0.5">remove_circle</span>
+                <span className="material-symbols-outlined text-base text-outline mt-0.5" aria-hidden="true">remove_circle</span>
                 {item}
               </li>
             ))}
@@ -106,7 +106,7 @@ export default function WarrantyPage() {
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" variant="primary">Contact Us</Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="primary">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>
@@ -127,7 +127,7 @@ export default function WarrantyPage() {
                 href={item.href}
                 className="flex items-center gap-4 bg-surface-container-low rounded-xl p-5 shadow-ambient hover:bg-surface-container transition-colors group"
               >
-                <span className="material-symbols-outlined text-2xl text-secondary">{item.icon}</span>
+                <span className="material-symbols-outlined text-2xl text-secondary" aria-hidden="true">{item.icon}</span>
                 <div>
                   <p className="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">{item.label}</p>
                   <p className="text-xs text-on-surface-variant">{item.sub}</p>

@@ -124,7 +124,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {CONTACT_DETAILS.map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
-                    <span className="material-symbols-outlined text-xl text-secondary mt-0.5">
+                    <span className="material-symbols-outlined text-xl text-secondary mt-0.5" aria-hidden="true">
                       {item.icon}
                     </span>
                     <div>
@@ -152,19 +152,19 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full bg-secondary text-on-secondary rounded-full py-3 text-sm font-semibold hover:opacity-90 transition"
               >
-                <span className="material-symbols-outlined text-base">directions</span>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">directions</span>
                 Get Directions
               </a>
 
               <div className="border-t border-outline-variant/30 pt-6 space-y-3">
                 <div className="flex items-start gap-3 text-xs text-on-surface-variant">
-                  <span className="material-symbols-outlined text-base text-primary mt-0.5">home</span>
+                  <span className="material-symbols-outlined text-base text-primary mt-0.5" aria-hidden="true">home</span>
                   <span>
                     <strong className="text-on-surface">Appliance repair</strong> — in-home service across 200+ zip codes
                   </span>
                 </div>
                 <div className="flex items-start gap-3 text-xs text-on-surface-variant">
-                  <span className="material-symbols-outlined text-base text-primary mt-0.5">store</span>
+                  <span className="material-symbols-outlined text-base text-primary mt-0.5" aria-hidden="true">store</span>
                   <span>
                     <strong className="text-on-surface">TV, Audio &amp; Commercial</strong> — drop off at this location
                   </span>

@@ -148,7 +148,7 @@ export default function FAQPage() {
               Send a Message
             </Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="primary">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>

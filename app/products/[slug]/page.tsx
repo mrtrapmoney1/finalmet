@@ -151,7 +151,7 @@ export default async function ProductDetailPage({
                 href={item.href}
                 className="flex items-center gap-4 bg-surface-container-low rounded-xl p-5 shadow-ambient hover:bg-surface-container transition-colors group"
               >
-                <span className="material-symbols-outlined text-2xl text-secondary">{item.icon}</span>
+                <span className="material-symbols-outlined text-2xl text-secondary" aria-hidden="true">{item.icon}</span>
                 <div>
                   <p className="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">{item.label}</p>
                   <p className="text-xs text-on-surface-variant">{item.sub}</p>

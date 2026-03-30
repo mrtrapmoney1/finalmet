@@ -47,7 +47,7 @@ export function Header() {
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
         >
-          <span className="material-symbols-outlined">
+          <span className="material-symbols-outlined" aria-hidden="true">
             {menuOpen ? "close" : "menu"}
           </span>
         </button>

@@ -146,7 +146,7 @@ export default function SquareTradePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href={`tel:${BUSINESS.phone}`} variant="primary">
-              <span className="material-symbols-outlined text-base">call</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">call</span>
               Call {BUSINESS.phone}
             </Button>
             <Button href="/warranty" variant="ghost">

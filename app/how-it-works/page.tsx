@@ -97,7 +97,7 @@ export default function WhatToExpectPage() {
                 {/* Step indicator */}
                 <div className="relative shrink-0">
                   <div className="w-[4.5rem] h-[4.5rem] rounded-2xl bg-primary-container flex items-center justify-center shadow-ambient">
-                    <span className="material-symbols-outlined text-2xl text-on-primary-container">
+                    <span className="material-symbols-outlined text-2xl text-on-primary-container" aria-hidden="true">
                       {step.icon}
                     </span>
                   </div>
@@ -128,7 +128,7 @@ export default function WhatToExpectPage() {
             { icon: "support_agent", label: "Factory Authorized", sub: "Direct manufacturer training." },
           ].map((item) => (
             <div key={item.label} className="bg-surface-container-low rounded-2xl p-6 text-center shadow-ambient">
-              <span className="material-symbols-outlined text-3xl text-secondary mb-3 block">{item.icon}</span>
+              <span className="material-symbols-outlined text-3xl text-secondary mb-3 block" aria-hidden="true">{item.icon}</span>
               <p className="text-sm font-bold font-headline text-on-surface mb-1">{item.label}</p>
               <p className="text-xs text-on-surface-variant">{item.sub}</p>
             </div>
@@ -151,7 +151,7 @@ export default function WhatToExpectPage() {
               Schedule Service
             </Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="primary">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>

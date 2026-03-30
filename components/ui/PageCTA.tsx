@@ -42,7 +42,7 @@ export function PageCTA({
           className="border-white/30 text-white hover:bg-white/10"
         >
           {secondaryIcon && (
-            <span className="material-symbols-outlined text-base">{secondaryIcon}</span>
+            <span className="material-symbols-outlined text-base" aria-hidden="true">{secondaryIcon}</span>
           )}
           {resolvedSecondaryLabel}
         </Button>

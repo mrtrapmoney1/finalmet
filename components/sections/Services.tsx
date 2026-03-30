@@ -37,7 +37,7 @@ export function Services() {
             >
               {/* Icon + delivery model */}
               <div className="flex items-start justify-between mb-6">
-                <span className="material-symbols-outlined text-3xl text-primary-container">
+                <span className="material-symbols-outlined text-3xl text-primary-container" aria-hidden="true">
                   {icons[service.slug]}
                 </span>
                 <span className="text-xs font-medium font-label text-on-surface-variant bg-surface-variant px-3 py-1 rounded-full capitalize">
@@ -68,7 +68,7 @@ export function Services() {
               {/* Arrow */}
               <div className="mt-6 flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
                 Learn more
-                <span className="material-symbols-outlined text-base">
+                <span className="material-symbols-outlined text-base" aria-hidden="true">
                   arrow_forward
                 </span>
               </div>

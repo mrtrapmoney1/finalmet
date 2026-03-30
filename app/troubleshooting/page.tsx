@@ -64,7 +64,7 @@ export default function TroubleshootingHub() {
               href={g.href}
               className="bg-surface-container-low rounded-2xl p-8 hover:shadow-ambient transition-shadow group"
             >
-              <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">
+              <span className="material-symbols-outlined text-3xl text-secondary mb-4 block" aria-hidden="true">
                 {g.icon}
               </span>
               <h2 className="text-xl font-headline font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">
@@ -75,7 +75,7 @@ export default function TroubleshootingHub() {
               </p>
               <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary mt-4">
                 View guide
-                <span className="material-symbols-outlined text-base">
+                <span className="material-symbols-outlined text-base" aria-hidden="true">
                   arrow_forward
                 </span>
               </span>

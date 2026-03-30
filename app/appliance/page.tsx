@@ -64,7 +64,7 @@ export default function AppliancePage() {
           <div className="flex flex-wrap gap-4">
             <Button href="/contact" variant="primary">Schedule In-Home Service</Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="ghost" className="border-white/30 text-white hover:bg-white/10">
-              <span className="material-symbols-outlined text-base">phone</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               {BUSINESS.phone}
             </Button>
           </div>
@@ -77,7 +77,7 @@ export default function AppliancePage() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {APPLIANCES.map((a) => (
             <div key={a.name} className="flex items-center gap-4 bg-surface-container-low rounded-xl p-5 shadow-ambient">
-              <span className="material-symbols-outlined text-2xl text-secondary">{a.icon}</span>
+              <span className="material-symbols-outlined text-2xl text-secondary" aria-hidden="true">{a.icon}</span>
               <span className="text-sm font-semibold text-on-surface">{a.name}</span>
             </div>
           ))}

@@ -279,7 +279,7 @@ export default function TvTroubleshooting() {
               Schedule Service
             </Button>
             <Button href={`tel:${BUSINESS.phone}`} variant="ghost">
-              <span className="material-symbols-outlined text-base">call</span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">call</span>
               {BUSINESS.phone}
             </Button>
           </div>
