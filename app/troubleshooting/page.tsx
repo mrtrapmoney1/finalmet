@@ -66,7 +66,7 @@ export default function TroubleshootingHub() {
               <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">
                 {g.icon}
               </span>
-              <h2 className="text-display-lg font-headline font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">
+              <h2 className="text-xl font-headline font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">
                 {g.title}
               </h2>
               <p className="text-body-lg text-on-surface-variant">
