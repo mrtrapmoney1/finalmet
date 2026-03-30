@@ -70,6 +70,7 @@ export function JsonLd() {
           "https://www.google.com/maps/place/Metro+TV%2FAudiotech+and+Appliance+Services/@40.8241167,-96.6362008,17z",
           "https://instagram.com/metrotva/",
           "https://www.facebook.com/profile.php?id=61561967326627",
+          "https://www.bbb.org/us/ne/lincoln/profile/computer-repair/metro-tvaudio-tech-0714-207002332",
         ],
         accreditation: "BBB Accredited Business — A+ Rating",
         speakable: {
