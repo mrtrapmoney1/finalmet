@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BUSINESS, NAV_LINKS, SERVICES } from "@/lib/constants";
 
+const FOOTER_YEAR = 2026;
+
 export function Footer() {
   return (
     <footer className="bg-inverse-surface text-inverse-on-surface">
@@ -75,7 +77,7 @@ export function Footer() {
 
         <div className="border-t border-inverse-on-surface/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-inverse-on-surface/40">
           <p>
-            © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
+            © {FOOTER_YEAR} {BUSINESS.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/warranty" className="hover:text-inverse-on-surface/60 transition-colors">
