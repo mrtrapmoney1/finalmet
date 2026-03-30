@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 export const metadata = buildMetadata({
   title: "Warranty",
@@ -108,6 +109,31 @@ export default function WarrantyPage() {
               <span className="material-symbols-outlined text-base">phone</span>
               {BUSINESS.phone}
             </Button>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
+            Related Resources
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { icon: "build", label: "Our Services", sub: "See what we repair", href: "/services" },
+              { icon: "help", label: "How It Works", sub: "From call to repair", href: "/how-it-works" },
+              { icon: "quiz", label: "FAQ", sub: "Common questions", href: "/faq" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-4 bg-surface-container-low rounded-xl p-5 shadow-ambient hover:bg-surface-container transition-colors group"
+              >
+                <span className="material-symbols-outlined text-2xl text-secondary">{item.icon}</span>
+                <div>
+                  <p className="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">{item.label}</p>
+                  <p className="text-xs text-on-surface-variant">{item.sub}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

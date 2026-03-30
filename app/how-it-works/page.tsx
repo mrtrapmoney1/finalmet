@@ -135,6 +135,11 @@ export default function WhatToExpectPage() {
           ))}
         </div>
 
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Button href="/products" variant="secondary">Browse OEM Parts</Button>
+          <Button href="/troubleshooting" variant="ghost">Self-Diagnose First</Button>
+        </div>
+
         {/* CTA */}
         <div className="mt-10 bg-primary rounded-2xl p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>

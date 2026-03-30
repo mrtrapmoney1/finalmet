@@ -124,6 +124,18 @@ export default function PartnersPage() {
         ))}
       </div>
 
+      {/* More Resources */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
+          More Resources
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <Button href="/services">View All Services</Button>
+          <Button href="/troubleshooting" variant="ghost">Troubleshooting Guides</Button>
+          <Button href="/faq" variant="ghost">FAQ</Button>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="max-w-7xl mx-auto px-6 pb-24">
         <div className="bg-primary rounded-2xl p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">

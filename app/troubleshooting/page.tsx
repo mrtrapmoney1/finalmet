@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { PageCTA } from "@/components/ui/PageCTA";
 
 export const metadata = buildMetadata({
   title: "Troubleshooting Guides — Appliance, TV, Audio & Commercial",
@@ -80,6 +81,15 @@ export default function TroubleshootingHub() {
               </span>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <PageCTA
+            heading="Issue too complex to self-diagnose?"
+            body="Our factory-authorized technicians diagnose to the root cause. Starting at $42.90 for drop-off."
+            primaryLabel="Schedule Service"
+            primaryHref="/contact"
+          />
         </div>
       </div>
     </section>

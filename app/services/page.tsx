@@ -106,6 +106,12 @@ export default function ServicesPage() {
             </Button>
           </div>
         </div>
+
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Button href="/troubleshooting" variant="secondary">Troubleshooting Guides</Button>
+          <Button href="/products" variant="ghost">OEM Parts Catalog</Button>
+          <Button href="/service-area" variant="ghost">Check Coverage Area</Button>
+        </div>
       </div>
     </div>
   );
