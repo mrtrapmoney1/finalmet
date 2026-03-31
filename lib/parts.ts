@@ -35,7 +35,7 @@ export const OEM_PARTS: Part[] = [
     slug: "samsung-dc31-00055g-dryer-drive-motor",
     title: "Samsung OEM Dryer Drive Motor DC31-00055G",
     description:
-      "Genuine Samsung OEM induction dryer motor. Replaces the motor that turns the drive belt spinning the drum. Compatible with 500+ Samsung and Kenmore dryer models.",
+      "Genuine Samsung OEM replacement drive motor (DC31-00055G) for front-load dryers. This factory-original 120V, 1/3 HP induction motor drives the drum belt assembly, restoring proper rotation and resolving grinding noise, failure-to-start, and mid-cycle shutdown faults. Direct fit for 500+ Samsung and Kenmore front-load dryer models including DV2xx, DV3xx, and DV36J series. Supplied new in OEM packaging — same part installed at the factory.",
     brand: "Samsung",
     price: 54.29,
     condition: "new",
