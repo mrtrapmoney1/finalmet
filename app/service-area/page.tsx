@@ -3,6 +3,8 @@ import { NebraskaMap } from "@/components/NebraskaMap";
 import { COVERED_ZIPS, SERVICE_REGIONS } from "@/lib/zip-codes";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { ZipChecker } from "@/components/ZipChecker";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata = buildMetadata({
   title: "Service Area",
@@ -44,7 +46,7 @@ export default function ServiceAreaPage() {
 
       <div className="bg-surface">
         {/* Page header */}
-        <div className="max-w-7xl mx-auto px-6 pt-10 pb-6">
+        <div className="max-w-7xl mx-auto px-6 pt-10 pb-6 fade-up">
           <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
             Appliance Repair Coverage
           </p>
@@ -68,9 +70,9 @@ export default function ServiceAreaPage() {
         </div>
 
         {/* Map */}
-        <div className="max-w-7xl mx-auto px-6 pb-10">
+        <ScrollReveal className="max-w-7xl mx-auto px-6 pb-10" delay={150}>
           <NebraskaMap />
-        </div>
+        </ScrollReveal>
 
         {/* Region breakdown */}
         <div className="bg-surface-container-low py-16">
@@ -119,28 +121,55 @@ export default function ServiceAreaPage() {
           </div>
         </div>
 
-        {/* Full zip code list — SEO content */}
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-2xl font-bold font-headline text-on-surface mb-2">
-            All Covered Zip Codes
-          </h2>
-          <p className="text-sm text-on-surface-variant mb-8">
-            In-home appliance repair available at these locations. Not sure if you&apos;re
-            covered?{" "}
-            <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline font-medium">Call us</a>{" "}
-            and we&apos;ll confirm.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {COVERED_ZIPS.map((zip) => (
-              <span
-                key={zip}
-                className="text-xs font-label bg-surface-container-low border border-outline-variant/20 px-3 py-1 rounded-full text-on-surface-variant"
-              >
-                {zip}
-              </span>
-            ))}
+        {/* ZIP coverage — marquee ticker + checker */}
+        <ScrollReveal className="max-w-7xl mx-auto px-6 py-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-5">
+            <div>
+              <h2 className="text-xl font-bold font-headline text-on-surface">
+                {COVERED_ZIPS.length} Zip Codes Covered
+              </h2>
+              <p className="text-sm text-on-surface-variant mt-1">
+                Enter your ZIP to confirm coverage and see your diagnostic fee.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <ZipChecker />
+            </div>
           </div>
-        </div>
+
+          {/* Marquee ticker — all zips in DOM for SEO, visually compact */}
+          <div className="rounded-xl border border-outline-variant/20 bg-surface-container-low overflow-hidden py-3 space-y-2.5">
+            {/* Row 1 — scrolls left */}
+            <div className="flex gap-3 animate-marquee whitespace-nowrap will-change-transform">
+              {[...COVERED_ZIPS, ...COVERED_ZIPS].map((zip, i) => (
+                <span key={i} className="text-[11px] font-mono text-on-surface-variant/50 tabular-nums">
+                  {zip}
+                </span>
+              ))}
+            </div>
+            {/* Row 2 — scrolls right (reversed slice for visual variety) */}
+            <div className="flex gap-3 animate-marquee-reverse whitespace-nowrap will-change-transform">
+              {[...[...COVERED_ZIPS].reverse(), ...[...COVERED_ZIPS].reverse()].map((zip, i) => (
+                <span key={i} className="text-[11px] font-mono text-on-surface-variant/40 tabular-nums">
+                  {zip}
+                </span>
+              ))}
+            </div>
+            {/* Row 3 — scrolls left, slower */}
+            <div className="flex gap-3 whitespace-nowrap will-change-transform" style={{ animation: "marquee 80s linear infinite" }}>
+              {[...COVERED_ZIPS, ...COVERED_ZIPS].map((zip, i) => (
+                <span key={i} className="text-[11px] font-mono text-on-surface-variant/30 tabular-nums">
+                  {zip}
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="text-xs text-on-surface-variant mt-2 text-right">
+            Not listed?{" "}
+            <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline font-medium">Call us</a>
+            {" "}— extended coverage may be available.
+          </p>
+        </ScrollReveal>
 
         {/* Note: drop-off services */}
         <div className="bg-primary py-12">
