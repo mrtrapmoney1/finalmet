@@ -20,7 +20,7 @@ export const OEM_PARTS: Part[] = [
     description:
       "Genuine Samsung OEM induction dryer motor. Replaces the motor that drives the belt spinning the drum — resolves no-heat, drum-not-turning, and loud-rumbling dryer faults. Compatible with 500+ Samsung and Kenmore dryer models including DV45H7000EW, DV48H7400EW, DV42H5000GW, DV45H7200EW, and DV338AEB. Also replaces DC31-00055D, DC31-00055H, PS4204647, AP5331095, DFS270ZSEL1, DFS270ZSEL3.",
     brand: "Samsung",
-    price: 89.95,
+    price: 54.29,
     condition: "new",
     availability: "in_stock",
     mpn: "DC31-00055G",
