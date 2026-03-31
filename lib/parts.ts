@@ -1,3 +1,13 @@
+export interface DiagnosisGuide {
+  noiseTriage: Array<{
+    noise: string;
+    verdict: string;
+    detail: string;
+  }>;
+  noSpinNote: string;
+  repairSteps: string[];
+}
+
 export interface Part {
   id: string;
   slug: string;
@@ -16,6 +26,7 @@ export interface Part {
   compatibleModels?: string[];
   replacesPartNumbers?: string[];
   installNotes?: string;
+  diagnosisGuide?: DiagnosisGuide;
 }
 
 export const OEM_PARTS: Part[] = [
@@ -24,7 +35,7 @@ export const OEM_PARTS: Part[] = [
     slug: "samsung-dc31-00055g-dryer-drive-motor",
     title: "Samsung OEM Dryer Drive Motor DC31-00055G",
     description:
-      "Genuine Samsung OEM induction dryer motor. Replaces the motor that turns the drive belt spinning the drum. Fixes drum-not-turning, motor-hums-but-won't-start, and loud-rumbling faults. Compatible with 500+ Samsung and Kenmore dryer models.",
+      "Genuine Samsung OEM induction dryer motor. Replaces the motor that turns the drive belt spinning the drum. Compatible with 500+ Samsung and Kenmore dryer models.",
     brand: "Samsung",
     price: 54.29,
     condition: "new",
@@ -45,9 +56,9 @@ export const OEM_PARTS: Part[] = [
     symptoms: [
       "Drum not turning or spinning",
       "Motor hums but won't start",
-      "Loud rumbling, squealing, or thumping during operation",
-      "Dryer stops mid-cycle unexpectedly",
+      "Mechanical grinding noise during operation",
       "Drive belt not engaging or slipping",
+      "Dryer stops mid-cycle unexpectedly",
     ],
     compatibleModels: [
       "Kenmore 402.89032011",
@@ -88,6 +99,42 @@ export const OEM_PARTS: Part[] = [
       "LP055H",
     ],
     installNotes:
-      "Moderate DIY repair. Disconnect power before servicing. Access the motor by removing the dryer's front panel and drum. Compatible with both electric (AEW/AEB) and gas (AGW/AGR) Samsung dryer variants. Professional installation available — contact us to schedule.",
+      "Access the motor by removing the top panel, then front panel and drum. Compatible with both electric (AEW/AEB) and gas (AGW/AGR) Samsung dryer variants. Professional installation available — contact us to schedule.",
+    diagnosisGuide: {
+      noiseTriage: [
+        {
+          noise: "Mechanical grinding",
+          verdict: "Motor likely needed",
+          detail:
+            "A deep grinding sound from the motor housing during a run cycle typically indicates bearing failure inside the motor. This part fixes that.",
+        },
+        {
+          noise: "Scratching or scraping on the tub",
+          verdict: "Not the motor",
+          detail:
+            "An intermittent scratching sound that changes with drum position means something is contacting the drum — check the drum seal, felt strips, or a foreign object caught between the drum and housing.",
+        },
+        {
+          noise: "Rumbling or vibrating",
+          verdict: "Check the blower fan first",
+          detail:
+            "Vibration is usually lint packed into the blower fan, not motor failure. The fan spins fast and even a small imbalance causes rumbling. Clean the fan before replacing the motor.",
+        },
+      ],
+      noSpinNote:
+        "A drum that won't spin is not always a bad motor. Before ordering, start a cycle and listen: are relays clicking on the main board? Use a multimeter to check that the motor terminals are receiving voltage. If the motor has power but won't run, it may be the motor. If there's no power at the motor, the fault is likely the main board, UI board, or wire harness — not the motor.",
+      repairSteps: [
+        "Confirm the diagnosis above, then unplug the dryer from the wall.",
+        "Remove the top panel screws — check the rear edge of the top and the bottom lip of the top frame. Lift the top panel off.",
+        "Remove front panel screws along the bottom lip. Disconnect any wire harnesses running to the door switch or moisture sensor on the door frame.",
+        "Lift the front panel up to release the retaining clips at the top. For the UI control panel, push it back to pop the side clips, then pull it free.",
+        "With the front removed, the drum is visible. The motor sits behind the blower fan at the rear of the drum, connected to the exhaust duct.",
+        "Inspect the blower fan for lint. If the dryer was vibrating, a lint-packed fan is the likely cause — clean it and test before continuing.",
+        "Remove the drum: reach under and unhook the drive belt from the idler pulley while holding tension, then pull the drum straight out.",
+        "Remove the blower fan — it is reverse-thread, so turn it clockwise to loosen. If the fan is fused to the shaft, it may need to be forcibly removed; the fan housing can be broken to free the motor.",
+        "Unscrew the motor from the blower duct assembly. Disconnect the motor wiring harness.",
+        "Install the new motor, reconnect the harness, reassemble in reverse order. Reconnect belt to idler pulley before reinstalling drum.",
+      ],
+    },
   },
 ];
