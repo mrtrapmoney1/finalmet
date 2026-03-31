@@ -39,6 +39,7 @@ app/
   return-policy/    # Return/refund policy page (Google Merchant required)
   privacy-policy/   # Privacy policy page (Google Merchant / Stripe / PayPal required)
   terms/            # Terms of service page (Google Merchant / Stripe / PayPal required)
+  sitemap/          # Human-readable site index (all pages by section); /sitemap.xml is the XML feed
   troubleshooting/  # Nested: /troubleshooting, /troubleshooting/appliances,
     appliances/     #          /troubleshooting/tv, /troubleshooting/audio,
     tv/             #          /troubleshooting/commercial
@@ -207,7 +208,7 @@ Required legal pages (all live):
 - `/privacy-policy` — no server data collection (mailto forms), localStorage cart, Google Maps third-party notice
 - `/terms` — parts sales, no fitness guarantee, Nebraska governing law
 
-Merchant feed: `/api/merchant-feed` — Google Shopping XML RSS, cached 24h. All parts currently marked `out_of_stock` in `lib/parts.ts`. Product detail pages show "Out of Stock" badge + Email to Order / Call Us / Visit Store CTAs when unavailable; falls back to `AddToCartButton` for in-stock items.
+Merchant feed: `/api/merchant-feed` — Google Shopping XML RSS, cached 24h. `lib/parts.ts` is the single source of truth for inventory — update `availability` field per part. Product detail pages show "Out of Stock" badge + Email to Order / Call Us / Visit Store CTAs when unavailable; falls back to `AddToCartButton` for in-stock items.
 
 ## Environment Variables
 

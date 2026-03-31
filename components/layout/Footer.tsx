@@ -79,12 +79,18 @@ export function Footer() {
           <p>
             © {FOOTER_YEAR} {BUSINESS.name}. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <Link href="/warranty" className="hover:text-inverse-on-surface/60 transition-colors">
-              Warranty
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-end">
+            <Link href="/privacy-policy" className="hover:text-inverse-on-surface/60 transition-colors">
+              Privacy Policy
             </Link>
-            <Link href="/partners" className="hover:text-inverse-on-surface/60 transition-colors">
-              Partners
+            <Link href="/terms" className="hover:text-inverse-on-surface/60 transition-colors">
+              Terms
+            </Link>
+            <Link href="/return-policy" className="hover:text-inverse-on-surface/60 transition-colors">
+              Return Policy
+            </Link>
+            <Link href="/sitemap" className="hover:text-inverse-on-surface/60 transition-colors">
+              Site Map
             </Link>
           </div>
         </div>
