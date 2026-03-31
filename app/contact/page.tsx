@@ -9,7 +9,7 @@ export const metadata = buildMetadata({
   keywords: ["contact", "Metro TV & Appliances", "Lincoln NE", "phone", "address", "hours", "schedule repair"],
 });
 
-const MAP_EMBED_URL = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=Metro+TV+%26+Appliances,Lincoln+NE&zoom=15`;
+const MAP_EMBED_URL = "https://www.openstreetmap.org/export/embed.html?bbox=-96.648%2C40.819%2C-96.618%2C40.829&layer=mapnik&marker=40.8241127%2C-96.6336259";
 
 const CONTACT_DETAILS = [
   {
@@ -106,7 +106,8 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Metro TV & Appliances location map"
+                title="Metro TV & Appliances on OpenStreetMap"
+                sandbox="allow-scripts allow-same-origin"
               />
             </div>
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Metro TV & Appliances — a Next.js 15 marketing/service website for a factory-authorized appliance, TV, and audio repair business in Lincoln, NE. Static content site with contact/scheduling forms (Resend email), Google Maps integration, and local SEO city landing pages.
+Metro TV & Appliances — a Next.js 15 marketing/service website for a factory-authorized appliance, TV, and audio repair business in Lincoln, NE. Static content site with contact/scheduling forms (mailto: links, zero API calls), Google Maps integration, local SEO city landing pages, and an OEM parts catalog with a localStorage cart.
 
 ## Commands
 
@@ -36,10 +36,14 @@ app/
   faq/
   warranty/
   partners/
+  return-policy/    # Return/refund policy page (Google Merchant required)
+  privacy-policy/   # Privacy policy page (Google Merchant / Stripe / PayPal required)
+  terms/            # Terms of service page (Google Merchant / Stripe / PayPal required)
   troubleshooting/  # Nested: /troubleshooting, /troubleshooting/appliances,
-    appliances/     #          /troubleshooting/tv, /troubleshooting/audio
-    tv/
+    appliances/     #          /troubleshooting/tv, /troubleshooting/audio,
+    tv/             #          /troubleshooting/commercial
     audio/
+    commercial/
   appliance-repair-lincoln/   # 6 city landing pages (local SEO)
   appliance-repair-omaha/     #   All use shared CityLandingPage component
   appliance-repair-bellevue/
@@ -50,8 +54,6 @@ app/
     [slug]/         # Individual part detail page (generateStaticParams from OEM_PARTS)
   schedule/         # Dedicated /schedule page (wraps ScheduleForm)
   squaretrade/      # SquareTrade warranty service info page
-  api/contact/      # POST — validates fields, sends email via Resend
-  api/send/         # POST — Zod-validated scheduling form, sends email via Resend
   api/parts/        # GET — returns OEM_PARTS data for DiagnosticWizard
   api/merchant-feed/# GET — Google Shopping XML RSS feed of OEM_PARTS catalog (cached 24h)
   layout.tsx        # Root layout: fonts (Inter + Manrope + Geist), Header/Footer, JsonLd, geo meta
@@ -61,16 +63,22 @@ app/
 
 components/
   layout/           # Header (sticky glass nav), Footer (dark inverse), ContactForm (client)
-  sections/         # Homepage sections: Hero, TrustBar, Services, Testimonials, CTA
+  sections/         # Homepage sections: Hero, TrustBar, Services, Testimonials, CTA, ProductsCarousel
   ui/               # Primitives: Button, Card, ServiceChip, PageCTA + shadcn/ui components
   CityLandingPage.tsx  # Shared template for all city landing pages
-  ScheduleForm.tsx     # Multi-step scheduling form → /api/send
+  ScheduleForm.tsx     # Multi-step scheduling form → mailto: link
   ZipChecker.tsx       # Zip code coverage checker (checks against COVERED_ZIPS)
   FaqAccordion.tsx     # Custom FAQ accordion
   DiagnosticWizard.tsx # Error code lookup wizard (Samsung/LG) with professionalism pivot
   RelevantParts.tsx    # Parts display for DiagnosticWizard (wired to /api/parts)
+  RepairQuiz.tsx       # Interactive guided quiz to identify repair service type
   JsonLd.tsx           # Structured data (LocalBusiness + WebSite schema)
-  ServiceAreaMap.tsx   # Client: Google Maps with region markers + shop pin
+  ServiceAreaMap.tsx   # Client: Google Maps component (orphaned — no longer used by any page)
+  NebraskaMap.tsx      # Client: SVG Nebraska map — interactive region dots reveal zip lists (zero API)
+  ScrollReveal.tsx     # Client: IntersectionObserver-based enter animation wrapper
+  CartProvider.tsx     # Client: React Context + localStorage cart (CartItem, useCart hook)
+  AddToCartButton.tsx  # Client: add-to-cart button for product detail pages
+  CartDrawer.tsx       # Client: slide-in cart sidebar (uses useCart)
 
 lib/
   constants.ts      # BUSINESS info, SERVICES array, NAV_LINKS — single source of truth
@@ -100,9 +108,13 @@ tests/
 
 **Metadata helper**: Use `buildMetadata()` from `lib/metadata.ts` for new pages — it generates title, description, canonical URL, OpenGraph, and Twitter metadata consistently.
 
-**Client components**: Only used where needed — Header (mobile menu toggle), ContactForm, ScheduleForm, ZipChecker, DiagnosticWizard, FaqAccordion, ServiceAreaMap. Marked with `"use client"`.
+**Client components**: Only used where needed — Header (mobile menu toggle + services dropdown + cart), ContactForm, ScheduleForm, ZipChecker, DiagnosticWizard, FaqAccordion, NebraskaMap, CartProvider, CartDrawer, AddToCartButton, RepairQuiz, ScrollReveal. Marked with `"use client"`.
 
-**API routes**: `/api/contact` — simple contact form (email via Resend); `/api/send` — scheduling form with Zod validation (email via Resend); `/api/parts` — returns `OEM_PARTS` for DiagnosticWizard; `/api/merchant-feed` — Google Shopping XML RSS feed of the parts catalog (cached 24h).
+**Forms**: Both `ContactForm` and `ScheduleForm` submit via `mailto:` links (no server round-trip, no Resend dependency). There are no `/api/contact` or `/api/send` routes. The contact page embeds an OpenStreetMap `<iframe>` — no API key required.
+
+**API routes**: `/api/parts` — returns `OEM_PARTS` for DiagnosticWizard; `/api/merchant-feed` — Google Shopping XML RSS feed of the parts catalog (cached 24h).
+
+**Cart system**: `CartProvider` wraps the app in `layout.tsx` and exposes `useCart()`. State persists to `localStorage` under key `met_cart`. The cart is purely client-side; checkout is not yet implemented (no payment integration).
 
 **Icons**: Google Material Symbols Outlined loaded via CDN in layout.tsx. Used inline: `<span className="material-symbols-outlined">icon_name</span>`. All decorative icons must have `aria-hidden="true"`. Lucide React is also available for shadcn/ui components.
 
@@ -137,6 +149,9 @@ Material Design 3-inspired color tokens defined in `tailwind.config.ts`:
 - `.text-display-lg/md/sm` — responsive display type sizes (clamp-based)
 - `.text-body-lg/md` — responsive body type sizes (clamp-based)
 - `.text-balance` — balanced text wrapping
+- `.fade-up` / `.fade-in` / `.slide-left` — one-shot CSS animation classes
+- `[data-reveal]` / `[data-reveal="left"]` — scroll-triggered variants; `ScrollReveal` adds `.revealed` via IntersectionObserver
+- `@keyframes marquee` / `marqueeReverse` — used by the service-area zip ticker (3-row bidirectional, 60s/45s/80s)
 
 **Shadows**: `shadow-ambient` (subtle elevation), `shadow-ambient-lg` (hover state).
 
@@ -173,17 +188,37 @@ const nextConfig: NextConfig = {
 
 `next.config.ts` allows remote images from `lh3.googleusercontent.com` (Google profile photos for testimonials).
 
+## Security Headers
+
+`next.config.ts` applies these headers to all routes via `async headers()`:
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: SAMEORIGIN`
+- `X-XSS-Protection: 1; mode=block`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+
+No CSP is set — inline JSON-LD scripts and CDN fonts would break under a strict CSP without careful per-directive tuning.
+
+## Google Merchant Center Readiness
+
+Required legal pages (all live):
+- `/return-policy` — 7-day window, defective exchange, buyer pays shipping
+- `/privacy-policy` — no server data collection (mailto forms), localStorage cart, Google Maps third-party notice
+- `/terms` — parts sales, no fitness guarantee, Nebraska governing law
+
+Merchant feed: `/api/merchant-feed` — Google Shopping XML RSS, cached 24h. All parts currently marked `out_of_stock` in `lib/parts.ts`. Product detail pages show "Out of Stock" badge + Email to Order / Call Us / Visit Store CTAs when unavailable; falls back to `AddToCartButton` for in-stock items.
+
 ## Environment Variables
 
-- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — public, for Google Maps in browser
-- `RESEND_API_KEY` — server-only, for contact form and scheduling emails
 - `GOOGLE_PLACE_ID` — optional, for Google Business integration
+- No other env vars required — maps use OpenStreetMap (no API key), forms use mailto
 
 ## Known Issues
-- Phone number hardcoded in `ScheduleForm.tsx` instead of using `BUSINESS.phone`
+- Hardcoded `mailto:` address in `ContactForm.tsx` and `ScheduleForm.tsx` — should come from `BUSINESS` constants
 - Inconsistent Facebook `sameAs` URL between `JsonLd.tsx` and `app/page.tsx`
 - Duplicate LocalBusiness JSON-LD on homepage (global `JsonLd` + page-level)
 - `ScheduleForm` labels missing `htmlFor`/`id` associations (a11y)
-- `/api/contact` has no input validation beyond field presence checks
+- Cart has no checkout flow — `CartDrawer` shows items but no payment integration
 - ~10MB video files in `public/docs/` committed without Git LFS
 - `lib/content.ts` all entries are PLACEHOLDER — replace with real copy, testimonials, and team data before launch

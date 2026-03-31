@@ -141,18 +141,59 @@ export default async function ProductDetailPage({
                </div>
             </div>
 
-            <div className="mt-auto flex items-center gap-6">
-              <div className="flex flex-col">
-                <span className="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1">Price</span>
-                <span className="text-4xl font-black text-on-surface">${part.price.toFixed(2)}</span>
+            <div className="mt-auto">
+              {/* Price row */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex flex-col">
+                  <span className="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1">Price</span>
+                  <span className="text-4xl font-black text-on-surface">${part.price.toFixed(2)}</span>
+                </div>
+                {part.availability === "out_of_stock" && (
+                  <span className="flex items-center gap-1.5 bg-surface-container-highest text-on-surface-variant text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                    <span className="material-symbols-outlined text-sm" aria-hidden="true">inventory_2</span>
+                    Out of Stock
+                  </span>
+                )}
               </div>
-              
-              <AddToCartButton
-                id={part.id}
-                mpn={part.mpn}
-                title={part.title}
-                price={part.price}
-              />
+
+              {/* Order options when out of stock */}
+              {part.availability === "out_of_stock" ? (
+                <div className="space-y-3">
+                  <p className="text-sm text-on-surface-variant mb-4">
+                    This part is currently out of stock. Contact us to check availability or place a special order — we source OEM parts daily.
+                  </p>
+                  <a
+                    href={`mailto:service@metrotv-audiotech.com?subject=Part Inquiry: ${encodeURIComponent(part.mpn)}&body=${encodeURIComponent(`Hello,\n\nI'm interested in ordering the following part:\n\nPart: ${part.title}\nMPN: ${part.mpn}\nPrice: $${part.price.toFixed(2)}\n\nPlease let me know availability and lead time.\n\nThank you`)}`}
+                    className="flex items-center justify-center gap-2 w-full bg-primary text-white rounded-full py-3.5 text-sm font-semibold hover:opacity-90 transition active:scale-[0.98]"
+                  >
+                    <span className="material-symbols-outlined text-base" aria-hidden="true">mail</span>
+                    Email to Order
+                  </a>
+                  <div className="grid grid-cols-2 gap-3">
+                    <a
+                      href={`tel:${BUSINESS.phone}`}
+                      className="flex items-center justify-center gap-2 bg-surface-container-highest text-on-surface rounded-full py-3 text-sm font-semibold hover:bg-surface-container transition active:scale-[0.98]"
+                    >
+                      <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
+                      Call Us
+                    </a>
+                    <a
+                      href="/contact"
+                      className="flex items-center justify-center gap-2 bg-surface-container-highest text-on-surface rounded-full py-3 text-sm font-semibold hover:bg-surface-container transition active:scale-[0.98]"
+                    >
+                      <span className="material-symbols-outlined text-base" aria-hidden="true">store</span>
+                      Visit Store
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <AddToCartButton
+                  id={part.id}
+                  mpn={part.mpn}
+                  title={part.title}
+                  price={part.price}
+                />
+              )}
             </div>
           </div>
           

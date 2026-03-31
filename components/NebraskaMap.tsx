@@ -5,12 +5,12 @@ import { SERVICE_REGIONS } from "@/lib/zip-codes";
 
 // Geographic approximate positions within Nebraska SVG viewBox 0 0 520 300
 const REGION_POSITIONS: Record<string, { cx: number; cy: number }> = {
-  "Lincoln":                { cx: 375, cy: 195 },
-  "Omaha":                  { cx: 460, cy: 160 },
-  "Council Bluffs":         { cx: 480, cy: 175 },
-  "Southeast Nebraska":     { cx: 385, cy: 240 },
-  "Grand Island":           { cx: 230, cy: 170 },
-  "North Omaha Suburbs":    { cx: 455, cy: 130 },
+  "Lincoln":             { cx: 430, cy: 203 },
+  "Omaha":               { cx: 468, cy: 160 },
+  "Council Bluffs":      { cx: 500, cy: 155 },
+  "Southeast Nebraska":  { cx: 415, cy: 248 },
+  "Grand Island":        { cx: 336, cy: 194 },
+  "North Omaha Suburbs": { cx: 465, cy: 128 },
 };
 
 export function NebraskaMap() {
@@ -28,32 +28,76 @@ export function NebraskaMap() {
           aria-label="Nebraska service area map"
           role="img"
         >
-          {/* Nebraska state outline — simplified shape with panhandle */}
+          {/* Nebraska state outline — correct shape with panhandle on west side
+              Panhandle is a narrow strip along the top-west; the notch/step-down
+              is at the bottom of the panhandle where it meets the main body. */}
           <path
-            d="M 10,10 L 220,10 L 220,80 L 510,80 L 510,275 L 10,275 Z"
+            d="M 10,10 L 510,10 L 510,275 L 70,275 L 70,187 L 10,187 Z"
             fill="#e8f0fe"
             stroke="#1a4494"
             strokeWidth="2"
             opacity="0.4"
           />
-          {/* Iowa border (Council Bluffs) — small extension */}
+
+          {/* Missouri River — curved blue line along the eastern border */}
           <path
-            d="M 510,80 L 515,80 L 515,200 L 510,200"
-            fill="#fce8d5"
-            stroke="#ae3100"
-            strokeWidth="1.5"
-            strokeDasharray="4,3"
+            d="M 510,60 Q 505,100 510,150 Q 508,200 500,275"
+            stroke="#6baed6"
+            strokeWidth="3"
+            fill="none"
             opacity="0.6"
           />
-          {/* State label */}
-          <text x="120" y="180" fontSize="13" fill="#1a4494" opacity="0.35" fontFamily="sans-serif" fontWeight="bold">
+
+          {/* State abbreviation — large, centered, subtle watermark */}
+          <text
+            x="260"
+            y="145"
+            fontSize="28"
+            fill="#1a4494"
+            opacity="0.12"
+            fontFamily="sans-serif"
+            fontWeight="900"
+            textAnchor="middle"
+            letterSpacing="8"
+          >
             NEBRASKA
           </text>
-          <text x="502" y="155" fontSize="9" fill="#ae3100" opacity="0.5" fontFamily="sans-serif" transform="rotate(90, 502, 155)">
-            IOWA
+
+          {/* Panhandle label */}
+          <text
+            x="35"
+            y="100"
+            fontSize="7.5"
+            fill="#1a4494"
+            opacity="0.4"
+            fontFamily="sans-serif"
+            textAnchor="middle"
+          >
+            PANHANDLE
           </text>
 
-          {/* Service region circles */}
+          {/* Neighbor state labels */}
+          <text x="80"  y="8"   fontSize="8" fill="#999" opacity="0.5" fontFamily="sans-serif" textAnchor="middle">SD</text>
+          <text x="6"   y="100" fontSize="8" fill="#999" opacity="0.5" fontFamily="sans-serif" transform="rotate(-90, 6, 100)">WY</text>
+          <text x="35"  y="288" fontSize="8" fill="#999" opacity="0.5" fontFamily="sans-serif" textAnchor="middle">CO</text>
+          <text x="260" y="288" fontSize="8" fill="#999" opacity="0.5" fontFamily="sans-serif" textAnchor="middle">KS</text>
+          <text x="490" y="288" fontSize="8" fill="#999" opacity="0.5" fontFamily="sans-serif" textAnchor="middle">MO</text>
+          <text x="512" y="180" fontSize="8" fill="#999" opacity="0.5" fontFamily="sans-serif" textAnchor="middle">IA</text>
+
+          {/* Reference city dots — orientation only, not interactive */}
+          {/* Lincoln */}
+          <circle cx="430" cy="203" r="4" fill="#666" opacity="0.4" />
+          <text x="430" y="215" fontSize="8" fill="#555" opacity="0.6" fontFamily="sans-serif" textAnchor="middle">Lincoln</text>
+
+          {/* Omaha */}
+          <circle cx="468" cy="160" r="4" fill="#666" opacity="0.4" />
+          <text x="468" y="172" fontSize="8" fill="#555" opacity="0.6" fontFamily="sans-serif" textAnchor="middle">Omaha</text>
+
+          {/* Grand Island */}
+          <circle cx="336" cy="194" r="4" fill="#666" opacity="0.4" />
+          <text x="336" y="206" fontSize="8" fill="#555" opacity="0.6" fontFamily="sans-serif" textAnchor="middle">Grand Island</text>
+
+          {/* Service region interactive circles — rendered last (on top) */}
           {SERVICE_REGIONS.map((region) => {
             const pos = REGION_POSITIONS[region.name];
             if (!pos) return null;
