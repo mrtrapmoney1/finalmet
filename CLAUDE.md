@@ -14,13 +14,13 @@ npm run build      # Production build
 npm run start      # Serve production build
 npm run lint       # ESLint via next lint
 
-npx playwright test                        # All E2E tests (iPhone 16 Pro viewport, requires dev server)
+npx playwright test                        # All E2E tests (iPhone 16 Pro viewport, auto-starts dev server)
 npx playwright test --grep "test name"     # Single test by name
 ```
 
 ## Architecture
 
-**Next.js 15 / React 19 / Tailwind CSS 3.x** — App Router with flat routing. Each route has a single `page.tsx`, no nested layouts beyond root. All pages are server components unless they need interactivity. Path alias `@/*` maps to project root (e.g., `import { BUSINESS } from "@/lib/constants"`).
+**Next.js 16 / React 19 / Tailwind CSS 3.x** — App Router with flat routing. Each route has a single `page.tsx`, no nested layouts beyond root. All pages are server components unless they need interactivity. Path alias `@/*` maps to project root (e.g., `import { BUSINESS } from "@/lib/constants"`).
 
 ```
 app/
@@ -155,7 +155,7 @@ Material Design 3-inspired color tokens defined in `tailwind.config.ts`:
 
 ## next.config.ts
 
-In **Next.js 16**, both `reactCompiler` and `cacheComponents` are **top-level** keys — not under `experimental`:
+In **Next.js 16**, if you add `reactCompiler` or `cacheComponents`, they are **top-level** keys — not under `experimental`:
 
 ```ts
 const nextConfig: NextConfig = {

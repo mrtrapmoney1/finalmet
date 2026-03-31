@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BUSINESS } from "@/lib/constants";
 import { JsonLd } from "@/components/JsonLd";
+import { CartProvider } from "@/components/CartProvider";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -94,10 +95,12 @@ export default function RootLayout({
         <meta name="ICBM" content="40.8241127, -96.6336259" />
       </head>
       <body>
-        <JsonLd />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <CartProvider>
+          <JsonLd />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

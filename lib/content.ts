@@ -153,7 +153,7 @@ export const STORE_COPY = {
 export const HERO_COPY = {
   // Shown below the "Factory-Authorized Repair in Lincoln, NE" subheading
   body:
-    "PLACEHOLDER: Replace with a single paragraph that a homeowner would understand. Explain what makes Metro different — authorized, OEM parts, honest estimate — without jargon. Example: 'We find the real cause, give you an honest estimate, and fix it right the first time — using original manufacturer parts, not cheaper substitutes.'",
+    "We find the real cause, give you an honest estimate, and fix it right the first time — using original manufacturer parts, not cheaper substitutes.",
   // Trust callout badges shown below the body (max 4)
   badges: [
     "Samsung Authorized",

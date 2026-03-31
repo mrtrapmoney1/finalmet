@@ -1,7 +1,7 @@
 import { buildMetadata } from "@/lib/metadata";
 import { BUSINESS } from "@/lib/constants";
 import { OEM_PARTS } from "@/lib/parts";
-import { Button } from "@/components/ui/Button";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { STORE_COPY } from "@/lib/content";
@@ -126,10 +126,12 @@ export default async function ProductDetailPage({
                 <span className="text-4xl font-black text-on-surface">${part.price.toFixed(2)}</span>
               </div>
               
-              <Button href="/contact" variant="primary" className="ml-auto">
-                <span className="material-symbols-outlined text-lg mr-2 drop-shadow-sm" aria-hidden="true">shopping_cart</span>
-                Buy Locally
-              </Button>
+              <AddToCartButton
+                id={part.id}
+                mpn={part.mpn}
+                title={part.title}
+                price={part.price}
+              />
             </div>
           </div>
           

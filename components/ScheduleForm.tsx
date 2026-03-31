@@ -52,8 +52,7 @@ const INPUT_CLASS =
 
 export function ScheduleForm() {
   const [form, setForm] = useState<FormState>(empty);
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [sent, setSent] = useState(false);
 
   function update(field: keyof FormState, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -67,51 +66,40 @@ export function ScheduleForm() {
 
   const isCovered = form.zip.length === 5 && (COVERED_ZIPS as readonly string[]).includes(form.zip);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("sending");
-    setErrorMsg("");
 
-    try {
-      const res = await fetch("/api/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    const body = [
+      `Name: ${form.name}`,
+      `Phone: ${form.phone}`,
+      `Email: ${form.email}`,
+      `ZIP: ${form.zip}`,
+      `Service: ${form.serviceType}`,
+      `Appliance: ${form.applianceType}`,
+      `Brand: ${form.brand}`,
+      `Issue: ${form.issue}`,
+    ].join("\n");
 
-      if (res.ok) {
-        setStatus("success");
-        setForm(empty);
-      } else {
-        const data = await res.json().catch(() => ({}));
-        setErrorMsg(data.error || "Something went wrong. Please call us directly.");
-        setStatus("error");
-      }
-    } catch {
-      setErrorMsg("Network error. Please call us directly.");
-      setStatus("error");
-    }
+    window.location.href = `mailto:service@metrotv-audiotech.com?subject=Service%20Request%20from%20${encodeURIComponent(form.name)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+    setForm(empty);
   }
 
-  if (status === "success") {
+  if (sent) {
     return (
       <div className="bg-surface-container-low rounded-2xl p-10 text-center shadow-ambient">
         <span className="material-symbols-outlined text-5xl text-secondary mb-4 block" aria-hidden="true">
-          check_circle
+          mark_email_read
         </span>
         <h2 className="text-2xl font-bold font-headline text-on-surface mb-3">
-          Request Received
+          Email Draft Opened
         </h2>
         <p className="text-on-surface-variant leading-relaxed">
-          We&apos;ll review your request and call you back during business hours
-          (Monday–Friday, 8:30 AM – 6:00 PM). If you need to reach us sooner,
-          call <a href={`tel:${BUSINESS.phone}`} className="text-primary font-medium hover:underline">{BUSINESS.phone}</a>.
+          Hit send in your email app. Need to reach us faster? Call{" "}
+          <a href={`tel:${BUSINESS.phone}`} className="text-primary font-medium hover:underline">{BUSINESS.phone}</a>.
         </p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="mt-6 text-sm text-primary hover:underline"
-        >
-          Submit another request
+        <button onClick={() => setSent(false)} className="mt-6 text-sm text-primary hover:underline">
+          Start over
         </button>
       </div>
     );
@@ -180,7 +168,6 @@ export function ScheduleForm() {
             maxLength={5}
             className={INPUT_CLASS}
           />
-          {/* Zip-based pricing feedback */}
           {form.zip.length === 5 && (
             <div className="mt-2" role="status" aria-live="polite">
               {isCovered ? (
@@ -200,7 +187,8 @@ export function ScheduleForm() {
                 <div className="flex items-start gap-2 text-xs">
                   <span className="material-symbols-outlined text-sm text-error mt-px" aria-hidden="true">info</span>
                   <span className="text-on-surface-variant">
-                    Not in our standard coverage area. Call <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">{BUSINESS.phone}</a> to check availability.
+                    Not in our standard coverage area. Call{" "}
+                    <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">{BUSINESS.phone}</a> to check availability.
                   </span>
                 </div>
               )}
@@ -278,32 +266,16 @@ export function ScheduleForm() {
         />
       </div>
 
-      {status === "error" && (
-        <p className="text-sm text-error bg-error-container rounded-xl px-4 py-3">
-          {errorMsg}
-        </p>
-      )}
-
       <button
         type="submit"
-        disabled={status === "sending"}
-        className="w-full bg-secondary text-on-secondary py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full bg-secondary text-on-secondary py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition flex items-center justify-center gap-2"
       >
-        {status === "sending" ? (
-          <>
-            <span className="material-symbols-outlined text-base animate-spin" aria-hidden="true">autorenew</span>
-            Sending…
-          </>
-        ) : (
-          <>
-            <span className="material-symbols-outlined text-base" aria-hidden="true">send</span>
-            Submit Service Request
-          </>
-        )}
+        <span className="material-symbols-outlined text-base" aria-hidden="true">send</span>
+        Submit Service Request
       </button>
 
       <p className="text-xs text-outline text-center">
-        We&apos;ll follow up by phone during business hours. For urgent needs, call{" "}
+        Opens your email app. For urgent needs, call{" "}
         <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">{BUSINESS.phone}</a>.
       </p>
     </form>
