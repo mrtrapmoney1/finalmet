@@ -87,7 +87,7 @@ export default function RootLayout({
         <meta name="geo.position" content="40.8241127;-96.6336259" />
         <meta name="ICBM" content="40.8241127, -96.6336259" />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <CartProvider>
           <JsonLd />
           <Header />
