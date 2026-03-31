@@ -33,17 +33,26 @@ function getPartIcon(part: { category: string; brand: string }): string {
   return "build_circle";
 }
 
+const ITEMS_PER_PAGE = 12;
+
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ brand?: string }>;
+  searchParams: Promise<{ brand?: string; page?: string }>;
 }) {
   const params = await searchParams;
   const activeBrand = params?.brand ?? "All";
+  const currentPage = Math.max(1, parseInt(params?.page ?? "1", 10) || 1);
 
-  const filteredParts = activeBrand === "All" || !activeBrand
+  const brandFiltered = activeBrand === "All" || !activeBrand
     ? OEM_PARTS
     : OEM_PARTS.filter(p => p.brand === activeBrand);
+
+  const totalPages = Math.ceil(brandFiltered.length / ITEMS_PER_PAGE);
+  const filteredParts = brandFiltered.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   return (
     <div className="bg-surface min-h-screen">
@@ -132,6 +141,56 @@ export default async function ProductsPage({
             ))}
           </div>
         </Suspense>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-10 pt-6 border-t border-outline-variant/20">
+            <Link
+              href={currentPage > 1
+                ? `/products?${new URLSearchParams({ ...(activeBrand !== "All" && { brand: activeBrand }), page: String(currentPage - 1) })}`
+                : "#"}
+              aria-disabled={currentPage <= 1}
+              className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-semibold transition ${
+                currentPage <= 1
+                  ? "pointer-events-none text-on-surface-variant/30"
+                  : "text-on-surface-variant hover:bg-surface-container"
+              }`}
+            >
+              <span className="material-symbols-outlined text-base" aria-hidden="true">chevron_left</span>
+              Prev
+            </Link>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <Link
+                key={page}
+                href={`/products?${new URLSearchParams({ ...(activeBrand !== "All" && { brand: activeBrand }), page: String(page) })}`}
+                className={`w-9 h-9 flex items-center justify-center rounded-full text-sm font-semibold transition ${
+                  page === currentPage
+                    ? "bg-primary text-white"
+                    : "text-on-surface-variant hover:bg-surface-container"
+                }`}
+                aria-current={page === currentPage ? "page" : undefined}
+              >
+                {page}
+              </Link>
+            ))}
+
+            <Link
+              href={currentPage < totalPages
+                ? `/products?${new URLSearchParams({ ...(activeBrand !== "All" && { brand: activeBrand }), page: String(currentPage + 1) })}`
+                : "#"}
+              aria-disabled={currentPage >= totalPages}
+              className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-semibold transition ${
+                currentPage >= totalPages
+                  ? "pointer-events-none text-on-surface-variant/30"
+                  : "text-on-surface-variant hover:bg-surface-container"
+              }`}
+            >
+              Next
+              <span className="material-symbols-outlined text-base" aria-hidden="true">chevron_right</span>
+            </Link>
+          </div>
+        )}
       </div>
 
       <div className="max-w-7xl mx-auto px-6 pb-16">

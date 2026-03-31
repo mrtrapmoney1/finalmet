@@ -199,8 +199,81 @@ export default async function ProductDetailPage({
           
         </div>
 
+        {/* ── Extended Part Details ─────────────────────────────── */}
+
+        {/* Symptoms this fixes */}
+        {part.symptoms && part.symptoms.length > 0 && (
+          <div className="border-t border-outline-variant/20 mt-12 pt-10">
+            <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">Symptoms This Part Fixes</p>
+            <ul className="grid sm:grid-cols-2 gap-2">
+              {part.symptoms.map((s) => (
+                <li key={s} className="flex items-start gap-3 bg-surface-container-low rounded-xl px-4 py-3 border border-outline-variant/20">
+                  <span className="material-symbols-outlined text-base text-secondary mt-0.5 shrink-0" aria-hidden="true">check_circle</span>
+                  <span className="text-sm text-on-surface">{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Technical specs */}
+        {part.specs && Object.keys(part.specs).length > 0 && (
+          <div className="border-t border-outline-variant/20 mt-10 pt-10">
+            <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">Technical Specifications</p>
+            <div className="grid sm:grid-cols-2 gap-px bg-outline-variant/20 rounded-xl overflow-hidden border border-outline-variant/20">
+              {Object.entries(part.specs).map(([key, val]) => (
+                <div key={key} className="flex justify-between gap-4 bg-surface-container-low px-4 py-3">
+                  <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-wide">{key}</span>
+                  <span className="text-sm font-medium text-on-surface text-right">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Installation notes */}
+        {part.installNotes && (
+          <div className="border-t border-outline-variant/20 mt-10 pt-10">
+            <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-3">Installation Notes</p>
+            <div className="flex gap-3 bg-surface-container-low rounded-xl px-5 py-4 border border-outline-variant/20">
+              <span className="material-symbols-outlined text-xl text-primary shrink-0 mt-0.5" aria-hidden="true">info</span>
+              <p className="text-sm text-on-surface-variant leading-relaxed">{part.installNotes}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Compatible models */}
+        {part.compatibleModels && part.compatibleModels.length > 0 && (
+          <div className="border-t border-outline-variant/20 mt-10 pt-10">
+            <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-1">Compatible Models</p>
+            <p className="text-xs text-on-surface-variant mb-4">Verified fits for this part. 500+ Samsung and Kenmore models total — contact us to confirm your specific model.</p>
+            <div className="flex flex-wrap gap-2">
+              {part.compatibleModels.map((m) => (
+                <span key={m} className="text-xs font-mono bg-surface-container-low border border-outline-variant/30 text-on-surface-variant px-2.5 py-1 rounded-lg">
+                  {m}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Cross-reference / replaces */}
+        {part.replacesPartNumbers && part.replacesPartNumbers.length > 0 && (
+          <div className="border-t border-outline-variant/20 mt-10 pt-10">
+            <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-1">Also Replaces</p>
+            <p className="text-xs text-on-surface-variant mb-4">This part is a direct OEM replacement for the following part numbers.</p>
+            <div className="flex flex-wrap gap-2">
+              {part.replacesPartNumbers.map((n) => (
+                <span key={n} className="text-xs font-mono bg-primary/5 border border-primary/20 text-primary px-2.5 py-1 rounded-lg">
+                  {n}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Related Services */}
-        <div className="border-t border-outline-variant/20 mt-16 pt-12">
+        <div className="border-t border-outline-variant/20 mt-12 pt-10">
           <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
             Related Resources
           </p>

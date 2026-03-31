@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/components/CartProvider";
+import { MAX_QTY } from "@/components/CartProvider";
 import Link from "next/link";
 
 interface Props {
@@ -83,7 +84,8 @@ export function CartDrawer({ open, onClose }: Props) {
                     <span className="text-sm font-medium text-on-surface w-4 text-center">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition text-sm"
+                      disabled={item.quantity >= MAX_QTY}
+                      className="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition text-sm disabled:opacity-30"
                       aria-label="Increase quantity"
                     >+</button>
                   </div>
@@ -95,21 +97,38 @@ export function CartDrawer({ open, onClose }: Props) {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="px-6 py-5 border-t border-outline-variant/30 space-y-4">
-            <div className="flex justify-between items-center">
+          <div className="px-6 py-5 border-t border-outline-variant/30 space-y-3">
+            <div className="flex justify-between items-center pb-1">
               <span className="text-sm text-on-surface-variant">Subtotal</span>
               <span className="text-xl font-bold font-headline text-on-surface">${subtotal.toFixed(2)}</span>
             </div>
-            <p className="text-xs text-on-surface-variant">
-              Parts available for in-store pickup at 1107 N. Cotner Blvd, Lincoln, NE. Call to confirm stock.
-            </p>
+
+            {/* Primary CTA — checkout by email */}
             <a
-              href={`tel:4024669090`}
-              className="flex items-center justify-center gap-2 w-full bg-secondary text-on-secondary rounded-full py-3 text-sm font-semibold hover:opacity-90 transition"
+              href={`mailto:service@metrotv-audiotech.com?subject=${encodeURIComponent("Parts Order — Metro TV & Appliances")}&body=${encodeURIComponent(
+                `Hello,\n\nI would like to order the following parts:\n\n` +
+                items.map((i) => `• ${i.title} (MPN: ${i.mpn}) × ${i.quantity} — $${(i.price * i.quantity).toFixed(2)}`).join("\n") +
+                `\n\nSubtotal: $${subtotal.toFixed(2)}\n\nPlease confirm availability and provide payment / pickup instructions.\n\nThank you`
+              )}`}
+              className="flex items-center justify-center gap-2 w-full bg-primary text-white rounded-full py-3 text-sm font-semibold hover:opacity-90 transition active:scale-[0.98]"
+            >
+              <span className="material-symbols-outlined text-base" aria-hidden="true">mail</span>
+              Checkout — Email Order
+            </a>
+
+            {/* Secondary — call */}
+            <a
+              href="tel:4024669090"
+              className="flex items-center justify-center gap-2 w-full bg-surface-container-highest text-on-surface rounded-full py-3 text-sm font-semibold hover:bg-surface-container transition"
             >
               <span className="material-symbols-outlined text-base" aria-hidden="true">phone</span>
               Call to Order — (402) 466-9090
             </a>
+
+            <p className="text-xs text-on-surface-variant text-center">
+              In-store pickup available · 1107 N. Cotner Blvd, Lincoln NE
+            </p>
+
             <button
               onClick={clearCart}
               className="w-full text-xs text-on-surface-variant hover:text-error transition text-center py-1"

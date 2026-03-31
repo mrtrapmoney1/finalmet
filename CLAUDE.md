@@ -115,7 +115,11 @@ tests/
 
 **API routes**: `/api/parts` — returns `OEM_PARTS` for DiagnosticWizard; `/api/merchant-feed` — Google Shopping XML RSS feed of the parts catalog (cached 24h).
 
-**Cart system**: `CartProvider` wraps the app in `layout.tsx` and exposes `useCart()`. State persists to `localStorage` under key `met_cart`. The cart is purely client-side; checkout is not yet implemented (no payment integration).
+**Cart system**: `CartProvider` wraps the app in `layout.tsx` and exposes `useCart()`. State persists to `localStorage` under key `met_cart`. Max quantity per item is `MAX_QTY = 3` (enforced in `addToCart` and `updateQuantity`). `AddToCartButton` includes an inline qty selector (1–3). CartDrawer checkout sends a pre-filled `mailto:` with all line items and subtotal.
+
+**Product detail extended fields**: `Part` interface in `lib/parts.ts` has optional `specs`, `symptoms`, `compatibleModels`, `replacesPartNumbers`, `installNotes` fields. The product detail page renders each conditionally — populate the fields in `lib/parts.ts` for any part that has this data.
+
+**Products pagination**: `/products` page supports `?page=N` query param. `ITEMS_PER_PAGE = 12`. Pagination controls only render when `totalPages > 1`. Works alongside `?brand=` filter.
 
 **Icons**: Google Material Symbols Outlined loaded via CDN in layout.tsx. Used inline: `<span className="material-symbols-outlined">icon_name</span>`. All decorative icons must have `aria-hidden="true"`. Lucide React is also available for shadcn/ui components.
 

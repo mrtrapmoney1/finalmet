@@ -2,6 +2,8 @@
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
+export const MAX_QTY = 3;
+
 export interface CartItem {
   id: string;
   mpn: string;
@@ -14,7 +16,7 @@ interface CartContextValue {
   items: CartItem[];
   count: number;
   subtotal: number;
-  addToCart: (item: Omit<CartItem, "quantity">) => void;
+  addToCart: (item: Omit<CartItem, "quantity">, qty?: number) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -42,13 +44,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items]);
 
-  const addToCart = useCallback((item: Omit<CartItem, "quantity">) => {
+  const addToCart = useCallback((item: Omit<CartItem, "quantity">, qty = 1) => {
     setItems((prev) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
-        return prev.map((i) => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i);
+        const newQty = Math.min(existing.quantity + qty, MAX_QTY);
+        return prev.map((i) => i.id === item.id ? { ...i, quantity: newQty } : i);
       }
-      return [...prev, { ...item, quantity: 1 }];
+      return [...prev, { ...item, quantity: Math.min(qty, MAX_QTY) }];
     });
   }, []);
 
@@ -58,7 +61,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const updateQuantity = useCallback((id: string, quantity: number) => {
     if (quantity < 1) return;
-    setItems((prev) => prev.map((i) => i.id === id ? { ...i, quantity } : i));
+    setItems((prev) =>
+      prev.map((i) => i.id === id ? { ...i, quantity: Math.min(quantity, MAX_QTY) } : i)
+    );
   }, []);
 
   const clearCart = useCallback(() => setItems([]), []);
