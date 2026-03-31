@@ -1,0 +1,182 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Metro TV & Appliances" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Services" [ref=e7] [cursor=pointer]:
+            - /url: /services
+            - text: Services
+            - generic [ref=e8]: expand_more
+        - listitem [ref=e9]:
+          - link "Service Area" [ref=e10] [cursor=pointer]:
+            - /url: /service-area
+        - listitem [ref=e11]:
+          - link "Parts Store" [ref=e12] [cursor=pointer]:
+            - /url: /products
+        - listitem [ref=e13]:
+          - link "How It Works" [ref=e14] [cursor=pointer]:
+            - /url: /how-it-works
+        - listitem [ref=e15]:
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+      - button "Open cart" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: shopping_cart
+        - generic [ref=e22]: Cart
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: What We Repair
+        - heading "Factory-Authorized Repair Since 1947." [level=1] [ref=e27]:
+          - text: Factory-Authorized Repair
+          - text: Since 1947.
+        - paragraph [ref=e28]: We hold factory authorization directly from manufacturers — giving us access to OEM parts, technical service manuals, and brand training. Four service categories. One shop you can trust.
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - link "in-home Appliance Repair Factory-authorized in-home repair across 200+ zip codes. We diagnose to the root cause — fault codes, ECM reads, voltage at motor terminals — then fix it right the first time with OEM parts. Samsung LG GE Appliances Electrolux Maytag +8 more Learn more" [ref=e31] [cursor=pointer]:
+            - /url: /appliance
+            - generic [ref=e32]:
+              - generic [ref=e33]: home_repair_service
+              - generic [ref=e34]: in-home
+            - heading "Appliance Repair" [level=2] [ref=e35]
+            - paragraph [ref=e36]: Factory-authorized in-home repair across 200+ zip codes.
+            - paragraph [ref=e37]: We diagnose to the root cause — fault codes, ECM reads, voltage at motor terminals — then fix it right the first time with OEM parts.
+            - generic [ref=e38]:
+              - generic [ref=e39]: Samsung
+              - generic [ref=e40]: LG
+              - generic [ref=e41]: GE Appliances
+              - generic [ref=e42]: Electrolux
+              - generic [ref=e43]: Maytag
+              - generic [ref=e44]: +8 more
+            - generic [ref=e45]:
+              - text: Learn more
+              - generic [ref=e46]: arrow_forward
+          - link "drop-off TV Repair PSU, T-Con, LED driver, A-board — drop off at our Lincoln shop. We repair to board level, not just swap panels. Get it back working correctly, not just quickly. Samsung LG Sony Vizio TCL Learn more" [ref=e47] [cursor=pointer]:
+            - /url: /tv
+            - generic [ref=e48]:
+              - generic [ref=e49]: tv
+              - generic [ref=e50]: drop-off
+            - heading "TV Repair" [level=2] [ref=e51]
+            - paragraph [ref=e52]: PSU, T-Con, LED driver, A-board — drop off at our Lincoln shop.
+            - paragraph [ref=e53]: We repair to board level, not just swap panels. Get it back working correctly, not just quickly.
+            - generic [ref=e54]:
+              - generic [ref=e55]: Samsung
+              - generic [ref=e56]: LG
+              - generic [ref=e57]: Sony
+              - generic [ref=e58]: Vizio
+              - generic [ref=e59]: TCL
+            - generic [ref=e60]:
+              - text: Learn more
+              - generic [ref=e61]: arrow_forward
+          - link "drop-off TV & Audio Repair Analog warmth meets digital precision since 1947. BJTs, RIAA phono preamps, ESR checks, VTA and azimuth alignment — we speak the language of your equipment. Yamaha Denon Marantz Pioneer Learn more" [ref=e62] [cursor=pointer]:
+            - /url: /audio
+            - generic [ref=e63]:
+              - generic [ref=e64]: speaker
+              - generic [ref=e65]: drop-off
+            - heading "TV & Audio Repair" [level=2] [ref=e66]
+            - paragraph [ref=e67]: Analog warmth meets digital precision since 1947.
+            - paragraph [ref=e68]: BJTs, RIAA phono preamps, ESR checks, VTA and azimuth alignment — we speak the language of your equipment.
+            - generic [ref=e69]:
+              - generic [ref=e70]: Yamaha
+              - generic [ref=e71]: Denon
+              - generic [ref=e72]: Marantz
+              - generic [ref=e73]: Pioneer
+            - generic [ref=e74]:
+              - text: Learn more
+              - generic [ref=e75]: arrow_forward
+          - link "drop-off Commercial Microwave Repair Four authorized brands. Drop off in Lincoln. HV circuit, mode stirrer motor, mica cover panel, membrane switch matrix — authorized for Amana, Sharp, Panasonic, and Menumaster. Amana Sharp Panasonic Menumaster Learn more" [ref=e76] [cursor=pointer]:
+            - /url: /commercial
+            - generic [ref=e77]:
+              - generic [ref=e78]: microwave
+              - generic [ref=e79]: drop-off
+            - heading "Commercial Microwave Repair" [level=2] [ref=e80]
+            - paragraph [ref=e81]: Four authorized brands. Drop off in Lincoln.
+            - paragraph [ref=e82]: HV circuit, mode stirrer motor, mica cover panel, membrane switch matrix — authorized for Amana, Sharp, Panasonic, and Menumaster.
+            - generic [ref=e83]:
+              - generic [ref=e84]: Amana
+              - generic [ref=e85]: Sharp
+              - generic [ref=e86]: Panasonic
+              - generic [ref=e87]: Menumaster
+            - generic [ref=e88]:
+              - text: Learn more
+              - generic [ref=e89]: arrow_forward
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: Not sure which service you need?
+            - paragraph [ref=e93]: Call us and describe what's happening — we'll point you in the right direction.
+          - generic [ref=e94]:
+            - link "Send a Message" [ref=e95] [cursor=pointer]:
+              - /url: /contact
+            - link "(402) 466-9090" [ref=e96] [cursor=pointer]:
+              - /url: tel:(402) 466-9090
+              - generic [ref=e97]: phone
+              - text: (402) 466-9090
+        - generic [ref=e98]:
+          - link "Troubleshooting Guides" [ref=e99] [cursor=pointer]:
+            - /url: /troubleshooting
+          - link "OEM Parts Catalog" [ref=e100] [cursor=pointer]:
+            - /url: /products
+          - link "Check Coverage Area" [ref=e101] [cursor=pointer]:
+            - /url: /service-area
+  - contentinfo [ref=e102]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - paragraph [ref=e106]: Metro TV & Appliances
+          - paragraph [ref=e107]: Factory-authorized repair since 1947. Technical precision and heirloom-quality service for Nebraska homes.
+        - generic [ref=e108]:
+          - paragraph [ref=e109]: Services
+          - list [ref=e110]:
+            - listitem [ref=e111]:
+              - link "Appliance Repair" [ref=e112] [cursor=pointer]:
+                - /url: /appliance
+            - listitem [ref=e113]:
+              - link "TV Repair" [ref=e114] [cursor=pointer]:
+                - /url: /tv
+            - listitem [ref=e115]:
+              - link "TV & Audio Repair" [ref=e116] [cursor=pointer]:
+                - /url: /audio
+            - listitem [ref=e117]:
+              - link "Commercial Microwave Repair" [ref=e118] [cursor=pointer]:
+                - /url: /commercial
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: Company
+          - list [ref=e121]:
+            - listitem [ref=e122]:
+              - link "Services" [ref=e123] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e124]:
+              - link "Service Area" [ref=e125] [cursor=pointer]:
+                - /url: /service-area
+            - listitem [ref=e126]:
+              - link "Parts Store" [ref=e127] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e128]:
+              - link "How It Works" [ref=e129] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e130]:
+              - link "FAQ" [ref=e131] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e132]:
+              - link "Contact" [ref=e133] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: Contact
+          - link "(402) 466-9090" [ref=e136] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - paragraph [ref=e137]: 1107 North Cotner Blvd, Lincoln, NE 68505
+          - paragraph [ref=e138]: Monday–Friday 8:30 AM – 6:00 PM
+      - generic [ref=e139]:
+        - paragraph [ref=e140]: © 2026 Metro TV & Appliances. All rights reserved.
+        - generic [ref=e141]:
+          - link "Warranty" [ref=e142] [cursor=pointer]:
+            - /url: /warranty
+          - link "Partners" [ref=e143] [cursor=pointer]:
+            - /url: /partners
+  - button "Open Next.js Dev Tools" [ref=e149] [cursor=pointer]:
+    - img [ref=e150]
+  - alert [ref=e153]

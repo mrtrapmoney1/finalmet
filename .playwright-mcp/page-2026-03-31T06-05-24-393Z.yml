@@ -1,0 +1,319 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Metro TV & Appliances" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Services" [ref=e7] [cursor=pointer]:
+            - /url: /services
+            - text: Services
+            - generic [ref=e8]: expand_more
+        - listitem [ref=e9]:
+          - link "Service Area" [ref=e10] [cursor=pointer]:
+            - /url: /service-area
+        - listitem [ref=e11]:
+          - link "Parts Store" [ref=e12] [cursor=pointer]:
+            - /url: /products
+        - listitem [ref=e13]:
+          - link "How It Works" [ref=e14] [cursor=pointer]:
+            - /url: /how-it-works
+        - listitem [ref=e15]:
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+      - button "Open cart" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: shopping_cart
+        - generic [ref=e22]: Cart
+  - main [ref=e23]:
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: Nebraska's Factory-Authorized Repair — Since 1947
+      - heading "Metro TV & Appliances" [level=1] [ref=e28]
+      - paragraph [ref=e29]: Factory-Authorized Repair in Lincoln, NE
+      - paragraph [ref=e30]: We find the real cause, give you an honest estimate, and fix it right the first time — using original manufacturer parts, not cheaper substitutes.
+      - generic [ref=e31]:
+        - link "Schedule Service" [ref=e32] [cursor=pointer]:
+          - /url: /contact
+        - link "Shop OEM Parts" [ref=e33] [cursor=pointer]:
+          - /url: /products
+        - link "How It Works" [ref=e34] [cursor=pointer]:
+          - /url: /how-it-works
+      - generic [ref=e35]:
+        - generic [ref=e38]: Samsung Authorized
+        - generic [ref=e41]: BBB Accredited
+        - generic [ref=e44]: 200+ Zip Codes
+        - generic [ref=e47]: OEM Parts Only
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - paragraph [ref=e52]: "1947"
+        - paragraph [ref=e53]: Founded in Lincoln, NE
+      - generic [ref=e54]:
+        - paragraph [ref=e55]: 200+
+        - paragraph [ref=e56]: Zip codes covered
+      - generic [ref=e57]:
+        - paragraph [ref=e58]: 13+
+        - paragraph [ref=e59]: Authorized brands
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: From $42.90
+        - paragraph [ref=e62]: Drop-off diagnostic
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - paragraph [ref=e66]: What We Fix
+        - heading "Authorized for the Brands You Rely On." [level=2] [ref=e67]:
+          - text: Authorized for the Brands
+          - text: You Rely On.
+        - paragraph [ref=e68]: Factory authorization means we have access to OEM parts, technical service manuals, and manufacturer training — not just generic tools.
+      - generic [ref=e69]:
+        - link "in-home Appliance Repair Factory-authorized in-home repair across 200+ zip codes. We diagnose to the root cause — fault codes, ECM reads, voltage at motor terminals — then fix it right the first time with OEM parts. Samsung LG GE Appliances Electrolux Maytag +8 more Learn more" [ref=e71] [cursor=pointer]:
+          - /url: /appliance
+          - generic [ref=e72]:
+            - generic [ref=e73]: home_repair_service
+            - generic [ref=e74]: in-home
+          - heading "Appliance Repair" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Factory-authorized in-home repair across 200+ zip codes.
+          - paragraph [ref=e77]: We diagnose to the root cause — fault codes, ECM reads, voltage at motor terminals — then fix it right the first time with OEM parts.
+          - generic [ref=e78]:
+            - generic [ref=e79]: Samsung
+            - generic [ref=e80]: LG
+            - generic [ref=e81]: GE Appliances
+            - generic [ref=e82]: Electrolux
+            - generic [ref=e83]: Maytag
+            - generic [ref=e84]: +8 more
+          - generic [ref=e85]:
+            - text: Learn more
+            - generic [ref=e86]: arrow_forward
+        - link "drop-off TV Repair PSU, T-Con, LED driver, A-board — drop off at our Lincoln shop. We repair to board level, not just swap panels. Get it back working correctly, not just quickly. Samsung LG Sony Vizio TCL Learn more" [ref=e88] [cursor=pointer]:
+          - /url: /tv
+          - generic [ref=e89]:
+            - generic [ref=e90]: tv
+            - generic [ref=e91]: drop-off
+          - heading "TV Repair" [level=3] [ref=e92]
+          - paragraph [ref=e93]: PSU, T-Con, LED driver, A-board — drop off at our Lincoln shop.
+          - paragraph [ref=e94]: We repair to board level, not just swap panels. Get it back working correctly, not just quickly.
+          - generic [ref=e95]:
+            - generic [ref=e96]: Samsung
+            - generic [ref=e97]: LG
+            - generic [ref=e98]: Sony
+            - generic [ref=e99]: Vizio
+            - generic [ref=e100]: TCL
+          - generic [ref=e101]:
+            - text: Learn more
+            - generic [ref=e102]: arrow_forward
+        - link "drop-off TV & Audio Repair Analog warmth meets digital precision since 1947. BJTs, RIAA phono preamps, ESR checks, VTA and azimuth alignment — we speak the language of your equipment. Yamaha Denon Marantz Pioneer Learn more" [ref=e104] [cursor=pointer]:
+          - /url: /audio
+          - generic [ref=e105]:
+            - generic [ref=e106]: speaker
+            - generic [ref=e107]: drop-off
+          - heading "TV & Audio Repair" [level=3] [ref=e108]
+          - paragraph [ref=e109]: Analog warmth meets digital precision since 1947.
+          - paragraph [ref=e110]: BJTs, RIAA phono preamps, ESR checks, VTA and azimuth alignment — we speak the language of your equipment.
+          - generic [ref=e111]:
+            - generic [ref=e112]: Yamaha
+            - generic [ref=e113]: Denon
+            - generic [ref=e114]: Marantz
+            - generic [ref=e115]: Pioneer
+          - generic [ref=e116]:
+            - text: Learn more
+            - generic [ref=e117]: arrow_forward
+        - link "drop-off Commercial Microwave Repair Four authorized brands. Drop off in Lincoln. HV circuit, mode stirrer motor, mica cover panel, membrane switch matrix — authorized for Amana, Sharp, Panasonic, and Menumaster. Amana Sharp Panasonic Menumaster Learn more" [ref=e119] [cursor=pointer]:
+          - /url: /commercial
+          - generic [ref=e120]:
+            - generic [ref=e121]: microwave
+            - generic [ref=e122]: drop-off
+          - heading "Commercial Microwave Repair" [level=3] [ref=e123]
+          - paragraph [ref=e124]: Four authorized brands. Drop off in Lincoln.
+          - paragraph [ref=e125]: HV circuit, mode stirrer motor, mica cover panel, membrane switch matrix — authorized for Amana, Sharp, Panasonic, and Menumaster.
+          - generic [ref=e126]:
+            - generic [ref=e127]: Amana
+            - generic [ref=e128]: Sharp
+            - generic [ref=e129]: Panasonic
+            - generic [ref=e130]: Menumaster
+          - generic [ref=e131]:
+            - text: Learn more
+            - generic [ref=e132]: arrow_forward
+    - generic [ref=e134]:
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - paragraph [ref=e137]: OEM Parts
+          - heading "Parts Store — Coming Soon" [level=2] [ref=e138]
+          - paragraph [ref=e139]: Order in-store at our Lincoln shop. Online ordering launching soon.
+        - link "Browse all parts" [ref=e140] [cursor=pointer]:
+          - /url: /products
+          - text: Browse all parts
+          - generic [ref=e141]: arrow_forward
+      - generic [ref=e142]:
+        - link "Online Soon Samsung DA97-15217Z Samsung OEM Ice Maker Assembly DA97-15217Z $145.99" [ref=e143] [cursor=pointer]:
+          - /url: /products/samsung-da97-15217z-ice-maker
+          - generic [ref=e144]:
+            - generic [ref=e145]: kitchen
+            - generic [ref=e147]: Online Soon
+            - generic [ref=e148]: Samsung
+          - generic [ref=e149]:
+            - paragraph [ref=e150]: DA97-15217Z
+            - paragraph [ref=e151]: Samsung OEM Ice Maker Assembly DA97-15217Z
+            - paragraph [ref=e152]: $145.99
+        - link "Online Soon LG EAP61687704 LG OEM Washing Machine Drain Pump EAP61687704 $68.50" [ref=e153] [cursor=pointer]:
+          - /url: /products/lg-eap61687704-drain-pump
+          - generic [ref=e154]:
+            - generic [ref=e155]: local_laundry_service
+            - generic [ref=e157]: Online Soon
+            - generic [ref=e158]: LG
+          - generic [ref=e159]:
+            - paragraph [ref=e160]: EAP61687704
+            - paragraph [ref=e161]: LG OEM Washing Machine Drain Pump EAP61687704
+            - paragraph [ref=e162]: $68.50
+        - link "Online Soon GE Appliances WB44x10016 GE OEM Bake Element WB44x10016 $35.00" [ref=e163] [cursor=pointer]:
+          - /url: /products/ge-wb44x10016-bake-element
+          - generic [ref=e164]:
+            - generic [ref=e165]: build_circle
+            - generic [ref=e167]: Online Soon
+            - generic [ref=e168]: GE Appliances
+          - generic [ref=e169]:
+            - paragraph [ref=e170]: WB44x10016
+            - paragraph [ref=e171]: GE OEM Bake Element WB44x10016
+            - paragraph [ref=e172]: $35.00
+        - link "Online Soon Whirlpool W10311524 Whirlpool EveryDrop Refrigerator Water Filter 4 (W10311524) $54.99" [ref=e173] [cursor=pointer]:
+          - /url: /products/whirlpool-w10311524-fridge-filter
+          - generic [ref=e174]:
+            - generic [ref=e175]: kitchen
+            - generic [ref=e177]: Online Soon
+            - generic [ref=e178]: Whirlpool
+          - generic [ref=e179]:
+            - paragraph [ref=e180]: W10311524
+            - paragraph [ref=e181]: Whirlpool EveryDrop Refrigerator Water Filter 4 (W10311524)
+            - paragraph [ref=e182]: $54.99
+        - link "Online Soon Electrolux 137221600 Electrolux OEM Washer Door Lock Assembly 137221600 $82.25" [ref=e183] [cursor=pointer]:
+          - /url: /products/electrolux-137221600-door-lock
+          - generic [ref=e184]:
+            - generic [ref=e185]: local_laundry_service
+            - generic [ref=e187]: Online Soon
+            - generic [ref=e188]: Electrolux
+          - generic [ref=e189]:
+            - paragraph [ref=e190]: "137221600"
+            - paragraph [ref=e191]: Electrolux OEM Washer Door Lock Assembly 137221600
+            - paragraph [ref=e192]: $82.25
+        - generic [ref=e193]:
+          - generic [ref=e194]: add_circle
+          - paragraph [ref=e195]: More parts added weekly
+          - link "View full catalog →" [ref=e196] [cursor=pointer]:
+            - /url: /products
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - paragraph [ref=e201]: Our Reputation
+        - heading "Precision Earns Trust." [level=2] [ref=e202]
+        - paragraph [ref=e203]: We've been serving Nebraska homes and businesses since 1947. Our BBB A+ accreditation and Google reviews reflect eight decades of doing the job right.
+        - generic [ref=e204]:
+          - link "Read Our Reviews" [ref=e205] [cursor=pointer]:
+            - /url: https://www.google.com/maps/place/Metro+TV+%26+Appliances/@40.8241167,-96.6362008,17z/data=!3m1!4b1!4m6!3m5!1s0x8796bc2475ec7a6b:0xe65e1da93aca1d0d!8m2!3d40.8241127!4d-96.6336259!16s%2Fg%2F1tfkwtnn
+            - generic [ref=e206]: reviews
+            - text: Read Our Reviews
+          - link "Leave a Review" [ref=e207] [cursor=pointer]:
+            - /url: https://www.google.com/maps/place/Metro+TV+%26+Appliances/@40.8241167,-96.6362008,17z/data=!3m1!4b1!4m6!3m5!1s0x8796bc2475ec7a6b:0xe65e1da93aca1d0d!8m2!3d40.8241127!4d-96.6336259!16s%2Fg%2F1tfkwtnn&hl=en#lrd=0x8796bc2475ec7a6b:0xe65e1da93aca1d0d,3
+      - generic [ref=e208]:
+        - link "BBB Accredited A+ Rating" [ref=e209] [cursor=pointer]:
+          - /url: https://www.bbb.org/us/ne/lincoln/profile/computer-repair/metro-tvaudio-tech-0714-207002332
+          - generic [ref=e210]:
+            - generic [ref=e211]: verified
+            - generic [ref=e212]:
+              - paragraph [ref=e213]: BBB Accredited
+              - paragraph [ref=e214]: A+ Rating
+        - link "Google Reviews Lincoln, NE" [ref=e215] [cursor=pointer]:
+          - /url: https://www.google.com/maps/place/Metro+TV+%26+Appliances/@40.8241167,-96.6362008,17z/data=!3m1!4b1!4m6!3m5!1s0x8796bc2475ec7a6b:0xe65e1da93aca1d0d!8m2!3d40.8241127!4d-96.6336259!16s%2Fg%2F1tfkwtnn
+          - generic [ref=e216]:
+            - generic [ref=e217]: star
+            - generic [ref=e218]:
+              - paragraph [ref=e219]: Google Reviews
+              - paragraph [ref=e220]: Lincoln, NE
+        - link "Factory Authorized 13+ Brands" [ref=e221] [cursor=pointer]:
+          - /url: /partners
+          - generic [ref=e222]:
+            - generic [ref=e223]: workspace_premium
+            - generic [ref=e224]:
+              - paragraph [ref=e225]: Factory Authorized
+              - paragraph [ref=e226]: 13+ Brands
+        - link "Serving Nebraska Since 1947" [ref=e227] [cursor=pointer]:
+          - /url: /service-area
+          - generic [ref=e228]:
+            - generic [ref=e229]: history
+            - generic [ref=e230]:
+              - paragraph [ref=e231]: Serving Nebraska
+              - paragraph [ref=e232]: Since 1947
+    - generic [ref=e234]:
+      - paragraph [ref=e235]: Coverage Check
+      - heading "Are You In Our Service Area?" [level=2] [ref=e236]
+      - paragraph [ref=e237]: Enter your ZIP code to check coverage and see your diagnostic fee.
+      - generic [ref=e239]:
+        - textbox "Enter your zip code to check coverage" [ref=e240]:
+          - /placeholder: Enter your zip code
+        - button "Check zip code coverage" [ref=e241] [cursor=pointer]: Check
+    - generic [ref=e243]:
+      - generic [ref=e244]:
+        - paragraph [ref=e245]: Ready to Book?
+        - heading "Don't Wait for a Small Problem to Grow." [level=2] [ref=e246]:
+          - text: Don't Wait for a
+          - text: Small Problem to Grow.
+        - paragraph [ref=e247]: A diagnostic tells you exactly what's wrong — starting at $42.90 for drop-off or $149.08 for in-home. The fee applies to your repair. No guesswork, no surprises.
+      - generic [ref=e248]:
+        - link "Schedule Service" [ref=e249] [cursor=pointer]:
+          - /url: /contact
+        - link "Call (402) 466-9090" [ref=e250] [cursor=pointer]:
+          - /url: tel:(402) 466-9090
+  - contentinfo [ref=e251]:
+    - generic [ref=e252]:
+      - generic [ref=e253]:
+        - generic [ref=e254]:
+          - paragraph [ref=e255]: Metro TV & Appliances
+          - paragraph [ref=e256]: Factory-authorized repair since 1947. Technical precision and heirloom-quality service for Nebraska homes.
+        - generic [ref=e257]:
+          - paragraph [ref=e258]: Services
+          - list [ref=e259]:
+            - listitem [ref=e260]:
+              - link "Appliance Repair" [ref=e261] [cursor=pointer]:
+                - /url: /appliance
+            - listitem [ref=e262]:
+              - link "TV Repair" [ref=e263] [cursor=pointer]:
+                - /url: /tv
+            - listitem [ref=e264]:
+              - link "TV & Audio Repair" [ref=e265] [cursor=pointer]:
+                - /url: /audio
+            - listitem [ref=e266]:
+              - link "Commercial Microwave Repair" [ref=e267] [cursor=pointer]:
+                - /url: /commercial
+        - generic [ref=e268]:
+          - paragraph [ref=e269]: Company
+          - list [ref=e270]:
+            - listitem [ref=e271]:
+              - link "Services" [ref=e272] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e273]:
+              - link "Service Area" [ref=e274] [cursor=pointer]:
+                - /url: /service-area
+            - listitem [ref=e275]:
+              - link "Parts Store" [ref=e276] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e277]:
+              - link "How It Works" [ref=e278] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e279]:
+              - link "FAQ" [ref=e280] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e281]:
+              - link "Contact" [ref=e282] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e283]:
+          - paragraph [ref=e284]: Contact
+          - link "(402) 466-9090" [ref=e285] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - paragraph [ref=e286]: 1107 North Cotner Blvd, Lincoln, NE 68505
+          - paragraph [ref=e287]: Monday–Friday 8:30 AM – 6:00 PM
+      - generic [ref=e288]:
+        - paragraph [ref=e289]: © 2026 Metro TV & Appliances. All rights reserved.
+        - generic [ref=e290]:
+          - link "Warranty" [ref=e291] [cursor=pointer]:
+            - /url: /warranty
+          - link "Partners" [ref=e292] [cursor=pointer]:
+            - /url: /partners
+  - button "Open Next.js Dev Tools" [ref=e298] [cursor=pointer]:
+    - img [ref=e299]

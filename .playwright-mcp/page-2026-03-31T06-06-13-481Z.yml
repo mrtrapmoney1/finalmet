@@ -1,0 +1,184 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Metro TV & Appliances" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Services" [ref=e7] [cursor=pointer]:
+            - /url: /services
+            - text: Services
+            - generic [ref=e8]: expand_more
+        - listitem [ref=e9]:
+          - link "Service Area" [ref=e10] [cursor=pointer]:
+            - /url: /service-area
+        - listitem [ref=e11]:
+          - link "Parts Store" [ref=e12] [cursor=pointer]:
+            - /url: /products
+        - listitem [ref=e13]:
+          - link "How It Works" [ref=e14] [cursor=pointer]:
+            - /url: /how-it-works
+        - listitem [ref=e15]:
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+      - button "Open cart" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: shopping_cart
+        - generic [ref=e22]: Cart
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - paragraph [ref=e27]: In-Stock · Genuine OEM
+        - heading "Appliance Parts Catalog" [level=1] [ref=e28]
+        - paragraph [ref=e29]: We stock genuine, factory-authorized OEM parts for a variety of major appliance brands. Whether you're doing a DIY repair or requesting our service, we have what you need right here in our local warehouse.
+        - paragraph [ref=e30]: Genuine OEM parts — stocked locally in Lincoln, NE.
+        - generic [ref=e31]:
+          - link "Schedule a Repair" [ref=e32] [cursor=pointer]:
+            - /url: /schedule
+          - link "Our Services" [ref=e33] [cursor=pointer]:
+            - /url: /services
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - paragraph [ref=e36]: "Filter by:"
+          - link "Filter by All" [ref=e37] [cursor=pointer]:
+            - /url: /products
+            - text: All
+          - link "Filter by Samsung" [ref=e38] [cursor=pointer]:
+            - /url: /products?brand=Samsung
+            - text: Samsung
+          - link "Filter by LG" [ref=e39] [cursor=pointer]:
+            - /url: /products?brand=LG
+            - text: LG
+          - link "Filter by GE Appliances" [ref=e40] [cursor=pointer]:
+            - /url: /products?brand=GE%20Appliances
+            - text: GE Appliances
+          - link "Filter by Whirlpool" [ref=e41] [cursor=pointer]:
+            - /url: /products?brand=Whirlpool
+            - text: Whirlpool
+          - link "Filter by Electrolux" [ref=e42] [cursor=pointer]:
+            - /url: /products?brand=Electrolux
+            - text: Electrolux
+        - generic [ref=e43]:
+          - link "In Stock Samsung · DA97-15217Z Samsung OEM Ice Maker Assembly DA97-15217Z $145.99" [ref=e44] [cursor=pointer]:
+            - /url: /products/samsung-da97-15217z-ice-maker
+            - generic [ref=e45]:
+              - generic [ref=e46]: kitchen
+              - generic [ref=e47]: In Stock
+            - generic [ref=e48]:
+              - generic [ref=e49]: Samsung · DA97-15217Z
+              - heading "Samsung OEM Ice Maker Assembly DA97-15217Z" [level=2] [ref=e50]
+              - generic [ref=e51]:
+                - generic [ref=e52]: $145.99
+                - generic [ref=e53]: arrow_forward
+          - link "In Stock LG · EAP61687704 LG OEM Washing Machine Drain Pump EAP61687704 $68.50" [ref=e54] [cursor=pointer]:
+            - /url: /products/lg-eap61687704-drain-pump
+            - generic [ref=e55]:
+              - generic [ref=e56]: local_laundry_service
+              - generic [ref=e57]: In Stock
+            - generic [ref=e58]:
+              - generic [ref=e59]: LG · EAP61687704
+              - heading "LG OEM Washing Machine Drain Pump EAP61687704" [level=2] [ref=e60]
+              - generic [ref=e61]:
+                - generic [ref=e62]: $68.50
+                - generic [ref=e63]: arrow_forward
+          - link "In Stock GE Appliances · WB44x10016 GE OEM Bake Element WB44x10016 $35.00" [ref=e64] [cursor=pointer]:
+            - /url: /products/ge-wb44x10016-bake-element
+            - generic [ref=e65]:
+              - generic [ref=e66]: outdoor_grill
+              - generic [ref=e67]: In Stock
+            - generic [ref=e68]:
+              - generic [ref=e69]: GE Appliances · WB44x10016
+              - heading "GE OEM Bake Element WB44x10016" [level=2] [ref=e70]
+              - generic [ref=e71]:
+                - generic [ref=e72]: $35.00
+                - generic [ref=e73]: arrow_forward
+          - link "In Stock Whirlpool · W10311524 Whirlpool EveryDrop Refrigerator Water Filter 4 (W10311524) $54.99" [ref=e74] [cursor=pointer]:
+            - /url: /products/whirlpool-w10311524-fridge-filter
+            - generic [ref=e75]:
+              - generic [ref=e76]: kitchen
+              - generic [ref=e77]: In Stock
+            - generic [ref=e78]:
+              - generic [ref=e79]: Whirlpool · W10311524
+              - heading "Whirlpool EveryDrop Refrigerator Water Filter 4 (W10311524)" [level=2] [ref=e80]
+              - generic [ref=e81]:
+                - generic [ref=e82]: $54.99
+                - generic [ref=e83]: arrow_forward
+          - link "In Stock Electrolux · 137221600 Electrolux OEM Washer Door Lock Assembly 137221600 $82.25" [ref=e84] [cursor=pointer]:
+            - /url: /products/electrolux-137221600-door-lock
+            - generic [ref=e85]:
+              - generic [ref=e86]: local_laundry_service
+              - generic [ref=e87]: In Stock
+            - generic [ref=e88]:
+              - generic [ref=e89]: Electrolux · 137221600
+              - heading "Electrolux OEM Washer Door Lock Assembly 137221600" [level=2] [ref=e90]
+              - generic [ref=e91]:
+                - generic [ref=e92]: $82.25
+                - generic [ref=e93]: arrow_forward
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: Need a part installed?
+          - paragraph [ref=e98]: Our technicians use OEM parts. Schedule in-home service or drop off at our Lincoln shop.
+        - generic [ref=e99]:
+          - link "Schedule Service" [ref=e100] [cursor=pointer]:
+            - /url: /contact
+          - link "View All Services" [ref=e101] [cursor=pointer]:
+            - /url: /services
+  - contentinfo [ref=e102]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - paragraph [ref=e106]: Metro TV & Appliances
+          - paragraph [ref=e107]: Factory-authorized repair since 1947. Technical precision and heirloom-quality service for Nebraska homes.
+        - generic [ref=e108]:
+          - paragraph [ref=e109]: Services
+          - list [ref=e110]:
+            - listitem [ref=e111]:
+              - link "Appliance Repair" [ref=e112] [cursor=pointer]:
+                - /url: /appliance
+            - listitem [ref=e113]:
+              - link "TV Repair" [ref=e114] [cursor=pointer]:
+                - /url: /tv
+            - listitem [ref=e115]:
+              - link "TV & Audio Repair" [ref=e116] [cursor=pointer]:
+                - /url: /audio
+            - listitem [ref=e117]:
+              - link "Commercial Microwave Repair" [ref=e118] [cursor=pointer]:
+                - /url: /commercial
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: Company
+          - list [ref=e121]:
+            - listitem [ref=e122]:
+              - link "Services" [ref=e123] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e124]:
+              - link "Service Area" [ref=e125] [cursor=pointer]:
+                - /url: /service-area
+            - listitem [ref=e126]:
+              - link "Parts Store" [ref=e127] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e128]:
+              - link "How It Works" [ref=e129] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e130]:
+              - link "FAQ" [ref=e131] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e132]:
+              - link "Contact" [ref=e133] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: Contact
+          - link "(402) 466-9090" [ref=e136] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - paragraph [ref=e137]: 1107 North Cotner Blvd, Lincoln, NE 68505
+          - paragraph [ref=e138]: Monday–Friday 8:30 AM – 6:00 PM
+      - generic [ref=e139]:
+        - paragraph [ref=e140]: © 2026 Metro TV & Appliances. All rights reserved.
+        - generic [ref=e141]:
+          - link "Warranty" [ref=e142] [cursor=pointer]:
+            - /url: /warranty
+          - link "Partners" [ref=e143] [cursor=pointer]:
+            - /url: /partners
+  - button "Open Next.js Dev Tools" [ref=e149] [cursor=pointer]:
+    - img [ref=e150]

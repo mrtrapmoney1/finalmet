@@ -6,6 +6,25 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { STORE_COPY } from "@/lib/content";
 
+const BRAND_BG: Record<string, string> = {
+  Samsung: "bg-blue-50",
+  LG: "bg-red-50",
+  "GE Appliances": "bg-slate-100",
+  Whirlpool: "bg-indigo-50",
+  Electrolux: "bg-cyan-50",
+};
+
+function getPartIcon(category: string): string {
+  const cat = category.toLowerCase();
+  if (cat.includes("refrigerator") || cat.includes("freezer")) return "kitchen";
+  if (cat.includes("washer") || cat.includes("dryer")) return "local_laundry_service";
+  if (cat.includes("range") || cat.includes("oven") || cat.includes("bake")) return "outdoor_grill";
+  if (cat.includes("dishwasher")) return "dishwasher";
+  if (cat.includes("microwave")) return "microwave";
+  if (cat.includes("filter") || cat.includes("water")) return "water_drop";
+  return "build_circle";
+}
+
 export async function generateStaticParams() {
   return OEM_PARTS.map((part) => ({
     slug: part.slug,
@@ -74,16 +93,18 @@ export default async function ProductDetailPage({
         
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
           
-          {/* Image Placeholder Skeleton */}
-          <div className="bg-surface-container-highest border border-outline-variant/20 rounded-3xl aspect-[4/3] md:aspect-square flex flex-col items-center justify-center p-10 relative overflow-hidden group animate-pulse">
-            <span className="material-symbols-outlined text-9xl text-primary/20" aria-hidden="true">
-              image
+          {/* Part image — category icon with brand-tinted background */}
+          <div className={`${BRAND_BG[part.brand] ?? "bg-surface-container-low"} border border-outline-variant/20 rounded-3xl aspect-[4/3] md:aspect-square flex flex-col items-center justify-center p-10 relative overflow-hidden`}>
+            <span className="material-symbols-outlined text-[120px] text-primary/20" aria-hidden="true">
+              {getPartIcon(part.category)}
             </span>
+            <p className="text-xs font-mono text-on-surface-variant/50 mt-4">{part.mpn}</p>
             {part.availability === "in_stock" && (
               <span className="absolute top-6 left-6 bg-secondary text-white text-[12px] font-bold px-3 py-1.5 flex items-center rounded-full uppercase tracking-wider">
                 In Stock
               </span>
             )}
+            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/5 to-transparent h-16" />
           </div>
 
           {/* Details */}

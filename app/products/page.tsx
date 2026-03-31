@@ -5,7 +5,6 @@ import { STORE_COPY } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { PageCTA } from "@/components/ui/PageCTA";
 import Link from "next/link";
-import Image from "next/image";
 import { Suspense } from "react";
 
 export const metadata = buildMetadata({
@@ -15,11 +14,41 @@ export const metadata = buildMetadata({
   keywords: ["appliance parts", "OEM parts", "Samsung appliance parts", "LG appliance parts"],
 });
 
-export default function ProductsPage() {
+const BRAND_BG: Record<string, string> = {
+  Samsung: "bg-blue-50",
+  LG: "bg-red-50",
+  "GE Appliances": "bg-slate-100",
+  Whirlpool: "bg-indigo-50",
+  Electrolux: "bg-cyan-50",
+};
+
+function getPartIcon(part: { category: string; brand: string }): string {
+  const cat = part.category.toLowerCase();
+  if (cat.includes("refrigerator") || cat.includes("freezer")) return "kitchen";
+  if (cat.includes("washer") || cat.includes("dryer")) return "local_laundry_service";
+  if (cat.includes("range") || cat.includes("oven") || cat.includes("bake")) return "outdoor_grill";
+  if (cat.includes("dishwasher")) return "dishwasher";
+  if (cat.includes("microwave")) return "microwave";
+  if (cat.includes("filter") || cat.includes("water")) return "water_drop";
+  return "build_circle";
+}
+
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ brand?: string }>;
+}) {
+  const params = await searchParams;
+  const activeBrand = params?.brand ?? "All";
+
+  const filteredParts = activeBrand === "All" || !activeBrand
+    ? OEM_PARTS
+    : OEM_PARTS.filter(p => p.brand === activeBrand);
+
   return (
     <div className="bg-surface min-h-screen">
       {/* Hero section */}
-      <div className="hero-gradient py-20">
+      <div className="hero-gradient py-12">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-xs font-semibold tracking-widest text-primary-fixed/80 uppercase mb-4">
             In-Stock · Genuine OEM
@@ -46,14 +75,18 @@ export default function ProductsPage() {
 
       {/* Catalog Grid */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Filter toolbar — state management wired in future task */}
+        {/* Filter toolbar */}
         <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-outline-variant/20">
           <p className="text-sm font-semibold text-on-surface-variant self-center mr-2">Filter by:</p>
           {["All", "Samsung", "LG", "GE Appliances", "Whirlpool", "Electrolux"].map((brand) => (
             <Link
               key={brand}
               href={brand === "All" ? "/products" : `/products?brand=${encodeURIComponent(brand)}`}
-              className="px-4 py-1.5 rounded-full text-xs font-semibold border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:border-primary/30 transition-all text-center"
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all text-center ${
+                (activeBrand === brand || (brand === "All" && (!activeBrand || activeBrand === "All")))
+                  ? "bg-primary text-white border-primary"
+                  : "border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:border-primary/30"
+              }`}
               aria-label={`Filter by ${brand}`}
             >
               {brand}
@@ -62,17 +95,16 @@ export default function ProductsPage() {
         </div>
         <Suspense fallback={<div className="animate-pulse h-96 bg-surface-container-low rounded-xl w-full border border-outline-variant/20 shadow-ambient flex items-center justify-center text-on-surface-variant font-medium">Loading catalog...</div>}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {OEM_PARTS.map((part, idx) => (
-              <Link 
-                href={`/products/${part.slug}`} 
-                key={part.id} 
+            {filteredParts.map((part, idx) => (
+              <Link
+                href={`/products/${part.slug}`}
+                key={part.id}
                 className="bg-surface-container-low rounded-xl overflow-hidden shadow-ambient hover:shadow-ambient-lg active:scale-[0.98] transition-all flex flex-col group border border-outline-variant/20 animate-in fade-in duration-500 slide-in-from-bottom-4"
                 style={{ animationFillMode: "both", animationDelay: `${idx * 50}ms` }}
               >
-                <div className="aspect-square bg-surface-container glass flex items-center justify-center p-6 relative">
-                  {/* Placeholder graphic for now */}
-                  <span className="material-symbols-outlined text-6xl text-primary/30 group-hover:scale-110 transition-transform" aria-hidden="true">
-                    build
+                <div className={`aspect-square ${BRAND_BG[part.brand] ?? "bg-surface-container"} flex items-center justify-center p-6 relative`}>
+                  <span className="material-symbols-outlined text-6xl text-primary/40 group-hover:scale-110 transition-transform" aria-hidden="true">
+                    {getPartIcon(part)}
                   </span>
                   {part.availability === "in_stock" && (
                     <span className="absolute top-4 right-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 flex items-center rounded-full uppercase tracking-wider">

@@ -3,16 +3,16 @@ import { BUSINESS } from "@/lib/constants";
 
 export function CTA() {
   return (
-    <section className="py-24 hero-gradient relative overflow-hidden">
+    <section className="py-12 hero-gradient relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="text-xs font-semibold tracking-widest text-primary-fixed/70 uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-primary-fixed/80 uppercase mb-4">
             Ready to Book?
           </p>
           <h2 className="text-4xl md:text-5xl font-bold font-headline text-white leading-tight mb-4 text-balance">
             Don&apos;t Wait for a<br />Small Problem to Grow.
           </h2>
-          <p className="text-white/70 leading-relaxed max-w-md">
+          <p className="text-white/80 leading-relaxed max-w-md">
             A diagnostic tells you exactly what&apos;s wrong — starting at{" "}
             {BUSINESS.diagnosticDropOff} for drop-off or {BUSINESS.diagnosticLincolnOmaha}{" "}
             for in-home. The fee applies to your repair. No guesswork, no surprises.

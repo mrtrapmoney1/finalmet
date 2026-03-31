@@ -1,0 +1,153 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Metro TV & Appliances" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Services" [ref=e7] [cursor=pointer]:
+            - /url: /services
+            - text: Services
+            - generic [ref=e8]: expand_more
+        - listitem [ref=e9]:
+          - link "Service Area" [ref=e10] [cursor=pointer]:
+            - /url: /service-area
+        - listitem [ref=e11]:
+          - link "Parts Store" [ref=e12] [cursor=pointer]:
+            - /url: /products
+        - listitem [ref=e13]:
+          - link "How It Works" [ref=e14] [cursor=pointer]:
+            - /url: /how-it-works
+        - listitem [ref=e15]:
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+      - button "Open cart" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: shopping_cart
+        - generic [ref=e22]: Cart
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: Customer Protection
+        - heading "Return & Refund Policy" [level=1] [ref=e27]
+        - paragraph [ref=e28]: We stand behind every OEM part we sell. If something isn't right, we make it right — quickly and without hassle.
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: check_circle
+            - text: 7-day return window
+          - generic [ref=e32]:
+            - generic [ref=e33]: check_circle
+            - text: Defective exchange at no charge
+          - generic [ref=e34]:
+            - generic [ref=e35]: check_circle
+            - text: Buyer pays return shipping
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - generic [ref=e39]:
+              - generic [ref=e40]: calendar_today
+              - heading "7-Day Return Window" [level=2] [ref=e41]
+            - paragraph [ref=e42]: Parts may be returned within 7 days of purchase for a full refund or exchange. Items must be unused, in original packaging, and accompanied by proof of purchase.
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: swap_horiz
+              - heading "Defective Products — Exchange at No Charge" [level=2] [ref=e46]
+            - paragraph [ref=e47]: If a part is defective or does not match the listed specification, we will exchange it at no additional cost. Contact us within 7 days of receipt to initiate a defective product exchange.
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: local_shipping
+              - heading "Buyer Pays Return Shipping" [level=2] [ref=e51]
+            - paragraph [ref=e52]: Return shipping costs are the responsibility of the buyer unless the return is due to our error (wrong part shipped) or a confirmed defective product. We recommend using a trackable shipping method.
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: store
+              - heading "In-Store Returns (Preferred)" [level=2] [ref=e56]
+            - paragraph [ref=e57]: Bring the item to our Lincoln shop at 1107 North Cotner Blvd, Lincoln, NE 68505 during business hours (Monday–Friday 8:30 AM – 6:00 PM). In-store returns are processed immediately.
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: credit_card
+              - heading "Refund Method" [level=2] [ref=e61]
+            - paragraph [ref=e62]: Refunds are issued to the original payment method within 3–5 business days of receiving the returned item in acceptable condition.
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - generic [ref=e65]: block
+              - heading "Non-Returnable Items" [level=2] [ref=e66]
+            - paragraph [ref=e67]: Electrical parts that have been installed and tested, items with physical damage caused by the buyer, and parts returned beyond the 7-day window are not eligible for return or refund.
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - paragraph [ref=e70]: Need to start a return?
+            - paragraph [ref=e71]: Call or visit us — we resolve most returns same day in-store.
+          - generic [ref=e72]:
+            - link "(402) 466-9090" [ref=e73] [cursor=pointer]:
+              - /url: tel:(402) 466-9090
+              - generic [ref=e74]: phone
+              - text: (402) 466-9090
+            - link "Get Directions" [ref=e75] [cursor=pointer]:
+              - /url: https://maps.google.com/?q=1107%20North%20Cotner%20Blvd%2C%20Lincoln%2C%20NE%2068505
+              - generic [ref=e76]: directions
+              - text: Get Directions
+        - paragraph [ref=e77]:
+          - text: This policy applies to OEM parts purchased directly from Metro TV & Appliances at 1107 North Cotner Blvd, Lincoln, NE 68505. For service warranties (labor and parts used in repairs), see our
+          - link "Warranty page" [ref=e78] [cursor=pointer]:
+            - /url: /warranty
+          - text: . Policy effective 2026. Subject to change — contact us for the most current terms.
+  - contentinfo [ref=e79]:
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: Metro TV & Appliances
+          - paragraph [ref=e84]: Factory-authorized repair since 1947. Technical precision and heirloom-quality service for Nebraska homes.
+        - generic [ref=e85]:
+          - paragraph [ref=e86]: Services
+          - list [ref=e87]:
+            - listitem [ref=e88]:
+              - link "Appliance Repair" [ref=e89] [cursor=pointer]:
+                - /url: /appliance
+            - listitem [ref=e90]:
+              - link "TV Repair" [ref=e91] [cursor=pointer]:
+                - /url: /tv
+            - listitem [ref=e92]:
+              - link "TV & Audio Repair" [ref=e93] [cursor=pointer]:
+                - /url: /audio
+            - listitem [ref=e94]:
+              - link "Commercial Microwave Repair" [ref=e95] [cursor=pointer]:
+                - /url: /commercial
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: Company
+          - list [ref=e98]:
+            - listitem [ref=e99]:
+              - link "Services" [ref=e100] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e101]:
+              - link "Service Area" [ref=e102] [cursor=pointer]:
+                - /url: /service-area
+            - listitem [ref=e103]:
+              - link "Parts Store" [ref=e104] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e105]:
+              - link "How It Works" [ref=e106] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e107]:
+              - link "FAQ" [ref=e108] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e109]:
+              - link "Contact" [ref=e110] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e111]:
+          - paragraph [ref=e112]: Contact
+          - link "(402) 466-9090" [ref=e113] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - paragraph [ref=e114]: 1107 North Cotner Blvd, Lincoln, NE 68505
+          - paragraph [ref=e115]: Monday–Friday 8:30 AM – 6:00 PM
+      - generic [ref=e116]:
+        - paragraph [ref=e117]: © 2026 Metro TV & Appliances. All rights reserved.
+        - generic [ref=e118]:
+          - link "Warranty" [ref=e119] [cursor=pointer]:
+            - /url: /warranty
+          - link "Partners" [ref=e120] [cursor=pointer]:
+            - /url: /partners
+  - button "Open Next.js Dev Tools" [ref=e126] [cursor=pointer]:
+    - img [ref=e127]
+  - alert [ref=e130]

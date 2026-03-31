@@ -4,29 +4,44 @@ import { HERO_COPY } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section className="hero-gradient relative overflow-hidden min-h-[90vh] flex items-center">
+    <section className="hero-gradient relative overflow-hidden min-h-[80vh] flex items-center">
       <div className="diagnostic-overlay absolute inset-0 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 py-24 relative z-10 grid md:grid-cols-[1fr_auto] gap-16 items-center w-full">
+      <div className="max-w-7xl mx-auto px-6 py-14 relative z-10 grid md:grid-cols-[1fr_auto] gap-16 items-center w-full">
         {/* Left — editorial text block */}
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-widest text-primary-fixed/80 uppercase mb-6">
+          <p
+            className="text-xs font-semibold tracking-widest text-primary-fixed/80 uppercase mb-6 fade-up"
+            style={{ animationDelay: "0ms" }}
+          >
             Nebraska's Factory-Authorized Repair — Since {BUSINESS.founded}
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold font-headline text-white leading-[1.05] mb-4 text-balance">
+          <h1
+            className="text-5xl md:text-7xl font-bold font-headline text-white leading-[1.05] mb-4 text-balance fade-up"
+            style={{ animationDelay: "100ms" }}
+          >
             Metro TV &amp; Appliances
           </h1>
 
-          <p className="text-2xl md:text-3xl font-semibold font-headline text-primary-fixed mb-6">
+          <p
+            className="text-2xl md:text-3xl font-semibold font-headline text-primary-fixed mb-6 fade-up"
+            style={{ animationDelay: "200ms" }}
+          >
             Factory-Authorized Repair in Lincoln, NE
           </p>
 
-          <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-xl">
+          <p
+            className="text-lg text-white/80 leading-relaxed mb-10 max-w-xl fade-up"
+            style={{ animationDelay: "200ms" }}
+          >
             {HERO_COPY.body}
           </p>
 
-          <div className="flex flex-wrap gap-4 mt-8">
+          <div
+            className="flex flex-wrap gap-4 mt-8 fade-up"
+            style={{ animationDelay: "300ms" }}
+          >
             <Button href="/contact" variant="primary">
               Schedule Service
             </Button>
@@ -51,7 +66,7 @@ export function Hero() {
 
         {/* Right — diagnostic stat card */}
         <div className="hidden lg:block w-80">
-          <div className="glass-dark rounded-2xl p-8 border border-white/10">
+          <div className="glass-dark rounded-2xl p-6 border border-white/10">
             <p className="text-xs text-white/50 font-label uppercase tracking-widest mb-6">
               Diagnostic Fee — Applied to Repair
             </p>
@@ -74,7 +89,7 @@ export function Hero() {
             </p>
             <div className="mt-8 space-y-3">
               {[
-                ["Mon – Fri", "8:30 AM – 6:00 PM"],
+                ["Hours", BUSINESS.hours],
                 ["Phone", BUSINESS.phone],
               ].map(([label, value]) => (
                 <div key={label} className="flex justify-between text-sm">

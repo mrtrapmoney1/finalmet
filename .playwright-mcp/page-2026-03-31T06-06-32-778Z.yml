@@ -1,0 +1,162 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Metro TV & Appliances" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Services" [ref=e7] [cursor=pointer]:
+            - /url: /services
+            - text: Services
+            - generic [ref=e8]: expand_more
+        - listitem [ref=e9]:
+          - link "Service Area" [ref=e10] [cursor=pointer]:
+            - /url: /service-area
+        - listitem [ref=e11]:
+          - link "Parts Store" [ref=e12] [cursor=pointer]:
+            - /url: /products
+        - listitem [ref=e13]:
+          - link "How It Works" [ref=e14] [cursor=pointer]:
+            - /url: /how-it-works
+        - listitem [ref=e15]:
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+      - button "Open cart" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: shopping_cart
+        - generic [ref=e22]: Cart
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: Common Questions
+        - heading "Frequently Asked Questions — Metro TV & Appliances" [level=1] [ref=e27]
+        - paragraph [ref=e28]: Everything you need to know before bringing in or scheduling your repair.
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]: price_check
+            - paragraph [ref=e33]: Drop-off diagnostic fee?
+            - paragraph [ref=e34]: $42.90
+          - generic [ref=e35]:
+            - generic [ref=e36]: calendar_today
+            - paragraph [ref=e37]: Need an appointment?
+            - paragraph [ref=e38]: No — walk in anytime M–F
+          - generic [ref=e39]:
+            - generic [ref=e40]: verified
+            - paragraph [ref=e41]: OEM parts only?
+            - paragraph [ref=e42]: Yes — factory-authorized only
+        - generic [ref=e43]:
+          - paragraph [ref=e44]: Getting Started
+          - generic [ref=e45]:
+            - button "Do I need an appointment for drop-off service?" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]: Do I need an appointment for drop-off service?
+              - generic [ref=e49]: expand_more
+            - button "How do I schedule in-home appliance repair?" [ref=e51] [cursor=pointer]:
+              - generic [ref=e52]: How do I schedule in-home appliance repair?
+              - generic [ref=e53]: expand_more
+            - button "What brands do you service?" [ref=e55] [cursor=pointer]:
+              - generic [ref=e56]: What brands do you service?
+              - generic [ref=e57]: expand_more
+        - generic [ref=e58]:
+          - paragraph [ref=e59]: Pricing & Diagnosis
+          - generic [ref=e60]:
+            - button "What is the diagnostic fee?" [ref=e62] [cursor=pointer]:
+              - generic [ref=e63]: What is the diagnostic fee?
+              - generic [ref=e64]: expand_more
+            - button "Will I receive a quote before any work is done?" [ref=e66] [cursor=pointer]:
+              - generic [ref=e67]: Will I receive a quote before any work is done?
+              - generic [ref=e68]: expand_more
+            - button "Do you use OEM (original manufacturer) parts?" [ref=e70] [cursor=pointer]:
+              - generic [ref=e71]: Do you use OEM (original manufacturer) parts?
+              - generic [ref=e72]: expand_more
+        - generic [ref=e73]:
+          - paragraph [ref=e74]: Warranty & Coverage
+          - generic [ref=e75]:
+            - button "Is there a warranty on repairs?" [ref=e77] [cursor=pointer]:
+              - generic [ref=e78]: Is there a warranty on repairs?
+              - generic [ref=e79]: expand_more
+            - button "Are you authorized for manufacturer warranty repairs?" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]: Are you authorized for manufacturer warranty repairs?
+              - generic [ref=e83]: expand_more
+            - button "What if my appliance can't be repaired economically?" [ref=e85] [cursor=pointer]:
+              - generic [ref=e86]: What if my appliance can't be repaired economically?
+              - generic [ref=e87]: expand_more
+        - generic [ref=e88]:
+          - paragraph [ref=e89]: Service Area
+          - generic [ref=e90]:
+            - button "What areas do you cover for in-home appliance repair?" [ref=e92] [cursor=pointer]:
+              - generic [ref=e93]: What areas do you cover for in-home appliance repair?
+              - generic [ref=e94]: expand_more
+            - button "Do you offer in-home service for TVs and audio equipment?" [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]: Do you offer in-home service for TVs and audio equipment?
+              - generic [ref=e98]: expand_more
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: Still have a question?
+          - paragraph [ref=e101]: We're happy to answer before you commit to anything.
+          - generic [ref=e102]:
+            - link "Send a Message" [ref=e103] [cursor=pointer]:
+              - /url: /contact
+            - link "(402) 466-9090" [ref=e104] [cursor=pointer]:
+              - /url: tel:(402) 466-9090
+              - generic [ref=e105]: phone
+              - text: (402) 466-9090
+  - contentinfo [ref=e106]:
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - paragraph [ref=e110]: Metro TV & Appliances
+          - paragraph [ref=e111]: Factory-authorized repair since 1947. Technical precision and heirloom-quality service for Nebraska homes.
+        - generic [ref=e112]:
+          - paragraph [ref=e113]: Services
+          - list [ref=e114]:
+            - listitem [ref=e115]:
+              - link "Appliance Repair" [ref=e116] [cursor=pointer]:
+                - /url: /appliance
+            - listitem [ref=e117]:
+              - link "TV Repair" [ref=e118] [cursor=pointer]:
+                - /url: /tv
+            - listitem [ref=e119]:
+              - link "TV & Audio Repair" [ref=e120] [cursor=pointer]:
+                - /url: /audio
+            - listitem [ref=e121]:
+              - link "Commercial Microwave Repair" [ref=e122] [cursor=pointer]:
+                - /url: /commercial
+        - generic [ref=e123]:
+          - paragraph [ref=e124]: Company
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Services" [ref=e127] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e128]:
+              - link "Service Area" [ref=e129] [cursor=pointer]:
+                - /url: /service-area
+            - listitem [ref=e130]:
+              - link "Parts Store" [ref=e131] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e132]:
+              - link "How It Works" [ref=e133] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e134]:
+              - link "FAQ" [ref=e135] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e136]:
+              - link "Contact" [ref=e137] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e138]:
+          - paragraph [ref=e139]: Contact
+          - link "(402) 466-9090" [ref=e140] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - paragraph [ref=e141]: 1107 North Cotner Blvd, Lincoln, NE 68505
+          - paragraph [ref=e142]: Monday–Friday 8:30 AM – 6:00 PM
+      - generic [ref=e143]:
+        - paragraph [ref=e144]: © 2026 Metro TV & Appliances. All rights reserved.
+        - generic [ref=e145]:
+          - link "Warranty" [ref=e146] [cursor=pointer]:
+            - /url: /warranty
+          - link "Partners" [ref=e147] [cursor=pointer]:
+            - /url: /partners
+  - button "Open Next.js Dev Tools" [ref=e153] [cursor=pointer]:
+    - img [ref=e154]
+  - alert [ref=e157]

@@ -72,7 +72,7 @@ export default function WhatToExpectPage() {
       />
 
       {/* Page header */}
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+      <div className="max-w-7xl mx-auto px-6 pt-10 pb-6">
         <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
           Metro TV &amp; Appliances
         </p>
@@ -91,7 +91,7 @@ export default function WhatToExpectPage() {
           {/* Vertical connector line */}
           <div className="absolute left-[2.25rem] top-0 bottom-0 w-px bg-outline-variant/30 hidden md:block" />
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {STEPS.map((step, i) => (
               <div key={step.number} className="flex gap-6 md:gap-8 items-start">
                 {/* Step indicator */}
@@ -121,7 +121,7 @@ export default function WhatToExpectPage() {
         </div>
 
         {/* Trust callouts */}
-        <div className="mt-16 grid sm:grid-cols-3 gap-6">
+        <div className="mt-10 grid sm:grid-cols-3 gap-5">
           {[
             { icon: "gpp_good", label: "OEM Parts Only", sub: "No aftermarket substitutes." },
             { icon: "receipt", label: "Approve Before We Start", sub: "Written estimate every time." },

@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-interface ScrollRevealProps {
+interface Props {
   children: React.ReactNode;
   className?: string;
-  delay?: number; // ms
+  direction?: "up" | "left";
+  delay?: number;
 }
 
-export function ScrollReveal({ children, className = "", delay = 0 }: ScrollRevealProps) {
+export function ScrollReveal({ children, className = "", direction = "up", delay = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -18,22 +18,22 @@ export function ScrollReveal({ children, className = "", delay = 0 }: ScrollReve
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
-          observer.unobserve(el);
+          el.classList.add("revealed");
+          observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, []);
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-      } ${className}`}
+      data-reveal={direction === "left" ? "left" : ""}
+      className={className}
+      style={{ transitionDelay: delay ? `${delay}ms` : undefined }}
     >
       {children}
     </div>

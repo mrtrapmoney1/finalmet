@@ -1,0 +1,488 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Metro TV & Appliances" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Services" [ref=e7] [cursor=pointer]:
+            - /url: /services
+            - text: Services
+            - generic [ref=e8]: expand_more
+        - listitem [ref=e9]:
+          - link "Service Area" [ref=e10] [cursor=pointer]:
+            - /url: /service-area
+        - listitem [ref=e11]:
+          - link "Parts Store" [ref=e12] [cursor=pointer]:
+            - /url: /products
+        - listitem [ref=e13]:
+          - link "How It Works" [ref=e14] [cursor=pointer]:
+            - /url: /how-it-works
+        - listitem [ref=e15]:
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+      - button "Open cart" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]: shopping_cart
+        - generic [ref=e22]: Cart
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: Appliance Repair Coverage
+        - heading "Appliance Repair Service Area — Lincoln, Omaha & Surrounding Nebraska" [level=1] [ref=e27]
+        - paragraph [ref=e28]:
+          - text: Factory-authorized in-home appliance repair across
+          - strong [ref=e29]: 221 zip codes
+          - text: in Nebraska and Iowa — Lincoln, Omaha, Council Bluffs, Grand Island, and every community in between.
+        - generic [ref=e30]:
+          - link "Schedule In-Home Service" [ref=e31] [cursor=pointer]:
+            - /url: /contact
+          - link "Call (402) 466-9090" [ref=e32] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - img "Nebraska service area map" [ref=e36]:
+            - generic [ref=e39]: NEBRASKA
+            - generic [ref=e40]: IOWA
+            - button "Lincoln — 30 zip codes" [ref=e41] [cursor=pointer]:
+              - generic [ref=e43]: "30"
+              - generic [ref=e44]: Lincoln
+            - button "Omaha — 53 zip codes" [ref=e45] [cursor=pointer]:
+              - generic [ref=e47]: "53"
+              - generic [ref=e48]: Omaha
+            - button "Council Bluffs — 11 zip codes" [ref=e49] [cursor=pointer]:
+              - generic [ref=e51]: "11"
+              - generic [ref=e52]: Council
+            - button "Southeast Nebraska — 75 zip codes" [ref=e53] [cursor=pointer]:
+              - generic [ref=e55]: "75"
+              - generic [ref=e56]: Southeast
+            - button "Grand Island — 9 zip codes" [ref=e57] [cursor=pointer]:
+              - generic [ref=e59]: "9"
+              - generic [ref=e60]: Grand
+            - button "North Omaha Suburbs — 21 zip codes" [ref=e61] [cursor=pointer]:
+              - generic [ref=e63]: "21"
+              - generic [ref=e64]: North
+          - generic [ref=e65]:
+            - generic [ref=e66]: In-home service region
+            - generic [ref=e68]: Selected
+        - paragraph [ref=e71]:
+          - generic [ref=e72]: touch_app
+          - text: Tap a region to see coverage details and zip codes.
+      - generic [ref=e74]:
+        - heading "Coverage by Region" [level=2] [ref=e75]
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]:
+                - heading "Lincoln" [level=3] [ref=e80]
+                - paragraph [ref=e81]: NE
+              - generic [ref=e82]: 30 zips
+            - paragraph [ref=e83]: All Lincoln zip codes + surrounding communities
+            - generic [ref=e84]:
+              - generic [ref=e85]: "68501"
+              - generic [ref=e86]: "68502"
+              - generic [ref=e87]: "68503"
+              - generic [ref=e88]: "68504"
+              - generic [ref=e89]: "68505"
+              - generic [ref=e90]: "68506"
+              - generic [ref=e91]: "68507"
+              - generic [ref=e92]: "68508"
+              - generic [ref=e93]: "68509"
+              - generic [ref=e94]: "68510"
+              - generic [ref=e95]: "68512"
+              - generic [ref=e96]: "68514"
+              - generic [ref=e97]: +18 more
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - heading "Omaha" [level=3] [ref=e101]
+                - paragraph [ref=e102]: NE
+              - generic [ref=e103]: 53 zips
+            - paragraph [ref=e104]: Greater Omaha metro area
+            - generic [ref=e105]:
+              - generic [ref=e106]: "68101"
+              - generic [ref=e107]: "68102"
+              - generic [ref=e108]: "68103"
+              - generic [ref=e109]: "68104"
+              - generic [ref=e110]: "68105"
+              - generic [ref=e111]: "68106"
+              - generic [ref=e112]: "68107"
+              - generic [ref=e113]: "68108"
+              - generic [ref=e114]: "68109"
+              - generic [ref=e115]: "68110"
+              - generic [ref=e116]: "68111"
+              - generic [ref=e117]: "68112"
+              - generic [ref=e118]: +41 more
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - heading "Council Bluffs" [level=3] [ref=e122]
+                - paragraph [ref=e123]: IA
+              - generic [ref=e124]: 11 zips
+            - paragraph [ref=e125]: Council Bluffs and surrounding Iowa communities
+            - generic [ref=e126]:
+              - generic [ref=e127]: "51501"
+              - generic [ref=e128]: "51502"
+              - generic [ref=e129]: "51503"
+              - generic [ref=e130]: "51510"
+              - generic [ref=e131]: "51526"
+              - generic [ref=e132]: "51534"
+              - generic [ref=e133]: "51542"
+              - generic [ref=e134]: "51548"
+              - generic [ref=e135]: "51551"
+              - generic [ref=e136]: "51561"
+              - generic [ref=e137]: "51576"
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - heading "Southeast Nebraska" [level=3] [ref=e141]
+                - paragraph [ref=e142]: NE
+              - generic [ref=e143]: 75 zips
+            - paragraph [ref=e144]: Southeast Nebraska communities
+            - generic [ref=e145]:
+              - generic [ref=e146]: "68301"
+              - generic [ref=e147]: "68304"
+              - generic [ref=e148]: "68307"
+              - generic [ref=e149]: "68310"
+              - generic [ref=e150]: "68313"
+              - generic [ref=e151]: "68314"
+              - generic [ref=e152]: "68316"
+              - generic [ref=e153]: "68317"
+              - generic [ref=e154]: "68319"
+              - generic [ref=e155]: "68320"
+              - generic [ref=e156]: "68321"
+              - generic [ref=e157]: "68324"
+              - generic [ref=e158]: +63 more
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e161]:
+                - heading "Grand Island" [level=3] [ref=e162]
+                - paragraph [ref=e163]: NE
+              - generic [ref=e164]: 9 zips
+            - paragraph [ref=e165]: Grand Island and central Nebraska
+            - generic [ref=e166]:
+              - generic [ref=e167]: "68801"
+              - generic [ref=e168]: "68802"
+              - generic [ref=e169]: "68803"
+              - generic [ref=e170]: "68810"
+              - generic [ref=e171]: "68818"
+              - generic [ref=e172]: "68832"
+              - generic [ref=e173]: "68841"
+              - generic [ref=e174]: "68843"
+              - generic [ref=e175]: "68865"
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e178]:
+                - heading "North Omaha Suburbs" [level=3] [ref=e179]
+                - paragraph [ref=e180]: NE
+              - generic [ref=e181]: 21 zips
+            - paragraph [ref=e182]: North and west Omaha suburbs
+            - generic [ref=e183]:
+              - generic [ref=e184]: "68002"
+              - generic [ref=e185]: "68003"
+              - generic [ref=e186]: "68007"
+              - generic [ref=e187]: "68022"
+              - generic [ref=e188]: "68023"
+              - generic [ref=e189]: "68025"
+              - generic [ref=e190]: "68026"
+              - generic [ref=e191]: "68028"
+              - generic [ref=e192]: "68033"
+              - generic [ref=e193]: "68034"
+              - generic [ref=e194]: "68064"
+              - generic [ref=e195]: "68066"
+              - generic [ref=e196]: +9 more
+      - generic [ref=e197]:
+        - heading "All Covered Zip Codes" [level=2] [ref=e198]
+        - paragraph [ref=e199]:
+          - text: In-home appliance repair available at these locations. Not sure if you're covered?
+          - link "Call us" [ref=e200] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - text: and we'll confirm.
+        - generic [ref=e201]:
+          - generic [ref=e202]: "51501"
+          - generic [ref=e203]: "51502"
+          - generic [ref=e204]: "51503"
+          - generic [ref=e205]: "51510"
+          - generic [ref=e206]: "51526"
+          - generic [ref=e207]: "51534"
+          - generic [ref=e208]: "51542"
+          - generic [ref=e209]: "51548"
+          - generic [ref=e210]: "51551"
+          - generic [ref=e211]: "51561"
+          - generic [ref=e212]: "51576"
+          - generic [ref=e213]: "68002"
+          - generic [ref=e214]: "68003"
+          - generic [ref=e215]: "68005"
+          - generic [ref=e216]: "68007"
+          - generic [ref=e217]: "68008"
+          - generic [ref=e218]: "68009"
+          - generic [ref=e219]: "68010"
+          - generic [ref=e220]: "68014"
+          - generic [ref=e221]: "68015"
+          - generic [ref=e222]: "68016"
+          - generic [ref=e223]: "68017"
+          - generic [ref=e224]: "68018"
+          - generic [ref=e225]: "68022"
+          - generic [ref=e226]: "68023"
+          - generic [ref=e227]: "68025"
+          - generic [ref=e228]: "68026"
+          - generic [ref=e229]: "68028"
+          - generic [ref=e230]: "68033"
+          - generic [ref=e231]: "68034"
+          - generic [ref=e232]: "68036"
+          - generic [ref=e233]: "68037"
+          - generic [ref=e234]: "68040"
+          - generic [ref=e235]: "68041"
+          - generic [ref=e236]: "68042"
+          - generic [ref=e237]: "68046"
+          - generic [ref=e238]: "68048"
+          - generic [ref=e239]: "68050"
+          - generic [ref=e240]: "68054"
+          - generic [ref=e241]: "68056"
+          - generic [ref=e242]: "68058"
+          - generic [ref=e243]: "68059"
+          - generic [ref=e244]: "68064"
+          - generic [ref=e245]: "68065"
+          - generic [ref=e246]: "68066"
+          - generic [ref=e247]: "68068"
+          - generic [ref=e248]: "68069"
+          - generic [ref=e249]: "68070"
+          - generic [ref=e250]: "68073"
+          - generic [ref=e251]: "68101"
+          - generic [ref=e252]: "68102"
+          - generic [ref=e253]: "68103"
+          - generic [ref=e254]: "68104"
+          - generic [ref=e255]: "68105"
+          - generic [ref=e256]: "68106"
+          - generic [ref=e257]: "68107"
+          - generic [ref=e258]: "68108"
+          - generic [ref=e259]: "68109"
+          - generic [ref=e260]: "68110"
+          - generic [ref=e261]: "68111"
+          - generic [ref=e262]: "68112"
+          - generic [ref=e263]: "68114"
+          - generic [ref=e264]: "68116"
+          - generic [ref=e265]: "68117"
+          - generic [ref=e266]: "68118"
+          - generic [ref=e267]: "68119"
+          - generic [ref=e268]: "68120"
+          - generic [ref=e269]: "68122"
+          - generic [ref=e270]: "68123"
+          - generic [ref=e271]: "68124"
+          - generic [ref=e272]: "68127"
+          - generic [ref=e273]: "68128"
+          - generic [ref=e274]: "68130"
+          - generic [ref=e275]: "68131"
+          - generic [ref=e276]: "68132"
+          - generic [ref=e277]: "68133"
+          - generic [ref=e278]: "68134"
+          - generic [ref=e279]: "68135"
+          - generic [ref=e280]: "68136"
+          - generic [ref=e281]: "68137"
+          - generic [ref=e282]: "68138"
+          - generic [ref=e283]: "68139"
+          - generic [ref=e284]: "68142"
+          - generic [ref=e285]: "68144"
+          - generic [ref=e286]: "68145"
+          - generic [ref=e287]: "68147"
+          - generic [ref=e288]: "68152"
+          - generic [ref=e289]: "68154"
+          - generic [ref=e290]: "68155"
+          - generic [ref=e291]: "68157"
+          - generic [ref=e292]: "68164"
+          - generic [ref=e293]: "68172"
+          - generic [ref=e294]: "68175"
+          - generic [ref=e295]: "68176"
+          - generic [ref=e296]: "68178"
+          - generic [ref=e297]: "68179"
+          - generic [ref=e298]: "68180"
+          - generic [ref=e299]: "68181"
+          - generic [ref=e300]: "68182"
+          - generic [ref=e301]: "68183"
+          - generic [ref=e302]: "68197"
+          - generic [ref=e303]: "68198"
+          - generic [ref=e304]: "68301"
+          - generic [ref=e305]: "68304"
+          - generic [ref=e306]: "68307"
+          - generic [ref=e307]: "68310"
+          - generic [ref=e308]: "68313"
+          - generic [ref=e309]: "68314"
+          - generic [ref=e310]: "68316"
+          - generic [ref=e311]: "68317"
+          - generic [ref=e312]: "68319"
+          - generic [ref=e313]: "68320"
+          - generic [ref=e314]: "68321"
+          - generic [ref=e315]: "68324"
+          - generic [ref=e316]: "68328"
+          - generic [ref=e317]: "68329"
+          - generic [ref=e318]: "68330"
+          - generic [ref=e319]: "68331"
+          - generic [ref=e320]: "68332"
+          - generic [ref=e321]: "68333"
+          - generic [ref=e322]: "68336"
+          - generic [ref=e323]: "68338"
+          - generic [ref=e324]: "68339"
+          - generic [ref=e325]: "68341"
+          - generic [ref=e326]: "68343"
+          - generic [ref=e327]: "68344"
+          - generic [ref=e328]: "68346"
+          - generic [ref=e329]: "68347"
+          - generic [ref=e330]: "68348"
+          - generic [ref=e331]: "68349"
+          - generic [ref=e332]: "68351"
+          - generic [ref=e333]: "68354"
+          - generic [ref=e334]: "68357"
+          - generic [ref=e335]: "68358"
+          - generic [ref=e336]: "68359"
+          - generic [ref=e337]: "68360"
+          - generic [ref=e338]: "68364"
+          - generic [ref=e339]: "68366"
+          - generic [ref=e340]: "68368"
+          - generic [ref=e341]: "68371"
+          - generic [ref=e342]: "68372"
+          - generic [ref=e343]: "68382"
+          - generic [ref=e344]: "68379"
+          - generic [ref=e345]: "68401"
+          - generic [ref=e346]: "68402"
+          - generic [ref=e347]: "68403"
+          - generic [ref=e348]: "68404"
+          - generic [ref=e349]: "68405"
+          - generic [ref=e350]: "68407"
+          - generic [ref=e351]: "68409"
+          - generic [ref=e352]: "68410"
+          - generic [ref=e353]: "68413"
+          - generic [ref=e354]: "68417"
+          - generic [ref=e355]: "68418"
+          - generic [ref=e356]: "68419"
+          - generic [ref=e357]: "68422"
+          - generic [ref=e358]: "68423"
+          - generic [ref=e359]: "68424"
+          - generic [ref=e360]: "68428"
+          - generic [ref=e361]: "68430"
+          - generic [ref=e362]: "68434"
+          - generic [ref=e363]: "68438"
+          - generic [ref=e364]: "68443"
+          - generic [ref=e365]: "68444"
+          - generic [ref=e366]: "68445"
+          - generic [ref=e367]: "68446"
+          - generic [ref=e368]: "68448"
+          - generic [ref=e369]: "68453"
+          - generic [ref=e370]: "68454"
+          - generic [ref=e371]: "68455"
+          - generic [ref=e372]: "68460"
+          - generic [ref=e373]: "68461"
+          - generic [ref=e374]: "68462"
+          - generic [ref=e375]: "68463"
+          - generic [ref=e376]: "68464"
+          - generic [ref=e377]: "68465"
+          - generic [ref=e378]: "68467"
+          - generic [ref=e379]: "68501"
+          - generic [ref=e380]: "68502"
+          - generic [ref=e381]: "68503"
+          - generic [ref=e382]: "68504"
+          - generic [ref=e383]: "68505"
+          - generic [ref=e384]: "68506"
+          - generic [ref=e385]: "68507"
+          - generic [ref=e386]: "68508"
+          - generic [ref=e387]: "68509"
+          - generic [ref=e388]: "68510"
+          - generic [ref=e389]: "68512"
+          - generic [ref=e390]: "68514"
+          - generic [ref=e391]: "68516"
+          - generic [ref=e392]: "68517"
+          - generic [ref=e393]: "68520"
+          - generic [ref=e394]: "68521"
+          - generic [ref=e395]: "68522"
+          - generic [ref=e396]: "68523"
+          - generic [ref=e397]: "68524"
+          - generic [ref=e398]: "68526"
+          - generic [ref=e399]: "68527"
+          - generic [ref=e400]: "68528"
+          - generic [ref=e401]: "68529"
+          - generic [ref=e402]: "68531"
+          - generic [ref=e403]: "68532"
+          - generic [ref=e404]: "68542"
+          - generic [ref=e405]: "68544"
+          - generic [ref=e406]: "68572"
+          - generic [ref=e407]: "68583"
+          - generic [ref=e408]: "68588"
+          - generic [ref=e409]: "68621"
+          - generic [ref=e410]: "68626"
+          - generic [ref=e411]: "68635"
+          - generic [ref=e412]: "68648"
+          - generic [ref=e413]: "68649"
+          - generic [ref=e414]: "68801"
+          - generic [ref=e415]: "68802"
+          - generic [ref=e416]: "68803"
+          - generic [ref=e417]: "68810"
+          - generic [ref=e418]: "68818"
+          - generic [ref=e419]: "68832"
+          - generic [ref=e420]: "68841"
+          - generic [ref=e421]: "68843"
+          - generic [ref=e422]: "68865"
+      - generic [ref=e424]:
+        - generic [ref=e425]:
+          - paragraph [ref=e426]: TV, Audio & Commercial Microwave Repair
+          - paragraph [ref=e427]: Drop-off only at our Lincoln shop — not covered by in-home service area.
+        - link "Get Directions to Our Shop" [ref=e428] [cursor=pointer]:
+          - /url: /contact
+  - contentinfo [ref=e429]:
+    - generic [ref=e430]:
+      - generic [ref=e431]:
+        - generic [ref=e432]:
+          - paragraph [ref=e433]: Metro TV & Appliances
+          - paragraph [ref=e434]: Factory-authorized repair since 1947. Technical precision and heirloom-quality service for Nebraska homes.
+        - generic [ref=e435]:
+          - paragraph [ref=e436]: Services
+          - list [ref=e437]:
+            - listitem [ref=e438]:
+              - link "Appliance Repair" [ref=e439] [cursor=pointer]:
+                - /url: /appliance
+            - listitem [ref=e440]:
+              - link "TV Repair" [ref=e441] [cursor=pointer]:
+                - /url: /tv
+            - listitem [ref=e442]:
+              - link "TV & Audio Repair" [ref=e443] [cursor=pointer]:
+                - /url: /audio
+            - listitem [ref=e444]:
+              - link "Commercial Microwave Repair" [ref=e445] [cursor=pointer]:
+                - /url: /commercial
+        - generic [ref=e446]:
+          - paragraph [ref=e447]: Company
+          - list [ref=e448]:
+            - listitem [ref=e449]:
+              - link "Services" [ref=e450] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e451]:
+              - link "Service Area" [ref=e452] [cursor=pointer]:
+                - /url: /service-area
+            - listitem [ref=e453]:
+              - link "Parts Store" [ref=e454] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e455]:
+              - link "How It Works" [ref=e456] [cursor=pointer]:
+                - /url: /how-it-works
+            - listitem [ref=e457]:
+              - link "FAQ" [ref=e458] [cursor=pointer]:
+                - /url: /faq
+            - listitem [ref=e459]:
+              - link "Contact" [ref=e460] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e461]:
+          - paragraph [ref=e462]: Contact
+          - link "(402) 466-9090" [ref=e463] [cursor=pointer]:
+            - /url: tel:(402) 466-9090
+          - paragraph [ref=e464]: 1107 North Cotner Blvd, Lincoln, NE 68505
+          - paragraph [ref=e465]: Monday–Friday 8:30 AM – 6:00 PM
+      - generic [ref=e466]:
+        - paragraph [ref=e467]: © 2026 Metro TV & Appliances. All rights reserved.
+        - generic [ref=e468]:
+          - link "Warranty" [ref=e469] [cursor=pointer]:
+            - /url: /warranty
+          - link "Partners" [ref=e470] [cursor=pointer]:
+            - /url: /partners
+  - button "Open Next.js Dev Tools" [ref=e476] [cursor=pointer]:
+    - img [ref=e477]
+  - alert [ref=e480]

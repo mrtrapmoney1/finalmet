@@ -1,5 +1,5 @@
 import { buildMetadata } from "@/lib/metadata";
-import { ServiceAreaMap } from "@/components/ServiceAreaMap";
+import { NebraskaMap } from "@/components/NebraskaMap";
 import { COVERED_ZIPS, SERVICE_REGIONS } from "@/lib/zip-codes";
 import { BUSINESS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -44,7 +44,7 @@ export default function ServiceAreaPage() {
 
       <div className="bg-surface">
         {/* Page header */}
-        <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+        <div className="max-w-7xl mx-auto px-6 pt-10 pb-6">
           <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
             Appliance Repair Coverage
           </p>
@@ -68,11 +68,8 @@ export default function ServiceAreaPage() {
         </div>
 
         {/* Map */}
-        <div className="max-w-7xl mx-auto px-6 pb-16">
-          <ServiceAreaMap />
-          <p className="text-xs text-on-surface-variant mt-3 text-center">
-            Orange markers = regional coverage hubs · Blue marker = our Lincoln shop
-          </p>
+        <div className="max-w-7xl mx-auto px-6 pb-10">
+          <NebraskaMap />
         </div>
 
         {/* Region breakdown */}
@@ -130,9 +127,7 @@ export default function ServiceAreaPage() {
           <p className="text-sm text-on-surface-variant mb-8">
             In-home appliance repair available at these locations. Not sure if you&apos;re
             covered?{" "}
-            <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline">
-              Call us
-            </a>{" "}
+            <a href={`tel:${BUSINESS.phone}`} className="text-primary hover:underline font-medium">Call us</a>{" "}
             and we&apos;ll confirm.
           </p>
           <div className="flex flex-wrap gap-2">

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { NAV_LINKS, BUSINESS } from "@/lib/constants";
-import { Button } from "@/components/ui/Button";
 import { useCart } from "@/components/CartProvider";
 import { CartDrawer } from "@/components/CartDrawer";
 
@@ -26,16 +25,51 @@ export function Header() {
 
           {/* Desktop nav */}
           <ul className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href === "/services" ? (
+                <li key={link.href} className="relative group">
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-0.5"
+                  >
+                    {link.label}
+                    <span className="material-symbols-outlined text-sm" aria-hidden="true">expand_more</span>
+                  </Link>
+                  {/* Dropdown flyout */}
+                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                    <div className="bg-surface border border-outline-variant/30 rounded-2xl shadow-ambient-lg p-2 w-64">
+                      {[
+                        { href: "/appliance", icon: "home_repair_service", label: "Appliance Repair", sub: "In-home · 200+ zip codes" },
+                        { href: "/tv", icon: "tv", label: "TV Repair", sub: "Drop-off · Lincoln shop" },
+                        { href: "/audio", icon: "speaker", label: "TV & Audio Repair", sub: "Drop-off · Lincoln shop" },
+                        { href: "/commercial", icon: "microwave", label: "Commercial Microwave", sub: "Drop-off · Lincoln shop" },
+                      ].map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container transition-colors group/item"
+                        >
+                          <span className="material-symbols-outlined text-xl text-secondary" aria-hidden="true">{item.icon}</span>
+                          <div>
+                            <p className="text-sm font-semibold text-on-surface group-hover/item:text-primary transition-colors">{item.label}</p>
+                            <p className="text-xs text-on-surface-variant">{item.sub}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              ) : (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            )}
           </ul>
 
           {/* Desktop right actions */}
@@ -43,19 +77,16 @@ export function Header() {
             {/* Cart button */}
             <button
               onClick={() => setCartOpen(true)}
-              className="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition"
+              className="relative flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-container transition"
               aria-label={`Open cart${count > 0 ? `, ${count} item${count !== 1 ? "s" : ""}` : ""}`}
             >
-              <span className="material-symbols-outlined" aria-hidden="true">shopping_cart</span>
-              {count > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-secondary text-on-secondary text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {count > 9 ? "9+" : count}
-                </span>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">shopping_cart</span>
+              {count > 0 ? (
+                <span className="font-bold">Cart ({count})</span>
+              ) : (
+                <span>Cart</span>
               )}
             </button>
-            <Button href="/contact" variant="primary">
-              Schedule Service
-            </Button>
           </div>
 
           {/* Mobile right actions */}
@@ -98,9 +129,6 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button href="/contact" variant="primary" className="w-full justify-center">
-              Schedule Service
-            </Button>
           </div>
         )}
       </header>

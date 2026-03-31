@@ -112,7 +112,7 @@ export default function FAQPage() {
       />
 
       {/* Page header */}
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+      <div className="max-w-7xl mx-auto px-6 pt-10 pb-6">
         <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
           Common Questions
         </p>
@@ -126,6 +126,21 @@ export default function FAQPage() {
 
       {/* FAQ sections */}
       <div className="max-w-3xl mx-auto px-6 pb-24 space-y-10">
+        {/* Quick answers */}
+        <div className="grid sm:grid-cols-3 gap-3 mb-10">
+          {[
+            { q: "Drop-off diagnostic fee?", a: BUSINESS.diagnosticDropOff, icon: "price_check" },
+            { q: "Need an appointment?", a: "No — walk in anytime M–F", icon: "calendar_today" },
+            { q: "OEM parts only?", a: "Yes — factory-authorized only", icon: "verified" },
+          ].map((item) => (
+            <div key={item.q} className="bg-surface-container-low rounded-xl p-4 border border-outline-variant/20">
+              <span className="material-symbols-outlined text-xl text-secondary mb-2 block" aria-hidden="true">{item.icon}</span>
+              <p className="text-xs text-on-surface-variant mb-1">{item.q}</p>
+              <p className="text-sm font-bold text-on-surface">{item.a}</p>
+            </div>
+          ))}
+        </div>
+
         {FAQS.map((section) => (
           <div key={section.category}>
             <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SERVICES } from "@/lib/constants";
 import { ServiceChip } from "@/components/ui/ServiceChip";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const icons: Record<string, string> = {
   appliance: "home_repair_service",
@@ -14,7 +15,7 @@ export function Services() {
     <section className="py-24 bg-surface">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
-        <div className="mb-16 max-w-2xl">
+        <ScrollReveal className="mb-16 max-w-2xl">
           <p className="text-xs font-semibold tracking-widest text-secondary uppercase mb-4">
             What We Fix
           </p>
@@ -25,19 +26,19 @@ export function Services() {
             Factory authorization means we have access to OEM parts, technical
             service manuals, and manufacturer training — not just generic tools.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Service cards */}
         <div className="grid md:grid-cols-2 gap-6">
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, idx) => (
+            <ScrollReveal key={service.slug} delay={idx * 100}>
             <Link
-              key={service.slug}
               href={service.href}
-              className="group bg-surface-container-low hover:bg-surface-container rounded-2xl p-8 transition-all duration-200 shadow-ambient hover:shadow-ambient-lg"
+              className="group bg-surface-container-low hover:bg-surface-container rounded-2xl p-8 transition-all duration-200 shadow-ambient hover:shadow-ambient-lg block"
             >
               {/* Icon + delivery model */}
               <div className="flex items-start justify-between mb-6">
-                <span className="material-symbols-outlined text-3xl text-primary-container" aria-hidden="true">
+                <span className="material-symbols-outlined text-3xl text-secondary" aria-hidden="true">
                   {icons[service.slug]}
                 </span>
                 <span className="text-xs font-medium font-label text-on-surface-variant bg-surface-variant px-3 py-1 rounded-full capitalize">
@@ -73,6 +74,7 @@ export function Services() {
                 </span>
               </div>
             </Link>
+            </ScrollReveal>
           ))}
         </div>
       </div>
