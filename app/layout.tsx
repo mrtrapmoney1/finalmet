@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Manrope, Geist } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BUSINESS } from "@/lib/constants";
 import { JsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -71,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(inter.variable, manrope.variable, "font-sans", geist.variable)}>
+    <html lang="en" className={cn(inter.variable, manrope.variable, "font-sans")}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

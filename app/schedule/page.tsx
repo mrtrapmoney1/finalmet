@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/metadata";
-import { ScheduleForm } from "@/components/ScheduleForm";
+import dynamic from "next/dynamic";
+const ScheduleForm = dynamic(() => import("@/components/ScheduleForm").then(mod => mod.ScheduleForm));
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata = buildMetadata({

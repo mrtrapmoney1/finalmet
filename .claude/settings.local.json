@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /home/aaron/code/met/app -name *.tsx -o -name *.ts)",
+      "Bash(ls \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\aaron\\\\code\\\\met\")",
+      "Read(//mnt/wsl/Ubuntu/home/aaron/code/**)",
+      "Read(//c/Users/Aaron Ebrahim/code/**)",
+      "Read(//mnt/c/Users/Aaron Ebrahim/code/met/**)",
+      "Read(//mnt/c/Users/Aaron Ebrahim/code/met/app/**)",
+      "Bash(cat app/api/[slug]/route.ts)",
+      "Bash(npm show:*)",
+      "Bash(npm install:*)",
+      "Bash(wsl -e bash -c \"cd /home/aaron/code/met && npm install next@latest 2>&1\")"
+    ]
+  }
+}

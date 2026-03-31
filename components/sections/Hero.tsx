@@ -26,11 +26,14 @@ export function Hero() {
             {HERO_COPY.body}
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-8">
             <Button href="/contact" variant="primary">
               Schedule Service
             </Button>
-            <Button href="/how-it-works" variant="ghost" className="border-white/30 text-white hover:bg-white/10">
+            <Button href="/products" variant="secondary" className="shadow-ambient">
+              Shop OEM Parts
+            </Button>
+            <Button href="/how-it-works" variant="ghost" className="border-white/30 text-white hover:bg-white/10 hidden sm:inline-flex">
               How It Works
             </Button>
           </div>

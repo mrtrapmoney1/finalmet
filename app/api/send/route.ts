@@ -2,6 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
+function esc(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
 const scheduleSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Valid email required"),
@@ -34,14 +43,14 @@ export async function POST(req: NextRequest) {
       html: `
         <h2>New Service Request</h2>
         <table style="border-collapse:collapse;width:100%">
-          <tr><td><strong>Name:</strong></td><td>${data.name}</td></tr>
-          <tr><td><strong>Email:</strong></td><td>${data.email}</td></tr>
-          <tr><td><strong>Phone:</strong></td><td>${data.phone}</td></tr>
-          <tr><td><strong>Zip:</strong></td><td>${data.zip}</td></tr>
-          <tr><td><strong>Service:</strong></td><td>${data.serviceType}</td></tr>
-          ${data.applianceType ? `<tr><td><strong>Appliance:</strong></td><td>${data.applianceType}</td></tr>` : ""}
-          ${data.brand ? `<tr><td><strong>Brand:</strong></td><td>${data.brand}</td></tr>` : ""}
-          <tr><td><strong>Issue:</strong></td><td>${data.issue}</td></tr>
+          <tr><td><strong>Name:</strong></td><td>${esc(data.name)}</td></tr>
+          <tr><td><strong>Email:</strong></td><td>${esc(data.email)}</td></tr>
+          <tr><td><strong>Phone:</strong></td><td>${esc(data.phone)}</td></tr>
+          <tr><td><strong>Zip:</strong></td><td>${esc(data.zip)}</td></tr>
+          <tr><td><strong>Service:</strong></td><td>${esc(data.serviceType)}</td></tr>
+          ${data.applianceType ? `<tr><td><strong>Appliance:</strong></td><td>${esc(data.applianceType)}</td></tr>` : ""}
+          ${data.brand ? `<tr><td><strong>Brand:</strong></td><td>${esc(data.brand)}</td></tr>` : ""}
+          <tr><td><strong>Issue:</strong></td><td>${esc(data.issue)}</td></tr>
         </table>
       `,
     });

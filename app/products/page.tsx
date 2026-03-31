@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { PageCTA } from "@/components/ui/PageCTA";
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export const metadata = buildMetadata({
   title: "OEM Appliance Parts",
@@ -49,53 +50,56 @@ export default function ProductsPage() {
         <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-outline-variant/20">
           <p className="text-sm font-semibold text-on-surface-variant self-center mr-2">Filter by:</p>
           {["All", "Samsung", "LG", "GE Appliances", "Whirlpool", "Electrolux"].map((brand) => (
-            <button
+            <Link
               key={brand}
-              className="px-4 py-1.5 rounded-full text-xs font-semibold border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:border-primary/30 transition-all"
+              href={brand === "All" ? "/products" : `/products?brand=${encodeURIComponent(brand)}`}
+              className="px-4 py-1.5 rounded-full text-xs font-semibold border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container hover:border-primary/30 transition-all text-center"
               aria-label={`Filter by ${brand}`}
             >
               {brand}
-            </button>
-          ))}
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {OEM_PARTS.map((part, idx) => (
-            <Link 
-              href={`/products/${part.slug}`} 
-              key={part.id} 
-              className="bg-surface-container-low rounded-xl overflow-hidden shadow-ambient hover:shadow-ambient-lg active:scale-[0.98] transition-all flex flex-col group border border-outline-variant/20 animate-fade-in-up"
-              style={{ animationFillMode: "both", animationDelay: `${idx * 50}ms` }}
-            >
-              <div className="aspect-square bg-surface-container glass flex items-center justify-center p-6 relative">
-                {/* Placeholder graphic for now */}
-                <span className="material-symbols-outlined text-6xl text-primary/30 group-hover:scale-110 transition-transform" aria-hidden="true">
-                  build
-                </span>
-                {part.availability === "in_stock" && (
-                  <span className="absolute top-4 right-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 flex items-center rounded-full uppercase tracking-wider">
-                    In Stock
-                  </span>
-                )}
-              </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wide mb-1">
-                  {part.brand} · {part.mpn}
-                </span>
-                <h2 className="text-lg font-bold font-headline text-on-surface mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                  {part.title}
-                </h2>
-                <div className="mt-auto flex items-end justify-between pt-4">
-                  <span className="text-2xl font-bold text-on-surface">
-                    ${part.price.toFixed(2)}
-                  </span>
-                  <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                    arrow_forward
-                  </span>
-                </div>
-              </div>
             </Link>
           ))}
         </div>
+        <Suspense fallback={<div className="animate-pulse h-96 bg-surface-container-low rounded-xl w-full border border-outline-variant/20 shadow-ambient flex items-center justify-center text-on-surface-variant font-medium">Loading catalog...</div>}>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {OEM_PARTS.map((part, idx) => (
+              <Link 
+                href={`/products/${part.slug}`} 
+                key={part.id} 
+                className="bg-surface-container-low rounded-xl overflow-hidden shadow-ambient hover:shadow-ambient-lg active:scale-[0.98] transition-all flex flex-col group border border-outline-variant/20 animate-in fade-in duration-500 slide-in-from-bottom-4"
+                style={{ animationFillMode: "both", animationDelay: `${idx * 50}ms` }}
+              >
+                <div className="aspect-square bg-surface-container glass flex items-center justify-center p-6 relative">
+                  {/* Placeholder graphic for now */}
+                  <span className="material-symbols-outlined text-6xl text-primary/30 group-hover:scale-110 transition-transform" aria-hidden="true">
+                    build
+                  </span>
+                  {part.availability === "in_stock" && (
+                    <span className="absolute top-4 right-4 bg-secondary text-white text-[10px] font-bold px-2 py-1 flex items-center rounded-full uppercase tracking-wider">
+                      In Stock
+                    </span>
+                  )}
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wide mb-1">
+                    {part.brand} · {part.mpn}
+                  </span>
+                  <h2 className="text-lg font-bold font-headline text-on-surface mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                    {part.title}
+                  </h2>
+                  <div className="mt-auto flex items-end justify-between pt-4">
+                    <span className="text-2xl font-bold text-on-surface">
+                      ${part.price.toFixed(2)}
+                    </span>
+                    <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" aria-hidden="true">
+                      arrow_forward
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Suspense>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 pb-16">
