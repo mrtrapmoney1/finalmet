@@ -23,7 +23,7 @@ export interface Part {
   // Extended detail fields (optional — render conditionally on product detail page)
   specs?: Record<string, string>;
   symptoms?: string[];
-  compatibleModels?: string[];
+  compatibleModels?: Array<{ brand: string; model: string; description: string }>;
   replacesPartNumbers?: string[];
   installNotes?: string;
   diagnosisGuide?: DiagnosisGuide;
@@ -51,6 +51,7 @@ export const OEM_PARTS: Part[] = [
       "Speed": "1725 RPM",
       "Thermal Class": "Class B",
       "Dimensions": '10-1/8" L × 5-7/8" W × 5-3/8" H',
+      "Weight": "9 lbs",
       "Condition": "New — Genuine OEM",
     },
     symptoms: [
@@ -61,28 +62,28 @@ export const OEM_PARTS: Part[] = [
       "Dryer stops mid-cycle unexpectedly",
     ],
     compatibleModels: [
-      "Kenmore 402.89032011",
-      "Kenmore 402.89032012",
-      "Kenmore 402.99032011",
-      "Kenmore 402.99032012",
-      "Samsung DV210AEW",
-      "Samsung DV220AEW",
-      "Samsung DV231AEW",
-      "Samsung DV231AGW",
-      "Samsung DV330AEB",
-      "Samsung DV331AER",
-      "Samsung DV331AEW",
-      "Samsung DV331AGR",
-      "Samsung DV331AGW",
-      "Samsung DV350AEP",
-      "Samsung DV350AGP",
-      "Samsung DV361EWBEWR",
-      "Samsung DV361GWBEWR",
-      "Samsung DV363EWBEUF",
-      "Samsung DV365ETBGWR",
-      "Samsung DV365GTBGWR",
-      "Samsung DV36J4000EW",
-      "Samsung DV36J4000GW",
+      { brand: "Samsung", model: "DV210AEW",    description: "21\" Compact Electric Dryer (White)" },
+      { brand: "Samsung", model: "DV220AEW",    description: "Electric Dryer (White)" },
+      { brand: "Samsung", model: "DV231AEW",    description: "Electric Dryer (White)" },
+      { brand: "Samsung", model: "DV231AGW",    description: "Gas Dryer (White)" },
+      { brand: "Samsung", model: "DV330AEB",    description: "Electric Dryer (Black)" },
+      { brand: "Samsung", model: "DV331AER",    description: "Electric Dryer (Red)" },
+      { brand: "Samsung", model: "DV331AEW",    description: "Electric Dryer (White)" },
+      { brand: "Samsung", model: "DV331AGR",    description: "Gas Dryer (Red)" },
+      { brand: "Samsung", model: "DV331AGW",    description: "Gas Dryer (White)" },
+      { brand: "Samsung", model: "DV350AEP",    description: "Electric Dryer (Platinum)" },
+      { brand: "Samsung", model: "DV350AGP",    description: "Gas Dryer (Platinum)" },
+      { brand: "Samsung", model: "DV361EWBEWR", description: "Electric Dryer (White/Red)" },
+      { brand: "Samsung", model: "DV361GWBEWR", description: "Gas Dryer (White/Red)" },
+      { brand: "Samsung", model: "DV363EWBEUF", description: "Electric Dryer — Canadian Model" },
+      { brand: "Samsung", model: "DV365ETBGWR", description: "Electric Dryer (White/Red)" },
+      { brand: "Samsung", model: "DV365GTBGWR", description: "Gas Dryer (White/Red)" },
+      { brand: "Samsung", model: "DV36J4000EW", description: "Electric Dryer (White)" },
+      { brand: "Samsung", model: "DV36J4000GW", description: "Gas Dryer (White)" },
+      { brand: "Kenmore", model: "402.89032011", description: "Elite Front Load Electric Dryer" },
+      { brand: "Kenmore", model: "402.89032012", description: "Elite Front Load Electric Dryer" },
+      { brand: "Kenmore", model: "402.99032011", description: "Elite Front Load Electric Dryer" },
+      { brand: "Kenmore", model: "402.99032012", description: "Elite Front Load Electric Dryer" },
     ],
     replacesPartNumbers: [
       "DC31-00055D",

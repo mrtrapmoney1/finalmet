@@ -17,20 +17,6 @@ function getPartIcon(category: string): string {
   return "build_circle";
 }
 
-function parseBrand(model: string): string {
-  return model.split(" ")[0];
-}
-
-function parseModelNumber(model: string): string {
-  return model.split(" ").slice(1).join(" ");
-}
-
-function getApplianceType(model: string): string {
-  const m = model.toLowerCase();
-  if (m.includes("dv")) return "Dryer";
-  if (m.includes("wf") || m.includes("wa")) return "Washer";
-  return "Dryer";
-}
 
 export async function generateStaticParams() {
   return OEM_PARTS.map((part) => ({
@@ -310,31 +296,36 @@ export default async function ProductDetailPage({
         {/* ── Compatible models ─────────────────────────────── */}
         {part.compatibleModels && part.compatibleModels.length > 0 && (
           <section className="border-t border-outline-variant/20 pt-8 mb-8">
-            <div className="flex items-baseline justify-between gap-4 mb-1 flex-wrap">
-              <h2 className="text-sm font-semibold text-secondary uppercase tracking-wide">Works With These Models</h2>
-              <span className="text-xs text-on-surface-variant">Showing {part.compatibleModels.length} verified fits · 500+ models total</span>
-            </div>
-            <p className="text-sm text-on-surface-variant mb-4">Contact us to confirm your specific model number.</p>
-            <div className="rounded-lg border border-outline-variant/20 overflow-hidden">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-surface-container-low border-b border-outline-variant/20">
-                    <th className="text-left px-4 py-2.5 font-semibold text-on-surface-variant">Brand</th>
-                    <th className="text-left px-4 py-2.5 font-semibold text-on-surface-variant">Model Number</th>
-                    <th className="text-left px-4 py-2.5 font-semibold text-on-surface-variant hidden sm:table-cell">Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {part.compatibleModels.map((m, i) => (
-                    <tr key={m} className={`border-b border-outline-variant/10 last:border-0 ${i % 2 === 1 ? "bg-surface-container-low/40" : ""}`}>
-                      <td className="px-4 py-2.5 text-on-surface-variant">{parseBrand(m)}</td>
-                      <td className="px-4 py-2.5 font-mono font-medium text-on-surface">{parseModelNumber(m)}</td>
-                      <td className="px-4 py-2.5 text-on-surface-variant hidden sm:table-cell">{getApplianceType(m)}</td>
+            <details className="group">
+              <summary className="flex items-center justify-between cursor-pointer list-none mb-1">
+                <h2 className="text-sm font-semibold text-secondary uppercase tracking-wide">Works With These Models</h2>
+                <span className="flex items-center gap-2 text-sm text-on-surface-variant select-none">
+                  <span>{part.compatibleModels.length} verified fits · 500+ total</span>
+                  <span className="material-symbols-outlined text-base transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                </span>
+              </summary>
+              <p className="text-sm text-on-surface-variant mt-1 mb-4">Contact us to confirm your specific model number.</p>
+              <div className="rounded-lg border border-outline-variant/20 overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-surface-container-low border-b border-outline-variant/20">
+                      <th className="text-left px-4 py-2.5 font-semibold text-on-surface-variant">Brand</th>
+                      <th className="text-left px-4 py-2.5 font-semibold text-on-surface-variant">Model Number</th>
+                      <th className="text-left px-4 py-2.5 font-semibold text-on-surface-variant">Description</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {part.compatibleModels.map(({ brand, model, description }, i) => (
+                      <tr key={model} className={`border-b border-outline-variant/10 last:border-0 ${i % 2 === 1 ? "bg-surface-container-low/40" : ""}`}>
+                        <td className="px-4 py-2.5 text-on-surface-variant whitespace-nowrap">{brand}</td>
+                        <td className="px-4 py-2.5 font-mono font-medium text-on-surface whitespace-nowrap">{model}</td>
+                        <td className="px-4 py-2.5 text-on-surface-variant">{description}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
           </section>
         )}
 
