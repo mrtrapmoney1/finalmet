@@ -19,6 +19,7 @@ export interface Part {
   availability: "in_stock" | "out_of_stock" | "preorder" | "backorder";
   mpn: string;
   image_link: string;
+  images?: string[];  // Additional product photos (local /public paths or remote URLs)
   category: string;
   // Extended detail fields (optional — render conditionally on product detail page)
   specs?: Record<string, string>;
@@ -41,7 +42,13 @@ export const OEM_PARTS: Part[] = [
     condition: "new",
     availability: "in_stock",
     mpn: "DC31-00055G",
-    image_link: "https://lh3.googleusercontent.com/placeholder-DC31-00055G",
+    image_link: "/photos/img_0377.jpg",
+    images: [
+      "/photos/img_0377.jpg",
+      "/photos/img_0380.jpg",
+      "/photos/img_0447.jpg",
+      "/photos/img_0448.jpg",
+    ],
     category: "Home & Garden > Appliances > Appliance Accessories > Washer & Dryer Parts & Accessories",
     specs: {
       "Part Type": "Dryer Drive Motor (Induction)",

@@ -175,19 +175,12 @@ Material Design 3-inspired color tokens defined in `tailwind.config.ts`:
 
 ## next.config.ts
 
-In **Next.js 16**, if you add `reactCompiler` or `cacheComponents`, they are **top-level** keys — not under `experimental`:
+In **Next.js 16**, `reactCompiler` and `cacheComponents` are **top-level** keys (not under `experimental`). Neither is currently enabled — if you add them:
 
-```ts
-const nextConfig: NextConfig = {
-  reactCompiler: true,      // Requires babel-plugin-react-compiler installed
-  cacheComponents: true,    // Partial Prerendering (PPR)
-  ...
-};
-```
+- `reactCompiler: true` — requires `babel-plugin-react-compiler` installed
+- `cacheComponents: true` — enables PPR (Partial Prerendering); **do not** nest under `experimental` (that was the Next.js 15 API and emits "Unrecognized key" warnings in Next 16)
 
-`reactCompiler: true` requires `babel-plugin-react-compiler` as a dependency. `cacheComponents: true` enables hybrid static/streaming rendering (PPR). **Do not** nest these under `experimental` — that was the Next.js 15 API and will emit "Unrecognized key" warnings in Next 16.
-
-**Constraint**: Server components that call `new Date()` at render time will break the build with `cacheComponents` active. Always use a static constant for copyright years etc. (see `Footer.tsx`: `const FOOTER_YEAR = 2026`).
+**Constraint if `cacheComponents` is enabled**: Server components that call `new Date()` at render time will break the build. Use a static constant instead (see `Footer.tsx`: `const FOOTER_YEAR = 2026`).
 
 ## Image Config
 

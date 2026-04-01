@@ -5,6 +5,7 @@ import { AddToCartButton } from "@/components/AddToCartButton";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { STORE_COPY } from "@/lib/content";
+import { ProductImageGallery } from "@/components/ProductImageGallery";
 
 function getPartIcon(category: string): string {
   const cat = category.toLowerCase();
@@ -48,7 +49,9 @@ export default async function ProductDetailPage({
     "@context": "https://schema.org/",
     "@type": "Product",
     name: part.title,
-    image: part.image_link,
+    image: part.images && part.images.length > 0
+      ? part.images.map(img => img.startsWith("/") ? `${BUSINESS.url}${img}` : img)
+      : part.image_link,
     description: part.description,
     sku: part.mpn,
     mpn: part.mpn,
@@ -94,18 +97,27 @@ export default async function ProductDetailPage({
         {/* ── Hero grid ─────────────────────────────────────── */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-10">
 
-          {/* Image */}
-          <div className="bg-surface-container-low border border-outline-variant/20 rounded-xl aspect-square flex flex-col items-center justify-center p-8 relative overflow-hidden">
-            <span className="material-symbols-outlined text-[96px] text-primary/20" aria-hidden="true">
-              {getPartIcon(part.category)}
-            </span>
-            <p className="text-xs font-mono text-on-surface-variant/50 mt-3">{part.mpn}</p>
-            {part.availability === "in_stock" && (
-              <span className="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wide">
-                In Stock
+          {/* Image / Gallery */}
+          {part.images && part.images.length > 0 ? (
+            <ProductImageGallery
+              images={part.images}
+              alt={part.title}
+              mpn={part.mpn}
+              inStock={part.availability === "in_stock"}
+            />
+          ) : (
+            <div className="bg-surface-container-low border border-outline-variant/20 rounded-xl aspect-square flex flex-col items-center justify-center p-8 relative overflow-hidden">
+              <span className="material-symbols-outlined text-[96px] text-primary/20" aria-hidden="true">
+                {getPartIcon(part.category)}
               </span>
-            )}
-          </div>
+              <p className="text-xs font-mono text-on-surface-variant/50 mt-3">{part.mpn}</p>
+              {part.availability === "in_stock" && (
+                <span className="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wide">
+                  In Stock
+                </span>
+              )}
+            </div>
+          )}
 
           {/* Details */}
           <div className="flex flex-col">
