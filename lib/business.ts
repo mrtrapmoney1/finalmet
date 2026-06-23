@@ -13,7 +13,7 @@ export const BUSINESS = {
   phone: "(402) 466-9090",
   phoneHref: "tel:+14024669090",
   fax: "(402) 466-2757",
-  email: "service@metrotv-audiotech.com", // CONFIRM: monitored inbox for contact-form requests
+  email: "service@metrotv-audiotech.com", // monitored inbox for contact-form requests
   hours: "Monday–Friday, 8:30 AM – 6:00 PM",
   hoursShort: "Mon–Fri 8:30a–6p",
   founded: 1947,
@@ -25,7 +25,7 @@ export const BUSINESS = {
   directionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=1107+North+Cotner+Blvd+Lincoln+NE+68505",
   social: {
-    facebook: "https://www.facebook.com/MetroTVLincoln/",
+    facebook: "https://www.facebook.com/profile.php?id=61561967326627",
     instagram: "https://instagram.com/metrotva/",
     bbb: "https://www.bbb.org/us/ne/lincoln/profile/computer-repair/metro-tvaudio-tech-0714-207002332",
   },
