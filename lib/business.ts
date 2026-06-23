@@ -47,6 +47,8 @@ export interface Service {
   brands: string[];
   delivery: DeliveryModel;
   audience: string;
+  /** Real board/component-level work we perform — the technical vernacular. */
+  capabilities: string[];
 }
 
 export const SERVICES: Service[] = [
@@ -62,6 +64,11 @@ export const SERVICES: Service[] = [
     ],
     delivery: "in-home",
     audience: "Homeowners across Nebraska & western Iowa",
+    capabilities: [
+      "Fault-code diagnostics",
+      "ECM / control-board reads",
+      "Motor-terminal voltage testing",
+    ],
   },
   {
     slug: "tv",
@@ -72,6 +79,12 @@ export const SERVICES: Service[] = [
     brands: ["Samsung", "LG", "Sony", "Vizio", "TCL"],
     delivery: "drop-off",
     audience: "Households & local businesses",
+    capabilities: [
+      "Power-supply (PSU) repair",
+      "T-Con board repair",
+      "LED driver & backlight",
+      "Main A-board repair",
+    ],
   },
   {
     slug: "commercial",
@@ -82,6 +95,12 @@ export const SERVICES: Service[] = [
     brands: ["Amana", "Sharp", "Panasonic", "Menumaster"],
     delivery: "drop-off",
     audience: "Restaurants & food service",
+    capabilities: [
+      "High-voltage circuit repair",
+      "Mode stirrer motor",
+      "Mica waveguide cover",
+      "Membrane switch matrix",
+    ],
   },
   {
     slug: "audio",
@@ -92,6 +111,12 @@ export const SERVICES: Service[] = [
     brands: ["Yamaha", "Denon", "Marantz", "Pioneer"],
     delivery: "drop-off",
     audience: "Audio enthusiasts & collectors",
+    capabilities: [
+      "BJT / transistor-level repair",
+      "RIAA phono preamp service",
+      "ESR capacitor testing",
+      "VTA & azimuth alignment",
+    ],
   },
 ];
 

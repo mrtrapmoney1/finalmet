@@ -13,6 +13,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
   const diag = inHome
     ? BUSINESS.diagnostic.inHomeLincolnOmaha
     : BUSINESS.diagnostic.dropOff;
+  const isAudio = service.slug === "audio";
 
   return (
     <>
@@ -36,19 +37,71 @@ export function ServiceDetail({ slug }: { slug: string }) {
               {BUSINESS.phone}
             </Button>
           </div>
+
+          <dl className={styles.meta}>
+            <div className={styles.metaItem}>
+              <dt className={styles.metaLabel}>Delivery</dt>
+              <dd className={styles.metaValue}>
+                {inHome ? "In-home · 200+ zips" : "Lincoln shop drop-off"}
+              </dd>
+            </div>
+            <div className={styles.metaItem}>
+              <dt className={styles.metaLabel}>Diagnostic</dt>
+              <dd className={styles.metaValue}>{diag}</dd>
+            </div>
+            <div className={styles.metaItem}>
+              <dt className={styles.metaLabel}>
+                {isAudio ? "Turnaround" : "Parts"}
+              </dt>
+              <dd className={styles.metaValue}>
+                {isAudio ? "1–3 months" : "OEM only"}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section className={`section ${styles.specs}`}>
+        <div className="container">
+          <div className={`${styles.specsHead} reveal`}>
+            <p className="eyebrow">Under the hood</p>
+            <h2 className={`${styles.h2} display`}>
+              What we actually repair<span className="dot">.</span>
+            </h2>
+            <p className={styles.lede}>
+              We work at the component and board level — diagnosing to the root
+              cause, not swapping boxes and hoping. A sample of the work this
+              bench handles:
+            </p>
+          </div>
+
+          <ul className={styles.specGrid}>
+            {service.capabilities.map((cap, i) => (
+              <li
+                key={cap}
+                className={`${styles.spec} reveal`}
+                style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
+              >
+                <span className={styles.specIndex} aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className={styles.specLabel}>{cap}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section className={`section ${styles.detail}`}>
         <div className={`container ${styles.grid}`}>
-          <div>
+          <div className="reveal">
             <p className="eyebrow">How it works</p>
             <h2 className={`${styles.h2} display`}>
               What to expect<span className="dot">.</span>
             </h2>
             <ul className={styles.points}>
               <li className={styles.point}>
-                <Icon name="check" size={20} />
+                <Icon name="check" size={22} />
                 <span>
                   {inHome
                     ? "We schedule a convenient time window and come to you."
@@ -56,19 +109,19 @@ export function ServiceDetail({ slug }: { slug: string }) {
                 </span>
               </li>
               <li className={styles.point}>
-                <Icon name="check" size={20} />
+                <Icon name="check" size={22} />
                 <span>
                   Root-cause diagnosis, then a written estimate before any work
                   begins.
                 </span>
               </li>
               <li className={styles.point}>
-                <Icon name="check" size={20} />
+                <Icon name="check" size={22} />
                 <span>Repairs completed with original manufacturer parts.</span>
               </li>
-              {service.slug === "audio" && (
+              {isAudio && (
                 <li className={styles.point}>
-                  <Icon name="clock" size={20} />
+                  <Icon name="clock" size={22} />
                   <span>
                     Audio is our deepest specialty and stays in high demand —
                     turnaround typically runs 1–3 months.
@@ -78,7 +131,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
             </ul>
           </div>
 
-          <aside className={styles.card}>
+          <aside className={`${styles.card} reveal`}>
             <p className={styles.cardLabel}>Diagnostic deductible</p>
             <p className={styles.cardPrice}>{diag}</p>
             <p className={styles.cardNote}>
