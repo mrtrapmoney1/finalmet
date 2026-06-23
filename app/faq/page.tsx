@@ -1,7 +1,9 @@
 import { BUSINESS } from "@/lib/business";
 import { pageMeta } from "@/lib/seo";
+import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { CTA } from "@/components/sections/CTA";
-import styles from "@/components/content/Content.module.css";
+import styles from "./page.module.css";
 
 export const metadata = pageMeta({
   title: "FAQ",
@@ -87,16 +89,28 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
       />
       <section className={`section ${styles.wrap}`}>
-        <div className={`container ${styles.inner}`}>
-          <p className="eyebrow">Frequently Asked Questions</p>
-          <h1 className={`${styles.title} display`}>
-            Answers before you commit<span className="dot">.</span>
-          </h1>
-          <p className={styles.lede}>
-            The questions we hear most — appointments, diagnostic fees, estimates,
-            parts, warranty and where we work. Don&apos;t see yours? Call the shop
-            and we&apos;ll walk you through it.
-          </p>
+        <div className={`container ${styles.grid}`}>
+          <div className={styles.aside}>
+            <p className="eyebrow">Frequently Asked</p>
+            <h1 className={`${styles.title} display`}>
+              Answers, straight up<span className="dot">.</span>
+            </h1>
+            <p className={styles.lede}>
+              Appointments, diagnostic fees, parts, warranty and where we work.
+              Don&apos;t see yours? We&apos;re a phone call away.
+            </p>
+            <div className={styles.callCard}>
+              <p className={styles.callLabel}>Fastest answer</p>
+              <a href={BUSINESS.phoneHref} className={styles.callPhone}>
+                {BUSINESS.phone}
+              </a>
+              <p className={styles.callNote}>{BUSINESS.hours}. Walk-ins welcome.</p>
+              <Button href="/contact" variant="accent">
+                Send a request
+                <Icon name="arrow" size={18} />
+              </Button>
+            </div>
+          </div>
 
           <div className={styles.faq}>
             {FAQS.map((f) => (

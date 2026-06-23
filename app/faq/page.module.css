@@ -1,0 +1,152 @@
+.wrap {
+  background: var(--gradient-feature);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-12);
+}
+
+/* ---- Sticky aside ---- */
+.aside {
+  max-width: 34rem;
+}
+
+.title {
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  color: var(--color-text);
+  margin-block: var(--sp-5) var(--sp-5);
+}
+
+.lede {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  margin-bottom: var(--sp-8);
+}
+
+.callCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-6);
+  border-radius: var(--card-radius);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow);
+}
+
+.callLabel {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+.callPhone {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.callNote {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--sp-2);
+}
+
+/* ---- Accordion ---- */
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.faqItem {
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--color-surface-raised);
+  overflow: hidden;
+  transition: border-color var(--action-duration) var(--action-ease),
+    box-shadow var(--action-duration) var(--action-ease);
+}
+
+.faqItem:hover {
+  border-color: var(--color-border-strong);
+}
+
+.faqItem[open] {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-2);
+}
+
+.faqQ {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+
+/* Circular +/- indicator that rotates open */
+.faqQ::after {
+  content: "+";
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  color: var(--color-accent-text);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-regular);
+  line-height: 1;
+  transition: transform var(--action-duration) var(--action-ease),
+    background var(--action-duration) var(--action-ease);
+}
+
+.faqItem[open] .faqQ::after {
+  content: "−";
+  transform: rotate(180deg);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.faqA {
+  padding: 0 var(--sp-6) var(--sp-5);
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+.faqA a {
+  color: var(--color-accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--sp-20);
+    align-items: start;
+  }
+  .aside {
+    position: sticky;
+    top: 5.5rem;
+  }
+}

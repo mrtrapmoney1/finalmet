@@ -1,7 +1,8 @@
 import { BUSINESS } from "@/lib/business";
 import { pageMeta } from "@/lib/seo";
 import { CTA } from "@/components/sections/CTA";
-import styles from "@/components/content/Content.module.css";
+import { Icon, type IconName } from "@/components/ui/Icon";
+import styles from "./page.module.css";
 
 export const metadata = pageMeta({
   title: "How It Works",
@@ -13,7 +14,7 @@ export const metadata = pageMeta({
 const STEPS = [
   {
     title: "Tell us what's going on",
-    body: "Call the shop or send a request with your equipment and the symptoms you're seeing. The more detail — brand, model, what it's doing — the better we can come prepared.",
+    body: "Call the shop or send a request with your equipment and the symptoms you're seeing. The more detail — brand, model, what it's doing — the better we come prepared.",
   },
   {
     title: "Schedule your service",
@@ -21,14 +22,14 @@ const STEPS = [
   },
   {
     title: "Root-cause diagnosis",
-    body: "We diagnose to the actual fault rather than swapping parts and hoping. The diagnostic fee is collected at this step and is applied toward your repair if you choose to proceed.",
+    body: "We diagnose to the actual fault rather than swapping parts and hoping. The diagnostic fee is collected here and is applied toward your repair if you choose to proceed.",
   },
   {
     title: "A written estimate — before any work",
     body: "You get a written estimate covering parts and labor before we touch the repair. Nothing moves forward without your approval, so there are no surprise charges.",
   },
   {
-    title: "Repair with original manufacturer parts",
+    title: "Repair with original parts",
     body: "As a factory-authorized center we repair with original manufacturer (OEM) parts and service documentation for the brands we carry — no aftermarket substitutes.",
   },
   {
@@ -37,28 +38,50 @@ const STEPS = [
   },
 ];
 
+const ASSURANCES: { icon: IconName; label: string }[] = [
+  { icon: "doc", label: "A written estimate before any work" },
+  { icon: "shield", label: "Original manufacturer parts only" },
+  { icon: "check", label: "Backed by a 90-day warranty" },
+];
+
 export default function HowItWorksPage() {
   return (
     <>
       <section className={`section ${styles.wrap}`}>
-        <div className={`container ${styles.inner}`}>
-          <p className="eyebrow">How It Works</p>
-          <h1 className={`${styles.title} display`}>
-            Simple, honest, no guesswork<span className="dot">.</span>
-          </h1>
-          <p className={styles.lede}>
-            Whether it&apos;s an in-home appliance visit or a shop drop-off, every
-            job follows the same path — diagnose to the root cause, put the estimate
-            in writing, and repair with original manufacturer parts.
-          </p>
+        <div className={`container ${styles.grid}`}>
+          <div className={styles.lead}>
+            <p className="eyebrow">How It Works</p>
+            <h1 className={`${styles.title} display`}>
+              Six steps<span className="dot">.</span> Zero guesswork<span className="dot">.</span>
+            </h1>
+            <p className={styles.lede}>
+              In-home visit or shop drop-off, every job runs the same way —
+              diagnose to the root cause, put the estimate in writing, and repair
+              with original manufacturer parts.
+            </p>
+            <ul className={styles.leadMeta}>
+              {ASSURANCES.map((a) => (
+                <li key={a.label} className={styles.leadMetaItem}>
+                  <Icon name={a.icon} size={18} />
+                  {a.label}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <ol className={styles.steps}>
-            {STEPS.map((s) => (
-              <li key={s.title} className={styles.step}>
-                <span className={styles.stepNum} aria-hidden="true" />
-                <div>
+            {STEPS.map((s, i) => (
+              <li
+                key={s.title}
+                className={`${styles.step} reveal`}
+                style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
+              >
+                <span className={styles.num} aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className={styles.stepBody}>
                   <h2 className={styles.stepTitle}>{s.title}</h2>
-                  <p className={styles.stepBody}>{s.body}</p>
+                  <p className={styles.stepText}>{s.body}</p>
                 </div>
               </li>
             ))}
