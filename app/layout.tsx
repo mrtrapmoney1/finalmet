@@ -69,10 +69,24 @@ function localBusinessJsonLd() {
       longitude: BUSINESS.geo.lng,
     },
     hasMap: BUSINESS.mapUrl,
+    // Geometric in-home service region: a circle centered on the shop that
+    // covers the named metro spread (Lincoln–Omaha–Grand Island–Council Bluffs).
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: BUSINESS.geo.lat,
+        longitude: BUSINESS.geo.lng,
+      },
+      geoRadius: "160000", // meters (~160 km)
+    },
     areaServed: [
       ...SERVED_CITIES.map((c) => ({
         "@type": "City",
         name: c.name,
+        ...(c.geo && {
+          geo: { "@type": "GeoCoordinates", latitude: c.geo.lat, longitude: c.geo.lng },
+        }),
         address: { "@type": "PostalAddress", addressRegion: c.state, addressCountry: "US" },
       })),
       ...SERVED_COUNTIES.map((c) => ({

@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import { BUSINESS } from "@/lib/business";
+import { pageMeta } from "@/lib/seo";
 import { CTA } from "@/components/sections/CTA";
 import styles from "@/components/content/Content.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "FAQ",
   description:
     "Common questions about appliance, TV, audio and commercial microwave repair at Metro TV & Appliances — appointments, diagnostic fees, estimates, OEM parts, warranty, and service area.",
-  alternates: { canonical: `${BUSINESS.url}/faq` },
-};
+  path: "/faq",
+});
 
 interface Faq {
   q: string;

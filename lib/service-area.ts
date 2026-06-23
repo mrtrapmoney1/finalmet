@@ -116,17 +116,19 @@ export const COVERED_ZIP_COUNT = COVERED_ZIPS.length;
 export interface ServedPlace {
   name: string;
   state: "NE" | "IA";
+  /** City-center coordinates (public geographic data) for schema.org geo. */
+  geo?: { lat: number; lng: number };
 }
 
 /** Cities called out by name (schema.org areaServed + on-page list). */
 export const SERVED_CITIES: ServedPlace[] = [
-  { name: "Lincoln", state: "NE" },
-  { name: "Omaha", state: "NE" },
-  { name: "Grand Island", state: "NE" },
-  { name: "Council Bluffs", state: "IA" },
-  { name: "Nebraska City", state: "NE" },
-  { name: "Ashland", state: "NE" },
-  { name: "Seward", state: "NE" },
+  { name: "Lincoln", state: "NE", geo: { lat: 40.8136, lng: -96.7026 } },
+  { name: "Omaha", state: "NE", geo: { lat: 41.2565, lng: -95.9345 } },
+  { name: "Grand Island", state: "NE", geo: { lat: 40.9264, lng: -98.342 } },
+  { name: "Council Bluffs", state: "IA", geo: { lat: 41.2619, lng: -95.8608 } },
+  { name: "Nebraska City", state: "NE", geo: { lat: 40.6767, lng: -95.8589 } },
+  { name: "Ashland", state: "NE", geo: { lat: 41.0397, lng: -96.3686 } },
+  { name: "Seward", state: "NE", geo: { lat: 40.9069, lng: -97.0989 } },
 ];
 
 /** Counties called out by name (schema.org areaServed + on-page list). */

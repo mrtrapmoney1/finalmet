@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { BUSINESS, SERVICES } from "@/lib/business";
+import { SERVICES } from "@/lib/business";
+import { pageMeta } from "@/lib/seo";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { CTA } from "@/components/sections/CTA";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Repair Services",
   description:
     "Appliance, TV, audio, and commercial microwave repair from Metro TV & Appliances in Lincoln, NE. Factory-authorized, root-cause diagnosis, original manufacturer parts.",
-  alternates: { canonical: `${BUSINESS.url}/services` },
-};
+  path: "/services",
+});
 
 const ICON_BY_SLUG: Record<string, IconName> = {
   appliance: "home",

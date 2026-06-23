@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { BUSINESS } from "@/lib/business";
+import { pageMeta } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { CTA } from "@/components/sections/CTA";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Home Warranty Appliance Repair",
   description:
     "Have a home warranty? Metro TV & Appliances helps Nebraska homeowners put their coverage to work — factory-authorized in-home appliance repair with original manufacturer parts.",
-  alternates: { canonical: `${BUSINESS.url}/home-warranty` },
-};
+  path: "/home-warranty",
+});
 
 const WHY = [
   {

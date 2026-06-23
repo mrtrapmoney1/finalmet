@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import { BUSINESS } from "@/lib/business";
+import { pageMeta } from "@/lib/seo";
 import { CTA } from "@/components/sections/CTA";
 import styles from "@/components/content/Content.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "How It Works",
   description:
     "How repair works at Metro TV & Appliances: request service, root-cause diagnosis, a written estimate before any work, OEM-parts repair, and a 90-day warranty. Lincoln, NE.",
-  alternates: { canonical: `${BUSINESS.url}/how-it-works` },
-};
+  path: "/how-it-works",
+});
 
 const STEPS = [
   {

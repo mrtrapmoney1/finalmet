@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { BUSINESS } from "@/lib/business";
+import { pageMeta } from "@/lib/seo";
 import {
   ZIP_REGIONS,
   COVERED_ZIP_COUNT,
@@ -11,12 +11,12 @@ import { Icon } from "@/components/ui/Icon";
 import { CTA } from "@/components/sections/CTA";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Service Area",
   description:
     "Metro TV & Appliances covers 200+ zip codes across Nebraska and western Iowa for in-home appliance repair — including Lincoln, Omaha, Grand Island and Council Bluffs. See every city, county and zip code we reach.",
-  alternates: { canonical: `${BUSINESS.url}/service-area` },
-};
+  path: "/service-area",
+});
 
 export default function ServiceAreaPage() {
   return (

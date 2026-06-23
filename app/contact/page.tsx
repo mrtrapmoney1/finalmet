@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
 import { BUSINESS } from "@/lib/business";
+import { pageMeta } from "@/lib/seo";
 import { Icon } from "@/components/ui/Icon";
 import { ContactForm } from "@/components/ContactForm";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Contact & Schedule Service",
   description:
     "Contact Metro TV & Appliances in Lincoln, NE. Call (402) 466-9090 or send a service request. Walk-in shop drop-off and in-home appliance scheduling.",
-  alternates: { canonical: `${BUSINESS.url}/contact` },
-};
+  path: "/contact",
+});
 
 const INFO = [
   { icon: "phone" as const, label: "Phone", value: BUSINESS.phone, href: BUSINESS.phoneHref },
