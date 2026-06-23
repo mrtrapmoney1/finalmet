@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     description:
       "Appliance, TV, audio & commercial microwave repair in Lincoln, NE. We diagnose to the root cause with original manufacturer parts. BBB A+ accredited. Serving Nebraska since 1947.",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${BUSINESS.name} | Factory-Authorized Repair — Lincoln, NE`,
+    description:
+      "Appliance, TV, audio & commercial microwave repair in Lincoln, NE. BBB A+ accredited. Serving Nebraska since 1947.",
+  },
   robots: { index: true, follow: true },
 };
 
