@@ -1,0 +1,215 @@
+/* Hero */
+.hero {
+  background: var(--gradient-hero);
+  color: var(--color-text);
+}
+
+.heroInner {
+  max-width: 48rem;
+  padding-block: clamp(var(--sp-16), 8vw, var(--sp-32));
+}
+
+.heroEyebrow {
+  color: var(--color-text-muted);
+  margin-bottom: var(--sp-5);
+}
+
+.heroTitle {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--sp-5);
+  color: var(--color-text);
+}
+
+.heroSub {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  margin-bottom: var(--sp-8);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+/* Shared section heads */
+.head {
+  max-width: 44rem;
+  margin-bottom: var(--sp-12);
+}
+
+.h2 {
+  font-size: var(--fs-3xl);
+  color: var(--color-text);
+  margin-bottom: var(--sp-4);
+}
+
+.lede {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+/* Why */
+.why {
+  background: var(--color-bg);
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+.whyCard {
+  padding: var(--sp-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+}
+
+.whyIcon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  color: var(--color-accent-bright);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  margin-bottom: var(--sp-5);
+}
+
+.whyTitle {
+  font-size: var(--fs-xl);
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+}
+
+.whyBody {
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+/* Steps */
+.steps {
+  background: var(--color-surface);
+}
+
+.stepGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+.step {
+  position: relative;
+  padding: var(--sp-8);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+}
+
+.stepNum {
+  display: inline-block;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+
+.stepTitle {
+  font-size: var(--fs-lg);
+  color: var(--color-text);
+  margin-bottom: var(--sp-2);
+}
+
+.stepBody {
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+.disclaimer {
+  margin-top: var(--sp-10);
+  padding: var(--sp-5) var(--sp-6);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-border-strong);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  max-width: 52rem;
+}
+
+/* FAQ */
+.faq {
+  background: var(--color-bg);
+}
+
+.faqInner {
+  max-width: 48rem;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-8);
+}
+
+.faqItem {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.faqQ {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+
+.faqChevron {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transform: rotate(90deg);
+  transition: transform var(--action-duration) var(--action-ease);
+}
+
+.faqItem[open] .faqChevron {
+  transform: rotate(-90deg);
+}
+
+.faqA {
+  padding: 0 var(--sp-6) var(--sp-5);
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+@media (min-width: 700px) {
+  .whyGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stepGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,244 @@
+/* =============================================================
+   METROTV — DESIGN TOKEN LIBRARY (single source of truth)
+   Every page references these variables. Never hardcode values.
+   Tiered per W3C Design Tokens spec: PRIMITIVE -> SEMANTIC.
+
+   THEME MODEL: LIGHT by default; DARK ("night mode") via
+   <html data-theme="dark">, toggled by the header control and
+   persisted in localStorage. A few "feature" sections (hero,
+   scroll-story, CTA, footer) stay intentionally dark in BOTH
+   themes via fixed on-dark tokens.
+
+   Aesthetic base: Prometheus Fuels — broadcast RED accent
+   (#DE1F27), bold type, gradients, near-black ink surfaces.
+
+   All TEXT tokens are solid colors chosen to pass WCAG AA (>=4.5:1)
+   on their intended background. NEVER express text color as an
+   opacity of the foreground (the failure mode of the prior builds).
+   ============================================================= */
+
+:root {
+  /* ---------- PRIMITIVES: raw values, never used directly in components ---------- */
+
+  /* Ink (dark surfaces) */
+  --c-ink-900:  #0a0d12;   /* deepest — footer / pressed wells */
+  --c-ink-800:  #0f1217;   /* dark background */
+  --c-ink-700:  #141922;   /* dark surface */
+  --c-ink-600:  #1b222d;   /* dark surface-2 / cards */
+  --c-ink-500:  #232c39;   /* raised / hover */
+  --c-ink-400:  #2e3947;   /* borders (strong) */
+  --c-ink-300:  #3a4654;   /* borders (subtle base) */
+
+  /* Mist (light text on dark) */
+  --c-mist-50:  #f6f8fb;   /* primary text on dark (~17:1) */
+  --c-mist-100: #e7ebf1;
+  --c-mist-200: #c8cfd9;   /* muted text on dark (~11:1) */
+  --c-mist-300: #aab3c0;
+  --c-mist-400: #99a3b1;   /* subtle text on dark (~7:1 floor) */
+  --c-white:    #ffffff;
+  --c-black:    #0a0d12;
+
+  /* Brand — Red (the Prometheus accent) */
+  --c-red-300:  #f4555c;
+  --c-red-400:  #ec2f38;
+  --c-red-500:  #de1f27;   /* ACCENT — brand red */
+  --c-red-600:  #bd1620;   /* hover / pressed */
+  --c-red-700:  #8f0f17;
+
+  /* Support */
+  --c-blue-300:  #6db5ff;   /* links on dark (>=5:1) */
+  --c-blue-600:  #1769c9;   /* links on light (>=5:1) */
+  --c-green-400: #36c47a;   /* success on dark */
+  --c-green-600: #1f7a44;   /* success on light */
+  --c-amber-400: #e0a92b;   /* warning */
+
+  /* Light-theme neutrals */
+  --c-gray-50:  #f6f7f8;
+  --c-gray-100: #eceef0;
+  --c-gray-200: #dde1e4;
+  --c-gray-300: #c4c8cc;
+  --c-gray-500: #5b626a;   /* muted on white (~6.6:1) */
+  --c-gray-600: #474d54;
+  --c-gray-900: #14171b;
+
+  /* Type families (system stack = zero web-font cost, better LCP/INP) */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale (1.250 modular, 16px base). Floor for real text is --fs-xs (12px). */
+  --fs-xs:   0.75rem;    /* 12 — decorative eyebrows / fine print only */
+  --fs-sm:   0.875rem;   /* 14 */
+  --fs-base: 1rem;       /* 16 — body floor */
+  --fs-lg:   1.125rem;   /* 18 */
+  --fs-xl:   1.375rem;   /* 22 */
+  --fs-2xl:  1.75rem;    /* 28 */
+  --fs-3xl:  2.25rem;    /* 36 */
+  --fs-4xl:  3rem;       /* 48 */
+  --fs-5xl:  4rem;       /* 64 */
+  --fs-display:    clamp(2.75rem, 7vw, 6rem);
+  --fs-display-sm: clamp(2rem, 4.5vw, 3.5rem);
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold:    700;
+  --fw-black:   800;
+  --lh-tight: 1.05;
+  --lh-snug:  1.25;
+  --lh-base:  1.6;
+  --tracking-display: -0.02em;
+  --tracking-eyebrow: 0.22em;
+
+  /* Spacing scale (4px base) */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem;  --sp-4: 1rem;
+  --sp-5: 1.25rem;  --sp-6: 1.5rem;  --sp-8: 2rem;     --sp-10: 2.5rem;
+  --sp-12: 3rem;    --sp-16: 4rem;   --sp-20: 5rem;    --sp-24: 6rem;
+  --sp-32: 8rem;
+
+  /* Radius / borders / elevation */
+  --radius-sm: 6px;  --radius-md: 10px;  --radius-lg: 16px;  --radius-xl: 24px;
+  --radius-full: 999px;
+  --glow-red: 0 0 0 1px rgba(222,31,39,.35), 0 12px 40px rgba(222,31,39,.28);
+
+  /* Motion */
+  --ease: cubic-bezier(.2,.6,.2,1);
+  --ease-out-expo: cubic-bezier(.19,1,.22,1);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --dur-fast: 140ms;  --dur-base: 260ms;  --dur-slow: 600ms;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: var(--sp-6);
+  --bp-sm: 600px;  --bp-md: 900px;  --bp-lg: 1200px;
+  --z-header: 100; --z-overlay: 800; --z-modal: 900; --z-toast: 1000;
+  --tap-min: 44px;
+
+  /* ---------- Fixed cross-theme tokens ---------- */
+  --color-on-dark:       var(--c-mist-50);   /* legacy alias; feature sections now use --color-text */
+  --color-on-dark-muted: var(--c-mist-200);
+  --gradient-accent:  linear-gradient(135deg, var(--c-red-400) 0%, var(--c-red-600) 100%);
+
+  /* ---------- SEMANTIC: LIGHT theme (default) ---------- */
+  color-scheme: light;
+
+  --color-bg:            var(--c-white);
+  --color-surface:       var(--c-gray-50);
+  --color-surface-2:     var(--c-gray-100);
+  --color-surface-raised: var(--c-white);
+
+  --color-text:          var(--c-gray-900);
+  --color-text-muted:    var(--c-gray-600);   /* ~7.5:1 on white */
+  --color-text-subtle:   var(--c-gray-500);   /* ~6.6:1 on white */
+
+  --color-primary:        var(--c-ink-800);
+  --color-primary-hover:  var(--c-ink-700);
+  --color-primary-deep:   var(--c-ink-900);   /* footer stays dark in both */
+  --color-on-primary:     var(--c-white);
+
+  --color-accent:         var(--c-red-500);
+  --color-accent-hover:   var(--c-red-600);
+  --color-accent-bright:  var(--c-red-500);   /* on light, the true red reads better than the lighter tint */
+  --color-accent-text:    var(--c-red-600);   /* AA-safe red for SMALL/normal text (>=4.5:1); accent/-bright are for fills, icons & large display */
+  --color-on-accent:      var(--c-white);
+
+  --color-brand:          var(--c-red-500);
+  --color-brand-hover:    var(--c-red-600);
+
+  --color-link:          var(--c-blue-600);
+  --color-border:        var(--c-gray-200);
+  --color-border-strong: var(--c-gray-300);
+  --color-focus:         var(--c-red-500);
+  --color-success:       var(--c-green-600);
+  --color-warning:       var(--c-amber-400);
+
+  --gradient-card:    linear-gradient(158deg, var(--c-white) 0%, var(--c-gray-50) 100%);
+  --gradient-raised:  linear-gradient(158deg, var(--c-gray-50) 0%, var(--c-gray-100) 100%);
+
+  /* Feature-section gradients (adaptive) */
+  --gradient-hero:
+    radial-gradient(120% 120% at 85% 0%, rgba(222,31,39,.12) 0%, transparent 55%),
+    linear-gradient(180deg, var(--c-white) 0%, var(--c-gray-50) 100%);
+  --gradient-feature:
+    radial-gradient(ellipse at 80% 0%, rgba(222,31,39,.07) 0%, transparent 55%),
+    linear-gradient(180deg, var(--c-gray-50) 0%, var(--c-gray-100) 100%);
+  --gradient-cta:
+    radial-gradient(ellipse at 12% 100%, rgba(222,31,39,.14) 0%, transparent 55%),
+    linear-gradient(160deg, var(--c-gray-100) 0%, var(--c-gray-50) 100%);
+  --color-footer-bg:     var(--c-gray-100);
+  --color-footer-border: var(--c-gray-200);
+
+  --shadow-1: 0 1px 2px rgba(10,13,18,.08), 0 1px 3px rgba(10,13,18,.06);
+  --shadow-2: 0 6px 18px rgba(10,13,18,.10), 0 2px 6px rgba(10,13,18,.06);
+  --shadow-3: 0 18px 44px rgba(10,13,18,.14), 0 6px 14px rgba(10,13,18,.08);
+
+  /* Component-level semantics */
+  --space-inset:   var(--sp-6);
+  --space-stack:   var(--sp-6);
+  --space-section: var(--sp-24);
+  --card-radius:   var(--radius-lg);
+  --card-shadow:   var(--shadow-2);
+
+  --action-duration: var(--dur-base);
+  --action-ease:     var(--ease);
+}
+
+/* ---------- SEMANTIC: DARK theme ("night mode") ---------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg:            var(--c-ink-800);
+  --color-surface:       var(--c-ink-700);
+  --color-surface-2:     var(--c-ink-600);
+  --color-surface-raised: var(--c-ink-500);
+
+  --color-text:          var(--c-mist-50);
+  --color-text-muted:    var(--c-mist-200);
+  --color-text-subtle:   var(--c-mist-400);
+
+  --color-primary:        var(--c-ink-700);
+  --color-primary-hover:  var(--c-ink-600);
+  --color-primary-deep:   var(--c-ink-900);
+  --color-on-primary:     var(--c-mist-50);
+
+  --color-accent-bright:  var(--c-red-400);
+  --color-accent-text:    var(--c-red-300);   /* brighter red for small/normal text on dark surfaces (>=4.5:1) */
+
+  --color-link:          var(--c-blue-300);
+  --color-border:        color-mix(in srgb, var(--c-mist-50) 12%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--c-mist-50) 22%, transparent);
+  --color-focus:         var(--c-red-400);
+  --color-success:       var(--c-green-400);
+
+  --gradient-card:    linear-gradient(158deg, var(--c-ink-600) 0%, var(--c-ink-800) 100%);
+  --gradient-raised:  linear-gradient(158deg, var(--c-ink-500) 0%, var(--c-ink-700) 100%);
+
+  --gradient-hero:
+    radial-gradient(120% 120% at 85% 0%, rgba(222,31,39,.30) 0%, transparent 55%),
+    radial-gradient(100% 100% at 0% 100%, rgba(222,31,39,.12) 0%, transparent 50%),
+    linear-gradient(180deg, var(--c-ink-800) 0%, var(--c-ink-900) 100%);
+  --gradient-feature:
+    radial-gradient(ellipse at 80% 20%, rgba(222,31,39,.16) 0%, transparent 55%),
+    linear-gradient(180deg, var(--c-ink-800) 0%, var(--c-ink-700) 100%);
+  --gradient-cta:
+    radial-gradient(ellipse at 15% 100%, rgba(222,31,39,.28) 0%, transparent 55%),
+    linear-gradient(180deg, var(--c-ink-700) 0%, var(--c-ink-900) 100%);
+  --color-footer-bg:     var(--c-ink-900);
+  --color-footer-border: color-mix(in srgb, var(--c-mist-50) 12%, transparent);
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+  --shadow-2: 0 8px 24px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.35);
+  --shadow-3: 0 24px 60px rgba(0,0,0,.55), 0 8px 16px rgba(0,0,0,.4);
+}
+
+/* Accessibility: never animate against the user's wishes */
+@media (prefers-reduced-motion: reduce) {
+  :root { --action-duration: 1ms; --dur-fast: 1ms; --dur-base: 1ms; --dur-slow: 1ms; }
+}
+
+/* Visible focus on every interactive element (WCAG 2.2 — 2.4.7 / 2.4.11) */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

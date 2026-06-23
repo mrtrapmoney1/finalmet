@@ -1,0 +1,43 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+}
+
+.track {
+  display: inline-flex;
+  align-items: center;
+  width: 3.25rem;
+  height: 1.75rem;
+  padding: 3px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  transition: background var(--action-duration) var(--action-ease),
+    border-color var(--action-duration) var(--action-ease);
+}
+
+.thumb {
+  display: grid;
+  place-items: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  color: var(--color-on-accent);
+  transform: translateX(0);
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+
+/* In night mode the thumb slides to the right */
+:global(html[data-theme="dark"]) .thumb {
+  transform: translateX(1.5rem);
+}
+
+.toggle:hover .track {
+  border-color: var(--color-accent);
+}

@@ -1,0 +1,72 @@
+.wrap {
+  background: var(--color-surface);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-12);
+  align-items: start;
+}
+
+.copy {
+  max-width: 34rem;
+}
+
+.title {
+  font-size: var(--fs-display-sm);
+  margin-block: var(--sp-5) var(--sp-5);
+  color: var(--color-text);
+}
+
+.lede {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  margin-bottom: var(--sp-8);
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.point {
+  display: flex;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+}
+
+.pointIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  color: var(--color-accent);
+}
+
+.pointTitle {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--sp-2);
+  color: var(--color-text);
+}
+
+.pointBody {
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+@media (min-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-16);
+  }
+}

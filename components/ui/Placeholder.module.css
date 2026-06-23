@@ -1,0 +1,29 @@
+.wrap {
+  background: var(--color-surface);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  max-width: 40rem;
+}
+
+.title {
+  font-size: var(--fs-4xl);
+  color: var(--color-text);
+  margin-block: var(--sp-4) var(--sp-5);
+}
+
+.body {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  margin-bottom: var(--sp-8);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}

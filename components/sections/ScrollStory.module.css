@@ -1,0 +1,104 @@
+.story {
+  position: relative;
+  background: var(--gradient-feature);
+  color: var(--color-text);
+}
+
+.sticky {
+  padding-block: clamp(var(--sp-16), 9vw, var(--sp-24));
+}
+
+/* Default (no JS): both panels render as readable stacked blocks */
+.panel {
+  max-width: 48rem;
+}
+
+.first {
+  margin-bottom: var(--sp-12);
+}
+
+.title {
+  font-size: var(--fs-display-sm);
+  margin-block: var(--sp-5) var(--sp-5);
+  color: var(--color-text);
+}
+
+.body {
+  font-size: var(--fs-xl);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  max-width: 40rem;
+}
+
+/* Enhanced (JS): pin the panel and cross-fade between states on scroll */
+:global(html.js) .story {
+  min-height: 220vh;
+}
+
+:global(html.js) .sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: 0;
+}
+
+:global(html.js) .stage {
+  display: grid;
+}
+
+/* Overlap both panels in the same grid cell — keeps the container's
+   padding/centering (no absolute positioning that would hit the edge). */
+:global(html.js) .panel {
+  grid-area: 1 / 1;
+  transition: opacity var(--dur-slow) var(--ease-out-expo),
+    transform var(--dur-slow) var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+:global(html.js) .first {
+  margin-bottom: 0;
+}
+
+:global(html.js) .last {
+  opacity: 0;
+  transform: translateY(48px);
+  pointer-events: none;
+}
+
+:global(html.js) .story[data-second="true"] .first {
+  opacity: 0;
+  transform: translateY(-48px);
+  pointer-events: none;
+}
+
+:global(html.js) .story[data-second="true"] .last {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Reduced motion: drop the pin entirely, show both stacked + static */
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .story {
+    min-height: 0;
+  }
+  :global(html.js) .sticky {
+    position: static;
+    min-height: 0;
+    display: block;
+    padding-block: clamp(var(--sp-16), 9vw, var(--sp-24));
+  }
+  :global(html.js) .stage {
+    display: block;
+  }
+  :global(html.js) .panel {
+    opacity: 1;
+    transform: none;
+  }
+  :global(html.js) .first {
+    margin-bottom: var(--sp-12);
+  }
+}
