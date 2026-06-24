@@ -33,16 +33,19 @@ export default function ServicesPage() {
             manufacturer parts. In-home for appliances; shop drop-off for TVs, audio
             and commercial microwaves.
           </p>
+          <p className={styles.headMeta}>
+            // 4 specialties · 13+ authorized brands · OEM parts only
+          </p>
         </div>
       </section>
 
       <section className={`section ${styles.list}`}>
         <div className="container">
           {SERVICES.map((s, i) => (
-            <article key={s.slug} className={styles.row} id={s.slug}>
+            <article key={s.slug} className={`${styles.row} reveal`} id={s.slug}>
               <div className={styles.rowMain}>
                 <span className={styles.icon} aria-hidden="true">
-                  <Icon name={ICON_BY_SLUG[s.slug] ?? "wrench"} size={26} />
+                  <Icon name={ICON_BY_SLUG[s.slug] ?? "wrench"} size={28} />
                 </span>
                 <div>
                   <p className={styles.delivery}>
@@ -53,6 +56,13 @@ export default function ServicesPage() {
                   <h2 className={`${styles.rowTitle} display`}>{s.title}</h2>
                   <p className={styles.rowTagline}>{s.tagline}</p>
                   <p className={styles.rowBody}>{s.description}</p>
+                  <ul className={styles.caps}>
+                    {s.capabilities.map((c) => (
+                      <li key={c} className={styles.cap}>
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
                   <Link href={`/${s.slug}`} className={styles.rowLink}>
                     Learn more about {s.title.toLowerCase()}
                     <Icon name="arrow" size={16} />

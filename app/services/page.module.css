@@ -1,19 +1,21 @@
 .head {
-  background: var(--color-surface);
+  background: var(--gradient-feature);
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .headInner {
-  max-width: 46rem;
-  padding-block: clamp(var(--sp-16), 7vw, var(--sp-24));
+  max-width: 52rem;
+  padding-block: clamp(var(--sp-16), 8vw, var(--sp-32));
 }
 
 .eyebrow {
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-5);
 }
 
 .title {
-  font-size: var(--fs-4xl);
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  line-height: 0.95;
   color: var(--color-text);
   margin-bottom: var(--sp-5);
 }
@@ -22,6 +24,15 @@
   font-size: var(--fs-lg);
   color: var(--color-text-muted);
   line-height: var(--lh-base);
+  margin-bottom: var(--sp-6);
+  max-width: 44rem;
+}
+
+.headMeta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-accent-text);
 }
 
 .list {
@@ -32,11 +43,11 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--sp-8);
-  padding-block: var(--sp-12);
+  padding-block: var(--sp-16);
 }
 
 .row:first-child {
-  padding-top: 0;
+  padding-top: var(--sp-4);
 }
 
 .rowMain {
@@ -48,8 +59,8 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--color-accent) 16%, transparent);
   color: var(--color-accent-bright);
@@ -66,14 +77,15 @@
 }
 
 .rowTitle {
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-3xl);
+  line-height: 1;
   color: var(--color-text);
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-3);
 }
 
 .rowTagline {
   font-size: var(--fs-lg);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semibold);
   color: var(--color-text);
   margin-bottom: var(--sp-3);
 }
@@ -86,11 +98,41 @@
   max-width: 38rem;
 }
 
+/* Technical capability chips — the engineering vernacular */
+.caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-6);
+}
+
+.cap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  padding: var(--sp-1) var(--sp-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.cap::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
 .rowLink {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-bold);
   color: var(--color-text);
 }
 
@@ -105,18 +147,20 @@
 
 .brands {
   padding: var(--sp-6);
-  background: var(--color-surface);
+  background: var(--gradient-card);
   border: 1px solid var(--color-border);
   border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   align-self: start;
 }
 
 .brandsLabel {
+  font-family: var(--font-mono);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-accent-text);
   margin-bottom: var(--sp-4);
 }
 
@@ -156,7 +200,7 @@
 
 .brand:hover {
   border-color: var(--color-accent);
-  color: var(--color-accent-bright);
+  color: var(--color-accent-text);
   transform: translateY(-2px);
 }
 
@@ -169,7 +213,6 @@
   grid-column: 1 / -1;
   border: none;
   border-top: 1px solid var(--color-border);
-  margin-top: var(--sp-12);
 }
 
 @media (min-width: 900px) {
@@ -177,8 +220,5 @@
     grid-template-columns: 1.7fr 1fr;
     gap: var(--sp-12);
     align-items: start;
-  }
-  .divider {
-    margin-top: var(--sp-12);
   }
 }
