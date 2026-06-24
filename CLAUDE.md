@@ -31,9 +31,10 @@ gradient cards, and a scroll-driven motion layer.
   POSTs to **Web3Forms** via `fetch` for server-side lead capture — gated on the public
   `NEXT_PUBLIC_WEB3FORMS_KEY` env var (see `.env.example`). With no key set it degrades gracefully to a
   `mailto:` draft; on network failure it surfaces phone + email fallbacks. No npm SDK — keeps the
-  zero-runtime-deps constraint). Informational routes
-  (`/service-area`, `/how-it-works`, `/faq`, legal) render `components/ui/Placeholder.tsx` so nav
-  never dead-ends — replace these with real content as the build continues.
+  zero-runtime-deps constraint). The informational routes are now built out: `/service-area`
+  (interactive-leaning zip/region content from `lib/service-area.ts`), `/how-it-works`, `/faq`, and
+  the legal pages all render real content. `components/ui/Placeholder.tsx` survives only as the
+  fallback for stubs (`/cod`) and `not-found.tsx` so nav never dead-ends.
 - `lib/business.ts` — single source of truth for business facts and the `SERVICES`, `STATS`,
   `NAV_LINKS` data that components map over. Mirrors `standards/company-facts.md`. Edit content here,
   not in components.
