@@ -12,6 +12,9 @@ interface ButtonProps {
   size?: Size;
   className?: string;
   onDark?: boolean;
+  /** Native button props (only used when no href is provided). */
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export function Button({
@@ -21,6 +24,8 @@ export function Button({
   size = "md",
   className = "",
   onDark = false,
+  type = "submit",
+  disabled = false,
 }: ButtonProps) {
   const cls = [
     styles.btn,
@@ -47,5 +52,9 @@ export function Button({
       </Link>
     );
   }
-  return <button className={cls}>{children}</button>;
+  return (
+    <button className={cls} type={type} disabled={disabled} aria-busy={disabled}>
+      {children}
+    </button>
+  );
 }

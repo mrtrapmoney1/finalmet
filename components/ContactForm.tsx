@@ -5,25 +5,67 @@ import { BUSINESS, SERVICES } from "@/lib/business";
 import { Button } from "@/components/ui/Button";
 import styles from "./ContactForm.module.css";
 
-export function ContactForm() {
-  const [sent, setSent] = useState(false);
+// Web3Forms access key — a PUBLIC key tied to the destination inbox, safe to
+// ship client-side. Set NEXT_PUBLIC_WEB3FORMS_KEY in .env.local to enable
+// server-side lead capture. With no key, the form degrades to a mailto: draft.
+const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+type Status = "idle" | "submitting" | "success" | "error";
+
+function mailtoFallback(fields: Record<string, string>) {
+  const subject = encodeURIComponent(`Service request — ${fields.service || "General"}`);
+  const body = encodeURIComponent(
+    `Name: ${fields.name}\nPhone: ${fields.phone}\nEmail: ${fields.email}\nService: ${fields.service}\n\n${fields.message}`
+  );
+  window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
+}
+
+export function ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") || "");
-    const phone = String(data.get("phone") || "");
-    const email = String(data.get("email") || "");
-    const service = String(data.get("service") || "");
-    const message = String(data.get("message") || "");
+    const fields = {
+      name: String(data.get("name") || ""),
+      phone: String(data.get("phone") || ""),
+      email: String(data.get("email") || ""),
+      service: String(data.get("service") || ""),
+      message: String(data.get("message") || ""),
+    };
 
-    const subject = encodeURIComponent(`Service request — ${service || "General"}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\n\n${message}`
-    );
-    window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    // No key configured → preserve the original mailto behavior.
+    if (!ACCESS_KEY) {
+      mailtoFallback(fields);
+      setStatus("success");
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `Service request — ${fields.service || "General"}`,
+          from_name: `${BUSINESS.name} website`,
+          // Spam honeypot — real users leave this empty.
+          botcheck: data.get("botcheck") || "",
+          ...fields,
+        }),
+      });
+      const result = await res.json();
+      if (result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -81,13 +123,44 @@ export function ContactForm() {
         />
       </div>
 
-      <Button>Send request</Button>
+      {/* Honeypot: hidden from people, tempting to bots. */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }}
+      />
 
-      {sent && (
+      <Button disabled={status === "submitting"}>
+        {status === "submitting" ? "Sending…" : "Send request"}
+      </Button>
+
+      {status === "success" && (
         <p className={styles.note} role="status">
-          Thanks! Your email draft should be open. Prefer to talk now? Call{" "}
+          {ACCESS_KEY ? (
+            <>Thanks! Your request is on its way — we&apos;ll follow up shortly.</>
+          ) : (
+            <>Thanks! Your email draft should be open.</>
+          )}{" "}
+          Prefer to talk now? Call{" "}
           <a href={BUSINESS.phoneHref} className={styles.noteLink}>
             {BUSINESS.phone}
+          </a>
+          .
+        </p>
+      )}
+
+      {status === "error" && (
+        <p className={styles.note} role="alert">
+          Something went wrong sending your request. Please call{" "}
+          <a href={BUSINESS.phoneHref} className={styles.noteLink}>
+            {BUSINESS.phone}
+          </a>{" "}
+          or email{" "}
+          <a href={`mailto:${BUSINESS.email}`} className={styles.noteLink}>
+            {BUSINESS.email}
           </a>
           .
         </p>

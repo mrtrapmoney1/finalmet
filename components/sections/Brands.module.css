@@ -13,7 +13,7 @@
   height: 40vw;
   max-width: 900px;
   max-height: 420px;
-  background: radial-gradient(ellipse, rgba(222, 31, 39, 0.16) 0%, transparent 70%);
+  background: radial-gradient(ellipse, var(--glow-brands) 0%, transparent 70%);
   pointer-events: none;
   filter: blur(8px);
 }

@@ -141,6 +141,6 @@ export const TRUST_BADGES = [
 export const STATS = [
   { value: "1947", label: "Serving Nebraska since" },
   { value: "200+", label: "Zip codes covered" },
-  { value: "18+", label: "Authorized brands" },
+  { value: "13+", label: "Authorized brands" },
   { value: "A+", label: "BBB accredited rating" },
 ] as const;

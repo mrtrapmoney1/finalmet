@@ -18,6 +18,7 @@ const ICONS = {
   menu: "M4 7h16 M4 12h16 M4 17h16",
   close: "M6 6 18 18 M18 6 6 18",
   doc: "M7 3h7l4 4v14H7z M14 3v4h4 M9 13h6 M9 17h6",
+  mail: "M3 6h18v12H3z M3 7l9 6 9-6",
   home: "M4 11 12 4l8 7 M6 10v9h12v-9",
   speaker:
     "M8 4h8v16H8z M12 9.5a2.5 2.5 0 1 0 0 5.01 M12 7.2a.4.4 0 1 0 0 .01",

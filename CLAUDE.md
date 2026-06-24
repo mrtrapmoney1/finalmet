@@ -28,7 +28,10 @@ gradient cards, and a scroll-driven motion layer.
 - `app/` — App Router routes. Homepage composes section components; `/services` + four service
   detail routes (`/appliance`, `/tv`, `/commercial`, `/audio`, all via `components/ServiceDetail.tsx`)
   + `/home-warranty` + `/contact` (NAP card + `components/ContactForm.tsx`, a client component that
-  builds a `mailto:` link from form fields — there is no email/API backend). Informational routes
+  POSTs to **Web3Forms** via `fetch` for server-side lead capture — gated on the public
+  `NEXT_PUBLIC_WEB3FORMS_KEY` env var (see `.env.example`). With no key set it degrades gracefully to a
+  `mailto:` draft; on network failure it surfaces phone + email fallbacks. No npm SDK — keeps the
+  zero-runtime-deps constraint). Informational routes
   (`/service-area`, `/how-it-works`, `/faq`, legal) render `components/ui/Placeholder.tsx` so nav
   never dead-ends — replace these with real content as the build continues.
 - `lib/business.ts` — single source of truth for business facts and the `SERVICES`, `STATS`,

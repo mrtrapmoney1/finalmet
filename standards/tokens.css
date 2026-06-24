@@ -155,16 +155,18 @@
   --gradient-card:    linear-gradient(158deg, var(--c-white) 0%, var(--c-gray-50) 100%);
   --gradient-raised:  linear-gradient(158deg, var(--c-gray-50) 0%, var(--c-gray-100) 100%);
 
-  /* Feature-section gradients (adaptive) */
-  --gradient-hero:
-    radial-gradient(120% 120% at 85% 0%, rgba(222,31,39,.12) 0%, transparent 55%),
-    linear-gradient(180deg, var(--c-white) 0%, var(--c-gray-50) 100%);
-  --gradient-feature:
-    radial-gradient(ellipse at 80% 0%, rgba(222,31,39,.07) 0%, transparent 55%),
-    linear-gradient(180deg, var(--c-gray-50) 0%, var(--c-gray-100) 100%);
-  --gradient-cta:
-    radial-gradient(ellipse at 12% 100%, rgba(222,31,39,.14) 0%, transparent 55%),
-    linear-gradient(160deg, var(--c-gray-100) 0%, var(--c-gray-50) 100%);
+  /* Feature-section gradients (adaptive).
+     LIGHT is a crisp "studio white": clean neutral fields, no red wash —
+     the red lives in the accents (period dots, CTAs, the card cap), not in
+     ambient fog (which reads as a dingy stain on a light ground). The section
+     glows are driven by per-section --glow-* tokens, set to none here and to
+     the red radials under [data-theme="dark"]. */
+  --gradient-hero:    linear-gradient(180deg, var(--c-white) 0%, var(--c-gray-50) 100%);
+  --gradient-feature: linear-gradient(180deg, var(--c-gray-50) 0%, var(--c-gray-100) 100%);
+  --gradient-cta:     linear-gradient(160deg, var(--c-gray-100) 0%, var(--c-white) 100%);
+  --glow-hero:   transparent;
+  --glow-brands: transparent;
+  --glow-cta:    transparent;
   --color-footer-bg:     var(--c-gray-100);
   --color-footer-border: var(--c-gray-200);
 
@@ -223,6 +225,11 @@ html[data-theme="dark"] {
   --gradient-cta:
     radial-gradient(ellipse at 15% 100%, rgba(222,31,39,.28) 0%, transparent 55%),
     linear-gradient(180deg, var(--c-ink-700) 0%, var(--c-ink-900) 100%);
+  /* Section glow color-stops — the atmospheric red that makes dark mode glow.
+     (Matches the prior hardcoded per-section values; light sets these to none.) */
+  --glow-hero:   rgba(222, 31, 39, 0.28);
+  --glow-brands: rgba(222, 31, 39, 0.16);
+  --glow-cta:    rgba(222, 31, 39, 0.22);
   --color-footer-bg:     var(--c-ink-900);
   --color-footer-border: color-mix(in srgb, var(--c-mist-50) 12%, transparent);
 

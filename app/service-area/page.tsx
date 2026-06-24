@@ -25,7 +25,7 @@ export default function ServiceAreaPage() {
         <div className={`container ${styles.headInner}`}>
           <p className={`eyebrow ${styles.eyebrow}`}>Service Area</p>
           <h1 className={`${styles.title} display`}>
-            {COVERED_ZIP_COUNT}+ zip codes across Nebraska &amp; western Iowa
+            200+ zip codes across Nebraska &amp; western Iowa
             <span className="dot">.</span>
           </h1>
           <p className={styles.sub}>
@@ -80,7 +80,8 @@ export default function ServiceAreaPage() {
         <div className="container">
           <h2 className={styles.h2}>Covered zip codes by region</h2>
           <p className={styles.regionsLead}>
-            Every zip code below is within our in-home appliance service area.
+            Every one of the {COVERED_ZIP_COUNT} zip codes below is within our
+            in-home appliance service area.
           </p>
           <div className={styles.regionGrid}>
             {ZIP_REGIONS.map((region) => (

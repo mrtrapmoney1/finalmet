@@ -13,6 +13,7 @@ export const metadata = pageMeta({
 
 const INFO = [
   { icon: "phone" as const, label: "Phone", value: BUSINESS.phone, href: BUSINESS.phoneHref },
+  { icon: "mail" as const, label: "Email", value: BUSINESS.email, href: `mailto:${BUSINESS.email}` },
   { icon: "doc" as const, label: "Fax", value: BUSINESS.fax },
   { icon: "pin" as const, label: "Address", value: BUSINESS.address, href: BUSINESS.directionsUrl },
   { icon: "clock" as const, label: "Hours", value: BUSINESS.hours },

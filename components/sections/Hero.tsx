@@ -13,7 +13,7 @@ export function Hero() {
             Factory-Authorized Repair — Lincoln, NE
           </p>
           <h1 className={`display ${styles.headline} reveal`} style={{ ["--reveal-delay" as string]: "80ms" }}>
-            Fixed right<span className="dot">.</span>
+            Fixed right<span className="dot">.</span>{" "}
             <br />
             The first time<span className="dot">.</span>
           </h1>
