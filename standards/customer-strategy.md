@@ -18,18 +18,36 @@ introduce alternate founding dates without checking with the owner first.
 ## Customer segments, ranked by current priority
 
 ### 1. Homeowners with (or shopping for) a home warranty — primary target
-This is the lead segment for near-term page work. Their need isn't "find a repair
-shop," it's "don't get surprised by a repair bill." Appliance parts pricing swings
+This is the lead segment for near-term page work. Skews **middle-to-high income**, and
+this group is the most likely to already carry a home warranty. Their need isn't "find a
+repair shop," it's "don't get surprised by a repair bill." Appliance parts pricing swings
 hard by brand and model — a control board or compressor can cost dramatically more on
 one brand than another — so the cost risk is genuinely unpredictable for a homeowner
-shopping without coverage.
+shopping without coverage. Note the cost shape: **parts are the expensive part, not
+labor** — so coverage that offsets parts is where the real savings is.
+
+A common entry point for this segment: a **recently bought appliance that's already
+failed.** Teach them the coverage they may not realize they have (all trust-builders, not
+upsells):
+- **Manufacturer warranty** typically runs **~1 year** for general defects, but often
+  **5–10 years on sealed-system issues** (the refrigeration/compressor circuit) on many
+  brands — always worth checking before assuming a repair is out-of-pocket.
+- **Call the manufacturer even if it looks out of warranty** — they sometimes cover the
+  full cost or part of it (goodwill / partial coverage), especially on a newer unit.
+- **If there's no extended warranty, check home *insurance* coverage** — distinct from a
+  home warranty; some policies cover certain appliance failures.
+
+(We are not the coverage provider for any of the above — frame each as "worth checking,"
+keep the provider-disclaimer pattern and the softener language from the content rules.)
 
 **Positioning:** we recommend home warranty coverage *because* of that price variance,
 not as an upsell. Lean into "we're warranty-claim-friendly" — we already have an
 in-house 90-day warranty process and handle third-party claim dispatch (see
 SquareTrade flow in `company-facts.md`), so we know how to work with a homeowner's
 existing plan, file paperwork correctly, and avoid the back-and-forth that stalls
-warranty repairs elsewhere.
+warranty repairs elsewhere. The manufacturer-warranty / home-insurance tips above are
+the trust hook — we help you *not* spend money where you don't have to, which earns the
+job when you do need to pay.
 
 **This is the consumer-focused page to build first** — see Phase 1 below.
 
@@ -45,6 +63,20 @@ same service, two different landing experiences.
 Same logic as TV-for-business: kitchen equipment uptime is revenue-critical. Builds on
 the existing `/commercial` page (Amana, Sharp, Panasonic, Menumaster authorized) — the
 new work here is messaging aimed at kitchen managers/owners, not consumers.
+
+Market is bigger than it looks: **nearly every restaurant runs a commercial microwave,
+and fast-food kitchens lean on them heavily** — high-cycle units that fail under volume.
+What this buyer needs is **fast turnaround** (a dead unit stalls the line), so the
+offering to lead with is **loaner units while we repair** and **discounted/competitive
+repair cost** to win the relationship. Pitch it as keeping the kitchen running, not as a
+one-off fix.
+
+> ⚠️ **Flag for the owner:** `company-facts.md` currently lists commercial microwave as
+> **drop-off at the Lincoln shop only** ($42.90 drop-off fee), which conflicts with
+> "quick fixes + loaners" for a restaurant that can't bring the unit in mid-service.
+> Confirm the loaner program, any on-site/pickup option, and the discounted-cost terms
+> before putting them in customer-facing copy — and update `company-facts.md` once
+> confirmed so the hard-facts file stays the source of truth.
 
 ### 4. Audio equipment owners — niche, highest-expertise, drop-off only
 Smallest segment, but the deepest technical specialty (board-level analog/digital
