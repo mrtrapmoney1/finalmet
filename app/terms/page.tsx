@@ -50,9 +50,9 @@ export default function TermsPage() {
 
           <h2>Warranty</h2>
           <p>
-            Repairs are backed by our 90-day parts-and-labor warranty as described
-            during service. Warranty coverage for manufacturer or extended-plan claims
-            is determined by the applicable manufacturer or warranty provider.
+            Out-of-pocket repairs are backed by a 30-day parts-and-labor warranty as
+            described during service. Warranty coverage for manufacturer or extended-plan
+            claims is determined by the applicable manufacturer or warranty provider.
           </p>
 
           <h2>Intellectual property</h2>

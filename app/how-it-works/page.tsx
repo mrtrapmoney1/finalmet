@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export const metadata = pageMeta({
   title: "How It Works",
   description:
-    "How repair works at Metro TV & Appliances: request service, root-cause diagnosis, a written estimate before any work, OEM-parts repair, and a 90-day warranty. Lincoln, NE.",
+    "How repair works at Metro TV & Appliances: request service, root-cause diagnosis, a written estimate before any work, OEM-parts repair, and a parts-and-labor repair warranty. Lincoln, NE.",
   path: "/how-it-works",
 });
 
@@ -34,14 +34,14 @@ const STEPS = [
   },
   {
     title: "Quality check & warranty",
-    body: "We verify the fix before it goes back to you, and every repair is backed by our 90-day parts-and-labor warranty.",
+    body: "We verify the fix before it goes back to you, and your repair is backed by a parts-and-labor repair warranty.",
   },
 ];
 
 const ASSURANCES: { icon: IconName; label: string }[] = [
   { icon: "doc", label: "A written estimate before any work" },
   { icon: "shield", label: "Original manufacturer parts only" },
-  { icon: "check", label: "Backed by a 90-day warranty" },
+  { icon: "check", label: "Backed by a repair warranty" },
 ];
 
 export default function HowItWorksPage() {

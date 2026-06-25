@@ -41,8 +41,8 @@ upsells):
 keep the provider-disclaimer pattern and the softener language from the content rules.)
 
 **Positioning:** we recommend home warranty coverage *because* of that price variance,
-not as an upsell. Lean into "we're warranty-claim-friendly" — we already have an
-in-house 90-day warranty process and handle third-party claim dispatch (see
+not as an upsell. Lean into "we're warranty-claim-friendly" — we have an in-house
+repair-warranty process and handle third-party claim dispatch (see the warranty terms /
 SquareTrade flow in `company-facts.md`), so we know how to work with a homeowner's
 existing plan, file paperwork correctly, and avoid the back-and-forth that stalls
 warranty repairs elsewhere. The manufacturer-warranty / home-insurance tips above are

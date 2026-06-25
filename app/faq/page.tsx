@@ -45,7 +45,7 @@ const FAQS: Faq[] = [
   },
   {
     q: "Is the repair covered by a warranty?",
-    a: "Every repair is backed by our 90-day parts-and-labor warranty, covering defective OEM parts we installed and recurrence of the same issue due to our workmanship.",
+    a: "Out-of-pocket repairs are backed by a 30-day parts-and-labor warranty, covering defective OEM parts we installed and recurrence of the same issue due to our workmanship. Coverage on manufacturer-warranty or extended-plan repairs follows the terms of that plan.",
   },
   {
     q: "Can you work with my home warranty or extended plan?",
