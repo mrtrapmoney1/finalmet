@@ -70,11 +70,31 @@ No in-home service for TV/audio/commercial — appliances are the only in-home c
 
 ## Warranty
 
+There are two distinct warranty paths — **Metro TV's own repair warranty** and the
+**manufacturer warranty** that Metro TV services as an authorized center. Keep them
+separate in copy; they have different terms and different guarantors.
+
+### Metro TV repair warranty (our own)
 - **90-day parts and labor warranty** on every repair.
+- **Out-of-pocket / COD ("Paying Out of Pocket", `/cod`) repairs carry a 30-day warranty**
+  (owner-stated, 2026-06-24).
+  > ⚠️ **Reconcile before publishing:** this 30-day COD term conflicts with the
+  > "90-day on *every* repair" line above (which came from the reference-repo FAQ/schema,
+  > not the owner). Confirm with the owner whether it's **30 days for out-of-pocket vs.
+  > 90 days for warranty-claim work**, or whether 30 days is now the correct figure
+  > across the board — then fix whichever line is wrong. Don't ship both as written.
 - Covers: defective OEM parts installed by Metro TV, and recurrence of the same issue due to their workmanship.
 - Excludes: misuse/power-surge damage after repair, new unrelated failures, consumables (filters, bulbs, belts), physical damage/modification after service.
-- Claim process: contact within 90 days, reference repair date/issue, free follow-up inspection, no-cost repair if covered.
-- Also performs **in-warranty manufacturer repairs** for authorized brands (subject to manufacturer eligibility).
+- Claim process: contact within the warranty window, reference repair date/issue, free follow-up inspection, no-cost repair if covered.
+
+### Manufacturer warranty (Metro TV services it as an authorized center)
+- Performs **in-warranty manufacturer repairs** for authorized brands (subject to manufacturer eligibility). This warranty is **administered through the manufacturer**, not Metro TV — Metro TV is the authorized service provider executing it.
+- **A repair does not void the manufacturer warranty** — getting one repair done does *not* put the unit "out of warranty" for manufacturing defects (owner-stated, 2026-06-24). Useful reassurance for the recently-bought-appliance buyer (see segment 1 in `customer-strategy.md`).
+- **The manufacturer warranty guarantee is "repair or buyout"** — the unit will be fixed, or **bought out** (replaced/refunded by the manufacturer) if it can't be repaired.
+- **Buyout process is thorough and multi-party** — it involves multiple departments/agencies across *both* companies (Metro TV and the manufacturer), so it's not instant; set that expectation rather than promising a fast buyout.
+  > Note for copy: the "repair or buyout" guarantee is the **manufacturer's**, not Metro
+  > TV's — present it with the provider-disclaimer pattern and softeners per the content
+  > rules; don't state it as Metro TV's own guarantee.
 - Supports **SquareTrade extended-warranty claims**: customer files with SquareTrade first, SquareTrade ships parts directly to the customer, Metro TV does the in-home install once parts arrive (customer must call Metro TV to trigger dispatch — SquareTrade doesn't reliably notify them). No cost to customer unless their plan has a deductible.
 
 ## Service area
