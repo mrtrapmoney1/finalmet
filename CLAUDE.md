@@ -42,12 +42,23 @@ gradient cards, and a scroll-driven motion layer.
   `ScrollStory`, `Brands`, `WarrantyTeaser`, `CTA`). Each has a co-located `*.module.css`.
 - `components/ui/` — primitives: `Button` (shared CTA), `Icon` (inline SVG, no icon web font),
   `ThemeToggle`, `CountUp`, `Placeholder`.
-- **SEO / structured data lives in `app/layout.tsx`** — a non-obvious layer driven entirely off
-  `lib/business.ts`. It exports the root `metadata` (title template, description, keywords, OpenGraph,
-  `metadataBase`/canonical from `BUSINESS.url`) and injects a `LocalBusiness` + `HomeAndConstructionBusiness`
-  JSON-LD block built from `BUSINESS` facts (address, phone, geo, hours, founding 1947). Per-route
-  titles use the `%s | ${BUSINESS.name}` template, so route pages set only their own `metadata.title`.
-  Keep all of this sourced from `lib/business.ts` — don't hardcode NAP/SEO strings in components.
+- `components/content/Content.module.css` — shared styles for long-form/legal pages (`/terms`,
+  `/privacy-policy`); this is the place the **serif body family** is intentionally used (see the
+  tokens note). It's a CSS module with no co-located component — pages import it directly.
+- **SEO / structured data is a two-layer system, both driven off `lib/business.ts`:**
+  - `app/layout.tsx` owns the **site-wide** layer: the root `metadata` (title template, description,
+    keywords, OpenGraph, `metadataBase`/canonical from `BUSINESS.url`) plus an injected
+    `LocalBusiness` + `HomeAndConstructionBusiness` JSON-LD block built from `BUSINESS` facts
+    (address, phone, geo, hours, founding 1947).
+  - `lib/seo.ts` exports **`pageMeta({ title, description, path })`** — the per-route helper used by
+    nearly every page to produce its own title, description, canonical, and a complete page-specific
+    OpenGraph + Twitter block (so each route has its own share preview rather than inheriting the
+    home page's). New routes should call `pageMeta(...)` rather than hand-writing a `metadata` object.
+  - `app/opengraph-image.tsx` generates the shared OG/Twitter share image; `app/robots.ts` and
+    `app/sitemap.ts` generate `robots.txt` / `sitemap.xml` from `BUSINESS` + `SERVICES`. The legal
+    pages (`/terms`, `/privacy-policy`) are deliberately **excluded from the sitemap and carry a meta
+    `noindex`** (not a robots disallow, so crawlers can still reach and honor it) — preserve that.
+  - Keep all of this sourced from `lib/business.ts` — don't hardcode NAP/SEO strings in components.
 - `app/globals.css` `@import`s `standards/tokens.css`, then sets the reset + base type + utilities
   (`.container`, `.section`, `.display`, `.dot`, `.eyebrow`, `.divider`, `.reveal`, `.reading-progress`).
 
