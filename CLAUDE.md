@@ -41,7 +41,16 @@ gradient cards, and a scroll-driven motion layer.
 - `components/sections/*` — the homepage building blocks (`Hero`, `Stats`, `ServicesGrid`,
   `ScrollStory`, `Brands`, `WarrantyTeaser`, `CTA`). Each has a co-located `*.module.css`.
 - `components/ui/` — primitives: `Button` (shared CTA), `Icon` (inline SVG, no icon web font),
-  `ThemeToggle`, `CountUp`, `Placeholder`.
+  `ThemeToggle`, `CountUp`, `Placeholder`, `Figure` (see imagery below).
+- **Imagery is a closed pipeline** — never reference a raw `/images/*` path or drop in a bare `<img>`.
+  `lib/images.ts` exposes `img(name)` / the `ImageName` union; the valid set is fixed by
+  `public/images/manifest.json` (12 self-hosted, verified free-license photos — an unknown name
+  **throws at build**, so adding a photo means adding it to the manifest first). Render everything
+  through `components/ui/Figure.tsx`: a `next/image` wrapper with a blur placeholder and the tokenized
+  "instrument" duotone/graticule overlay. **`Figure` inherits descriptive `alt` from the manifest** —
+  pass `alt=""` only for a genuinely decorative photo (this distinction is load-bearing for the SEO
+  alt-text audit). Photos are emitted as AVIF/WebP via `next.config.ts`; attribution is in
+  `standards/image-credits.md`.
 - `components/content/Content.module.css` — shared styles for long-form/legal pages (`/terms`,
   `/privacy-policy`); this is the place the **serif body family** is intentionally used (see the
   tokens note). It's a CSS module with no co-located component — pages import it directly.
@@ -54,6 +63,10 @@ gradient cards, and a scroll-driven motion layer.
     nearly every page to produce its own title, description, canonical, and a complete page-specific
     OpenGraph + Twitter block (so each route has its own share preview rather than inheriting the
     home page's). New routes should call `pageMeta(...)` rather than hand-writing a `metadata` object.
+    **Gotcha (don't undo):** `pageMeta` sets `openGraph.images` + `twitter.card:"summary_large_image"`
+    *explicitly*. A route that declares its own `openGraph` block does **not** inherit the root
+    file-based `app/opengraph-image.tsx`, so dropping these silently leaves that route's `og:image`
+    null. The legal pages hand-roll `metadata` (not `pageMeta`) because they need `robots: noindex`.
   - `app/opengraph-image.tsx` generates the shared OG/Twitter share image; `app/robots.ts` and
     `app/sitemap.ts` generate `robots.txt` / `sitemap.xml` from `BUSINESS` + `SERVICES`. The legal
     pages (`/terms`, `/privacy-policy`) are deliberately **excluded from the sitemap and carry a meta
@@ -108,6 +121,12 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
   motion, and crawlers always see content at `opacity:1`. This is non-negotiable (see review findings).
 - `ScrollStory.tsx` is a pinned two-panel cross-fade; `CountUp.tsx` animates stat numbers on view.
   Both render a complete, static, accessible fallback without JS / under reduced motion.
+- **Per-section interaction layer (the "maximal" overhaul):** beyond the single reveal, each homepage
+  section carries one distinct on-theme interaction (Hero pointer-graticule, Stats VU-meters, Services
+  scan-line, Brands marquee-ticker, Warranty flip-cards, CTA photo); service detail pages get a drag
+  `DiagnosticSlider`. Client behaviors live in `components/motion/` hooks (`useInView`, `usePointer`,
+  `usePrefersReducedMotion`). **Every interaction must be keyboard-operable and reduced-motion-safe,
+  with a complete static fallback at `opacity:1`** — content is never gated behind an interaction.
 - **CSS Modules gotcha**: in `*.module.css`, global hooks like `html.js` and `html[data-theme="dark"]`
   **must be wrapped in `:global(...)`** — otherwise the `.js` / attribute class gets scoped/hashed and
   the selector silently never matches. (Global selectors in `globals.css` don't need this.)
@@ -125,6 +144,11 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
   large text, accents, dividers, and button fills, and verify contrast per use.
 
 ## Reference material (read, don't re-derive)
+> **Tracked vs. local-only:** `standards/` and `DECISIONS.md` are committed. `docs/`, `reviews/`, and
+> `scripts/` are **gitignored** (kept on the maintainer's disk, deliberately not pushed — they don't
+> ship with the site), so they may be **absent in a fresh clone**. The governing spec is the project
+> bible `docs/superpowers/specs/2026-06-24-metro-tv-project-bible-design.md` (with a §13 *Amendments*
+> log recording deliberate deviations); the running decision log is the tracked `DECISIONS.md`.
 - `standards/company-facts.md` — real, verified business facts (address, phone, hours, founding,
   brands, pricing, warranty terms, service area). Also flags which reference-repo content is placeholder.
 - `standards/customer-strategy.md` — customer segments and the page-build roadmap; consult before
