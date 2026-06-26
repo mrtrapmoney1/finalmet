@@ -15,8 +15,8 @@ const POINTS = [
   },
   {
     icon: "check" as const,
-    title: "Authorized for the brands you own",
-    body: "Factory authorization means direct access to original parts and service documentation for the brands we carry.",
+    title: "Authorized for the brands we service",
+    body: "Factory authorization means direct access to original manufacturer parts and service documentation.",
   },
 ];
 

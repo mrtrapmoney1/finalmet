@@ -167,6 +167,12 @@
   --glow-hero:   transparent;
   --glow-brands: transparent;
   --glow-cta:    transparent;
+
+  /* Hero oscilloscope graticule — the bench signature */
+  --graticule-line:  color-mix(in srgb, var(--color-border-strong) 50%, transparent);
+  --graticule-gap:   34px;
+  --graticule-sweep: color-mix(in srgb, var(--c-red-500) 50%, transparent);
+
   --color-footer-bg:     var(--c-gray-100);
   --color-footer-border: var(--c-gray-200);
 
@@ -230,6 +236,11 @@ html[data-theme="dark"] {
   --glow-hero:   rgba(222, 31, 39, 0.28);
   --glow-brands: rgba(222, 31, 39, 0.16);
   --glow-cta:    rgba(222, 31, 39, 0.22);
+
+  /* Graticule reads brighter on the dark bench; sweep glows phosphor-red */
+  --graticule-line:  color-mix(in srgb, var(--c-mist-50) 9%, transparent);
+  --graticule-sweep: color-mix(in srgb, var(--c-red-400) 65%, transparent);
+
   --color-footer-bg:     var(--c-ink-900);
   --color-footer-border: color-mix(in srgb, var(--c-mist-50) 12%, transparent);
 

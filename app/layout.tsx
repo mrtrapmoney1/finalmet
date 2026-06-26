@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionRoot } from "@/components/motion/MotionRoot";
+import { Analytics } from "@/components/Analytics";
 import { BUSINESS } from "@/lib/business";
 import { SERVED_CITIES, SERVED_COUNTIES } from "@/lib/service-area";
 
@@ -141,6 +142,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <MotionRoot />
+        <Analytics />
       </body>
     </html>
   );

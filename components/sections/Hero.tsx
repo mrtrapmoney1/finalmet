@@ -7,20 +7,19 @@ export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.glow} aria-hidden="true" />
+      <div className={styles.graticule} aria-hidden="true" />
       <div className={`container ${styles.inner}`}>
         <div className={styles.copy}>
           <p className={`eyebrow ${styles.eyebrow} reveal`}>
             Factory-Authorized Repair — Lincoln, NE
           </p>
           <h1 className={`display ${styles.headline} reveal`} style={{ ["--reveal-delay" as string]: "80ms" }}>
-            Fixed right<span className="dot">.</span>{" "}
-            <br />
-            The first time<span className="dot">.</span>
+            Fixed right<span className="dot">.</span>
           </h1>
           <p className={`${styles.sub} reveal`} style={{ ["--reveal-delay" as string]: "160ms" }}>
             Appliances, TVs, audio gear and commercial microwaves — diagnosed to
-            the root cause and repaired with original manufacturer parts. Trusted
-            across Nebraska since {BUSINESS.founded}.
+            the root cause and repaired with original manufacturer parts. Serving
+            Nebraska since {BUSINESS.founded}.
           </p>
 
           <div className={`${styles.actions} reveal`} style={{ ["--reveal-delay" as string]: "240ms" }}>
@@ -34,10 +33,9 @@ export function Hero() {
             </Button>
           </div>
 
-          <ul className={`${styles.badges} reveal`} style={{ ["--reveal-delay" as string]: "320ms" }}>
+          <ul className={`${styles.creds} reveal`} aria-label="Credentials" style={{ ["--reveal-delay" as string]: "320ms" }}>
             {TRUST_BADGES.map((b) => (
-              <li key={b} className={styles.badge}>
-                <Icon name="check" size={16} />
+              <li key={b} className={styles.cred}>
                 {b}
               </li>
             ))}

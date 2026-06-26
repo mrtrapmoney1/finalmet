@@ -29,6 +29,45 @@
   .glow { animation: none; }
 }
 
+/* Oscilloscope graticule — the bench signature. A faint measurement grid,
+   radially masked so it never competes with the copy, with a one-shot
+   "power-on" signal sweep that crosses once on load and settles. */
+.graticule {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right, var(--graticule-line) 0 1px, transparent 1px var(--graticule-gap)),
+    repeating-linear-gradient(to bottom, var(--graticule-line) 0 1px, transparent 1px var(--graticule-gap));
+  -webkit-mask-image: radial-gradient(125% 110% at 78% 26%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(125% 110% at 78% 26%, #000 0%, transparent 72%);
+}
+
+.graticule::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  left: 0;
+  background: linear-gradient(to bottom, transparent, var(--graticule-sweep), transparent);
+  box-shadow: 0 0 14px 3px var(--graticule-sweep);
+  opacity: 0;
+  animation: heroSweep 2.6s var(--ease) 0.35s 1 forwards;
+}
+
+@keyframes heroSweep {
+  0% { left: -2%; opacity: 0; }
+  9% { opacity: 0.85; }
+  90% { opacity: 0.85; }
+  100% { left: 102%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graticule::after { animation: none; opacity: 0; }
+}
+
 .inner {
   position: relative;
   display: grid;
@@ -68,23 +107,28 @@
   margin-bottom: var(--sp-10);
 }
 
-.badges {
+/* Credential plate — a segmented instrument-label readout. Monospace, hairline
+   dividers between fields, no rounded pills and no repeated check glyph. */
+.creds {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp-3) var(--sp-6);
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  gap: var(--sp-2) 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
-.badge svg {
-  color: var(--color-accent-bright);
+.cred {
+  padding: 0 var(--sp-4);
+  border-left: 1px solid var(--color-border-strong);
+  line-height: 1.1;
+}
+
+.cred:first-child {
+  padding-left: 0;
+  border-left: 0;
 }
 
 /* Pricing card — the hero's focal anchor. A crisp red top cap gives the

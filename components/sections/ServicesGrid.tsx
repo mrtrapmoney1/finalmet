@@ -20,8 +20,8 @@ export function ServicesGrid() {
             Four specialties<span className="dot">.</span> One standard<span className="dot">.</span>
           </h2>
           <p className={styles.lede}>
-            In-home visit or shop drop-off — every job gets the same root-cause
-            diagnosis and original manufacturer parts. No guesswork, no upsell.
+            In-home visit or shop drop-off — diagnosed to the root cause and
+            repaired with original manufacturer parts.
           </p>
         </div>
 

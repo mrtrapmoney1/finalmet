@@ -120,12 +120,9 @@
 }
 
 .cap::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: var(--radius-full);
-  background: var(--color-accent);
-  flex-shrink: 0;
+  content: "+";
+  font-weight: var(--fw-bold);
+  color: var(--color-accent-text);
 }
 
 .rowLink {
@@ -170,43 +167,27 @@
   gap: var(--sp-2);
 }
 
+/* Flat spec labels — square hairline tags, not rounded chips. */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--sp-2);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   color: var(--color-text);
-  padding: var(--sp-2) var(--sp-4);
+  padding: var(--sp-2) var(--sp-3);
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   cursor: default;
   transition: border-color var(--action-duration) var(--action-ease),
     color var(--action-duration) var(--action-ease),
-    transform var(--dur-fast) var(--ease-spring);
-}
-
-.brand::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: var(--radius-full);
-  background: var(--color-border-strong);
-  flex-shrink: 0;
-  transition: background var(--action-duration) var(--action-ease),
-    box-shadow var(--action-duration) var(--action-ease);
+    background var(--action-duration) var(--action-ease);
 }
 
 .brand:hover {
   border-color: var(--color-accent);
   color: var(--color-accent-text);
-  transform: translateY(-2px);
-}
-
-.brand:hover::before {
-  background: var(--color-accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 22%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 6%, var(--color-bg));
 }
 
 .divider {

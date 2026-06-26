@@ -47,7 +47,7 @@
 .desktopNav {
   display: none;
   align-items: center;
-  gap: var(--sp-6);
+  gap: var(--sp-5);
   margin-inline-start: auto;
 }
 
@@ -55,6 +55,7 @@
   position: relative;
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
+  white-space: nowrap;
   color: var(--color-text-muted);
   padding-block: var(--sp-2);
   transition: color var(--action-duration) var(--action-ease);
@@ -94,6 +95,7 @@
   gap: var(--sp-2);
   font-weight: var(--fw-semibold);
   font-size: var(--fs-sm);
+  white-space: nowrap;
   color: var(--color-text);
 }
 

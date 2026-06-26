@@ -39,51 +39,43 @@
   line-height: var(--lh-base);
 }
 
+/* Parts-manifest grid — authorized brands read as a spec sheet, not a pill
+   cloud. Hairline cells, monospace index, no rounded chips, no hover-lift. */
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-3);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  counter-reset: brand;
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: baseline;
   gap: var(--sp-3);
   font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
   letter-spacing: 0.01em;
   color: var(--color-text);
-  padding: var(--sp-3) var(--sp-5);
-  background: var(--gradient-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
+  padding: var(--sp-4) var(--sp-5);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   cursor: default;
-  transition: border-color var(--action-duration) var(--action-ease),
-    color var(--action-duration) var(--action-ease),
-    box-shadow var(--action-duration) var(--action-ease),
-    transform var(--dur-fast) var(--ease-spring);
+  transition: background var(--action-duration) var(--action-ease),
+    color var(--action-duration) var(--action-ease);
 }
 
-/* Leading "authorized" status dot */
+/* Monospace authorization index — counts the manifest instead of decorating it */
 .brand::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: var(--radius-full);
-  background: var(--color-border-strong);
-  flex-shrink: 0;
-  transition: background var(--action-duration) var(--action-ease),
-    box-shadow var(--action-duration) var(--action-ease);
+  content: counter(brand, decimal-leading-zero);
+  counter-increment: brand;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-subtle, var(--color-text-muted));
 }
 
 .brand:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent-bright);
-  box-shadow: var(--shadow-2);
-  transform: translateY(-3px);
-}
-
-.brand:hover::before {
-  background: var(--color-accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 22%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface));
+  color: var(--color-accent-text);
 }

@@ -1,7 +1,7 @@
 import { SERVICES } from "@/lib/business";
 import styles from "./Brands.module.css";
 
-// Deduped, ordered set of brands we service (from the single source of truth).
+// Every brand we service — breadth is the selling point, don't trim it.
 const BRANDS = Array.from(new Set(SERVICES.flatMap((s) => s.brands)));
 
 export function Brands() {
@@ -15,8 +15,8 @@ export function Brands() {
             The brands we&apos;re built for<span className="dot">.</span>
           </h2>
           <p className={styles.lede}>
-            Factory authorization means direct access to original parts and service
-            documentation for the names you already own.
+            Factory authorization means direct access to original manufacturer
+            parts and service documentation.
           </p>
         </div>
 

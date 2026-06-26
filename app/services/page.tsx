@@ -34,7 +34,7 @@ export default function ServicesPage() {
             and commercial microwaves.
           </p>
           <p className={styles.headMeta}>
-            // 4 specialties · 13+ authorized brands · OEM parts only
+            // 4 specialties · 50+ authorized brands · OEM parts only
           </p>
         </div>
       </section>

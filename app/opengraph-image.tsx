@@ -52,10 +52,6 @@ export default function OpengraphImage() {
             <span>Fixed right</span>
             <span style={{ color: RED }}>.</span>
           </div>
-          <div style={{ display: "flex", fontSize: 88, fontWeight: 800, letterSpacing: "-2px" }}>
-            <span>The first time</span>
-            <span style={{ color: RED }}>.</span>
-          </div>
           <div style={{ display: "flex", fontSize: 32, color: "#c8cfd9", marginTop: 28 }}>
             Factory-authorized appliance, TV &amp; audio repair · Lincoln, NE · Since {BUSINESS.founded}
           </div>

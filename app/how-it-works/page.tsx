@@ -40,8 +40,8 @@ const STEPS = [
 
 const ASSURANCES: { icon: IconName; label: string }[] = [
   { icon: "doc", label: "A written estimate before any work" },
-  { icon: "shield", label: "Original manufacturer parts only" },
-  { icon: "check", label: "Backed by a repair warranty" },
+  { icon: "chip", label: "Original manufacturer parts only" },
+  { icon: "shield", label: "Backed by a repair warranty" },
 ];
 
 export default function HowItWorksPage() {
