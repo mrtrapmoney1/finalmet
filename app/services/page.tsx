@@ -17,7 +17,7 @@ const PHOTO_BY_SLUG: Record<string, ImageName> = {
 export const metadata = pageMeta({
   title: "Repair Services",
   description:
-    "Appliance, TV, audio, and commercial microwave repair from Metro TV & Appliances in Lincoln, NE. Factory-authorized, root-cause diagnosis, original manufacturer parts.",
+    "Appliance, TV, audio, and commercial microwave repair in Lincoln, NE. Factory-authorized, root-cause diagnosis with original manufacturer parts.",
   path: "/services",
 });
 
@@ -81,7 +81,6 @@ export default function ServicesPage() {
               <div className={styles.brands}>
                 <Figure
                   name={PHOTO_BY_SLUG[s.slug] ?? "repair-hands"}
-                  alt=""
                   ratio={16 / 9}
                   sizes="(min-width: 900px) 32vw, 100vw"
                   className={styles.rowPhoto}

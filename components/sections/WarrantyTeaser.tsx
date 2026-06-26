@@ -42,7 +42,6 @@ export function WarrantyTeaser() {
           </Button>
           <Figure
             name="kitchen"
-            alt=""
             ratio={16 / 9}
             sizes="(min-width: 900px) 40vw, 100vw"
             caption="In-home appliance service across 200+ zip codes"

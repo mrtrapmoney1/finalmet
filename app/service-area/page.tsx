@@ -15,7 +15,7 @@ import styles from "./page.module.css";
 export const metadata = pageMeta({
   title: "Service Area",
   description:
-    "Metro TV & Appliances covers 200+ zip codes across Nebraska and western Iowa for in-home appliance repair — including Lincoln, Omaha, Grand Island and Council Bluffs. See every city, county and zip code we reach.",
+    "In-home appliance repair across 200+ zip codes in Nebraska & western Iowa — Lincoln, Omaha, Grand Island, Council Bluffs. See every city and zip we reach.",
   path: "/service-area",
 });
 
@@ -46,7 +46,6 @@ export default function ServiceAreaPage() {
           </div>
           <Figure
             name="kitchen"
-            alt=""
             ratio={21 / 9}
             sizes="100vw"
             caption="In-home appliance service across Nebraska & western Iowa"

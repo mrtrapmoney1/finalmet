@@ -36,7 +36,6 @@ export function CTA({
         </div>
         <Figure
           name={photo}
-          alt=""
           ratio={4 / 3}
           sizes="(min-width: 900px) 38vw, 100vw"
           caption="Calibrated, factory-authorized — since 1947"

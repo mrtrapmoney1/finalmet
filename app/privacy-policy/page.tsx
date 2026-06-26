@@ -5,7 +5,8 @@ import styles from "@/components/content/Content.module.css";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for Metro TV & Appliances.",
+  description:
+    "How Metro TV & Appliances collects, uses, and protects the information you share when you contact us or request service — and the choices you have.",
   alternates: { canonical: `${BUSINESS.url}/privacy-policy` },
   robots: { index: false, follow: true },
 };

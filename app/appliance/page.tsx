@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Appliance Repair — Lincoln, NE",
   description:
-    "Factory-authorized in-home appliance repair across 200+ Nebraska & Iowa zip codes. Washers, dryers, refrigerators, dishwashers and ranges, repaired with original parts.",
+    "Factory-authorized in-home appliance repair across 200+ Nebraska & Iowa zip codes — washers, dryers, refrigerators, dishwashers and ranges, with original parts.",
   path: "/appliance",
 });
 

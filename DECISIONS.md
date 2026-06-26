@@ -4,6 +4,35 @@ Running log of non-obvious choices, newest first. One line of "why" each.
 Aesthetic anchor: **Broadcast Service-Bench** (see the project bible in
 `docs/superpowers/specs/`).
 
+## 2026-06-26 — "Fully maximal" overhaul: photos, per-section motion, SEO/a11y hardening
+
+Bible amended (new §13 Amendments) — see it for the full rationale/supersedes record.
+
+- **Real free-license photography** site-wide (12 verified, watermark-free images via
+  `Figure.tsx`/`next/image`). *Why:* a 77-year brand needs real imagery to read as credible;
+  generic benchwork/appliance/audio photos illustrate the work without impersonating Metro's
+  actual shop/staff/jobs. Supersedes the bible §0 "no photos until owner-supplied" rule for
+  *illustrative* imagery only; fabricated testimonials/team/logos stay forbidden.
+- **One distinct interaction per section** (Hero graticule, Stats VU-meters, Services scan-line,
+  Brands ticker, Warranty flip-cards, service-page drag `DiagnosticSlider`). *Why:* "maximal"
+  distinctiveness. All keyboard-operable + reduced-motion-safe with a static `opacity:1` fallback —
+  extends, doesn't break, §4's "content visible without JS."
+- **Photo alt inherits the image manifest** (removed decorative `alt=""` on illustrative photos).
+  *Why:* these photos carry meaning — descriptive alt serves both SEO and screen-reader users.
+- **`pageMeta()` now sets `openGraph.images` + `twitter:summary_large_image` explicitly.** *Why:*
+  a route that declares its own `openGraph` block does **not** inherit the root file-based
+  `opengraph-image`, so every interior route shipped a null `og:image`. Now all routes share the
+  generated card.
+- **Brands ticker got `tabindex=0` + `role=group`.** *Why:* axe flagged the scrollable marquee as a
+  keyboard-inaccessible scroll region (Safari); making it focusable (it already pauses on focus) is
+  the standard fix.
+- **Meta descriptions trimmed to ≤160; short/long titles fixed** (`FAQ`→`Repair FAQ`, commercial
+  title shortened). *Why:* SEO-audit length checks. Net: every indexable route now **SEO 100/100**;
+  legal pages cap at 98 by design (intentional `noindex`, preserved).
+- **Verification (env note):** Lighthouse CLI absent here, so the §12 "Lighthouse ≥95" gate is
+  evidenced via axe (0 violations all routes incl. 404), SEO audit (100 indexable), and Core Web
+  Vitals (LCP 388ms / CLS 0.045 / TBT 90ms, all "Good"). Run real Lighthouse before launch.
+
 ## 2026-06-24 — De-pill + icon audit + debug pass
 
 - **Killed all rounded "pill" chips** (`--radius-full` + glowing-dot `::before` +

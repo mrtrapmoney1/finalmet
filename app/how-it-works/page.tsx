@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata = pageMeta({
   title: "How It Works",
   description:
-    "How repair works at Metro TV & Appliances: request service, root-cause diagnosis, a written estimate before any work, OEM-parts repair, and a parts-and-labor repair warranty. Lincoln, NE.",
+    "How repair works: request service, root-cause diagnosis, a written estimate before any work, OEM-parts repair, and a parts-and-labor warranty. Lincoln, NE.",
   path: "/how-it-works",
 });
 

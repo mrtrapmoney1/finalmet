@@ -10,9 +10,9 @@ const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const metadata = pageMeta({
-  title: "FAQ",
+  title: "Repair FAQ",
   description:
-    "Common questions about appliance, TV, audio and commercial microwave repair at Metro TV & Appliances — appointments, diagnostic fees, estimates, OEM parts, warranty, and service area.",
+    "Common questions on appliance, TV, audio and commercial microwave repair — appointments, diagnostic fees, estimates, OEM parts, warranty, and service area.",
   path: "/faq",
 });
 
@@ -116,7 +116,6 @@ export default function FaqPage() {
             </div>
             <Figure
               name="tools"
-              alt=""
               ratio={4 / 3}
               sizes="(min-width: 900px) 38vw, 100vw"
               className={styles.asidePhoto}

@@ -46,7 +46,6 @@ export function ServicesGrid() {
                 <span className={styles.media}>
                   <Figure
                     name={PHOTO_BY_SLUG[s.slug] ?? "repair-hands"}
-                    alt=""
                     ratio={16 / 9}
                     framed={false}
                     sizes="(min-width: 1040px) 22vw, (min-width: 700px) 45vw, 78vw"

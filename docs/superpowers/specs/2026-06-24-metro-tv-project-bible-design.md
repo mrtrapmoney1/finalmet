@@ -213,3 +213,43 @@ errors present; layout shifts on load.
 - [ ] 404/500 + error boundary in place
 - [ ] Build + typecheck pass with zero errors
 - [ ] `DECISIONS.md` updated
+
+---
+
+## 13. AMENDMENTS
+
+> Amendments are commitments too. Each must state **what it supersedes**, the **rationale**, and
+> the **non-negotiables it preserves**. Hold a high bar: amend only when the change genuinely serves
+> the quality/maximal goal, never to paper over a shortcut. Non-negotiables that may NEVER be amended
+> away: WCAG 2.2 AA, readability (no opacity-as-color, 12px floor, content visible without JS),
+> tokens-only styling, zero runtime deps.
+
+### 2026-06-26 — "Fully maximal" overhaul: real photography + per-section interaction
+
+- **Supersedes §0** ("No … photos — those must come from the owner") **for illustrative/ambient
+  photography only.** The build now ships **12 verified free-license, watermark-free stock photos**
+  (`public/images/` + `manifest.json`, credits in `standards/image-credits.md`, served through
+  `components/ui/Figure.tsx` → `next/image`). *Rationale:* a 77-year repair brand reading as
+  credible needs real imagery, and waiting on owner-supplied assets indefinitely blocked the maximal
+  bar; generic benchwork/appliance/audio photography illustrates the work without **impersonating
+  this specific shop, its staff, or its results.** *Still forbidden (unchanged):* fabricated
+  testimonials, team bios, stats, logos, or any photo that claims to *be* Metro's premises, employees,
+  or completed jobs. Owner-supplied photos should replace these when available.
+- **Extends §4** ("one orchestrated reveal") **to a per-section interaction layer.** Beyond the
+  single power-on reveal, each homepage section now carries one distinct, on-theme interaction
+  (Hero pointer-graticule, Stats VU-meters, Services scan-line, Brands manifest-ticker, Warranty
+  flip-cards, CTA photo; service pages get a drag `DiagnosticSlider`). *Rationale:* "maximal"
+  distinctiveness — each section earns its own instrument metaphor. *Preserved non-negotiables:*
+  every interaction is **keyboard-operable, reduced-motion-safe, and renders a complete static
+  fallback at `opacity:1`** without JS; content is never gated behind an interaction.
+- **Hardens §8C (SEO).** Photo alt text now **inherits descriptive copy from the image manifest**
+  (decorative `alt=""` overrides removed where the photo is illustrative — see `lib/images.ts`).
+  `lib/seo.ts` `pageMeta()` now wires **`openGraph.images` + `twitter.card:"summary_large_image"`
+  explicitly** (a route that defines its own `openGraph` block does NOT inherit the root file-based
+  `opengraph-image`, so every route had a null `og:image` before this). Per-route meta descriptions
+  trimmed to ≤160 chars; under-length titles lengthened. *Result:* every indexable route scores
+  **SEO 100/100**; legal pages cap at 98 by design (intentional `noindex`, preserved per §8/§10).
+- **Tooling note (env):** Lighthouse CLI is unavailable in the working environment, so the §12
+  "Lighthouse ≥ 95" gate is evidenced via **axe-core accessibility audits (0 violations site-wide),
+  the SEO audit (100/100 indexable), and Core Web Vitals** (`performance_audit`: LCP 388ms, CLS
+  0.045, TBT 90ms — all "Good"). Run a true Lighthouse pass before launch when the binary is present.

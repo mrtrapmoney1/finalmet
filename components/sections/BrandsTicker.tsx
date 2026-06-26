@@ -76,7 +76,13 @@ export function BrandsTicker({ brands }: { brands: string[] }) {
   }, [reduced]);
 
   return (
-    <div className={`${styles.ticker} reveal`} ref={scroller} aria-label="Authorized brands we service">
+    <div
+      className={`${styles.ticker} reveal`}
+      ref={scroller}
+      tabIndex={0}
+      role="group"
+      aria-label="Authorized brands we service"
+    >
       <ul className={styles.track}>
         {brands.map((b, i) => (
           <li key={b} className={styles.brand}>

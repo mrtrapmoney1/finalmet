@@ -5,7 +5,8 @@ import styles from "@/components/content/Content.module.css";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
-  description: "Terms of use for Metro TV & Appliances.",
+  description:
+    "Terms of use governing the Metro TV & Appliances website — acceptable use, intellectual property, third-party links, disclaimers, and limitations of liability.",
   alternates: { canonical: `${BUSINESS.url}/terms` },
   robots: { index: false, follow: true },
 };

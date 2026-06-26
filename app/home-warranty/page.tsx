@@ -17,7 +17,7 @@ const SEG_PHOTO: Record<string, ImageName> = {
 export const metadata = pageMeta({
   title: "Home Warranty Appliance Repair",
   description:
-    "Your appliance, TV, audio or microwave repair may already be covered. Metro TV & Appliances is factory-authorized in Lincoln, NE — start by checking your warranty, then ask for us by name.",
+    "Your appliance, TV, audio or microwave repair may already be covered. We're factory-authorized in Lincoln, NE — check your warranty, then ask for us by name.",
   path: "/home-warranty",
 });
 
@@ -134,7 +134,6 @@ export default function HomeWarrantyPage() {
               >
                 <Figure
                   name={SEG_PHOTO[seg.title] ?? "repair-hands"}
-                  alt=""
                   ratio={16 / 9}
                   framed={false}
                   sizes="(min-width: 760px) 24vw, 90vw"

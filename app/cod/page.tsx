@@ -4,7 +4,7 @@ import { Placeholder } from "@/components/ui/Placeholder";
 export const metadata = pageMeta({
   title: "Paying Out of Pocket",
   description:
-    "Not covered by a warranty? Metro TV & Appliances repairs appliances, TVs, audio gear and commercial microwaves with original manufacturer parts — written estimate before any work.",
+    "Not covered by a warranty? We repair appliances, TVs, audio gear and commercial microwaves with original manufacturer parts — written estimate before any work.",
   path: "/cod",
 });
 
