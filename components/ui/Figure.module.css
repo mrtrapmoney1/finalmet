@@ -1,0 +1,76 @@
+.figure {
+  display: block;
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--color-surface-2);
+  isolation: isolate;
+}
+
+.framed .frame {
+  border: 1px solid var(--figure-border);
+  border-radius: var(--figure-radius);
+}
+
+/* When a ratio is requested, the frame becomes an aspect box for the fill image. */
+.frame[style*="--ratio"] {
+  aspect-ratio: var(--ratio);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Instrument treatment: a brand-red duotone tint, a faint measurement grid, and a
+   foot gradient so captions/text over the image stay legible. Pure CSS, static. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    var(--figure-overlay),
+    repeating-linear-gradient(
+      to right,
+      var(--figure-grid) 0,
+      var(--figure-grid) 1px,
+      transparent 1px,
+      transparent var(--graticule-gap)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--figure-grid) 0,
+      var(--figure-grid) 1px,
+      transparent 1px,
+      transparent var(--graticule-gap)
+    );
+}
+
+/* The red phosphor wash sits in its own blended layer so it tints without muddying. */
+.overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--figure-tint);
+  mix-blend-mode: multiply;
+}
+
+:global(html[data-theme="dark"]) .overlay::after {
+  mix-blend-mode: screen;
+}
+
+.caption {
+  margin-top: var(--sp-3);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}

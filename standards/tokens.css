@@ -173,6 +173,14 @@
   --graticule-gap:   34px;
   --graticule-sweep: color-mix(in srgb, var(--c-red-500) 50%, transparent);
 
+  /* Photo treatment — an instrument duotone + foot gradient + faint graticule so
+     photography reads as part of the bench rather than generic stock. */
+  --figure-overlay:  linear-gradient(180deg, transparent 42%, color-mix(in srgb, var(--c-ink-900) 24%, transparent) 100%);
+  --figure-tint:     color-mix(in srgb, var(--c-red-500) 7%, transparent);
+  --figure-grid:     color-mix(in srgb, var(--c-ink-900) 7%, transparent);
+  --figure-border:   var(--color-border-strong);
+  --figure-radius:   var(--radius-lg);
+
   --color-footer-bg:     var(--c-gray-100);
   --color-footer-border: var(--c-gray-200);
 
@@ -240,6 +248,11 @@ html[data-theme="dark"] {
   /* Graticule reads brighter on the dark bench; sweep glows phosphor-red */
   --graticule-line:  color-mix(in srgb, var(--c-mist-50) 9%, transparent);
   --graticule-sweep: color-mix(in srgb, var(--c-red-400) 65%, transparent);
+
+  /* Photos on the dark bench: deeper foot gradient + stronger red phosphor tint */
+  --figure-overlay:  linear-gradient(180deg, transparent 28%, color-mix(in srgb, var(--c-ink-900) 58%, transparent) 100%);
+  --figure-tint:     color-mix(in srgb, var(--c-red-500) 15%, transparent);
+  --figure-grid:     color-mix(in srgb, var(--c-mist-50) 7%, transparent);
 
   --color-footer-bg:     var(--c-ink-900);
   --color-footer-border: color-mix(in srgb, var(--c-mist-50) 12%, transparent);
