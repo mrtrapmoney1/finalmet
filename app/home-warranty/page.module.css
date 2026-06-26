@@ -77,12 +77,29 @@
 .segCard {
   display: flex;
   flex-direction: column;
-  padding: var(--sp-8);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--card-radius);
+  overflow: hidden;
   transition: border-color var(--action-duration) var(--action-ease),
     transform var(--action-duration) var(--action-ease);
+}
+
+/* Category photo bleeds to the card's top edge; the body keeps the inset. */
+.segPhoto {
+  width: 100%;
+}
+
+.segCard > :not(.segPhoto) {
+  margin-inline: var(--sp-8);
+}
+
+.segCard > .segTag {
+  margin-top: var(--sp-6);
+}
+
+.segCard > .pills {
+  margin-bottom: var(--sp-8);
 }
 
 .segCard:hover {

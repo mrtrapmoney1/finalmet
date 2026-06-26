@@ -3,7 +3,23 @@ import { BUSINESS, SERVICES } from "@/lib/business";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { CTA } from "@/components/sections/CTA";
+import { DiagnosticSlider } from "@/components/DiagnosticSlider";
+import type { ImageName } from "@/lib/images";
 import styles from "./ServiceDetail.module.css";
+
+const PHOTO_BY_SLUG: Record<string, ImageName> = {
+  appliance: "washer",
+  tv: "tv-living",
+  commercial: "kitchen",
+  audio: "bt-speaker",
+};
+
+const CTA_PHOTO_BY_SLUG: Record<string, ImageName> = {
+  appliance: "kitchen",
+  tv: "display",
+  commercial: "electrical-panel",
+  audio: "speaker",
+};
 
 export function ServiceDetail({ slug }: { slug: string }) {
   const service = SERVICES.find((s) => s.slug === slug);
@@ -19,6 +35,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
     <>
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
+          <div className={styles.heroCopy}>
           <p className={`eyebrow ${styles.heroEyebrow}`}>
             {inHome ? "In-home service" : "Shop drop-off"}
           </p>
@@ -58,6 +75,14 @@ export function ServiceDetail({ slug }: { slug: string }) {
               </dd>
             </div>
           </dl>
+          </div>
+          <div className={`${styles.heroMedia} reveal`}>
+            <DiagnosticSlider
+              name={PHOTO_BY_SLUG[service.slug] ?? "repair-hands"}
+              label={`${service.title} on the bench`}
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -150,7 +175,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <CTA />
+      <CTA photo={CTA_PHOTO_BY_SLUG[service.slug] ?? "control-room"} />
     </>
   );
 }

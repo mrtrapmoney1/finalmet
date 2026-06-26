@@ -50,7 +50,6 @@ export function Hero() {
           ratio={16 / 10}
           priority
           sizes="(min-width: 960px) 38vw, 100vw"
-          caption="On the bench — board-level diagnostics"
           className={`${styles.heroPhoto} reveal`}
         />
         <aside className={`${styles.card} reveal`} aria-label="Diagnostic pricing" style={{ ["--reveal-delay" as string]: "200ms" }}>

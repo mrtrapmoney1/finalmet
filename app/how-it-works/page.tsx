@@ -2,6 +2,7 @@ import { BUSINESS } from "@/lib/business";
 import { pageMeta } from "@/lib/seo";
 import { CTA } from "@/components/sections/CTA";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
 import styles from "./page.module.css";
 
 export const metadata = pageMeta({
@@ -67,6 +68,14 @@ export default function HowItWorksPage() {
                 </li>
               ))}
             </ul>
+            <Figure
+              name="cpu-board"
+              alt="Close-up of board-level diagnostics on a circuit board."
+              ratio={4 / 3}
+              sizes="(min-width: 900px) 40vw, 100vw"
+              caption="Root-cause diagnosis at the bench"
+              className={styles.leadPhoto}
+            />
           </div>
 
           <ol className={styles.steps}>

@@ -2,8 +2,12 @@ import { BUSINESS } from "@/lib/business";
 import { pageMeta } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
 import { CTA } from "@/components/sections/CTA";
 import styles from "./page.module.css";
+
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const metadata = pageMeta({
   title: "FAQ",
@@ -110,11 +114,18 @@ export default function FaqPage() {
                 <Icon name="arrow" size={18} />
               </Button>
             </div>
+            <Figure
+              name="tools"
+              alt=""
+              ratio={4 / 3}
+              sizes="(min-width: 900px) 38vw, 100vw"
+              className={styles.asidePhoto}
+            />
           </div>
 
           <div className={styles.faq}>
             {FAQS.map((f) => (
-              <details key={f.q} className={styles.faqItem}>
+              <details key={f.q} id={slugify(f.q)} className={styles.faqItem}>
                 <summary className={styles.faqQ}>{f.q}</summary>
                 <div className={styles.faqA}>
                   <p>{f.a}</p>

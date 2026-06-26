@@ -6,8 +6,25 @@
 }
 
 .heroInner {
-  max-width: 58rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-12);
+  align-items: center;
   padding-block: clamp(var(--sp-16), 8vw, var(--sp-32));
+}
+
+.heroCopy {
+  max-width: 42rem;
+}
+
+.heroMedia {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1.2fr 1fr;
+  }
 }
 
 .heroEyebrow {

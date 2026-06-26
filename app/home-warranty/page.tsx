@@ -2,8 +2,17 @@ import { BUSINESS } from "@/lib/business";
 import { pageMeta } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
 import { CTA } from "@/components/sections/CTA";
+import type { ImageName } from "@/lib/images";
 import styles from "./page.module.css";
+
+const SEG_PHOTO: Record<string, ImageName> = {
+  Appliances: "washer",
+  "TVs & screens": "tv-living",
+  "Audio gear": "bt-speaker",
+  "Commercial microwaves": "kitchen",
+};
 
 export const metadata = pageMeta({
   title: "Home Warranty Appliance Repair",
@@ -123,6 +132,14 @@ export default function HomeWarrantyPage() {
                 className={`${styles.segCard} reveal`}
                 style={{ ["--reveal-delay" as string]: `${i * 60}ms` }}
               >
+                <Figure
+                  name={SEG_PHOTO[seg.title] ?? "repair-hands"}
+                  alt=""
+                  ratio={16 / 9}
+                  framed={false}
+                  sizes="(min-width: 760px) 24vw, 90vw"
+                  className={styles.segPhoto}
+                />
                 <p className={styles.segTag}>{seg.tag}</p>
                 <h3 className={styles.segTitle}>{seg.title}</h3>
                 <p className={styles.segLine}>{seg.line}</p>

@@ -31,6 +31,10 @@
   gap: var(--sp-4);
 }
 
+.headPhoto {
+  margin-top: var(--sp-10);
+}
+
 .h2 {
   font-size: var(--fs-2xl);
   color: var(--color-text);

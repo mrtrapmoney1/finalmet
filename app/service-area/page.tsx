@@ -8,6 +8,7 @@ import {
 } from "@/lib/service-area";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
 import { CTA } from "@/components/sections/CTA";
 import styles from "./page.module.css";
 
@@ -43,6 +44,14 @@ export default function ServiceAreaPage() {
               Send a message
             </Button>
           </div>
+          <Figure
+            name="kitchen"
+            alt=""
+            ratio={21 / 9}
+            sizes="100vw"
+            caption="In-home appliance service across Nebraska & western Iowa"
+            className={styles.headPhoto}
+          />
         </div>
       </section>
 

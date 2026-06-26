@@ -84,6 +84,10 @@ a.infoValue:hover {
   color: var(--color-accent-text);
 }
 
+.introPhoto {
+  margin-top: var(--sp-8);
+}
+
 .formCard {
   padding: var(--sp-8);
   background: var(--color-bg);

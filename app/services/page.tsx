@@ -2,8 +2,17 @@ import Link from "next/link";
 import { SERVICES } from "@/lib/business";
 import { pageMeta } from "@/lib/seo";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
 import { CTA } from "@/components/sections/CTA";
+import type { ImageName } from "@/lib/images";
 import styles from "./page.module.css";
+
+const PHOTO_BY_SLUG: Record<string, ImageName> = {
+  appliance: "washer",
+  tv: "tv-living",
+  commercial: "kitchen",
+  audio: "speaker",
+};
 
 export const metadata = pageMeta({
   title: "Repair Services",
@@ -70,6 +79,13 @@ export default function ServicesPage() {
                 </div>
               </div>
               <div className={styles.brands}>
+                <Figure
+                  name={PHOTO_BY_SLUG[s.slug] ?? "repair-hands"}
+                  alt=""
+                  ratio={16 / 9}
+                  sizes="(min-width: 900px) 32vw, 100vw"
+                  className={styles.rowPhoto}
+                />
                 <p className={styles.brandsLabel}>Authorized brands</p>
                 <ul className={styles.brandList}>
                   {s.brands.map((b) => (

@@ -1,0 +1,83 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--figure-border);
+  border-radius: var(--figure-radius);
+  isolation: isolate;
+}
+
+.base {
+  width: 100%;
+}
+
+/* The "scan" treatment, clipped to the right of the handle position. */
+.scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: inset(0 0 0 var(--reveal, 50%));
+  background-image:
+    linear-gradient(to bottom, color-mix(in srgb, var(--c-red-500) 22%, transparent), color-mix(in srgb, var(--c-ink-900) 35%, transparent)),
+    repeating-linear-gradient(to right, var(--graticule-sweep) 0 1px, transparent 1px var(--graticule-gap)),
+    repeating-linear-gradient(to bottom, var(--graticule-sweep) 0 1px, transparent 1px var(--graticule-gap));
+  mix-blend-mode: screen;
+}
+
+.readout {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  color: var(--color-on-accent);
+  background: color-mix(in srgb, var(--color-primary-deep) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  padding: 2px var(--sp-2);
+  pointer-events: none;
+}
+
+/* The range input fills the frame; its thumb is the visible scan-line handle. */
+.range {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: ew-resize;
+}
+
+.range:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.range::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 3px;
+  height: 600px;
+  background: var(--graticule-sweep);
+  box-shadow: 0 0 14px 3px var(--graticule-sweep);
+  border: 0;
+  border-radius: 0;
+}
+
+.range::-moz-range-thumb {
+  width: 3px;
+  height: 600px;
+  background: var(--graticule-sweep);
+  box-shadow: 0 0 14px 3px var(--graticule-sweep);
+  border: 0;
+  border-radius: 0;
+}

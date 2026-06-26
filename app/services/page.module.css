@@ -151,6 +151,10 @@
   align-self: start;
 }
 
+.rowPhoto {
+  margin-bottom: var(--sp-6);
+}
+
 .brandsLabel {
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
