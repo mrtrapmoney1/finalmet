@@ -27,3 +27,8 @@ next-env.d.ts
 
 # claude code local worktrees / scratch
 /.claude/
+
+# dev artifacts — not part of the shipped site (kept locally, not pushed)
+/reviews/
+/docs/
+/scripts/
