@@ -1,0 +1,86 @@
+{
+  "repair-hands": {
+    "src": "/images/repair-hands.jpg",
+    "width": 1920,
+    "height": 1281,
+    "alt": "A technician's hands working on the opened circuit board of an electronic device at a repair bench.",
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJQBOgMXDugkceCzwAADOEFMBZHXjkXww03i/yuL1eo5A7iTADhHsqdLEZELlOhrtw9KIt/VuXUaST8c5xTKVxCOAAA=="
+  },
+  "control-room": {
+    "src": "/images/control-room.jpg",
+    "width": 1920,
+    "height": 2879,
+    "alt": "Technicians at a control desk lined with monitors and instrument readouts.",
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQAwCdASoQABgAPu1iqU2ppaOiMAgBMB2JZQAD5OH2k5cQZhk1yAAA+FQAMMXHHUx2EHR3k9JJN+HPjx5LoS/Ern14WIBpQm3NTdU73gab8Jl0H9ZtJRnekgFkLc6p624SqJ99SgOWe2fD45MmnEEDKC9svJH4H/anRGXXFFGlitg7ri6U7yBzE/UeFAAA"
+  },
+  "circuit-board": {
+    "src": "/images/circuit-board.jpg",
+    "width": 1920,
+    "height": 1280,
+    "alt": "Macro view of a green printed circuit board with surface-mounted components.",
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAsAA4BaJZQCdAC9iGKy3wAA/ulRctjR2YYV8VpS+ugdRPRPWah4m9suu5ZvK9g0DPMS3/GWpefpKzagWyi0OczHq32WdiXhZQgA"
+  },
+  "cpu-board": {
+    "src": "/images/cpu-board.jpg",
+    "width": 1920,
+    "height": 1280,
+    "alt": "Close-up of a processor seated in a motherboard socket.",
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwAgCdASoQAAsAA4BaJaQAD4eMVDOPOvAOAAD7o7FnKPZbgaUB9hcOf3sitiPSOX7g+YGYdkwVLTZBpctFPUDvlXarFxec2mVbsIxUjzkMRySdojdcMB3tHIJL+emMwAA="
+  },
+  "tools": {
+    "src": "/images/tools.jpg",
+    "width": 1920,
+    "height": 1280,
+    "alt": "An organized set of hand tools laid out on a workbench.",
+    "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoQAAsAA4BaJZwAAsfulgrlpwAA9EsifXd6L4YbsBD+ErAHmWYvR5j8bTH2wHKtG/SUvQyq3KQAlAAA"
+  },
+  "kitchen": {
+    "src": "/images/kitchen.jpg",
+    "width": 1920,
+    "height": 1151,
+    "alt": "A clean modern kitchen with built-in appliances.",
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAoAA4BaJYwCw7EQEonZiX6gAAD+yPAJFM2nZMpxcF178fm7JMvQTtNh/HhoSN+6T89ONo4R1auUTW7FoGiY/8auMYSy22He+jScOn/xgAAA"
+  },
+  "washer": {
+    "src": "/images/washer.jpg",
+    "width": 1920,
+    "height": 1280,
+    "alt": "A front-loading washing machine in a tidy laundry room.",
+    "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAQCdASoQAAsAA4BaJZQCdACGroL4oAD+64VzYAuzQ6eiLJGbsXFC+s/5KJf6Hn2tvibv/nAPbyfRVZYBxFx6F0Fsf6bOmYSP6kUsAIANfbAzEhG7do0YXo3vmNhmIdbDqAAA"
+  },
+  "tv-living": {
+    "src": "/images/tv-living.jpg",
+    "width": 1920,
+    "height": 1079,
+    "alt": "A modern flat-screen television on a media console in a living room.",
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACQAQCdASoQAAkAA4BaJQAAUjSyTGgA/u5od1qnKqz3WHXdEt/OAdRBefL73MVescz5S605HEM3hYNeqKKfgoJBhse2NVAQK+YcPvHA8EoMV+5u0vwAAA=="
+  },
+  "display": {
+    "src": "/images/display.jpg",
+    "width": 1920,
+    "height": 2880,
+    "alt": "Flat-panel displays on a desk showing a warm gradient.",
+    "blurDataURL": "data:image/webp;base64,UklGRugAAABXRUJQVlA4INwAAACQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JbACdHYA90IiQhS6BODUEEqymCSAAzHUU4H0FwjTAas9lBTItP3FGnGBP/c6NX3Uuck9KXqXZaqTJUnMe3yDhnPNgXRRwOZydYzHFmRXJxduATXcV1Y1NdY8l73BaynfTbJRdcutheKuBsfPC9kH08UDoEz8Jr74vhvclPfiPm9SY4Me368W/0jv4TDiHAyJ63iF4Mq5yNtEX/KhLwPrT4qxkUZfExRlJKlYr0ETRg6sKFfUc7vL0K/Nqov/NDS+QAAAA"
+  },
+  "speaker": {
+    "src": "/images/speaker.jpg",
+    "width": 1920,
+    "height": 1280,
+    "alt": "A studio monitor loudspeaker on a desk.",
+    "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAsAA4BaJagCdADDsfZvtrM4AP7xANcLhEfcBMlkptVHs1tDNAJ9vSS9vMeQTANMjhwUOtJy8Vp83xOjbX6SEhgu1KVs5djxuZeNg+Ro/VBtPyJQAA=="
+  },
+  "bt-speaker": {
+    "src": "/images/bt-speaker.jpg",
+    "width": 1920,
+    "height": 1280,
+    "alt": "A portable loudspeaker dramatically lit in red.",
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoQAAsAA4BaJbACdAEOUaQAAP75wWKPkTgIrHNZuucUjp6DhqaApMsW56WEwtXTsnmmrDSKdvDaje14dxJCAA=="
+  },
+  "electrical-panel": {
+    "src": "/images/electrical-panel.jpg",
+    "width": 1920,
+    "height": 1278,
+    "alt": "A hand testing connections on an electrical breaker panel.",
+    "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwAgCdASoQAAsAA4BaJQBOkCYwUhb/BSpbQmkAAP7t2Y/dgbpfy/8wVlI4+kGglzobeJyxB1PjyeiYFd989VkHdg+ydSuWg/kdsouarwOcEKSQFs5WwF2z+HdV8DHrXkNgd0cQpafoC5YJqzkQAA=="
+  }
+}
