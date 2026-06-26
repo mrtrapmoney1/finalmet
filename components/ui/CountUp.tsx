@@ -19,10 +19,10 @@ export function CountUp({ value, className }: { value: string; className?: strin
 
   useEffect(() => {
     if (target === null) return;
-    const final = `${target}${suffix}`;
 
+    // `display` already initializes to the final value, so under reduced motion
+    // we simply skip the animation — no state update needed.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDisplay(final);
       return;
     }
     const el = ref.current;

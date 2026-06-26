@@ -98,7 +98,8 @@ export default function HomeWarrantyPage() {
             </Button>
           </div>
           <p className={styles.heroMeta}>
-            // factory-authorized · OEM parts only · Nebraska since {BUSINESS.founded}
+            {"// factory-authorized · OEM parts only · Nebraska since "}
+            {BUSINESS.founded}
           </p>
         </div>
       </section>
