@@ -45,13 +45,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-4);
+  margin-top: var(--sp-8);
+}
+
+.photo {
+  width: 100%;
 }
 
 @media (min-width: 900px) {
   .inner {
-    grid-template-columns: 1.5fr 1fr;
-  }
-  .actions {
-    justify-content: flex-end;
+    grid-template-columns: 1.4fr 1fr;
   }
 }

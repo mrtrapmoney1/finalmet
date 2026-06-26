@@ -40,42 +40,51 @@
 }
 
 /* Parts-manifest grid — authorized brands read as a spec sheet, not a pill
-   cloud. Hairline cells, monospace index, no rounded chips, no hover-lift. */
-.list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  border-top: 1px solid var(--color-border);
-  border-left: 1px solid var(--color-border);
-  counter-reset: brand;
+   cloud. Hairline cells, monospace index, scrolls like an instrument readout. */
+.ticker {
+  position: relative;
+  display: flex;
+  margin-top: var(--sp-12);
+  border-block: 1px solid var(--color-border-strong);
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  /* Fade the manifest into the page edges. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.ticker::-webkit-scrollbar { display: none; }
+
+.ticker[data-dragging="true"] { cursor: grabbing; }
+
+.track {
+  display: flex;
+  flex-shrink: 0;
 }
 
 .brand {
   display: flex;
   align-items: baseline;
   gap: var(--sp-3);
+  white-space: nowrap;
   font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
   letter-spacing: 0.01em;
   color: var(--color-text);
-  padding: var(--sp-4) var(--sp-5);
+  padding: var(--sp-5) var(--sp-6);
   border-right: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  cursor: default;
-  transition: background var(--action-duration) var(--action-ease),
-    color var(--action-duration) var(--action-ease);
 }
 
 /* Monospace authorization index — counts the manifest instead of decorating it */
-.brand::before {
-  content: counter(brand, decimal-leading-zero);
-  counter-increment: brand;
+.idx {
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
-  color: var(--color-text-subtle, var(--color-text-muted));
+  color: var(--color-accent-text);
 }
 
-.brand:hover {
-  background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface));
-  color: var(--color-accent-text);
+@media (prefers-reduced-motion: reduce) {
+  .ticker { cursor: default; }
 }

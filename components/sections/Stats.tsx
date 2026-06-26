@@ -1,6 +1,10 @@
 import { STATS } from "@/lib/business";
 import { CountUp } from "@/components/ui/CountUp";
+import { StatMeter } from "./StatMeter";
 import styles from "./Stats.module.css";
+
+// Decorative meter levels per channel — stable, illustrative "signal" levels.
+const METER_LEVELS = [0.82, 0.95, 0.68, 0.9];
 
 export function Stats() {
   return (
@@ -16,6 +20,7 @@ export function Stats() {
               <CountUp value={stat.value} />
             </p>
             <p className={styles.label}>{stat.label}</p>
+            <StatMeter level={METER_LEVELS[i % METER_LEVELS.length]} />
           </div>
         ))}
       </div>

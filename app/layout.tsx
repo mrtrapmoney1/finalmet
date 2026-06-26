@@ -10,7 +10,9 @@ import { SERVED_CITIES, SERVED_COUNTIES } from "@/lib/service-area";
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
-    default: `${BUSINESS.name} | Factory-Authorized Repair — Lincoln, NE`,
+    // Kept ≤60 chars so Google doesn't truncate it (was 63) while retaining
+    // brand + primary keyword + locale.
+    default: `${BUSINESS.name} | Authorized Repair, Lincoln NE`,
     template: `%s | ${BUSINESS.name}`,
   },
   description:
@@ -29,13 +31,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BUSINESS.url,
     siteName: BUSINESS.name,
-    title: `${BUSINESS.name} | Factory-Authorized Repair — Lincoln, NE`,
+    title: `${BUSINESS.name} | Authorized Repair, Lincoln NE`,
     description:
       "Appliance, TV, audio & commercial microwave repair in Lincoln, NE. We diagnose to the root cause with original manufacturer parts. BBB A+ accredited. Serving Nebraska since 1947.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${BUSINESS.name} | Factory-Authorized Repair — Lincoln, NE`,
+    title: `${BUSINESS.name} | Authorized Repair, Lincoln NE`,
     description:
       "Appliance, TV, audio & commercial microwave repair in Lincoln, NE. BBB A+ accredited. Serving Nebraska since 1947.",
   },

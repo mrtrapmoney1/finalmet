@@ -1,4 +1,5 @@
 import { SERVICES } from "@/lib/business";
+import { BrandsTicker } from "./BrandsTicker";
 import styles from "./Brands.module.css";
 
 // Every brand we service — breadth is the selling point, don't trim it.
@@ -20,14 +21,8 @@ export function Brands() {
           </p>
         </div>
 
-        <ul className={`${styles.list} reveal`}>
-          {BRANDS.map((b) => (
-            <li key={b} className={styles.brand}>
-              {b}
-            </li>
-          ))}
-        </ul>
       </div>
+      <BrandsTicker brands={BRANDS} />
     </section>
   );
 }

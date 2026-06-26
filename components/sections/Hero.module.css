@@ -40,8 +40,27 @@
   background-image:
     repeating-linear-gradient(to right, var(--graticule-line) 0 1px, transparent 1px var(--graticule-gap)),
     repeating-linear-gradient(to bottom, var(--graticule-line) 0 1px, transparent 1px var(--graticule-gap));
-  -webkit-mask-image: radial-gradient(125% 110% at 78% 26%, #000 0%, transparent 72%);
-  mask-image: radial-gradient(125% 110% at 78% 26%, #000 0%, transparent 72%);
+  /* Radial focus follows the pointer (defaults to the rest position at 78%/26%). */
+  -webkit-mask-image: radial-gradient(125% 110% at var(--mask-x, 78%) var(--mask-y, 26%), #000 0%, transparent 72%);
+  mask-image: radial-gradient(125% 110% at var(--mask-x, 78%) var(--mask-y, 26%), #000 0%, transparent 72%);
+}
+
+/* Live "cursor readout" — a vertical signal line at the pointer's X, shown only
+   while a fine pointer is over the hero (--cursor-op flips to 1). */
+.graticule::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  left: var(--sweep-x, 50%);
+  background: var(--graticule-sweep);
+  opacity: var(--cursor-op, 0);
+  transition: opacity var(--dur-base) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graticule::before { display: none; }
 }
 
 .graticule::after {
@@ -131,11 +150,25 @@
   border-left: 0;
 }
 
+/* Right column: a framed bench photo with the pricing card tucked over its
+   lower edge — an editorial overlap that reads as "the live bench + the offer." */
+.media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.heroPhoto {
+  width: 100%;
+}
+
 /* Pricing card — the hero's focal anchor. A crisp red top cap gives the
    panel a deliberate, broadcast-on-air signature that carries the brand on a
    clean light ground (where ambient glow would only smudge). */
 .card {
   position: relative;
+  z-index: 2;
   background: var(--gradient-card);
   color: var(--color-text);
   border: 1px solid var(--color-border-strong);
@@ -143,6 +176,10 @@
   padding: var(--sp-8);
   box-shadow: var(--shadow-3);
   max-width: 28rem;
+  width: 100%;
+  /* Tuck the card up over the bottom edge of the photo. */
+  margin-top: calc(-1 * var(--sp-10));
+  align-self: center;
 }
 
 .card::before {
@@ -213,6 +250,12 @@
 
 @media (min-width: 960px) {
   .inner {
-    grid-template-columns: 1.45fr 1fr;
+    grid-template-columns: 1.35fr 1fr;
+  }
+  .card {
+    align-self: flex-end;
+    margin-top: calc(-1 * var(--sp-16));
+    margin-right: var(--sp-6);
+    max-width: 24rem;
   }
 }

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
 import styles from "./WarrantyTeaser.module.css";
 
 const POINTS = [
@@ -39,6 +40,14 @@ export function WarrantyTeaser() {
             How warranty service works
             <Icon name="arrow" size={20} />
           </Button>
+          <Figure
+            name="kitchen"
+            alt=""
+            ratio={16 / 9}
+            sizes="(min-width: 900px) 40vw, 100vw"
+            caption="In-home appliance service across 200+ zip codes"
+            className={`${styles.copyPhoto} reveal`}
+          />
         </div>
 
         <ul className={styles.points}>
@@ -48,12 +57,23 @@ export function WarrantyTeaser() {
               className={`${styles.point} reveal`}
               style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
             >
-              <span className={styles.pointIcon} aria-hidden="true">
-                <Icon name={p.icon} size={22} />
-              </span>
-              <div>
-                <h3 className={styles.pointTitle}>{p.title}</h3>
-                <p className={styles.pointBody}>{p.body}</p>
+              {/* Flip card: the headline point is on the front; the detail flips
+                  into view on hover or keyboard focus. Reduced-motion shows both. */}
+              <div className={styles.flip} tabIndex={0} role="group" aria-label={p.title}>
+                <div className={styles.flipInner}>
+                  <div className={`${styles.face} ${styles.front}`}>
+                    <span className={styles.pointIcon} aria-hidden="true">
+                      <Icon name={p.icon} size={22} />
+                    </span>
+                    <h3 className={styles.pointTitle}>{p.title}</h3>
+                    <span className={styles.flipHint} aria-hidden="true">
+                      Hover or focus to read
+                    </span>
+                  </div>
+                  <div className={`${styles.face} ${styles.back}`}>
+                    <p className={styles.pointBody}>{p.body}</p>
+                  </div>
+                </div>
               </div>
             </li>
           ))}

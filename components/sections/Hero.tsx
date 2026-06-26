@@ -1,13 +1,15 @@
 import { BUSINESS, TRUST_BADGES } from "@/lib/business";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Figure } from "@/components/ui/Figure";
+import { HeroGraticule } from "./HeroGraticule";
 import styles from "./Hero.module.css";
 
 export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.glow} aria-hidden="true" />
-      <div className={styles.graticule} aria-hidden="true" />
+      <HeroGraticule />
       <div className={`container ${styles.inner}`}>
         <div className={styles.copy}>
           <p className={`eyebrow ${styles.eyebrow} reveal`}>
@@ -42,6 +44,15 @@ export function Hero() {
           </ul>
         </div>
 
+        <div className={styles.media}>
+        <Figure
+          name="repair-hands"
+          ratio={16 / 10}
+          priority
+          sizes="(min-width: 960px) 38vw, 100vw"
+          caption="On the bench — board-level diagnostics"
+          className={`${styles.heroPhoto} reveal`}
+        />
         <aside className={`${styles.card} reveal`} aria-label="Diagnostic pricing" style={{ ["--reveal-delay" as string]: "200ms" }}>
           <p className={styles.cardEyebrow}>Drop-off diagnostic</p>
           <p className={styles.price}>
@@ -70,6 +81,7 @@ export function Hero() {
             See all services
           </Button>
         </aside>
+        </div>
       </div>
     </section>
   );
