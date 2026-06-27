@@ -7,9 +7,11 @@ import {
   SERVED_COUNTIES,
 } from "@/lib/service-area";
 import { Button } from "@/components/ui/Button";
+import { MessageButton } from "@/components/MessageButton";
 import { Icon } from "@/components/ui/Icon";
 import { Figure } from "@/components/ui/Figure";
 import { CTA } from "@/components/sections/CTA";
+import { BrandRails } from "@/components/BrandRails";
 import styles from "./page.module.css";
 
 export const metadata = pageMeta({
@@ -22,6 +24,7 @@ export const metadata = pageMeta({
 export default function ServiceAreaPage() {
   return (
     <>
+      <BrandRails />
       <section className={styles.head}>
         <div className={`container ${styles.headInner}`}>
           <p className={`eyebrow ${styles.eyebrow}`}>Service Area</p>
@@ -40,9 +43,7 @@ export default function ServiceAreaPage() {
               <Icon name="phone" size={20} />
               {BUSINESS.phone}
             </Button>
-            <Button href="/contact" variant="outline" size="lg">
-              Send a message
-            </Button>
+            <MessageButton variant="outline" size="lg" />
           </div>
           <Figure
             name="kitchen"

@@ -56,23 +56,13 @@ export function WarrantyTeaser() {
               className={`${styles.point} reveal`}
               style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
             >
-              {/* Flip card: the headline point is on the front; the detail flips
-                  into view on hover or keyboard focus. Reduced-motion shows both. */}
-              <div className={styles.flip} tabIndex={0} role="group" aria-label={p.title}>
-                <div className={styles.flipInner}>
-                  <div className={`${styles.face} ${styles.front}`}>
-                    <span className={styles.pointIcon} aria-hidden="true">
-                      <Icon name={p.icon} size={22} />
-                    </span>
-                    <h3 className={styles.pointTitle}>{p.title}</h3>
-                    <span className={styles.flipHint} aria-hidden="true">
-                      Hover or focus to read
-                    </span>
-                  </div>
-                  <div className={`${styles.face} ${styles.back}`}>
-                    <p className={styles.pointBody}>{p.body}</p>
-                  </div>
-                </div>
+              {/* Info card: icon + headline + detail, all visible by default. */}
+              <span className={styles.pointIcon} aria-hidden="true">
+                <Icon name={p.icon} size={22} />
+              </span>
+              <div className={styles.pointCopy}>
+                <h3 className={styles.pointTitle}>{p.title}</h3>
+                <p className={styles.pointBody}>{p.body}</p>
               </div>
             </li>
           ))}

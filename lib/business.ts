@@ -12,6 +12,9 @@ export const BUSINESS = {
   zip: "68505",
   phone: "(402) 466-9090",
   phoneHref: "tel:+14024669090",
+  // Dedicated SMS line — "Send a message" opens the texting app to this number on mobile.
+  textNumber: "(402) 803-1799",
+  smsHref: "sms:+14028031799",
   fax: "(402) 466-2757",
   email: "service@metrotv-audiotech.com", // monitored inbox for contact-form requests
   hours: "Monday–Friday, 8:30 AM – 6:00 PM",

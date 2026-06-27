@@ -2,20 +2,21 @@ import { BUSINESS } from "@/lib/business";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Figure } from "@/components/ui/Figure";
+import { MessageButton } from "@/components/MessageButton";
 import type { ImageName } from "@/lib/images";
 import styles from "./CTA.module.css";
 
 interface CTAProps {
   heading?: string;
   body?: string;
-  /** Photo beside the call-to-action. Defaults to the broadcast bench. */
+  /** Photo beside the call-to-action. Defaults to the repair bench tools. */
   photo?: ImageName;
 }
 
 export function CTA({
   heading = "Something acting up? Let's take a look.",
   body = "Call the shop or send a message — we'll figure out the next step with you: in-home appointment or shop drop-off.",
-  photo = "control-room",
+  photo = "tools",
 }: CTAProps) {
   return (
     <section className={styles.cta}>
@@ -29,9 +30,7 @@ export function CTA({
               <Icon name="phone" size={20} />
               {BUSINESS.phone}
             </Button>
-            <Button href="/contact" variant="outline" size="lg">
-              Send a message
-            </Button>
+            <MessageButton variant="outline" size="lg" />
           </div>
         </div>
         <Figure

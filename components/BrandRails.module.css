@@ -1,0 +1,98 @@
+/* Side-gutter brand banner.
+   Two fixed rails live in the empty margins outside the centered content column
+   and scroll their brand list continuously — up the left, down the right. They
+   are shown only once the viewport is wider than the content column (so there is
+   real gutter to live in) and never overlap the content itself. Subtle, muted,
+   pointer-inert background texture that stays in view as the reader scrolls. */
+
+.rails {
+  /* The rails are fixed; this wrapper adds no layout of its own. */
+  display: contents;
+}
+
+.rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  /* Exactly the gutter between the viewport edge and the centered column. */
+  width: calc((100vw - var(--container-max)) / 2);
+  z-index: var(--z-rail);
+  display: none;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  /* Fade top & bottom so the line resolves into the page rather than hard-cutting. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+/* Only show the banner where there is comfortable gutter (>= ~80px each side
+   beyond the 1200px column). Below this the margins are too tight, so it stays
+   hidden and content is untouched. */
+@media (min-width: 1360px) {
+  .rail {
+    display: flex;
+  }
+}
+
+.track {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.left .track {
+  animation: rail-up 120s linear infinite;
+}
+
+.right .track {
+  animation: rail-down 120s linear infinite;
+}
+
+.seq {
+  /* Each sequence is one full pass of the brand list; two of them = seamless loop. */
+}
+
+.brand {
+  font-weight: var(--fw-bold);
+  font-size: clamp(1rem, 1vw, 1.375rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* Derived from semantic tokens so it stays faint and flips with the theme.
+     Kept very low so the banner is background texture, never competing with copy. */
+  color: color-mix(in srgb, var(--color-text-muted) 22%, transparent);
+}
+
+.sep {
+  margin-block: 0.7em;
+  color: color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+
+@keyframes rail-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes rail-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
+/* Respect reduced motion: the brands stay visible, just static. (The global
+   reduced-motion rule collapses --dur-* tokens, but this animation uses a literal
+   duration, so it must be disabled explicitly.) */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

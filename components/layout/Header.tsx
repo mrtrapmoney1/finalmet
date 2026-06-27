@@ -30,9 +30,6 @@ export function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
         <Link href="/" className={styles.brand} aria-label={`${BUSINESS.name} home`}>
-          <span className={styles.brandMark} aria-hidden="true">
-            M
-          </span>
           <span className={styles.brandText}>
             Metro TV <span className={styles.brandAmp}>&amp;</span> Appliances
           </span>
@@ -48,7 +45,6 @@ export function Header() {
 
         <div className={styles.desktopCta}>
           <a href={BUSINESS.phoneHref} className={styles.phone}>
-            <Icon name="phone" size={18} />
             {BUSINESS.phone}
           </a>
           <ThemeToggle />
@@ -87,7 +83,6 @@ export function Header() {
               <ThemeToggle />
             </div>
             <a href={BUSINESS.phoneHref} className={styles.mobilePhone}>
-              <Icon name="phone" size={18} />
               {BUSINESS.phone}
             </a>
             <Button href="/contact" variant="accent" className={styles.mobileButton}>

@@ -29,55 +29,32 @@
 .points {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-6);
+  gap: var(--sp-5);
 }
 
+/* The supporting photo anchors the bottom of the copy column so it lines up
+   with the foot of the card stack — the two columns read as one connected band. */
 .copyPhoto {
-  margin-top: var(--sp-8);
+  margin-top: var(--sp-10);
 }
 
+/* Info card: icon + headline + detail, everything visible by default. */
 .point {
-  display: block;
-}
-
-/* Flip card — front shows the point, back reveals the detail on hover/focus. */
-.flip {
-  perspective: 1200px;
-  border-radius: var(--card-radius);
-  outline-offset: 3px;
-}
-
-.flipInner {
-  position: relative;
-  min-height: 11rem;
-  transform-style: preserve-3d;
-  transition: transform var(--dur-slow) var(--ease-out-expo);
-}
-
-.flip:hover .flipInner,
-.flip:focus-within .flipInner {
-  transform: rotateY(180deg);
-}
-
-.face {
-  position: absolute;
-  inset: 0;
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  padding: var(--sp-6);
-  background: var(--color-bg);
+  gap: var(--sp-5);
+  padding: var(--sp-6) var(--sp-7);
+  background: var(--gradient-card);
   border: 1px solid var(--color-border);
   border-radius: var(--card-radius);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  transition: border-color var(--action-duration) var(--action-ease),
+    box-shadow var(--action-duration) var(--action-ease),
+    transform var(--action-duration) var(--action-ease);
 }
 
-.back {
-  transform: rotateY(180deg);
-  justify-content: center;
-  background: var(--gradient-card);
+.point:hover {
   border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-2);
+  transform: translateY(-2px);
 }
 
 .pointIcon {
@@ -91,18 +68,15 @@
   color: var(--color-accent);
 }
 
+.pointCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
 .pointTitle {
   font-size: var(--fs-lg);
   color: var(--color-text);
-}
-
-.flipHint {
-  margin-top: auto;
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-subtle);
 }
 
 .pointBody {
@@ -111,28 +85,9 @@
   line-height: var(--lh-base);
 }
 
-/* Reduced motion / no 3D: stack both faces, everything visible, no flip. */
-@media (prefers-reduced-motion: reduce) {
-  .flipInner {
-    transform: none !important;
-    transition: none;
-    min-height: 0;
-  }
-  .face {
-    position: static;
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
-  }
-  .back {
-    transform: none;
-    margin-top: var(--sp-3);
-  }
-  .flipHint { display: none; }
-}
-
 @media (min-width: 900px) {
   .inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.05fr 0.95fr;
     gap: var(--sp-16);
   }
 }

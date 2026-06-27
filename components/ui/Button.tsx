@@ -38,7 +38,11 @@ export function Button({
     .join(" ");
 
   if (href) {
-    const external = href.startsWith("http") || href.startsWith("tel:");
+    const external =
+      href.startsWith("http") ||
+      href.startsWith("tel:") ||
+      href.startsWith("sms:") ||
+      href.startsWith("mailto:");
     if (external) {
       return (
         <a className={cls} href={href}>

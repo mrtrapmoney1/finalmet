@@ -18,7 +18,8 @@ gradient cards, and a scroll-driven motion layer.
 - `npm run dev` — dev server. Use `PORT=3000` (the reference repos met/nmet use 3001/3002).
 - `npm run build` — production build + TypeScript check. **This is the test gate** — run it to catch
   type errors across all routes (there is no separate test runner).
-- `npm run start` — serve the production build. `npm run lint` — Next.js lint.
+- `npm run start` — serve the production build. `npm run lint` — runs `eslint .` (flat config in
+  `eslint.config.mjs`, extends `eslint-config-next`).
 - Visual verification is done with Playwright: screenshot every route at desktop (1280) and mobile
   (390), check the browser console for errors, and run the readability audit (no sub-12px real text,
   no opacity-as-color, no `opacity:0` content).
@@ -37,11 +38,23 @@ gradient cards, and a scroll-driven motion layer.
   fallback for stubs (`/cod`) and `not-found.tsx` so nav never dead-ends.
 - `lib/business.ts` — single source of truth for business facts and the `SERVICES`, `STATS`,
   `NAV_LINKS` data that components map over. Mirrors `standards/company-facts.md`. Edit content here,
-  not in components.
+  not in components. Two distinct phone lines live here: `phone`/`phoneHref` (the **voice** line,
+  `tel:`) and `textNumber`/`smsHref` (a separate **SMS** line, `sms:`) — don't conflate them.
 - `components/sections/*` — the homepage building blocks (`Hero`, `Stats`, `ServicesGrid`,
   `ScrollStory`, `Brands`, `WarrantyTeaser`, `CTA`). Each has a co-located `*.module.css`.
+- `components/MessageButton.tsx` — client "Send a message" CTA. SSR-renders the `/contact` link
+  (safe default + crawlable), then **after mount** swaps to `BUSINESS.smsHref` on a coarse-pointer /
+  ≤768px device so phones open the texting app prefilled. Use this instead of a hand-rolled contact
+  link wherever "Send a message" appears.
+- `components/BrandRails.tsx` (+ `.module.css`) — decorative fixed side-gutter brand marquee, mounted
+  on the homepage and `/service-area`. Pure-CSS vertical scroll, `aria-hidden`, reduced-motion-safe,
+  and shown **only ≥1360px** (where the margin outside the 1200px column is wide enough), so it lives
+  in the empty gutters and never overlaps content. Painted at the dedicated `--z-rail` z-index (above
+  full-bleed section backgrounds, below the header).
 - `components/ui/` — primitives: `Button` (shared CTA), `Icon` (inline SVG, no icon web font),
-  `ThemeToggle`, `CountUp`, `Placeholder`, `Figure` (see imagery below).
+  `ThemeToggle`, `CountUp`, `Placeholder`, `Figure` (see imagery below). **`Button` gotcha:** it only
+  renders a plain `<a>` (vs a `next/link`) for hrefs starting `http`/`tel:`/`sms:`/`mailto:` — a new
+  external scheme must be added to that allowlist or `next/link` will choke on it.
 - **Imagery is a closed pipeline** — never reference a raw `/images/*` path or drop in a bare `<img>`.
   `lib/images.ts` exposes `img(name)` / the `ImageName` union; the valid set is fixed by
   `public/images/manifest.json` (12 self-hosted, verified free-license photos — an unknown name
@@ -72,6 +85,10 @@ gradient cards, and a scroll-driven motion layer.
     pages (`/terms`, `/privacy-policy`) are deliberately **excluded from the sitemap and carry a meta
     `noindex`** (not a robots disallow, so crawlers can still reach and honor it) — preserve that.
   - Keep all of this sourced from `lib/business.ts` — don't hardcode NAP/SEO strings in components.
+- **Analytics** — `components/Analytics.tsx` is mounted once in `app/layout.tsx`. It loads GA4 (gtag.js)
+  via `next/script` with `strategy="afterInteractive"` so it never blocks first paint. The measurement
+  ID is public by nature, so it ships a hardcoded live fallback (`G-…`) overridable via
+  `NEXT_PUBLIC_GA_ID` — same `NEXT_PUBLIC_*` convention as the Web3Forms key.
 - `app/globals.css` `@import`s `standards/tokens.css`, then sets the reset + base type + utilities
   (`.container`, `.section`, `.display`, `.dot`, `.eyebrow`, `.divider`, `.reveal`, `.reading-progress`).
 
@@ -123,10 +140,12 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
   Both render a complete, static, accessible fallback without JS / under reduced motion.
 - **Per-section interaction layer (the "maximal" overhaul):** beyond the single reveal, each homepage
   section carries one distinct on-theme interaction (Hero pointer-graticule, Stats VU-meters, Services
-  scan-line, Brands marquee-ticker, Warranty flip-cards, CTA photo); service detail pages get a drag
-  `DiagnosticSlider`. Client behaviors live in `components/motion/` hooks (`useInView`, `usePointer`,
-  `usePrefersReducedMotion`). **Every interaction must be keyboard-operable and reduced-motion-safe,
-  with a complete static fallback at `opacity:1`** — content is never gated behind an interaction.
+  scan-line, Brands marquee-ticker, CTA photo) plus the page-wide `BrandRails` gutter marquee; service
+  detail pages get a drag `DiagnosticSlider`. Client behaviors live in `components/motion/` hooks
+  (`useInView`, `usePointer`, `usePrefersReducedMotion`). **Every interaction must be keyboard-operable
+  and reduced-motion-safe, with a complete static fallback at `opacity:1`** — content is never gated
+  behind an interaction. (The WarrantyTeaser cards were intentionally **de-flipped**: their body text
+  is now always visible, not hover-revealed — don't reintroduce a flip that hides copy behind hover.)
 - **CSS Modules gotcha**: in `*.module.css`, global hooks like `html.js` and `html[data-theme="dark"]`
   **must be wrapped in `:global(...)`** — otherwise the `.js` / attribute class gets scoped/hashed and
   the selector silently never matches. (Global selectors in `globals.css` don't need this.)

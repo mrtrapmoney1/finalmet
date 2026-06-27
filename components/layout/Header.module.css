@@ -22,20 +22,9 @@
   flex-shrink: 0;
 }
 
-.brandMark {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: var(--radius-md);
-  background: var(--gradient-accent);
-  color: var(--color-on-accent);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-black);
-}
-
 .brandText {
-  font-size: var(--fs-lg);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-black);
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
@@ -97,10 +86,6 @@
   font-size: var(--fs-sm);
   white-space: nowrap;
   color: var(--color-text);
-}
-
-.phone svg {
-  color: var(--color-accent-bright);
 }
 
 .phone:hover {

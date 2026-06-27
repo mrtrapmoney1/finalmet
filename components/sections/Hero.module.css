@@ -133,8 +133,8 @@
   flex-wrap: wrap;
   gap: var(--sp-2) 0;
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  letter-spacing: 0.08em;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
