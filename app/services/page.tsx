@@ -9,9 +9,9 @@ import styles from "./page.module.css";
 
 const PHOTO_BY_SLUG: Record<string, ImageName> = {
   appliance: "washer",
-  tv: "tv-living",
-  commercial: "kitchen",
-  audio: "speaker",
+  tv: "tv-bench",
+  commercial: "microwave-bench",
+  audio: "receiver",
 };
 
 export const metadata = pageMeta({
@@ -43,7 +43,7 @@ export default function ServicesPage() {
             and commercial microwaves.
           </p>
           <p className={styles.headMeta}>
-            // 4 specialties · 50+ authorized brands · OEM parts only
+            {"// 4 specialties · 13+ authorized brands · OEM parts only"}
           </p>
         </div>
       </section>

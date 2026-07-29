@@ -40,6 +40,46 @@
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
 
+/* The rule above drops the global outline, which is fine for a mouse click but
+   leaves keyboard users with only a 25%-alpha glow. Restore the real ring for
+   keyboard focus specifically — same specificity, declared later, so it wins. */
+.input:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Invalid state has a border colour AND the error text below it, so colour is
+   never the only signal (WCAG 1.4.1). */
+.input[aria-invalid="true"] {
+  border-color: var(--color-accent-text);
+}
+
+.error {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  /* --color-accent-text is the AA-safe red for small text; --color-accent is a
+     fill colour and fails contrast at this size. */
+  color: var(--color-accent-text);
+}
+
+.optional {
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+}
+
+/* Empty until a submit resolves; kept mounted so the live region is announced. */
+.status:empty {
+  display: none;
+}
+
+/* Bot bait — off-screen rather than display:none, which bots skip. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
 textarea.input {
   min-height: 7rem;
   resize: vertical;

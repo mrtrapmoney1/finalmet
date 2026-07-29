@@ -4,21 +4,24 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { CTA } from "@/components/sections/CTA";
 import { DiagnosticSlider } from "@/components/DiagnosticSlider";
+import { TrackServiceView } from "@/components/TrackServiceView";
 import type { ImageName } from "@/lib/images";
 import styles from "./ServiceDetail.module.css";
 
 const PHOTO_BY_SLUG: Record<string, ImageName> = {
   appliance: "washer",
-  tv: "tv-living",
-  commercial: "kitchen",
-  audio: "bt-speaker",
+  tv: "tv-bench",
+  commercial: "microwave-bench",
+  audio: "receiver",
 };
 
+// Secondary photo for the closing CTA — deliberately a different frame from the
+// hero photo above so the page doesn't repeat itself.
 const CTA_PHOTO_BY_SLUG: Record<string, ImageName> = {
   appliance: "kitchen",
   tv: "display",
-  commercial: "electrical-panel",
-  audio: "speaker",
+  commercial: "tools",
+  audio: "circuit-board",
 };
 
 export function ServiceDetail({ slug }: { slug: string }) {
@@ -33,6 +36,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
 
   return (
     <>
+      <TrackServiceView slug={service.slug} />
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
@@ -175,7 +179,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <CTA photo={CTA_PHOTO_BY_SLUG[service.slug] ?? "control-room"} />
+      <CTA photo={CTA_PHOTO_BY_SLUG[service.slug] ?? "repair-hands"} />
     </>
   );
 }

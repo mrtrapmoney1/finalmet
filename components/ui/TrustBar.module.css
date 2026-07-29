@@ -1,0 +1,60 @@
+.bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  transition: border-color var(--action-duration) var(--action-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bar:hover {
+    border-color: var(--color-border-strong);
+  }
+}
+
+/* This is a real link out to the Google listing — give it a full touch target. */
+@media (pointer: coarse) {
+  .bar {
+    min-height: var(--tap-min);
+  }
+}
+
+.rating {
+  font-weight: var(--fw-black);
+  font-size: var(--fs-base);
+  letter-spacing: -0.01em;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+/* The bolt/star paths are closed — CSS fill overrides the inline fill="none". */
+.starFull {
+  color: var(--color-accent);
+  fill: var(--color-accent);
+  stroke: none;
+}
+
+.starEmpty {
+  color: var(--color-border-strong);
+  fill: none;
+}
+
+.meta {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.sep {
+  color: var(--color-text-subtle);
+}

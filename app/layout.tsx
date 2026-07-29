@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { Analytics } from "@/components/Analytics";
+import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 import { BUSINESS } from "@/lib/business";
 import { SERVED_CITIES, SERVED_COUNTIES } from "@/lib/service-area";
 
@@ -20,10 +21,14 @@ export const metadata: Metadata = {
   keywords: [
     "appliance repair Lincoln NE",
     "TV repair Lincoln Nebraska",
+    "board-level TV repair",
+    "in-home appliance repair Lincoln",
     "home warranty appliance repair",
     "factory authorized appliance repair",
     "commercial microwave repair Nebraska",
     "audio equipment repair Lincoln",
+    "stereo receiver repair Nebraska",
+    "OEM parts appliance repair",
   ],
   alternates: { canonical: BUSINESS.url },
   openGraph: {
@@ -107,6 +112,20 @@ function localBusinessJsonLd() {
       },
     ],
     sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram, BUSINESS.social.bbb],
+    // NOTE: no `aggregateRating` here, deliberately. Our 4.2/356 figure is Google's
+    // own Maps rating. Google's structured-data policy does not allow republishing a
+    // third-party platform's aggregate rating as your own first-party markup, and
+    // doing so risks a manual action rather than a rich result. The rating is still
+    // shown to humans (TrustBar / Testimonials) and linked to its source on Maps —
+    // that's honest and carries no markup risk. Only add this back if reviews are
+    // ever collected first-party on this site.
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+1-402-466-9090",
+      contactType: "customer service",
+      areaServed: "US-NE",
+      availableLanguage: "English",
+    },
   };
 }
 
@@ -145,6 +164,7 @@ export default function RootLayout({
         <Footer />
         <MotionRoot />
         <Analytics />
+        <AnalyticsEvents />
       </body>
     </html>
   );

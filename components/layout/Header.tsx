@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BUSINESS, NAV_LINKS } from "@/lib/business";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -11,6 +12,9 @@ import styles from "./Header.module.css";
 export function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   // Close the mobile menu on Escape and return focus to the toggle (expected
   // disclosure behavior). Only listens while the menu is open.
@@ -26,6 +30,16 @@ export function Header() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Close the mobile menu whenever the route changes. This covers browser
+  // back/forward, which never fires the links' onClick. Adjusting state during
+  // render is React's documented pattern for "reset state when a value changes";
+  // an effect here fired a second render pass on every navigation.
+  const [routeAtRender, setRouteAtRender] = useState(pathname);
+  if (routeAtRender !== pathname) {
+    setRouteAtRender(pathname);
+    if (open) setOpen(false);
+  }
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
@@ -37,19 +51,22 @@ export function Header() {
 
         <nav className={styles.desktopNav} aria-label="Primary">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={styles.navLink}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.navLink} ${isActive(link.href) ? styles.navLinkActive : ""}`}
+              aria-current={isActive(link.href) ? "page" : undefined}
+            >
               {link.label}
             </Link>
           ))}
         </nav>
 
         <div className={styles.desktopCta}>
-          <a href={BUSINESS.phoneHref} className={styles.phone}>
-            {BUSINESS.phone}
-          </a>
           <ThemeToggle />
-          <Button href="/contact" variant="accent">
-            Schedule Service
+          <Button href={BUSINESS.phoneHref} variant="accent">
+            <Icon name="phone" size={18} />
+            {BUSINESS.phone}
           </Button>
         </div>
 
@@ -71,7 +88,8 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={styles.mobileLink}
+              className={`${styles.mobileLink} ${isActive(link.href) ? styles.mobileLinkActive : ""}`}
+              aria-current={isActive(link.href) ? "page" : undefined}
               onClick={() => setOpen(false)}
             >
               {link.label}
@@ -82,11 +100,9 @@ export function Header() {
               <span>Appearance</span>
               <ThemeToggle />
             </div>
-            <a href={BUSINESS.phoneHref} className={styles.mobilePhone}>
-              {BUSINESS.phone}
-            </a>
-            <Button href="/contact" variant="accent" className={styles.mobileButton}>
-              Schedule Service
+            <Button href={BUSINESS.phoneHref} variant="accent" className={styles.mobileButton}>
+              <Icon name="phone" size={18} />
+              Call {BUSINESS.phone}
             </Button>
           </div>
         </nav>

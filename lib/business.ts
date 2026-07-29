@@ -38,6 +38,12 @@ export const BUSINESS = {
     inHomeLincolnOmaha: "$149.08",
     inHomeExtended: "$175.08",
   },
+  // Aggregate Google rating — keep in sync with standards/company-facts.md.
+  reviews: {
+    rating: 4.2,
+    count: 356,
+    url: "https://www.google.com/maps/place/Metro+TV%2FAudiotech+and+Appliance+Services/@40.8241167,-96.6362008,17z",
+  },
 } as const;
 
 export type DeliveryModel = "in-home" | "drop-off";
@@ -58,7 +64,7 @@ export const SERVICES: Service[] = [
   {
     slug: "appliance",
     title: "Appliance Repair",
-    tagline: "Factory-authorized in-home repair across 200+ zip codes.",
+    tagline: "We repair appliances in your home across 200+ zip codes.",
     description:
       "Washers, dryers, refrigerators, dishwashers and ranges — diagnosed to the root cause and repaired with original manufacturer parts.",
     brands: [
@@ -76,7 +82,7 @@ export const SERVICES: Service[] = [
   {
     slug: "tv",
     title: "TV Repair",
-    tagline: "Board-level repair — drop off at our Lincoln shop.",
+    tagline: "We repair TVs at the board level — drop off at our Lincoln shop.",
     description:
       "PSU, T-Con, LED driver and A-board work for homes and for the bars, restaurants and gyms that run screens all day.",
     brands: ["Samsung", "LG", "Sony", "Vizio", "TCL"],
@@ -92,7 +98,7 @@ export const SERVICES: Service[] = [
   {
     slug: "commercial",
     title: "Commercial Microwave Repair",
-    tagline: "Four authorized brands. Built for busy kitchens.",
+    tagline: "We service four authorized brands for restaurant kitchens.",
     description:
       "HV circuit, mode stirrer motor, mica cover panel and membrane switch work for the commercial microwaves restaurants depend on.",
     brands: ["Amana", "Sharp", "Panasonic", "Menumaster"],
@@ -108,7 +114,7 @@ export const SERVICES: Service[] = [
   {
     slug: "audio",
     title: "Audio Equipment Repair",
-    tagline: "Our deepest specialty — analog warmth meets digital precision.",
+    tagline: "We repair audio gear at the component level — receivers, amps and turntables.",
     description:
       "BJTs, RIAA phono preamps, ESR checks, VTA and azimuth alignment. Demand is high; typical turnaround runs 1–3 months.",
     brands: ["Yamaha", "Denon", "Marantz", "Pioneer"],
@@ -144,6 +150,9 @@ export const TRUST_BADGES = [
 export const STATS = [
   { value: "1947", label: "Serving Nebraska since" },
   { value: "200+", label: "Zip codes covered" },
-  { value: "50+", label: "Authorized brands" },
+  // 13+ is the verified figure in standards/company-facts.md ("the headline stat
+  // used across both sites"). This previously read "50+", which nothing supports —
+  // don't raise it again without updating company-facts.md first.
+  { value: "13+", label: "Authorized brands" },
   { value: "A+", label: "BBB accredited rating" },
 ] as const;

@@ -271,8 +271,19 @@ html[data-theme="dark"] {
   :root { --action-duration: 1ms; --dur-fast: 1ms; --dur-base: 1ms; --dur-slow: 1ms; }
 }
 
-/* Visible focus on every interactive element (WCAG 2.2 — 2.4.7 / 2.4.11) */
-:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+/* Visible focus on every interactive element (WCAG 2.2 — 2.4.7 / 2.4.11).
+   `summary` is listed explicitly: it is focusable by default but matches none of
+   the other selectors, so every <details> accordion (the whole FAQ) was falling
+   back to the 1px UA outline instead of this ring.
+   Note this is deliberately NOT wrapped in :where() — zero specificity meant any
+   component-level rule silently outranked the focus ring. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
   border-radius: var(--radius-sm);

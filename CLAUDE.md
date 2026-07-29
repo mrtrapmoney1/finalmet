@@ -40,8 +40,19 @@ gradient cards, and a scroll-driven motion layer.
   `NAV_LINKS` data that components map over. Mirrors `standards/company-facts.md`. Edit content here,
   not in components. Two distinct phone lines live here: `phone`/`phoneHref` (the **voice** line,
   `tel:`) and `textNumber`/`smsHref` (a separate **SMS** line, `sms:`) — don't conflate them.
-- `components/sections/*` — the homepage building blocks (`Hero`, `Stats`, `ServicesGrid`,
-  `ScrollStory`, `Brands`, `WarrantyTeaser`, `CTA`). Each has a co-located `*.module.css`.
+- `components/sections/*` — the homepage building blocks. `app/page.tsx` currently composes
+  `BrandRails` → `Hero` → `Stats` → `ServicesGrid` → `Brands` → `WarrantyTeaser` → `Testimonials` →
+  `CTA`; each has a co-located `*.module.css`. **`ScrollStory.tsx` is currently unmounted** — it is a
+  working, generic pinned-panel component kept for reuse, not dead code, but nothing imports it, so
+  don't assume the homepage renders it.
+- **Social proof is a third source-of-truth pair.** `BUSINESS.reviews` (`rating`, `count`, Google
+  Maps `url`) in `lib/business.ts` and the curated real Google quotes in `lib/reviews.ts` feed three
+  consumers: the `AggregateRating` node in the layout's JSON-LD, `components/ui/TrustBar.tsx` (the
+  compact rating strip in the hero), and `components/sections/Testimonials.tsx`. The JSON-LD rating
+  **must match the rating rendered on the page** (Google penalizes a mismatch), so change
+  `BUSINESS.reviews` — never a component — and keep it in sync with `standards/company-facts.md`.
+  Testimonials are **real, public, verbatim-trimmed Google reviews** with first-name + last-initial
+  attribution; never add an invented one (see Content rules).
 - `components/MessageButton.tsx` — client "Send a message" CTA. SSR-renders the `/contact` link
   (safe default + crawlable), then **after mount** swaps to `BUSINESS.smsHref` on a coarse-pointer /
   ≤768px device so phones open the texting app prefilled. Use this instead of a hand-rolled contact
@@ -52,8 +63,9 @@ gradient cards, and a scroll-driven motion layer.
   in the empty gutters and never overlaps content. Painted at the dedicated `--z-rail` z-index (above
   full-bleed section backgrounds, below the header).
 - `components/ui/` — primitives: `Button` (shared CTA), `Icon` (inline SVG, no icon web font),
-  `ThemeToggle`, `CountUp`, `Placeholder`, `Figure` (see imagery below). **`Button` gotcha:** it only
-  renders a plain `<a>` (vs a `next/link`) for hrefs starting `http`/`tel:`/`sms:`/`mailto:` — a new
+  `ThemeToggle`, `CountUp`, `Placeholder`, `TrustBar`, `Figure` (see imagery below). **`Button`
+  gotcha:** it only renders a plain `<a>` (vs a `next/link`) for hrefs starting
+  `http`/`tel:`/`sms:`/`mailto:` — a new
   external scheme must be added to that allowlist or `next/link` will choke on it.
 - **Imagery is a closed pipeline** — never reference a raw `/images/*` path or drop in a bare `<img>`.
   `lib/images.ts` exposes `img(name)` / the `ImageName` union; the valid set is fixed by
@@ -63,7 +75,8 @@ gradient cards, and a scroll-driven motion layer.
   "instrument" duotone/graticule overlay. **`Figure` inherits descriptive `alt` from the manifest** —
   pass `alt=""` only for a genuinely decorative photo (this distinction is load-bearing for the SEO
   alt-text audit). Photos are emitted as AVIF/WebP via `next.config.ts`; attribution is in
-  `standards/image-credits.md`.
+  `standards/image-credits.md`, and the gitignored `scripts/fetch-images.mjs` is what downloaded and
+  wrote the manifest.
 - `components/content/Content.module.css` — shared styles for long-form/legal pages (`/terms`,
   `/privacy-policy`); this is the place the **serif body family** is intentionally used (see the
   tokens note). It's a CSS module with no co-located component — pages import it directly.
@@ -102,7 +115,7 @@ This is the most important non-obvious system. Do not reintroduce `prefers-color
   under `theme`**. An inline script in `app/layout.tsx` reads it and sets `data-theme` on `<html>`
   **before paint** (default `light`) so there's no flash. That same script adds `class="js"`; `<html>`
   carries `suppressHydrationWarning` because of this pre-hydration mutation.
-- **Every section is theme-adaptive** — including the hero, scroll-story, CTA, and footer. They flip
+- **Every section is theme-adaptive** — including the hero, feature bands, CTA, and footer. They flip
   via `--gradient-hero`, `--gradient-feature`, `--gradient-cta`, `--color-footer-*`. Use `--color-text`
   / `--color-text-muted` for foreground in these sections; the legacy `--color-on-dark*` tokens exist
   but are no longer the right choice for theme-adaptive text.
@@ -136,8 +149,9 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
   IntersectionObserver and drives the reading-progress bar. **Content is visible by default** — the
   hide-then-reveal only applies under `html.js` (see `.reveal` in `globals.css`), so no-JS, reduced
   motion, and crawlers always see content at `opacity:1`. This is non-negotiable (see review findings).
-- `ScrollStory.tsx` is a pinned two-panel cross-fade; `CountUp.tsx` animates stat numbers on view.
-  Both render a complete, static, accessible fallback without JS / under reduced motion.
+- `CountUp.tsx` animates stat numbers on view; `ScrollStory.tsx` (unmounted, see above) is a pinned
+  two-panel cross-fade. Both render a complete, static, accessible fallback without JS / under
+  reduced motion.
 - **Per-section interaction layer (the "maximal" overhaul):** beyond the single reveal, each homepage
   section carries one distinct on-theme interaction (Hero pointer-graticule, Stats VU-meters, Services
   scan-line, Brands marquee-ticker, CTA photo) plus the page-wide `BrandRails` gutter marquee; service
@@ -157,7 +171,15 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
 - Copy is bold and benefit-led: short lines, UPPERCASE display headlines, the red-period accent
   (`<span className="dot">.</span>`). Base all facts on `standards/company-facts.md` /
   `lib/business.ts`; don't invent content, and don't reuse the reference repos' placeholder
-  testimonials/team/photos as if real.
+  testimonials/team/photos as if real. Real reviews live in `lib/reviews.ts` — that file is the
+  *only* place a customer quote may come from.
+- **Body copy is active first person** ("We repair appliances, TVs and audio gear…"), not
+  noun-phrase marketing fragments ("Factory-authorized in-home repair across 200+ zip codes"). Service
+  taglines in `lib/business.ts` follow the same rule.
+- **Call-first CTA hierarchy.** The phone number is the primary (accent) action in the header and
+  hero; `/contact` / "Send a message" is the secondary (outline) action. This is a deliberate
+  conversion choice for a phone-driven local trade — don't demote the phone back to a plain text link
+  or promote "Schedule Service" to primary.
 - Readability is non-negotiable: solid AA-passing text (no opacity-as-color), 16px body / 12px floor,
   all content visible at `opacity:1`. Red (`#DE1F27`) is borderline for normal text — reserve it for
   large text, accents, dividers, and button fills, and verify contrast per use.
@@ -168,6 +190,10 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
 > ship with the site), so they may be **absent in a fresh clone**. The governing spec is the project
 > bible `docs/superpowers/specs/2026-06-24-metro-tv-project-bible-design.md` (with a §13 *Amendments*
 > log recording deliberate deviations); the running decision log is the tracked `DECISIONS.md`.
+>
+> **Append to `DECISIONS.md`** (newest first, dated section, one line of *why* per choice) whenever you
+> make a non-obvious visual or architectural call — that log is how the next session avoids undoing it.
+> Each section closes by recording the `npm run build` gate result.
 - `standards/company-facts.md` — real, verified business facts (address, phone, hours, founding,
   brands, pricing, warranty terms, service area). Also flags which reference-repo content is placeholder.
 - `standards/customer-strategy.md` — customer segments and the page-build roadmap; consult before

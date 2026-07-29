@@ -14,9 +14,9 @@ const ICON_BY_SLUG: Record<string, IconName> = {
 
 const PHOTO_BY_SLUG: Record<string, ImageName> = {
   appliance: "washer",
-  tv: "tv-living",
-  commercial: "kitchen",
-  audio: "speaker",
+  tv: "tv-bench",
+  commercial: "microwave-bench",
+  audio: "receiver",
 };
 
 export function ServicesGrid() {

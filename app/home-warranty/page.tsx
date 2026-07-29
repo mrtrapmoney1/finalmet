@@ -9,9 +9,9 @@ import styles from "./page.module.css";
 
 const SEG_PHOTO: Record<string, ImageName> = {
   Appliances: "washer",
-  "TVs & screens": "tv-living",
-  "Audio gear": "bt-speaker",
-  "Commercial microwaves": "kitchen",
+  "TVs & screens": "tv-bench",
+  "Audio gear": "receiver",
+  "Commercial microwaves": "microwave-bench",
 };
 
 export const metadata = pageMeta({
@@ -32,7 +32,7 @@ const SEGMENTS = [
     tag: "Homes & businesses",
     title: "TVs & screens",
     line: "The set in the den — or a wall of screens at the bar.",
-    covers: ["Extended plans", "Allstate SquareTrade"],
+    covers: ["Extended plans", "Manufacturer warranty"],
   },
   {
     tag: "Collectors",
@@ -57,7 +57,7 @@ const STEPS = [
   {
     n: "02",
     title: "Call your warranty or plan",
-    body: "Home warranty, extended plan, or Allstate SquareTrade — in our opinion one of the best out there. Open a claim, then ask for Metro TV & Appliances by name.",
+    body: "Open a claim with your home warranty or extended plan. Then ask for Metro TV & Appliances by name.",
   },
   {
     n: "03",
@@ -86,15 +86,14 @@ export default function HomeWarrantyPage() {
     <>
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
-          <p className={`eyebrow ${styles.heroEyebrow}`}>You may already be covered</p>
+          <p className={`eyebrow ${styles.heroEyebrow}`}>Home warranty help</p>
           <h1 className={`${styles.heroTitle} display`}>
             Your repair may already be covered<span className="dot">.</span>
           </h1>
           <p className={styles.heroSub}>
-            A dead dishwasher at home. A wall of dark TVs at the bar. A receiver gone
-            silent. A kitchen down its microwave. Different gear, same good news — a
-            warranty, plan, or manufacturer coverage may already pay for the fix.
-            Before you pay out of pocket, it&apos;s worth a look.
+            A home warranty, extended plan, or manufacturer coverage can pay for
+            appliance, TV, audio and microwave repairs. You should check your
+            coverage before you pay out of pocket.
           </p>
           <div className={styles.heroActions}>
             <Button href="#first-steps" variant="accent" size="lg">
@@ -121,8 +120,9 @@ export default function HomeWarrantyPage() {
               Odds are, something already covers it<span className="dot">.</span>
             </h2>
             <p className={styles.lede}>
-              Four kinds of customer, one habit worth keeping: check what&apos;s
-              covering your equipment before the repair comes out of your pocket.
+              You should check what covers your equipment before the repair comes
+              out of your pocket. Home warranties, extended plans and manufacturer
+              coverage all work with us.
             </p>
           </div>
           <ul className={styles.segGrid}>

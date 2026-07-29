@@ -170,6 +170,20 @@
   text-decoration: underline;
 }
 
+/* Touch sizing. Measured at 390px, these links were 30–38px tall — above the
+   24px WCAG 2.2 (2.5.8) floor but under the 44px comfortable-touch target, and
+   the legal pair sit close enough together to mis-tap. Applied only on coarse
+   pointers so the desktop footer keeps its tighter vertical rhythm. */
+@media (pointer: coarse) {
+  .link,
+  .directions,
+  .legalLink {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 @media (min-width: 600px) {
   .bottom {
     flex-direction: row;

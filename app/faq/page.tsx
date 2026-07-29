@@ -4,10 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Figure } from "@/components/ui/Figure";
 import { CTA } from "@/components/sections/CTA";
+import { FaqList, type Faq } from "@/components/FaqList";
 import styles from "./page.module.css";
-
-const slugify = (s: string) =>
-  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const metadata = pageMeta({
   title: "Repair FAQ",
@@ -15,12 +13,6 @@ export const metadata = pageMeta({
     "Common questions on appliance, TV, audio and commercial microwave repair — appointments, diagnostic fees, estimates, OEM parts, warranty, and service area.",
   path: "/faq",
 });
-
-interface Faq {
-  q: string;
-  a: string;
-  link?: { href: string; label: string };
-}
 
 const FAQS: Faq[] = [
   {
@@ -58,7 +50,7 @@ const FAQS: Faq[] = [
   },
   {
     q: "What brands are you authorized for?",
-    a: "We're factory-authorized for 50+ brands across appliances, TVs, audio and commercial microwaves — including Samsung, LG, GE Appliances, Sony, Yamaha and more.",
+    a: "We're factory-authorized for 13+ brands across appliances, TVs, audio and commercial microwaves — including Samsung, LG, GE Appliances, Sony, Yamaha and more.",
     link: { href: "/services", label: "See all services & brands" },
   },
   {
@@ -123,19 +115,7 @@ export default function FaqPage() {
           </div>
 
           <div className={styles.faq}>
-            {FAQS.map((f) => (
-              <details key={f.q} id={slugify(f.q)} className={styles.faqItem}>
-                <summary className={styles.faqQ}>{f.q}</summary>
-                <div className={styles.faqA}>
-                  <p>{f.a}</p>
-                  {f.link && (
-                    <p>
-                      <a href={f.link.href}>{f.link.label}</a>
-                    </p>
-                  )}
-                </div>
-              </details>
-            ))}
+            <FaqList faqs={FAQS} />
           </div>
         </div>
       </section>

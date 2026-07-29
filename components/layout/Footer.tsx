@@ -10,8 +10,7 @@ export function Footer() {
         <div className={styles.brandCol}>
           <p className={styles.brand}>{BUSINESS.shortName}</p>
           <p className={styles.tagline}>
-            Factory-authorized repair serving Nebraska since {BUSINESS.founded}.
-            Technical precision and honest estimates for homes and local businesses.
+            We&apos;ve repaired appliances, TVs and audio for Nebraska since {BUSINESS.founded}.
           </p>
           <div className={styles.social}>
             <a href={BUSINESS.social.facebook} aria-label="Facebook" className={styles.socialLink}>
@@ -39,10 +38,13 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Without this column /service-area, /how-it-works and /faq have no footer
+            link at all — on mobile they'd sit behind the hamburger and nowhere else,
+            which costs both internal link equity and a second path to the content. */}
         <div className={styles.col}>
           <p className={styles.heading}>Company</p>
           <ul className={styles.list}>
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.filter((l) => l.href !== "/services").map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className={styles.link}>
                   {link.label}

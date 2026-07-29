@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Figure } from "@/components/ui/Figure";
 import { HeroGraticule } from "./HeroGraticule";
+import { TrustBar } from "@/components/ui/TrustBar";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -19,23 +20,27 @@ export function Hero() {
             Fixed right<span className="dot">.</span>
           </h1>
           <p className={`${styles.sub} reveal`} style={{ ["--reveal-delay" as string]: "160ms" }}>
-            Appliances, TVs, audio gear and commercial microwaves — diagnosed to
-            the root cause and repaired with original manufacturer parts. Serving
-            Nebraska since {BUSINESS.founded}.
+            We repair appliances, TVs, audio gear and commercial microwaves. We
+            diagnose to the root cause and fix with original manufacturer parts.
+            We&apos;ve served Nebraska since {BUSINESS.founded}.
           </p>
 
           <div className={`${styles.actions} reveal`} style={{ ["--reveal-delay" as string]: "240ms" }}>
-            <Button href="/contact" variant="accent" size="lg">
-              Schedule Service
-              <Icon name="arrow" size={20} />
-            </Button>
-            <Button href={BUSINESS.phoneHref} variant="outline" size="lg">
+            <Button href={BUSINESS.phoneHref} variant="accent" size="lg">
               <Icon name="phone" size={20} />
-              {BUSINESS.phone}
+              Call {BUSINESS.phone}
+            </Button>
+            <Button href="/contact" variant="outline" size="lg">
+              Send a message
+              <Icon name="arrow" size={20} />
             </Button>
           </div>
 
-          <ul className={`${styles.creds} reveal`} aria-label="Credentials" style={{ ["--reveal-delay" as string]: "320ms" }}>
+          <div className={`${styles.trust} reveal`} style={{ ["--reveal-delay" as string]: "300ms" }}>
+            <TrustBar />
+          </div>
+
+          <ul className={`${styles.creds} reveal`} aria-label="Credentials" style={{ ["--reveal-delay" as string]: "360ms" }}>
             {TRUST_BADGES.map((b) => (
               <li key={b} className={styles.cred}>
                 {b}

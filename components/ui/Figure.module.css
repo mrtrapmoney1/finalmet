@@ -16,6 +16,32 @@
   border-radius: var(--figure-radius);
 }
 
+/* Old-CRT hover: red/green/blue channels bloom apart like a phosphor screen.
+   Real-hover devices only; motion honored. Touch gets a faint always-on edge. */
+@media (hover: hover) and (pointer: fine) {
+  .framed .frame {
+    transition: box-shadow var(--dur-base) var(--ease);
+  }
+  .framed .frame:hover {
+    box-shadow:
+      -3px 0 12px -3px rgba(222, 31, 39, 0.4),
+      3px 0 12px -3px rgba(37, 110, 255, 0.38),
+      0 0 16px 0 rgba(40, 220, 120, 0.16);
+  }
+}
+
+@media (hover: none) {
+  .framed .frame {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 16%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .framed .frame {
+    transition: none;
+  }
+}
+
 /* When a ratio is requested, the frame becomes an aspect box for the fill image. */
 .frame[style*="--ratio"] {
   aspect-ratio: var(--ratio);

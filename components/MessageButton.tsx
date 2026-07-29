@@ -1,8 +1,23 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { BUSINESS } from "@/lib/business";
+
+const MOBILE_QUERY = "(pointer: coarse), (max-width: 768px)";
+
+function subscribe(onChange: () => void) {
+  const mq = window.matchMedia(MOBILE_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+const getHref = () =>
+  window.matchMedia(MOBILE_QUERY).matches ? BUSINESS.smsHref : "/contact";
+
+// Server + hydration pass always render the crawlable /contact link; React swaps
+// in the real value right after hydration without a mismatch warning.
+const getServerHref = () => "/contact";
 
 interface MessageButtonProps {
   children?: ReactNode;
@@ -26,14 +41,7 @@ export function MessageButton({
   size = "lg",
   className,
 }: MessageButtonProps) {
-  const [href, setHref] = useState("/contact");
-
-  useEffect(() => {
-    const mobile =
-      window.matchMedia("(pointer: coarse)").matches ||
-      window.matchMedia("(max-width: 768px)").matches;
-    if (mobile) setHref(BUSINESS.smsHref);
-  }, []);
+  const href = useSyncExternalStore(subscribe, getHref, getServerHref);
 
   return (
     <Button href={href} variant={variant} size={size} className={className}>

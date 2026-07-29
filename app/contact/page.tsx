@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import styles from "./page.module.css";
 
 export const metadata = pageMeta({
-  title: "Contact & Schedule Service",
+  title: "Contact",
   description:
     "Contact Metro TV & Appliances in Lincoln, NE. Call (402) 466-9090 or send a service request. Walk-in shop drop-off and in-home appliance scheduling.",
   path: "/contact",
@@ -61,8 +61,7 @@ export default function ContactPage() {
           </a>
 
           <Figure
-            name="control-room"
-            alt="The Metro TV service bench."
+            name="repair-hands"
             ratio={4 / 3}
             sizes="(min-width: 900px) 44vw, 100vw"
             caption="Factory-authorized service since 1947"

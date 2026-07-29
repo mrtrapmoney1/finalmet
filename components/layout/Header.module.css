@@ -72,6 +72,18 @@
   transform: scaleX(1);
 }
 
+/* Current section — the hover underline, made permanent. Colour is not the only
+   cue: the link also carries aria-current="page" and reads at full text weight,
+   so this survives greyscale and screen readers alike. */
+.navLinkActive {
+  color: var(--color-text);
+  font-weight: var(--fw-bold);
+}
+
+.navLinkActive::after {
+  transform: scaleX(1);
+}
+
 .desktopCta {
   display: none;
   align-items: center;
@@ -124,6 +136,13 @@
   font-weight: var(--fw-medium);
   color: var(--color-text);
   border-bottom: 1px solid var(--color-border);
+}
+
+/* Mobile equivalent: a red rule down the leading edge plus bold weight. */
+.mobileLinkActive {
+  font-weight: var(--fw-bold);
+  box-shadow: inset 3px 0 0 0 var(--color-accent);
+  padding-inline-start: var(--sp-3);
 }
 
 .mobileCta {

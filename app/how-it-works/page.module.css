@@ -157,3 +157,9 @@
     gap: var(--sp-8);
   }
 }
+
+/* Bench simulator band — sits on the feature ground so it reads as a distinct
+   aside from the numbered process steps above it. */
+.gameSection {
+  background: var(--gradient-feature);
+}

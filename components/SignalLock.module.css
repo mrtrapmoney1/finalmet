@@ -1,0 +1,230 @@
+/* Theme-aware colours consumed by the canvas via getComputedStyle. Declared here
+   (not inline) so the game obeys the same token system as everything else. */
+.wrap {
+  --sl-trace: var(--color-accent);
+  --sl-ghost: var(--color-text-subtle);
+  --sl-grid: var(--color-border-strong);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-1);
+}
+
+:global(html[data-theme="dark"]) .wrap {
+  --sl-trace: var(--color-accent-bright);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.lede {
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+/* ---------- Scope ---------- */
+
+.scopeShell {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+}
+
+.scope,
+.scopePlaceholder {
+  display: block;
+  width: 100%;
+  height: 240px;
+  touch-action: none; /* drag tunes the trace; don't scroll the page instead */
+}
+
+.scope:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: -2px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+}
+
+.overlayText {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  text-align: center;
+  padding-inline: var(--sp-4);
+}
+
+/* ---------- Readouts ---------- */
+
+.readouts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3) var(--sp-5);
+}
+
+.readout {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-block: var(--sp-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.readout dt {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.readout dd {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
+.meter {
+  display: block;
+  width: 4rem;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  overflow: hidden;
+}
+
+.meterFill {
+  display: block;
+  height: 100%;
+  background: var(--gradient-accent);
+  transition: width var(--dur-fast) linear;
+}
+
+/* ---------- Controls ---------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.primary,
+.secondary,
+.tuners button {
+  min-height: var(--tap-min);
+  padding-inline: var(--sp-5);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  transition: background var(--action-duration) var(--action-ease),
+    border-color var(--action-duration) var(--action-ease);
+}
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.secondary,
+.tuners button {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+}
+
+.secondary:hover:not(:disabled),
+.tuners button:hover {
+  border-color: var(--color-accent);
+}
+
+.secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.tuners {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-inline-start: auto;
+}
+
+.tuners button {
+  padding-inline: var(--sp-4);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs);
+}
+
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+.hint kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs);
+  color: var(--color-text);
+}
+
+/* Announcements are for assistive tech; the same information is already on
+   screen in the readouts, so this stays visually hidden rather than duplicated. */
+.live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 700px) {
+  .readouts {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .scope,
+  .scopePlaceholder {
+    height: 300px;
+  }
+}

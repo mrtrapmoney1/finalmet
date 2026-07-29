@@ -28,8 +28,11 @@ export function useInView<T extends Element = HTMLDivElement>(
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
+      // No observer support: reveal immediately so content is never gated. Scheduled
+      // rather than set inline, because a synchronous setState in an effect body
+      // triggers a second cascading render pass.
+      const id = requestAnimationFrame(() => setInView(true));
+      return () => cancelAnimationFrame(id);
     }
 
     const io = new IntersectionObserver(

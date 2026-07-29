@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 import { CTA } from "@/components/sections/CTA";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Figure } from "@/components/ui/Figure";
+import { SignalLock } from "@/components/SignalLock";
 import styles from "./page.module.css";
 
 export const metadata = pageMeta({
@@ -69,8 +70,7 @@ export default function HowItWorksPage() {
               ))}
             </ul>
             <Figure
-              name="cpu-board"
-              alt="Close-up of board-level diagnostics on a circuit board."
+              name="circuit-board"
               ratio={4 / 3}
               sizes="(min-width: 900px) 40vw, 100vw"
               caption="Root-cause diagnosis at the bench"
@@ -95,6 +95,18 @@ export default function HowItWorksPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Lives here rather than the homepage on purpose: this page is about how we
+          diagnose, and a game above the primary conversion path would compete with
+          the phone number. It also lazy-mounts, so it costs nothing until scrolled to. */}
+      <section className={`section ${styles.gameSection}`} aria-labelledby="signal-lock">
+        <div className="container">
+          <h2 id="signal-lock" className="sr-only">
+            Signal Lock — bench simulator
+          </h2>
+          <SignalLock />
         </div>
       </section>
 

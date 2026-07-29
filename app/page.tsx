@@ -3,6 +3,7 @@ import { Stats } from "@/components/sections/Stats";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { Brands } from "@/components/sections/Brands";
 import { WarrantyTeaser } from "@/components/sections/WarrantyTeaser";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { CTA } from "@/components/sections/CTA";
 import { BrandRails } from "@/components/BrandRails";
 
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ServicesGrid />
       <Brands />
       <WarrantyTeaser />
+      <Testimonials />
       <CTA />
     </>
   );
