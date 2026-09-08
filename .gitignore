@@ -37,3 +37,7 @@ next-env.d.ts
 # Rust workspace, unrelated skill repos); not imported by the build and not
 # something a public client repo connected to Vercel should ship. Kept locally.
 /references/
+
+# working plan/session-log doc for the CRO+brand-standard initiative — internal
+# notes, not part of the shipped site.
+/plan.md
