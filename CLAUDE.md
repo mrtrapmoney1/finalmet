@@ -2,6 +2,31 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## FIRST: use the vendored skills in `references/`
+
+**Before doing any visual, frontend, UI/CSS, or design work in this repo, check `references/` for
+a skill that applies and use it.** This is a mandatory first step, not optional background
+reading — read the relevant `SKILL.md`/`README.md` and follow its rules/checklist before writing
+or reviewing any code. Only fall back to generic judgment if nothing here fits the task:
+
+- `references/taste-skill/skills/` — anti-"AI slop" frontend taste skills (one `SKILL.md` per
+  style: `taste-skill`, `brutalist-skill`, `minimalist-skill`, `soft-skill`, `redesign-skill`,
+  `brandkit`, `stitch-skill`, `output-skill`, `image-to-code-skill`,
+  `imagegen-frontend-{web,mobile}`, `gpt-tasteskill`). Pick the one matching the task.
+- `references/impeccable/` — see `README.md`; 61 deterministic detector rules + commands for
+  catching AI-generated-frontend tells. Run its checks (or apply the rules manually) before
+  calling any frontend work done.
+- `references/awesome-design-md/design-md/` — per-brand `DESIGN.md` files (Airbnb, Apple, BMW,
+  etc.) — pull from these for tone/spacing/motion inspiration when a section needs a specific
+  design language.
+- `references/img2threejs/SKILL.md` — use this skill whenever a task involves turning a reference
+  image into a procedural Three.js model.
+
+Credits/licenses: `references/README.md`. Don't edit these in place — they're snapshots; re-clone
+from upstream if you need an update. **Gitignored, not pushed** (78M/3.6k files of third-party
+tooling — a full Rust workspace among them — doesn't belong in this public, Vercel-deployed repo);
+present on the maintainer's disk but may be **absent in a fresh clone**, same as `docs/`/`reviews/`/`scripts/`.
+
 ## Project state
 
 METROTV is the **rebuild** of *Metro TV & Appliances* — an appliance / TV / audio repair
@@ -23,20 +48,6 @@ gradient cards, and a scroll-driven motion layer.
   (390), check the browser console for errors, and run the readability audit (no sub-12px real text,
   no opacity-as-color, no `opacity:0` content).
 
-## References
-
-`references/` holds vendored (no `.git`, no live tracking) copies of external repos kept purely
-as design/frontend-quality guidance — consult them when doing visual/design work in this repo,
-and prefer their conventions over generic defaults:
-
-- `references/taste-skill` — anti-"AI slop" frontend taste skill.
-- `references/impeccable` — deterministic detector rules + commands for AI-generated frontend design.
-- `references/awesome-design-md` — curated design-focused Markdown skills.
-- `references/img2threejs` — image-to-procedural-Three.js skill.
-
-See `references/README.md` for credits/licenses. Do not edit these in place — they're snapshots;
-re-clone from upstream if you need an update.
-
 ## Architecture
 
 - `app/` — App Router routes. Homepage composes section components; `/services` + four service
@@ -54,8 +65,16 @@ re-clone from upstream if you need an update.
   not in components.
 - `components/sections/*` — the homepage building blocks (`Hero`, `Stats`, `ServicesGrid`,
   `ScrollStory`, `Brands`, `WarrantyTeaser`, `CTA`). Each has a co-located `*.module.css`.
+- `components/layout/` — `Header.tsx` (nav + phone) and `Footer.tsx` (theme-adaptive, see
+  Theming below), shared across every route via `app/layout.tsx`.
 - `components/ui/` — primitives: `Button` (shared CTA), `Icon` (inline SVG, no icon web font),
   `ThemeToggle`, `CountUp`, `Placeholder`, `Figure` (see imagery below).
+- `components/DiagnosticSlider.tsx` — the drag before/after interaction used on the four service
+  detail pages (see Motion layer below).
+- `components/Analytics.tsx` — GA4 `gtag.js`, loaded `afterInteractive` in `app/layout.tsx`. The
+  measurement ID is public by nature (ships in page source regardless), so it's hardcoded as a
+  fallback and overridable via `NEXT_PUBLIC_GA_ID` (see `.env.example`) — same pattern as the
+  Web3Forms key below.
 - **Imagery is a closed pipeline** — never reference a raw `/images/*` path or drop in a bare `<img>`.
   `lib/images.ts` exposes `img(name)` / the `ImageName` union; the valid set is fixed by
   `public/images/manifest.json` (12 self-hosted, verified free-license photos — an unknown name
@@ -158,9 +177,9 @@ spacing, type sizes, radii, shadows, or motion.** The system is tiered per the W
   large text, accents, dividers, and button fills, and verify contrast per use.
 
 ## Reference material (read, don't re-derive)
-> **Tracked vs. local-only:** `standards/` and `DECISIONS.md` are committed. `docs/`, `reviews/`, and
-> `scripts/` are **gitignored** (kept on the maintainer's disk, deliberately not pushed — they don't
-> ship with the site), so they may be **absent in a fresh clone**. The governing spec is the project
+> **Tracked vs. local-only:** `standards/` and `DECISIONS.md` are committed. `docs/`, `reviews/`,
+> `scripts/`, and `references/` are **gitignored** (kept on the maintainer's disk, deliberately not
+> pushed — they don't ship with the site), so they may be **absent in a fresh clone**. The governing spec is the project
 > bible `docs/superpowers/specs/2026-06-24-metro-tv-project-bible-design.md` (with a §13 *Amendments*
 > log recording deliberate deviations); the running decision log is the tracked `DECISIONS.md`.
 - `standards/company-facts.md` — real, verified business facts (address, phone, hours, founding,

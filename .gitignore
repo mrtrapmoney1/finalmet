@@ -32,3 +32,8 @@ next-env.d.ts
 /reviews/
 /docs/
 /scripts/
+
+# vendored design-skill repos — 78M/3.6k files of third-party tooling (a full
+# Rust workspace, unrelated skill repos); not imported by the build and not
+# something a public client repo connected to Vercel should ship. Kept locally.
+/references/
