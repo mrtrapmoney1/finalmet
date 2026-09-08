@@ -23,6 +23,20 @@ gradient cards, and a scroll-driven motion layer.
   (390), check the browser console for errors, and run the readability audit (no sub-12px real text,
   no opacity-as-color, no `opacity:0` content).
 
+## References
+
+`references/` holds vendored (no `.git`, no live tracking) copies of external repos kept purely
+as design/frontend-quality guidance — consult them when doing visual/design work in this repo,
+and prefer their conventions over generic defaults:
+
+- `references/taste-skill` — anti-"AI slop" frontend taste skill.
+- `references/impeccable` — deterministic detector rules + commands for AI-generated frontend design.
+- `references/awesome-design-md` — curated design-focused Markdown skills.
+- `references/img2threejs` — image-to-procedural-Three.js skill.
+
+See `references/README.md` for credits/licenses. Do not edit these in place — they're snapshots;
+re-clone from upstream if you need an update.
+
 ## Architecture
 
 - `app/` — App Router routes. Homepage composes section components; `/services` + four service
